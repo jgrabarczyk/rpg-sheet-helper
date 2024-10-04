@@ -1,0 +1,24 @@
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>{{ title }}</mat-card-title>
+    <mat-card-subtitle>{{ subtitle }}</mat-card-subtitle>
+  </mat-card-header>
+
+  <mat-card-content>
+    <mat-list role="list">
+      @for(skill of skills; track skill.name; let i = $index){
+      <mat-list-item>
+        <app-skill
+          [value]="skill.value"
+          [label]="skill.name"
+          [currentLevel]="skill.lvl.current"
+          [maxLevel]="skill.lvl.max"
+          (decrease)="decrease(i)"
+          (increase)="increase(i)"
+        />
+      </mat-list-item>
+      <mat-divider></mat-divider>
+      }
+    </mat-list>
+  </mat-card-content>
+</mat-card>

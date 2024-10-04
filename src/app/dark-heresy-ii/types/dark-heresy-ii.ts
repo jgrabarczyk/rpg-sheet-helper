@@ -1,6 +1,6 @@
 import { Skill } from '../../types/skill';
 import { Characteristic } from '../../types/characteristic';
-import { Enumerate } from '../../types/enumerative';
+import { Level } from '../../types/level';
 
 type DHII_AttributesNames =
   | 'Weapon Skill'
@@ -57,20 +57,21 @@ type Aptitude =
   | 'Tech'
   | DHII_AttributesNames;
 
-type Level<N extends number> = {
-  current: Enumerate<N>;
-  max: N;
-};
+const DHII_MAX_SKILL_LEVEL: 4 = 4 as const;
+const DHII_MAX_ATTRIBUTE_LEVEL: 5 = 5 as const;
+export type DHII_SkillLevel = Level<4>;
+export type DHII_AttributeLevel = Level<5>;
 
 export type DHII_Attribute =
   | (Characteristic<Exclude<DHII_AttributesNames, 'Influance'>> & {
       aptitudes: [Aptitude, Aptitude];
-      lvl: Level<5>;
+      lvl: DHII_AttributeLevel;
     })
   | Characteristic<'Influance'>;
-export type DHII_Skill = Skill<DHII_AttributesNames, DHII_SkillNames> & {
+
+export type DHII_Skill = Omit<Skill<DHII_AttributesNames, DHII_SkillNames>, 'lvl'> & {
   aptitudes: [Aptitude, Aptitude];
-  lvl: Level<4>;
+  lvl: DHII_SkillLevel;
   value: number;
 };
 
@@ -78,7 +79,7 @@ export const DHII_ATTRIBUTE_LIST: DHII_Attribute[] = [
   {
     lvl: {
       current: 0,
-      max: 5
+      max: DHII_MAX_ATTRIBUTE_LEVEL
     },
     name: 'Weapon Skill',
     value: 0,
@@ -87,7 +88,7 @@ export const DHII_ATTRIBUTE_LIST: DHII_Attribute[] = [
   {
     lvl: {
       current: 0,
-      max: 5
+      max: DHII_MAX_ATTRIBUTE_LEVEL
     },
     name: 'Ballistic Skill',
     value: 0,
@@ -96,7 +97,7 @@ export const DHII_ATTRIBUTE_LIST: DHII_Attribute[] = [
   {
     lvl: {
       current: 0,
-      max: 5
+      max: DHII_MAX_ATTRIBUTE_LEVEL
     },
     name: 'Strength',
     value: 0,
@@ -105,7 +106,7 @@ export const DHII_ATTRIBUTE_LIST: DHII_Attribute[] = [
   {
     lvl: {
       current: 0,
-      max: 5
+      max: DHII_MAX_ATTRIBUTE_LEVEL
     },
     name: 'Toughness',
     value: 0,
@@ -114,7 +115,7 @@ export const DHII_ATTRIBUTE_LIST: DHII_Attribute[] = [
   {
     lvl: {
       current: 0,
-      max: 5
+      max: DHII_MAX_ATTRIBUTE_LEVEL
     },
     name: 'Agility',
     value: 0,
@@ -123,7 +124,7 @@ export const DHII_ATTRIBUTE_LIST: DHII_Attribute[] = [
   {
     lvl: {
       current: 0,
-      max: 5
+      max: DHII_MAX_ATTRIBUTE_LEVEL
     },
     name: 'Intelligence',
     value: 0,
@@ -132,7 +133,7 @@ export const DHII_ATTRIBUTE_LIST: DHII_Attribute[] = [
   {
     lvl: {
       current: 0,
-      max: 5
+      max: DHII_MAX_ATTRIBUTE_LEVEL
     },
     name: 'Perception',
     value: 0,
@@ -141,7 +142,7 @@ export const DHII_ATTRIBUTE_LIST: DHII_Attribute[] = [
   {
     lvl: {
       current: 0,
-      max: 5
+      max: DHII_MAX_ATTRIBUTE_LEVEL
     },
     name: 'Willpower',
     value: 0,
@@ -150,7 +151,7 @@ export const DHII_ATTRIBUTE_LIST: DHII_Attribute[] = [
   {
     lvl: {
       current: 0,
-      max: 5
+      max: DHII_MAX_ATTRIBUTE_LEVEL
     },
     name: 'Fellowship',
     value: 0,
@@ -166,7 +167,7 @@ export const DHII_SKILLS_LIST: DHII_Skill[] = [
   {
     lvl: {
       current: 0,
-      max: 4
+      max: DHII_MAX_SKILL_LEVEL
     },
     value: 0,
     name: 'Acrobatics',
@@ -176,7 +177,7 @@ export const DHII_SKILLS_LIST: DHII_Skill[] = [
   {
     lvl: {
       current: 0,
-      max: 4
+      max: DHII_MAX_SKILL_LEVEL
     },
     value: 0,
     name: 'Athletics',
@@ -186,7 +187,7 @@ export const DHII_SKILLS_LIST: DHII_Skill[] = [
   {
     lvl: {
       current: 0,
-      max: 4
+      max: DHII_MAX_SKILL_LEVEL
     },
     value: 0,
     name: 'Awareness',
@@ -197,7 +198,7 @@ export const DHII_SKILLS_LIST: DHII_Skill[] = [
   {
     lvl: {
       current: 0,
-      max: 4
+      max: DHII_MAX_SKILL_LEVEL
     },
     value: 0,
     name: 'Charm',
@@ -207,7 +208,7 @@ export const DHII_SKILLS_LIST: DHII_Skill[] = [
   {
     lvl: {
       current: 0,
-      max: 4
+      max: DHII_MAX_SKILL_LEVEL
     },
     value: 0,
     name: 'Command',
@@ -217,7 +218,7 @@ export const DHII_SKILLS_LIST: DHII_Skill[] = [
   {
     lvl: {
       current: 0,
-      max: 4
+      max: DHII_MAX_SKILL_LEVEL
     },
     value: 0,
     name: 'Commerce',
@@ -227,7 +228,7 @@ export const DHII_SKILLS_LIST: DHII_Skill[] = [
   {
     lvl: {
       current: 0,
-      max: 4
+      max: DHII_MAX_SKILL_LEVEL
     },
     value: 0,
     name: 'Common Lore',
@@ -237,7 +238,7 @@ export const DHII_SKILLS_LIST: DHII_Skill[] = [
   {
     lvl: {
       current: 0,
-      max: 4
+      max: DHII_MAX_SKILL_LEVEL
     },
     value: 0,
     name: 'Deceive',
@@ -248,7 +249,7 @@ export const DHII_SKILLS_LIST: DHII_Skill[] = [
   {
     lvl: {
       current: 0,
-      max: 4
+      max: DHII_MAX_SKILL_LEVEL
     },
     value: 0,
     name: 'Dodge',
@@ -258,7 +259,7 @@ export const DHII_SKILLS_LIST: DHII_Skill[] = [
   {
     lvl: {
       current: 0,
-      max: 4
+      max: DHII_MAX_SKILL_LEVEL
     },
     value: 0,
     name: 'Forbidden Lore',
@@ -268,7 +269,7 @@ export const DHII_SKILLS_LIST: DHII_Skill[] = [
   {
     lvl: {
       current: 0,
-      max: 4
+      max: DHII_MAX_SKILL_LEVEL
     },
     value: 0,
     name: 'Inquiry',
@@ -278,7 +279,7 @@ export const DHII_SKILLS_LIST: DHII_Skill[] = [
   {
     lvl: {
       current: 0,
-      max: 4
+      max: DHII_MAX_SKILL_LEVEL
     },
     value: 0,
     name: 'Interrogation',
@@ -288,7 +289,7 @@ export const DHII_SKILLS_LIST: DHII_Skill[] = [
   {
     lvl: {
       current: 0,
-      max: 4
+      max: DHII_MAX_SKILL_LEVEL
     },
     value: 0,
     name: 'Intimidate',
@@ -298,7 +299,7 @@ export const DHII_SKILLS_LIST: DHII_Skill[] = [
   {
     lvl: {
       current: 0,
-      max: 4
+      max: DHII_MAX_SKILL_LEVEL
     },
     value: 0,
     name: 'Linguistics',
@@ -308,7 +309,7 @@ export const DHII_SKILLS_LIST: DHII_Skill[] = [
   {
     lvl: {
       current: 0,
-      max: 4
+      max: DHII_MAX_SKILL_LEVEL
     },
     value: 0,
     name: 'Logic',
@@ -318,7 +319,7 @@ export const DHII_SKILLS_LIST: DHII_Skill[] = [
   {
     lvl: {
       current: 0,
-      max: 4
+      max: DHII_MAX_SKILL_LEVEL
     },
     value: 0,
     name: 'Medicae',
@@ -328,7 +329,7 @@ export const DHII_SKILLS_LIST: DHII_Skill[] = [
   {
     lvl: {
       current: 0,
-      max: 4
+      max: DHII_MAX_SKILL_LEVEL
     },
     value: 0,
     name: 'Navigate',
@@ -339,7 +340,7 @@ export const DHII_SKILLS_LIST: DHII_Skill[] = [
   {
     lvl: {
       current: 0,
-      max: 4
+      max: DHII_MAX_SKILL_LEVEL
     },
     value: 0,
     name: 'Operate',
@@ -349,7 +350,7 @@ export const DHII_SKILLS_LIST: DHII_Skill[] = [
   {
     lvl: {
       current: 0,
-      max: 4
+      max: DHII_MAX_SKILL_LEVEL
     },
     value: 0,
     name: 'Parry',
@@ -359,7 +360,7 @@ export const DHII_SKILLS_LIST: DHII_Skill[] = [
   {
     lvl: {
       current: 0,
-      max: 4
+      max: DHII_MAX_SKILL_LEVEL
     },
     value: 0,
     name: 'Psyniscience',
@@ -369,7 +370,7 @@ export const DHII_SKILLS_LIST: DHII_Skill[] = [
   {
     lvl: {
       current: 0,
-      max: 4
+      max: DHII_MAX_SKILL_LEVEL
     },
     value: 0,
     name: 'Scholastic Lore',
@@ -379,7 +380,7 @@ export const DHII_SKILLS_LIST: DHII_Skill[] = [
   {
     lvl: {
       current: 0,
-      max: 4
+      max: DHII_MAX_SKILL_LEVEL
     },
     value: 0,
     name: 'Scrutiny',
@@ -389,7 +390,7 @@ export const DHII_SKILLS_LIST: DHII_Skill[] = [
   {
     lvl: {
       current: 0,
-      max: 4
+      max: DHII_MAX_SKILL_LEVEL
     },
     value: 0,
     name: 'Security',
@@ -399,7 +400,7 @@ export const DHII_SKILLS_LIST: DHII_Skill[] = [
   {
     lvl: {
       current: 0,
-      max: 4
+      max: DHII_MAX_SKILL_LEVEL
     },
     value: 0,
     name: 'Sleight of Hand',
@@ -410,7 +411,7 @@ export const DHII_SKILLS_LIST: DHII_Skill[] = [
   {
     lvl: {
       current: 0,
-      max: 4
+      max: DHII_MAX_SKILL_LEVEL
     },
     value: 0,
     name: 'Stealth',
@@ -420,7 +421,7 @@ export const DHII_SKILLS_LIST: DHII_Skill[] = [
   {
     lvl: {
       current: 0,
-      max: 4
+      max: DHII_MAX_SKILL_LEVEL
     },
     value: 0,
     name: 'Survival',
@@ -430,7 +431,7 @@ export const DHII_SKILLS_LIST: DHII_Skill[] = [
   {
     lvl: {
       current: 0,
-      max: 4
+      max: DHII_MAX_SKILL_LEVEL
     },
     value: 0,
     name: 'Tech-Use',
@@ -440,7 +441,7 @@ export const DHII_SKILLS_LIST: DHII_Skill[] = [
   {
     lvl: {
       current: 0,
-      max: 4
+      max: DHII_MAX_SKILL_LEVEL
     },
     value: 0,
     name: 'Trade',

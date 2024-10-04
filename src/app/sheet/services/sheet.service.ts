@@ -12,7 +12,6 @@ export class SheetService {
     this.attributesSubject$.asObservable();
 
   update(attribute: Characteristic) {
-    console.log("🚀 ~ SheetService ~ update ~ attribute:", attribute)
     const newList: Characteristic[] = this.attributesSubject$.value;
     newList.find((el) => el.name === attribute.name)?.value === attribute.value;
     this.attributesSubject$.next(newList);

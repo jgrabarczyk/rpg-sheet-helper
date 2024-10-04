@@ -3,14 +3,14 @@
     title="Attributes"
     subtitle="Basic attributes of your character"
     [attributes]="(sheetService.attributes$ | async) ?? []"
-    (updateAttribute)="updateAttribute($event)"
+    (updatedAttribute)="updateAttribute($event)"
   ></app-attributes-group>
-  <app-attributes-group
+  <app-skill-group
     title="Skills"
     subtitle="Basic attributes of your character"
-    [attributes]="(sheetService.skills$ | async) ?? []"
-    (updateAttribute)="updateSkill($event)"
-  ></app-attributes-group>
+    [skills]="(sheetService.skills$ | async) ?? []"
+    (updateSkill)="updateSkill($event)"
+  ></app-skill-group>
 </div>
 
 <!-- <pre>

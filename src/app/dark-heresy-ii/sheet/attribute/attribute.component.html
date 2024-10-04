@@ -1,0 +1,27 @@
+@if (label) {
+<label [for]="label">{{ label }}</label>
+} @if(type === 'range'){ @for (item of max | fill; track item;) {
+<fa-icon [icon]="field.value >= item ? faCircleFilled : faCircle" (click)="updateRange(item)">
+</fa-icon>
+} } @else{
+
+<mat-form-field [appearance]="'outline'">
+  <input
+    matInput
+    type="number"
+    [min]="min"
+    [max]="max"
+    [step]="5"
+    [value]="value"
+    (change)="change()"
+    [formControl]="field"
+    [readonly]="editable"
+  />
+</mat-form-field>
+}
+
+
+<div class="buttons">
+  <button mat-icon-button (click)="increase.emit()"><mat-icon>add</mat-icon></button>
+  <button mat-icon-button (click)="decrease.emit()"><mat-icon>remove</mat-icon></button>
+</div>

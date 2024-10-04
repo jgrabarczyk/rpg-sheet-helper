@@ -1,0 +1,45 @@
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>{{ title }}</mat-card-title>
+    <mat-card-subtitle>{{ subtitle }}</mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content>
+    <mat-list role="list">
+      @for(attribute of attributes; track attribute.name; let i = $index){
+
+      @if(attribute.name === 'Influance'){
+      <mat-list-item>
+        <app-attribute
+          [type]="type"
+          [min]="0"
+          [max]="100"
+          [maxLevel]="0"
+          [value]="attribute.value"
+          [label]="attribute.name"
+          (valueChange)="updateValue($event, i)"
+          (increase)="increase(i)"
+          (decrease)="decrease(i)"
+        />
+      </mat-list-item>
+      }@else {
+      <mat-list-item>
+        <app-attribute
+          [type]="type"
+          [min]="0"
+          [max]="100"
+          [maxLevel]="attribute.lvl.max"
+          [currentLevel]="attribute.lvl.max"
+          [value]="attribute.value"
+          [label]="attribute.name"
+          (valueChange)="updateValue($event, i)"
+          (increase)="increase(i)"
+          (decrease)="decrease(i)"
+        />
+      </mat-list-item>
+      }
+
+      <mat-divider></mat-divider>
+      }
+    </mat-list>
+  </mat-card-content>
+</mat-card>

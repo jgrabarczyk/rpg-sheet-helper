@@ -39,6 +39,7 @@ export class DHII_SheetService {
   }
 
   changeSkill(changedSkill: DHII_Skill) {
+    console.log('🚀 ~ DHII_SheetService ~ changeSkill ~ changedSkill:', changedSkill);
     const attribute: DHII_Attribute = this.attributesSubject$.value.find(
       attribute => attribute.name === changedSkill.basedOn
     )!;
@@ -53,12 +54,12 @@ export class DHII_SheetService {
   }
 
   private updateSkillsBasedOnAttribute(changedAttribute: DHII_Attribute) {
-    const skills: DHII_Skill[] = this.skillSubject$.value.filter(
-      skill => skill.basedOn === changedAttribute.name
-    );
+    const skills: DHII_Skill[] = this.skillSubject$.value;
 
     skills.forEach(skill => {
-      skill.value = this.calculateSkillValue(skill, changedAttribute);
+      if (skill.basedOn === changedAttribute.name) {
+        skill.value = this.calculateSkillValue(skill, changedAttribute);
+      }
     });
 
     this.skillSubject$.next(skills);
