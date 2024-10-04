@@ -1,0 +1,21 @@
+<div class="wrapper">
+  <app-attributes-group
+    title="Attributes"
+    subtitle="Basic attributes of your character"
+    [attributes]="(sheetService.attributes$ | async) ?? []"
+    (updateAttribute)="updateAttribute($event)"
+  ></app-attributes-group>
+  <app-attributes-group
+    title="Skills"
+    subtitle="Basic attributes of your character"
+    [attributes]="(sheetService.skills$ | async) ?? []"
+    (updateAttribute)="updateSkill($event)"
+  ></app-attributes-group>
+</div>
+
+<!-- <pre>
+  {{ sheetService.attributes$ | async | json }}
+</pre> -->
+<pre>
+  {{ sheetService.skills$ | async | json }}
+</pre>

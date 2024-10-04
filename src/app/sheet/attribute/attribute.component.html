@@ -1,0 +1,24 @@
+@if (label) {
+<label [for]="label">{{ label }}</label>
+} 
+
+@if(type === 'range'){ 
+  @for (item of max | fill; track item;) {
+  <fa-icon
+    [icon]="field.value >= item ? faCircleFilled : faCircle"
+    (click)="updateRange(item)"
+  > 
+  </fa-icon>
+  } 
+} @else{
+<input
+  [name]="label"
+  type="number"
+  [min]="min"
+  [max]="max"
+  [step]="5"
+  [value]="value"
+  (change)="change()"
+  [formControl]="field"
+/>
+}
