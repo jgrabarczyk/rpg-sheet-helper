@@ -1,7 +1,7 @@
 <mat-card>
   <mat-card-header>
     <mat-card-title>DARK HERSY II CHARACTER SHEET</mat-card-title>
-    <mat-card-subtitle>Only in death duty ends</mat-card-subtitle>
+    <mat-card-subtitle>Only in death duty ends {{editable}}</mat-card-subtitle>
   </mat-card-header>
 
   <mat-card-content>
@@ -13,7 +13,7 @@
 
       <mat-form-field [appearance]="'outline'">
         <mat-label>HomeWorld</mat-label>
-        <mat-select>
+        <mat-select [disabled]="!editable">
           
           <mat-option value="option3">Option 3</mat-option>
         </mat-select>
@@ -21,7 +21,7 @@
 
       <mat-form-field [appearance]="'outline'">
         <mat-label>Background</mat-label>
-        <mat-select>
+        <mat-select [disabled]="!editable">
           <mat-option value="option1">Option 1</mat-option>
           <mat-option value="option2" disabled>Option 2 (disabled)</mat-option>
           <mat-option value="option3">Option 3</mat-option>
@@ -30,7 +30,7 @@
       
       <mat-form-field [appearance]="'outline'">
         <mat-label>Role</mat-label>
-        <mat-select>
+        <mat-select [disabled]="!editable">
           <mat-option value="option1">Option 1</mat-option>
           <mat-option value="option2" disabled>Option 2 (disabled)</mat-option>
           <mat-option value="option3">Option 3</mat-option>

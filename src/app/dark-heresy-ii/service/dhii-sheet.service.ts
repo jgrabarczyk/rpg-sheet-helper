@@ -8,6 +8,7 @@ import {
   DHII_SKILLS_LIST
 } from '../types/dark-heresy-ii';
 import { BehaviorSubject, Observable } from 'rxjs';
+import { Roll } from '../../types/roll';
 
 @Injectable({
   providedIn: 'root'
@@ -50,9 +51,8 @@ export class DHII_SheetService {
   public homeworlds = HOMEWORLDS;
   public homeworlds_array = Array.from(HOMEWORLDS.entries());
 
-  
+
   updateAttribute(changedAttribute: DHII_Attribute) {
-    console.log(Array.from(this.homeworlds.entries()));
     const attributes: DHII_Attribute[] = this.attributesSubject$.value;
     const attribute: DHII_Attribute | undefined = attributes.find(
       attribute => attribute.name === changedAttribute.name
@@ -73,7 +73,7 @@ export class DHII_SheetService {
 
     this.attributesSubject$.next(attributes);
 
-    this.updateSkillsBasedOnAttribute(changedAttribute);
+    this.updateSkillsBasedOnAttribute(attribute);
   }
 
   updateSkill(changedSkill: DHII_Skill) {
@@ -88,6 +88,16 @@ export class DHII_SheetService {
     );
 
     this.skillSubject$.next(skills);
+  }
+
+  rollDice(roll: Roll){
+    console.log("🚀 ~ DHII_SheetService ~ rollDice ~ roll:", roll)
+    // let skill!: DHII_Skill;
+    const testRoll: number = Math.ceil(Math.random() * 100);
+    // const value: number = skill.value;
+    const difficultyTier: number = Math.abs(Math.floor(testRoll / 10) - Math.floor(roll.value / 10)) + 1;
+    
+    console.log(roll.name, roll.value, testRoll, testRoll <= roll.value ? 'success' : 'fail', difficultyTier);
   }
 
   private updateSkillsBasedOnAttribute(changedAttribute: DHII_Attribute) {

@@ -4,6 +4,7 @@ import { MatListModule } from '@angular/material/list';
 import { MatCardModule } from '@angular/material/card';
 import { SkillComponent } from '../sheet/skill/skill.component';
 import { DHII_Skill, DHII_SkillLevel } from '../types/dark-heresy-ii';
+import { Roll } from '../../types/roll';
 
 @Component({
   selector: 'app-skill-group',
@@ -16,12 +17,14 @@ export class SkillGroupComponent {
   @Input() title?: string;
   @Input() subtitle?: string;
   @Input() skills: DHII_Skill[] = [];
+  @Input() editable: boolean = false;
+  @Input() step: number = 5;
 
   @Output() updateSkill = new EventEmitter<DHII_Skill>();
+  @Output() roll = new EventEmitter<Roll>();
 
-  decrease(index: number) {
+  decrease(index: number): void {
     const lvl: DHII_SkillLevel = this.skills[index].lvl;
-    console.log('🚀 ~ SkillGroupComponent ~ update ~ lvl:', lvl);
 
     if (lvl.current <= 0) {
       alert('alredy lowest');
@@ -32,9 +35,8 @@ export class SkillGroupComponent {
     this.updateSkill.next(this.skills[index]);
   }
 
-  increase(index: number) {
+  increase(index: number): void {
     const lvl: DHII_SkillLevel = this.skills[index].lvl;
-    console.log('🚀 ~ SkillGroupComponent ~ update ~ lvl:', lvl);
 
     if (lvl.current >= lvl.max) {
       alert('already maxed');
@@ -42,5 +44,11 @@ export class SkillGroupComponent {
     }
     lvl.current++;
     this.updateSkill.next(this.skills[index]);
+  }
+
+  rollDice(index: number): void {
+    const skill: DHII_Skill = this.skills[index];
+    
+    this.roll.emit({name: skill.name, value: skill.value})
   }
 }

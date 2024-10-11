@@ -32,16 +32,20 @@ export class SkillComponent {
   @Input() label?: string;
   @Input() maxLevel: number = 0;
   @Input() currentLevel: number = 0;
+  @Input() min = 0;
+  @Input() max: number = 100;
   @Input() editable: boolean = false;
+
   @Input() set value(newValue: number) {
     this.field.setValue(newValue);
   }
 
   @Output() increase: EventEmitter<void> = new EventEmitter<void>();
   @Output() decrease: EventEmitter<void> = new EventEmitter<void>();
+  @Output() roll: EventEmitter<void> = new EventEmitter<void>();
 
   protected field: FormControl<number> = new FormControl(
-    { value: 0, disabled: !this.editable },
+    { value: 0, disabled: true },
     { nonNullable: true }
   );
 

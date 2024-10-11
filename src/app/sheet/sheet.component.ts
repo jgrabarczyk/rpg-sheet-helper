@@ -9,6 +9,7 @@ import {
   AptitudesGroupComponent
 } from '../dark-heresy-ii/sheet/aptitude/aptitudes-group.component';
 import { SheetHeaderComponent } from "../dark-heresy-ii/sheet/sheet-header/sheet-header.component";
+import { Roll } from '../types/roll';
 
 @Component({
   selector: 'app-sheet',
@@ -24,6 +25,9 @@ import { SheetHeaderComponent } from "../dark-heresy-ii/sheet/sheet-header/sheet
   styleUrl: './sheet.component.scss'
 })
 export class SheetComponent {
+
+  step = 5;
+  editable = false;
   protected sheetService = inject(DHII_SheetService);
 
   updateAttribute(attribute: Characteristic) {
@@ -32,5 +36,10 @@ export class SheetComponent {
 
   updateSkill(skill: DHII_Skill) {
     this.sheetService.updateSkill(skill);
+  }
+
+  rollDice(roll: Roll){
+    console.log("🚀 ~ SheetComponent ~ rollDice ~ roll:", roll)
+    this.sheetService.rollDice(roll)
   }
 }

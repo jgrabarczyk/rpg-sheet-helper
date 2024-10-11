@@ -5,6 +5,7 @@ import { MatDividerModule } from '@angular/material/divider';
 import { MatListModule } from '@angular/material/list';
 import { MatCardModule } from '@angular/material/card';
 import { DHII_Attribute } from '../../../types/dark-heresy-ii';
+import { Roll } from '../../../../types/roll';
 @Component({
   selector: 'app-attributes-group',
   standalone: true,
@@ -16,8 +17,11 @@ export class AttributesGroupComponent {
   @Input() title?: string;
   @Input() subtitle?: string;
   @Input() attributes: DHII_Attribute[] = [];
+  @Input() editable: boolean = false;
+  @Input() step: number = 5;
 
   @Output() updatedAttribute = new EventEmitter<DHII_Attribute>();
+  @Output() roll = new EventEmitter<Roll>();
 
   updateValue(value: number, index: number) {
     this.attributes[index].value = value;
@@ -53,5 +57,10 @@ export class AttributesGroupComponent {
 
     attribute.lvl.current--;
     this.updatedAttribute.next(attribute);
+  }
+
+  rollDice(index: number): void {
+    const skill: DHII_Attribute = this.attributes[index];
+    this.roll.emit({name: skill.name, value: skill.value})
   }
 }

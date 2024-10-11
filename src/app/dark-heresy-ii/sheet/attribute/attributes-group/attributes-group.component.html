@@ -6,22 +6,24 @@
 
   <mat-card-content>
     <mat-list role="list">
-      @for(attribute of attributes; track attribute.name; let i = $index){ 
-        @let isInfluence = attribute.name === 'Influence';
-        <mat-list-item>
-          <app-attribute
-            [min]="0"
-            [max]="100"
-            [maxLevel]="!isInfluence ? attribute.lvl.max : 0"
-            [currentLevel]="!isInfluence ? attribute.lvl.current : 0"
-            [value]="attribute.value"
-            [label]="attribute.name"
-            (valueChange)="updateValue($event, i)"
-            (increase)="increase(i)"
-            (decrease)="decrease(i)"
-          />
-        </mat-list-item>
-        <mat-divider></mat-divider>
+      @for(attribute of attributes; track attribute.name; let i = $index){ @let isInfluence =
+      attribute.name === 'Influence';
+      <mat-list-item>
+        <app-attribute
+          [max]="100"
+          [min]="isInfluence ? 0 : attribute.lvl.current * step"
+          [maxLevel]="isInfluence ? 0 : attribute.lvl.max"
+          [currentLevel]="isInfluence ? 0 : attribute.lvl.current"
+          [value]="attribute.value"
+          [label]="attribute.name"
+          [editable]="editable"
+          (valueChange)="updateValue($event, i)"
+          (increase)="increase(i)"
+          (decrease)="decrease(i)"
+          (roll)="rollDice(i)"
+        />
+      </mat-list-item>
+      <mat-divider></mat-divider>
       }
     </mat-list>
   </mat-card-content>

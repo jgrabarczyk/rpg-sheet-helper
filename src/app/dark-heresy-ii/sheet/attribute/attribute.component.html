@@ -1,20 +1,19 @@
 @let showLvl = maxLevel !== 0;
 
 @if (label) {
-<label [for]="label">{{ label }}</label>
+<label class="label" [for]="label">{{ label }}</label>
 }
 
-<mat-form-field [appearance]="'outline'">
+<mat-form-field [appearance]="'outline'" class="input">
   <input
     matInput
     type="number"
     [min]="min"
     [max]="max"
-    [step]="5"
     [value]="value"
     (change)="change()"
     [formControl]="field"
-    [readonly]="editable"
+    [disabled]="!editable"
   />
 </mat-form-field>
 
@@ -25,8 +24,10 @@
     }
   </div>
   
-  <div class="buttons">
+  <div class="lvl-buttons">
     <button mat-icon-button (click)="increase.emit()"><mat-icon>add</mat-icon></button>
     <button mat-icon-button (click)="decrease.emit()"><mat-icon>remove</mat-icon></button>
   </div>
 }
+
+<button class="roll" mat-flat-button (click)="roll.emit()"> Roll </button>

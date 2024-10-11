@@ -35,7 +35,9 @@ export class AttributeComponent {
   @Input() max: number = 100;
   @Input() maxLevel: number = 0;
   @Input() currentLevel: number = 0;
-  @Input() editable: boolean = false;
+  @Input() set editable(isEditable: boolean) {
+    isEditable ? this.field.enable() : this.field.disable();
+  }
   @Input() set value(newValue: number) {
     this.field.setValue(newValue);
   }
@@ -44,9 +46,10 @@ export class AttributeComponent {
 
   @Output() increase: EventEmitter<void> = new EventEmitter<void>();
   @Output() decrease: EventEmitter<void> = new EventEmitter<void>();
+  @Output() roll: EventEmitter<void> = new EventEmitter<void>();
 
   protected field: FormControl<number> = new FormControl(
-    { value: 0, disabled: !this.editable },
+    { value: 0, disabled: true },
     { nonNullable: true }
   );
 
@@ -54,11 +57,6 @@ export class AttributeComponent {
   protected faCircleFilled = faCircleFilled;
 
   change() {
-    this.valueChange.emit(this.field.value);
-  }
-
-  updateRange(value: number) {
-    this.field.setValue(value);
     this.valueChange.emit(this.field.value);
   }
 }

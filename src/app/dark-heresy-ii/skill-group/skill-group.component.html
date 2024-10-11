@@ -13,8 +13,11 @@
           [label]="skill.name"
           [currentLevel]="skill.lvl.current"
           [maxLevel]="skill.lvl.max"
+          [min]="skill.lvl.current * step"
+          [editable]="editable"
           (decrease)="decrease(i)"
           (increase)="increase(i)"
+          (roll)="rollDice(i)"
         />
       </mat-list-item>
       <mat-divider></mat-divider>
