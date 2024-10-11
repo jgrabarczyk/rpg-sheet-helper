@@ -8,6 +8,9 @@ import { MatInputModule } from '@angular/material/input';
 import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
+import {MatMenuModule} from '@angular/material/menu';
+import { AppComponent } from "../../../app.component";
+import { RollboxComponent } from "../rollbox/rollbox.component"; 
 @Component({
   selector: 'app-attribute',
   standalone: true,
@@ -18,8 +21,11 @@ import { MatButtonModule } from '@angular/material/button';
     FontAwesomeModule,
     MatInputModule,
     MatIconModule,
-    MatButtonModule
-  ],
+    MatButtonModule,
+    MatMenuModule,
+    AppComponent,
+    RollboxComponent
+],
   providers: [
     {
       provide: MAT_FORM_FIELD_DEFAULT_OPTIONS,
@@ -43,10 +49,9 @@ export class AttributeComponent {
   }
 
   @Output() valueChange: EventEmitter<number> = new EventEmitter<number>();
-
   @Output() increase: EventEmitter<void> = new EventEmitter<void>();
   @Output() decrease: EventEmitter<void> = new EventEmitter<void>();
-  @Output() roll: EventEmitter<void> = new EventEmitter<void>();
+  @Output() roll: EventEmitter<number> = new EventEmitter<number>();
 
   protected field: FormControl<number> = new FormControl(
     { value: 0, disabled: true },

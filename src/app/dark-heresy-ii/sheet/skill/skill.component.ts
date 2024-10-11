@@ -8,6 +8,9 @@ import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
+import {MatMenuModule} from '@angular/material/menu';
+import { RollboxComponent } from "../rollbox/rollbox.component"; 
+
 @Component({
   selector: 'app-skill',
   standalone: true,
@@ -17,8 +20,10 @@ import { MatIconModule } from '@angular/material/icon';
     ReactiveFormsModule,
     MatInputModule,
     MatButtonModule,
-    MatIconModule
-  ],
+    MatIconModule,
+    MatMenuModule,
+    RollboxComponent
+],
   providers: [
     {
       provide: MAT_FORM_FIELD_DEFAULT_OPTIONS,
@@ -37,12 +42,12 @@ export class SkillComponent {
   @Input() editable: boolean = false;
 
   @Input() set value(newValue: number) {
-    this.field.setValue(newValue);
+    this.field.setValue(newValue <= 1 ? 1 : newValue);
   }
 
   @Output() increase: EventEmitter<void> = new EventEmitter<void>();
   @Output() decrease: EventEmitter<void> = new EventEmitter<void>();
-  @Output() roll: EventEmitter<void> = new EventEmitter<void>();
+  @Output() roll: EventEmitter<number> = new EventEmitter<number>();
 
   protected field: FormControl<number> = new FormControl(
     { value: 0, disabled: true },

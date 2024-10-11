@@ -42,13 +42,15 @@ export class SkillGroupComponent {
       alert('already maxed');
       return;
     }
+
     lvl.current++;
     this.updateSkill.next(this.skills[index]);
   }
 
-  rollDice(index: number): void {
+  rollDice(index: number, modifier: number): void {
     const skill: DHII_Skill = this.skills[index];
-    
-    this.roll.emit({name: skill.name, value: skill.value})
+    const value: number = skill.value + modifier;
+
+    this.roll.emit({ name: skill.name, value: value <= 1 ? 1 : value });
   }
 }

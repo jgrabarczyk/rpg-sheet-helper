@@ -59,8 +59,10 @@ export class AttributesGroupComponent {
     this.updatedAttribute.next(attribute);
   }
 
-  rollDice(index: number): void {
-    const skill: DHII_Attribute = this.attributes[index];
-    this.roll.emit({name: skill.name, value: skill.value})
+  rollDice(index: number, modifier: number): void {
+    const attribute: DHII_Attribute = this.attributes[index];
+    const value: number = attribute.value + modifier;
+
+    this.roll.emit({ name: attribute.name, value: value <= 1 ? 1 : value });
   }
 }

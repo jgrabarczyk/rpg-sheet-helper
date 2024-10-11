@@ -19,12 +19,16 @@ export class DHII_SheetService {
   );
 
   protected skillSubject$: BehaviorSubject<DHII_Skill[]> = new BehaviorSubject<DHII_Skill[]>(
-    structuredClone(DHII_SKILLS_LIST).map(skill => ({
-      ...skill,
-      value:
-        this.attributesSubject$.value.find(attribute => attribute.name === skill.basedOn)?.value ??
-        0
-    }))
+    structuredClone(DHII_SKILLS_LIST).map(skill => {
+      const attribute: DHII_Attribute = this.attributesSubject$.value.find(
+        attribute => attribute.name === skill.basedOn
+      )!;
+
+      return {
+        ...skill,
+        value: this.calculateSkillValue(skill, attribute)
+      };
+    })
   );
 
   attributes$: Observable<DHII_Attribute[]> = this.attributesSubject$.asObservable();
@@ -50,7 +54,6 @@ export class DHII_SheetService {
   public homeworld: Observable<Homeworld | null> = this.homeworldSubject$.asObservable();
   public homeworlds = HOMEWORLDS;
   public homeworlds_array = Array.from(HOMEWORLDS.entries());
-
 
   updateAttribute(changedAttribute: DHII_Attribute) {
     const attributes: DHII_Attribute[] = this.attributesSubject$.value;
@@ -90,14 +93,18 @@ export class DHII_SheetService {
     this.skillSubject$.next(skills);
   }
 
-  rollDice(roll: Roll){
-    console.log("🚀 ~ DHII_SheetService ~ rollDice ~ roll:", roll)
-    // let skill!: DHII_Skill;
+  rollDice(roll: Roll) {
     const testRoll: number = Math.ceil(Math.random() * 100);
-    // const value: number = skill.value;
-    const difficultyTier: number = Math.abs(Math.floor(testRoll / 10) - Math.floor(roll.value / 10)) + 1;
-    
-    console.log(roll.name, roll.value, testRoll, testRoll <= roll.value ? 'success' : 'fail', difficultyTier);
+    const difficultyTier: number =
+      Math.abs(Math.floor(testRoll / 10) - Math.floor(roll.value / 10)) + 1;
+
+    console.log(
+      roll.name,
+      roll.value,
+      testRoll,
+      testRoll <= roll.value ? 'success' : 'fail',
+      difficultyTier
+    );
   }
 
   private updateSkillsBasedOnAttribute(changedAttribute: DHII_Attribute) {
@@ -123,6 +130,7 @@ export class DHII_SheetService {
   }
 
   private calculateSkillValue(skill: DHII_Skill, attribute: DHII_Attribute): number {
-    return attribute.value + skill.lvl.current * 5;
+    const modifier: number = skill.lvl.current === 0 ? -20 : skill.lvl.current * 10 - 10;
+    return attribute.value + modifier;
   }
 }

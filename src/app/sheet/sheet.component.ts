@@ -5,10 +5,8 @@ import { DHII_Attribute, DHII_Skill } from '../dark-heresy-ii/types/dark-heresy-
 import { Characteristic } from '../types/characteristic';
 import { AttributesGroupComponent } from '../dark-heresy-ii/sheet/attribute/attributes-group/attributes-group.component';
 import { SkillGroupComponent } from '../dark-heresy-ii/skill-group/skill-group.component';
-import {
-  AptitudesGroupComponent
-} from '../dark-heresy-ii/sheet/aptitude/aptitudes-group.component';
-import { SheetHeaderComponent } from "../dark-heresy-ii/sheet/sheet-header/sheet-header.component";
+import { AptitudesGroupComponent } from '../dark-heresy-ii/sheet/aptitude/aptitudes-group.component';
+import { SheetHeaderComponent } from '../dark-heresy-ii/sheet/sheet-header/sheet-header.component';
 import { Roll } from '../types/roll';
 
 @Component({
@@ -20,12 +18,11 @@ import { Roll } from '../types/roll';
     SkillGroupComponent,
     AptitudesGroupComponent,
     SheetHeaderComponent
-],
+  ],
   templateUrl: './sheet.component.html',
   styleUrl: './sheet.component.scss'
 })
 export class SheetComponent {
-
   step = 5;
   editable = false;
   protected sheetService = inject(DHII_SheetService);
@@ -38,8 +35,7 @@ export class SheetComponent {
     this.sheetService.updateSkill(skill);
   }
 
-  rollDice(roll: Roll){
-    console.log("🚀 ~ SheetComponent ~ rollDice ~ roll:", roll)
-    this.sheetService.rollDice(roll)
+  rollDice(roll: Roll) {
+    this.sheetService.rollDice(roll);
   }
 }
