@@ -1,6 +1,22 @@
-.wrapper{
-    display: grid;
-    grid-template-columns: auto auto;
-    padding: 1rem;
-    grid-gap: 1rem;
+.wrapper {
+  display: grid;
+  grid-template-columns: auto auto;
+  grid-template-rows:  auto auto 1fr;
+  grid-template-areas: 'header header' 'attributes skills' 'aptitude skills';
+  padding: 1rem;
+  grid-gap: 1rem;
+}
+app-sheet-header {
+    grid-area: header;
+}
+app-attributes-group {
+  grid-area: attributes;
+}
+
+app-skill-group {
+  grid-area: skills;
+}
+
+app-aptitude {
+  grid-area: aptitude;
 }

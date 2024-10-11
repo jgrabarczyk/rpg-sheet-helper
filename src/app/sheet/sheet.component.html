@@ -1,21 +1,19 @@
+
 <div class="wrapper">
+  <app-sheet-header />
   <app-attributes-group
     title="Attributes"
     subtitle="Basic attributes of your character"
     [attributes]="(sheetService.attributes$ | async) ?? []"
     (updatedAttribute)="updateAttribute($event)"
-  ></app-attributes-group>
+  />
+
   <app-skill-group
     title="Skills"
     subtitle="Basic attributes of your character"
     [skills]="(sheetService.skills$ | async) ?? []"
     (updateSkill)="updateSkill($event)"
-  ></app-skill-group>
-</div>
+  />
 
-<!-- <pre>
-  {{ sheetService.attributes$ | async | json }}
-</pre> -->
-<pre>
-  {{ sheetService.skills$ | async | json }}
-</pre>
+  <app-aptitudes-group [aptitudes]="(sheetService.aptitudes$ | async) ?? []" />
+</div>

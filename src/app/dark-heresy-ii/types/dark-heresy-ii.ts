@@ -2,7 +2,7 @@ import { Skill } from '../../types/skill';
 import { Characteristic } from '../../types/characteristic';
 import { Level } from '../../types/level';
 
-type DHII_AttributesNames =
+export type DHII_AttributeName =
   | 'Weapon Skill'
   | 'Ballistic Skill'
   | 'Strength'
@@ -12,9 +12,9 @@ type DHII_AttributesNames =
   | 'Perception'
   | 'Willpower'
   | 'Fellowship'
-  | 'Influance';
+  | 'Influence';
 
-type DHII_SkillNames =
+type DHII_SkillName =
   | 'Acrobatics'
   | 'Athletics'
   | 'Awareness'
@@ -44,18 +44,18 @@ type DHII_SkillNames =
   | 'Tech-Use'
   | 'Trade';
 
-type Aptitude =
+export type Aptitude =
   | 'General'
   | 'Fieldcraft'
   | 'Social'
   | 'Leadership'
   | 'Knowledge'
   | 'Defense'
-  | 'Offence'
+  | 'Offensive'
   | 'Finesse'
   | 'Psyker'
   | 'Tech'
-  | DHII_AttributesNames;
+  | DHII_AttributeName;
 
 const DHII_MAX_SKILL_LEVEL: 4 = 4 as const;
 const DHII_MAX_ATTRIBUTE_LEVEL: 5 = 5 as const;
@@ -63,13 +63,13 @@ export type DHII_SkillLevel = Level<4>;
 export type DHII_AttributeLevel = Level<5>;
 
 export type DHII_Attribute =
-  | (Characteristic<Exclude<DHII_AttributesNames, 'Influance'>> & {
+  | (Characteristic<Exclude<DHII_AttributeName, 'Influence'>> & {
       aptitudes: [Aptitude, Aptitude];
       lvl: DHII_AttributeLevel;
     })
-  | Characteristic<'Influance'>;
+  | Characteristic<'Influence'>;
 
-export type DHII_Skill = Omit<Skill<DHII_AttributesNames, DHII_SkillNames>, 'lvl'> & {
+export type DHII_Skill = Omit<Skill<DHII_AttributeName, DHII_SkillName>, 'lvl'> & {
   aptitudes: [Aptitude, Aptitude];
   lvl: DHII_SkillLevel;
   value: number;
@@ -83,7 +83,7 @@ export const DHII_ATTRIBUTE_LIST: DHII_Attribute[] = [
     },
     name: 'Weapon Skill',
     value: 0,
-    aptitudes: ['Weapon Skill', 'Offence']
+    aptitudes: ['Weapon Skill', 'Offensive']
   },
   {
     lvl: {
@@ -101,7 +101,7 @@ export const DHII_ATTRIBUTE_LIST: DHII_Attribute[] = [
     },
     name: 'Strength',
     value: 0,
-    aptitudes: ['Strength', 'Offence']
+    aptitudes: ['Strength', 'Offensive']
   },
   {
     lvl: {
@@ -158,7 +158,7 @@ export const DHII_ATTRIBUTE_LIST: DHII_Attribute[] = [
     aptitudes: ['Fellowship', 'Social']
   },
   {
-    name: 'Influance',
+    name: 'Influence',
     value: 0
   }
 ];

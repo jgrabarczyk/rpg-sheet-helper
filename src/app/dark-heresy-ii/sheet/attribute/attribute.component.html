@@ -1,9 +1,8 @@
+@let showLvl = maxLevel !== 0;
+
 @if (label) {
 <label [for]="label">{{ label }}</label>
-} @if(type === 'range'){ @for (item of max | fill; track item;) {
-<fa-icon [icon]="field.value >= item ? faCircleFilled : faCircle" (click)="updateRange(item)">
-</fa-icon>
-} } @else{
+}
 
 <mat-form-field [appearance]="'outline'">
   <input
@@ -18,10 +17,16 @@
     [readonly]="editable"
   />
 </mat-form-field>
+
+@if(showLvl){
+  <div class="lvl-wrapper">
+    @for (item of maxLevel | fill; track item;) {
+    <fa-icon [icon]="currentLevel >= item ? faCircleFilled : faCircle"> </fa-icon>
+    }
+  </div>
+  
+  <div class="buttons">
+    <button mat-icon-button (click)="increase.emit()"><mat-icon>add</mat-icon></button>
+    <button mat-icon-button (click)="decrease.emit()"><mat-icon>remove</mat-icon></button>
+  </div>
 }
-
-
-<div class="buttons">
-  <button mat-icon-button (click)="increase.emit()"><mat-icon>add</mat-icon></button>
-  <button mat-icon-button (click)="decrease.emit()"><mat-icon>remove</mat-icon></button>
-</div>

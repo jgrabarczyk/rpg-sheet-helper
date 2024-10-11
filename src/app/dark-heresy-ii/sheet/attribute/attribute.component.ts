@@ -36,7 +36,6 @@ export class AttributeComponent {
   @Input() maxLevel: number = 0;
   @Input() currentLevel: number = 0;
   @Input() editable: boolean = false;
-  @Input() type: 'range' | 'number' = 'number';
   @Input() set value(newValue: number) {
     this.field.setValue(newValue);
   }
