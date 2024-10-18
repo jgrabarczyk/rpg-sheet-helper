@@ -5,7 +5,11 @@
 
       <div class="homeworlds">
         @for(homeworld of sheetService.homeworlds; track homeworld[0]){
-        <app-homeworld-card class="card" [homeworld]="homeworld[1]" (click)="chooseHomeworld(homeworld)"/>
+        <app-homeworld-card
+          class="card"
+          [homeworld]="homeworld[1]"
+          (click)="chooseHomeworld(homeworld)"
+        />
         }
       </div>
 

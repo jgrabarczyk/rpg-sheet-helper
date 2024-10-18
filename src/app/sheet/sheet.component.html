@@ -1,25 +1,29 @@
+@let attributes$ = sheetService.attributes$ | async;
+@let skills$ = sheetService.skills$ | async;
 
-<div class="wrapper">
-  <app-sheet-header [editable]="editable"/>
-  <app-attributes-group
-    title="Attributes"
-    subtitle="Basic attributes of your character"
-    [editable]="editable"
-    [step]="step"
-    [attributes]="(sheetService.attributes$ | async) ?? []"
-    (updatedAttribute)="updateAttribute($event)"
-    (roll)="rollDice($event)"
-  />
+@if(attributes$ && skills$){
+  <div class="wrapper">
+    <app-sheet-header [editable]="editable" />
+    <app-attributes-group
+      title="Attributes"
+      subtitle="Basic attributes of your character"
+      [editable]="editable"
+      [step]="step"
+      [attributes]="attributes$"
+      (updatedAttribute)="updateAttribute($event)"
+      (roll)="rollDice($event)"
+    />
 
-  <app-skill-group
-    title="Skills"
-    subtitle="Basic attributes of your character"
-    [editable]="editable"
-    [step]="step"
-    [skills]="(sheetService.skills$ | async) ?? []"
-    (updateSkill)="updateSkill($event)"
-    (roll)="rollDice($event)"
-  />
+    <app-skill-group
+      title="Skills"
+      subtitle="Basic attributes of your character"
+      [editable]="editable"
+      [step]="step"
+      [skills]="skills$"
+      (updateSkill)="updateSkill($event)"
+      (roll)="rollDice($event)"
+    />
 
-  <app-aptitudes-group [aptitudes]="(sheetService.aptitudes$ | async) ?? []" />
-</div>
+    <app-aptitudes-group [aptitudes]="(sheetService.aptitudes$ | async) ?? []" />
+  </div>
+}

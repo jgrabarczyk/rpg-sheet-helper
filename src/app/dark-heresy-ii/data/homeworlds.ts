@@ -1,4 +1,5 @@
-import { Aptitude, DHII_AttributeName } from './../types/dark-heresy-ii';
+import { DHII_AttributeName } from '../types/dhii-attribute';
+import { Aptitude } from './../types/dark-heresy-ii';
 import { TalentName } from './talents';
 export type HomeworldNames =
   | 'feral'

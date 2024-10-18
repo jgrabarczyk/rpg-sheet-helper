@@ -35,9 +35,7 @@ export class DarkHeresyIICreatorComponent {
     secondCtrl: new FormControl()
   });
 
-  chooseHomeworld([name, homeworld]: [HomeworldNames, Homeworld]) {
-    console.log(name, homeworld);
-
+  chooseHomeworld([, homeworld]: [HomeworldNames, Homeworld]) {
     this.sheetService.updateHomeworld(homeworld);
     this.stepper?.next();
   }

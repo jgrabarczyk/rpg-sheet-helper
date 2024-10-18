@@ -4,8 +4,8 @@ import { AttributeComponent } from '../attribute.component';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatListModule } from '@angular/material/list';
 import { MatCardModule } from '@angular/material/card';
-import { DHII_Attribute } from '../../../types/dark-heresy-ii';
 import { Roll } from '../../../../types/roll';
+import { DHII_Attribute, DHII_AttributeName } from '../../../types/dhii-attribute';
 @Component({
   selector: 'app-attributes-group',
   standalone: true,
@@ -16,21 +16,28 @@ import { Roll } from '../../../../types/roll';
 export class AttributesGroupComponent {
   @Input() title?: string;
   @Input() subtitle?: string;
-  @Input() attributes: DHII_Attribute[] = [];
+  @Input() attributes: Map<DHII_AttributeName, DHII_Attribute> = new Map();
   @Input() editable: boolean = false;
   @Input() step: number = 5;
 
   @Output() updatedAttribute = new EventEmitter<DHII_Attribute>();
   @Output() roll = new EventEmitter<Roll>();
 
-  updateValue(value: number, index: number) {
-    this.attributes[index].value = value;
-    this.updatedAttribute.next(this.attributes[index]);
+  updateValue(value: number, name: DHII_AttributeName) {
+    const attribute: DHII_Attribute | undefined = this.attributes.get(name);
+  
+    if (!attribute) {
+      return;
+    }
+
+    attribute.value = value;
+    this.updatedAttribute.next(attribute);
   }
 
-  increase(index: number) {
-    const attribute: DHII_Attribute = structuredClone(this.attributes[index]);
-    if (attribute.name === 'Influence') {
+  increase(name: DHII_AttributeName) {
+    const attribute: DHII_Attribute | undefined = structuredClone(this.attributes.get(name));
+
+    if (!attribute || attribute.name === 'Influence') {
       return;
     }
 
@@ -43,10 +50,10 @@ export class AttributesGroupComponent {
     this.updatedAttribute.next(attribute);
   }
 
-  decrease(index: number) {
-    const attribute: DHII_Attribute = structuredClone(this.attributes[index]);
+  decrease(name: DHII_AttributeName) {
+    const attribute: DHII_Attribute | undefined = structuredClone(this.attributes.get(name));
 
-    if (attribute.name === 'Influence') {
+    if (!attribute || attribute.name === 'Influence') {
       return;
     }
 
@@ -59,8 +66,13 @@ export class AttributesGroupComponent {
     this.updatedAttribute.next(attribute);
   }
 
-  rollDice(index: number, modifier: number): void {
-    const attribute: DHII_Attribute = this.attributes[index];
+  rollDice(name: DHII_AttributeName, modifier: number): void {
+    const attribute: DHII_Attribute | undefined = this.attributes.get(name);
+
+    if (!attribute) {
+      return;
+    }
+
     const value: number = attribute.value + modifier;
 
     this.roll.emit({ name: attribute.name, value: value <= 1 ? 1 : value });

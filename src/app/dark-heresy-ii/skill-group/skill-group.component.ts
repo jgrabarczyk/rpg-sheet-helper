@@ -3,8 +3,8 @@ import { MatDividerModule } from '@angular/material/divider';
 import { MatListModule } from '@angular/material/list';
 import { MatCardModule } from '@angular/material/card';
 import { SkillComponent } from '../sheet/skill/skill.component';
-import { DHII_Skill, DHII_SkillLevel } from '../types/dark-heresy-ii';
 import { Roll } from '../../types/roll';
+import { DHII_Skill, DHII_SkillLevel, DHII_SkillName } from '../types/dhii-skill';
 
 @Component({
   selector: 'app-skill-group',
@@ -16,15 +16,15 @@ import { Roll } from '../../types/roll';
 export class SkillGroupComponent {
   @Input() title?: string;
   @Input() subtitle?: string;
-  @Input() skills: DHII_Skill[] = [];
+  @Input() skills: Map<DHII_SkillName, DHII_Skill> = new Map();
   @Input() editable: boolean = false;
   @Input() step: number = 5;
 
   @Output() updateSkill = new EventEmitter<DHII_Skill>();
   @Output() roll = new EventEmitter<Roll>();
 
-  decrease(index: number): void {
-    const lvl: DHII_SkillLevel = this.skills[index].lvl;
+  decrease(name: DHII_SkillName): void {
+    const lvl: DHII_SkillLevel = this.skills.get(name)!.lvl;
 
     if (lvl.current <= 0) {
       alert('alredy lowest');
@@ -32,11 +32,11 @@ export class SkillGroupComponent {
     }
 
     lvl.current--;
-    this.updateSkill.next(this.skills[index]);
+    this.updateSkill.next(this.skills.get(name)!);
   }
 
-  increase(index: number): void {
-    const lvl: DHII_SkillLevel = this.skills[index].lvl;
+  increase(name: DHII_SkillName): void {
+    const lvl: DHII_SkillLevel = this.skills.get(name)!.lvl;
 
     if (lvl.current >= lvl.max) {
       alert('already maxed');
@@ -44,11 +44,11 @@ export class SkillGroupComponent {
     }
 
     lvl.current++;
-    this.updateSkill.next(this.skills[index]);
+    this.updateSkill.next(this.skills.get(name)!);
   }
 
-  rollDice(index: number, modifier: number): void {
-    const skill: DHII_Skill = this.skills[index];
+  rollDice(name: DHII_SkillName, modifier: number): void {
+    const skill: DHII_Skill = this.skills.get(name)!;
     const value: number = skill.value + modifier;
 
     this.roll.emit({ name: skill.name, value: value <= 1 ? 1 : value });

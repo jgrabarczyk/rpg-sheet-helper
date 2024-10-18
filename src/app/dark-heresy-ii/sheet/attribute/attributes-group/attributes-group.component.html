@@ -6,8 +6,10 @@
 
   <mat-card-content>
     <mat-list role="list">
-      @for(attribute of attributes; track attribute.name; let i = $index){ @let isInfluence =
-      attribute.name === 'Influence';
+      @for(a of attributes; track a[0]; let i = $index){ 
+        @let name = a[0];
+        @let attribute = a[1];
+        @let isInfluence = attribute.name === 'Influence';
       <mat-list-item>
         <app-attribute
           [max]="100"
@@ -17,10 +19,10 @@
           [value]="attribute.value"
           [label]="attribute.name"
           [editable]="editable"
-          (valueChange)="updateValue($event, i)"
-          (increase)="increase(i)"
-          (decrease)="decrease(i)"
-          (roll)="rollDice(i, $event)"
+          (valueChange)="updateValue($event, name)"
+          (increase)="increase(name)"
+          (decrease)="decrease(name)"
+          (roll)="rollDice(name, $event)"
         />
       </mat-list-item>
       <mat-divider></mat-divider>

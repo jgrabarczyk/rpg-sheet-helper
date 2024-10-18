@@ -6,7 +6,9 @@
 
   <mat-card-content>
     <mat-list role="list">
-      @for(skill of skills; track skill.name; let i = $index){
+      @for(s of skills; track s[0]; let i = $index){
+        @let name = s[0];
+        @let skill = s[1];
       <mat-list-item>
         <app-skill
           [value]="skill.value"
@@ -15,9 +17,9 @@
           [maxLevel]="skill.lvl.max"
           [min]="skill.lvl.current * step"
           [editable]="editable"
-          (decrease)="decrease(i)"
-          (increase)="increase(i)"
-          (roll)="rollDice(i, $event)"
+          (decrease)="decrease(name)"
+          (increase)="increase(name)"
+          (roll)="rollDice(name, $event)"
         />
       </mat-list-item>
       <mat-divider></mat-divider>
