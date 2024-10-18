@@ -75,6 +75,17 @@ export type DHII_Skill = Omit<Skill<DHII_AttributeName, DHII_SkillName>, 'lvl'> 
   value: number;
 };
 
+export type DHII_Character = {
+  aptitudes: Aptitude[];
+  attributes: { [key in DHII_AttributeName]: DHII_Attribute };
+  skills?: {
+    [key in DHII_SkillName]: DHII_Skill
+  };  
+  tallents?: {
+    [key in string]: string
+  };  
+};
+
 export const DHII_ATTRIBUTE_LIST: DHII_Attribute[] = [
   {
     lvl: {

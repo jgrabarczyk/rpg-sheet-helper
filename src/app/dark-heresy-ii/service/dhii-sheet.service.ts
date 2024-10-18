@@ -4,6 +4,7 @@ import {
   Aptitude,
   DHII_Attribute,
   DHII_ATTRIBUTE_LIST,
+  DHII_Character,
   DHII_Skill,
   DHII_SKILLS_LIST
 } from '../types/dark-heresy-ii';
@@ -14,6 +15,10 @@ import { Roll } from '../../types/roll';
   providedIn: 'root'
 })
 export class DHII_SheetService {
+  protected characterSubject$: BehaviorSubject<Partial<DHII_Character>> = new BehaviorSubject<
+    Partial<DHII_Character>
+  >({});
+
   protected attributesSubject$ = new BehaviorSubject<DHII_Attribute[]>(
     structuredClone(DHII_ATTRIBUTE_LIST)
   );
@@ -48,12 +53,14 @@ export class DHII_SheetService {
   ]);
   public aptitudes$: Observable<Aptitude[]> = this.aptitudesSubject$.asObservable();
 
-  protected homeworldSubject$: BehaviorSubject<Homeworld | null> =
-    new BehaviorSubject<Homeworld | null>(null);
+  private readonly homeworldsSubject$ = new BehaviorSubject(HOMEWORLDS);
+  public homeworlds$ = this.homeworldsSubject$.asObservable();
+  public homeworlds = this.homeworldsSubject$.value;
 
-  public homeworld: Observable<Homeworld | null> = this.homeworldSubject$.asObservable();
-  public homeworlds = HOMEWORLDS;
-  public homeworlds_array = Array.from(HOMEWORLDS.entries());
+  updateHomeworld(homeworld: Homeworld) {
+    const chararcter: Partial<DHII_Character> = this.characterSubject$.value;
+    console.log('update homeworld', homeworld, chararcter);
+  }
 
   updateAttribute(changedAttribute: DHII_Attribute) {
     const attributes: DHII_Attribute[] = this.attributesSubject$.value;
