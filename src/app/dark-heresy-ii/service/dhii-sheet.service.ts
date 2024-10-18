@@ -1,4 +1,4 @@
-import { Homeworld, HOMEWORLDS } from './../data/homeworlds';
+import { Homeworld, HOMEWORLDS } from '../types/homeworlds';
 import { Injectable } from '@angular/core';
 import { Aptitude, DHII_Character } from '../types/dark-heresy-ii';
 import { BehaviorSubject, combineLatest, map, Observable } from 'rxjs';

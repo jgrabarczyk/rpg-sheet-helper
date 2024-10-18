@@ -1,4 +1,4 @@
-import { Homeworld } from './../data/homeworlds';
+import { Homeworld } from './homeworlds';
 import { DHII_SkillName, DHII_Skill } from './dhii-skill';
 import { DHII_Attribute, DHII_AttributeName } from './dhii-attribute';
 

@@ -1,4 +1,4 @@
-import { Homeworld, HomeworldNames } from './../data/homeworlds';
+import { Homeworld, HomeworldNames } from '../types/homeworlds';
 import { CommonModule } from '@angular/common';
 import { DHII_SheetService } from './../service/dhii-sheet.service';
 import { Component, inject, ViewChild } from '@angular/core';

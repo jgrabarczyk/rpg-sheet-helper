@@ -2,9 +2,9 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatListModule } from '@angular/material/list';
 import { MatCardModule } from '@angular/material/card';
-import { SkillComponent } from '../sheet/skill/skill.component';
-import { Roll } from '../../types/roll';
-import { DHII_Skill, DHII_SkillLevel, DHII_SkillName } from '../types/dhii-skill';
+import { Roll } from '../../../../types/roll';
+import { DHII_SkillName, DHII_Skill, DHII_SkillLevel } from '../../../types/dhii-skill';
+import { SkillComponent } from '../skill.component';
 
 @Component({
   selector: 'app-skill-group',

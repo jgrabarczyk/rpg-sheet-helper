@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Homeworld } from './../data/homeworlds';
+import { Homeworld } from '../types/homeworlds';
 import { Component, Input } from '@angular/core';
 import { MatCardModule } from '@angular/material/card';
 
