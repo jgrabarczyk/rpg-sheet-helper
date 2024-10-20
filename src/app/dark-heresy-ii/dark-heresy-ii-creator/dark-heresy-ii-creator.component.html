@@ -20,15 +20,82 @@
   </mat-step>
   <mat-step [stepControl]="secondFormGroup" label="Fill out your address">
     <form [formGroup]="secondFormGroup">
-      <mat-form-field>
-        <mat-label>Address</mat-label>
-        <input
-          matInput
-          formControlName="secondCtrl"
-          placeholder="Ex. 1 Main St, New York, NY"
-          required
+      <ng-template matStepLabel> Choose your Background </ng-template>
+
+      <div class="backgrounds">
+        @for(background of sheetService.backgrounds; track background[0]){
+        <app-background-card
+          class="card"
+          [background]="background[1]"
+          (click)="chooseBackground(background)"
         />
-      </mat-form-field>
+        }
+      </div>
+
+      <div>
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-button matStepperNext>Next</button>
+      </div>
+    </form>
+  </mat-step>
+  <mat-step [stepControl]="thirdFormGroup" label="Fill out your address">
+    <form [formGroup]="thirdFormGroup">
+      <ng-template matStepLabel> Choose your Role </ng-template>
+
+      <div class="roles">
+        @for(role of sheetService.roles; track role[0]){
+        <app-role-card class="card" [role]="role[1]" (click)="chooseRole(role)" />
+        }
+      </div>
+
+      <div>
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-button matStepperNext>Next</button>
+      </div>
+    </form>
+  </mat-step>
+  <mat-step [stepControl]="thirdFormGroup" label="Fill out your address">
+    <form [formGroup]="thirdFormGroup">
+      <ng-template matStepLabel> Determin Attribiutes </ng-template>
+
+      @let attributes = sheetService.attributes$ | async;
+      @if(attributes){
+        <div class="attributes">
+          @let bonus = sheetService.character.homeworld?.attributes?.bonus; 
+          @let penality= sheetService.character.homeworld?.attributes?.penality;
+          <br />
+          <app-attributes-group
+            [attributes]="attributes"
+            [bonus]="bonus"
+            [penality]="penality"
+            mode="create"
+            (roll)="reroll($event)"
+          />
+          <button mat-button type="button" (click)="generateAttributes()">roll</button>
+        </div>
+      }
+
+      <div>
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-button matStepperNext>Next</button>
+      </div>
+    </form>
+  </mat-step>
+  <mat-step [stepControl]="thirdFormGroup" label="Fill out your address">
+    <form [formGroup]="thirdFormGroup">
+      <ng-template matStepLabel> Determin Aptitudes </ng-template>
+
+      
+      @let aptitudes = sheetService.aptitudes$ | async; 
+      @if(aptitudes){
+        <div class="aptitudes">
+          <br />
+          <app-aptitudes-group
+            [aptitudes]="aptitudes"
+            mode="create"
+          />
+        </div>
+      }
       <div>
         <button mat-button matStepperPrevious>Back</button>
         <button mat-button matStepperNext>Next</button>

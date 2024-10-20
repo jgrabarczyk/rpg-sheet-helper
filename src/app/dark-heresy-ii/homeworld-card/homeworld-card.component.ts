@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Homeworld } from '../types/homeworlds';
+import { DHII_Homeworld } from '../types/dhii-homeworlds';
 import { Component, Input } from '@angular/core';
 import { MatCardModule } from '@angular/material/card';
 
@@ -11,5 +11,5 @@ import { MatCardModule } from '@angular/material/card';
   styleUrl: './homeworld-card.component.scss'
 })
 export class HomeworldCardComponent {
-  @Input() homeworld!: Homeworld;
+  @Input() homeworld!: DHII_Homeworld;
 }

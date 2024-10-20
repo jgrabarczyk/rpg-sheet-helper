@@ -6,10 +6,11 @@ import { MatListModule } from '@angular/material/list';
 import { MatCardModule } from '@angular/material/card';
 import { Roll } from '../../../../types/roll';
 import { DHII_Attribute, DHII_AttributeName } from '../../../types/dhii-attribute';
+import { IsBonusAttributePipe } from './is-bonus-attribute.pipe';
 @Component({
   selector: 'app-attributes-group',
   standalone: true,
-  imports: [CommonModule, AttributeComponent, MatDividerModule, MatListModule, MatCardModule],
+  imports: [CommonModule, AttributeComponent, MatDividerModule, MatListModule, MatCardModule, IsBonusAttributePipe],
   templateUrl: './attributes-group.component.html',
   styleUrl: './attributes-group.component.scss'
 })
@@ -17,7 +18,10 @@ export class AttributesGroupComponent {
   @Input() title?: string;
   @Input() subtitle?: string;
   @Input() attributes: Map<DHII_AttributeName, DHII_Attribute> = new Map();
+  @Input() bonus?: [DHII_AttributeName, DHII_AttributeName ];
+  @Input() penality?: DHII_AttributeName
   @Input() editable: boolean = false;
+  @Input() mode: 'create' | 'play' = 'play';
   @Input() step: number = 5;
 
   @Output() updatedAttribute = new EventEmitter<DHII_Attribute>();
@@ -67,6 +71,7 @@ export class AttributesGroupComponent {
   }
 
   rollDice(name: DHII_AttributeName, modifier: number): void {
+    console.log("🚀 ~ AttributesGroupComponent ~ rollDice ~ name:", name)
     const attribute: DHII_Attribute | undefined = this.attributes.get(name);
 
     if (!attribute) {

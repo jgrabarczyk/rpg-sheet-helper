@@ -1,8 +1,10 @@
-import { Homeworld } from './homeworlds';
+import { DHII_Background } from './dhii-background';
+import { DHII_Homeworld } from './dhii-homeworlds';
 import { DHII_SkillName, DHII_Skill } from './dhii-skill';
 import { DHII_Attribute, DHII_AttributeName } from './dhii-attribute';
+import { DHII_Role } from './dhii-role';
 
-export type Aptitude =
+export type DHII_Aptitude =
   | 'General'
   | 'Fieldcraft'
   | 'Social'
@@ -16,11 +18,13 @@ export type Aptitude =
   | DHII_AttributeName;
 
 export type DHII_Character = {
-  aptitudes: Aptitude[];
+  aptitudes: DHII_Aptitude[];
   attributes: Map<DHII_AttributeName, DHII_Attribute>;
   skills?: Map<DHII_SkillName, DHII_Skill>;
   tallents?: {
     [key in string]: string;
   };
-  homeworld: Homeworld;
+  homeworld: DHII_Homeworld;
+  role: DHII_Role;
+  background: DHII_Background
 };

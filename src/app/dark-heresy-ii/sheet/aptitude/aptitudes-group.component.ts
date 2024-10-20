@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { Aptitude } from '../../types/dark-heresy-ii';
+import { DHII_Aptitude } from '../../types/dark-heresy-ii';
 import { MatCardModule } from '@angular/material/card';
 import {MatListModule} from '@angular/material/list'; 
 @Component({
@@ -10,5 +10,5 @@ import {MatListModule} from '@angular/material/list';
   styleUrl: './aptitudes-group.component.scss'
 })
 export class AptitudesGroupComponent {
-  @Input() aptitudes: Aptitude[] = []
+  @Input() aptitudes: DHII_Aptitude[] = []
 }

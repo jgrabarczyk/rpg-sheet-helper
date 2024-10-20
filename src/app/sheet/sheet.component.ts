@@ -37,6 +37,6 @@ export class SheetComponent {
   }
 
   rollDice(roll: Roll) {
-    this.sheetService.rollDice(roll);
+    this.sheetService.rollTest(roll);
   }
 }

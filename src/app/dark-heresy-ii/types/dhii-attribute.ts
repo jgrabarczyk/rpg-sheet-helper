@@ -1,6 +1,6 @@
 import { Characteristic } from '../../types/characteristic';
 import { Level } from '../../types/level';
-import { Aptitude } from './dark-heresy-ii';
+import { DHII_Aptitude } from './dark-heresy-ii';
 
 export type DHII_AttributeName =
   | 'Weapon Skill'
@@ -19,7 +19,7 @@ export type DHII_AttributeLevel = Level<5>;
 
 export type DHII_Attribute =
   | (Characteristic<Exclude<DHII_AttributeName, 'Influence'>> & {
-      aptitudes: [Aptitude, Aptitude];
+      aptitudes: [DHII_Aptitude, DHII_Aptitude];
       lvl: DHII_AttributeLevel;
     })
   | Characteristic<'Influence'>;

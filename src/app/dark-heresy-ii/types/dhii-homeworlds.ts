@@ -1,7 +1,8 @@
 import { DHII_AttributeName } from './dhii-attribute';
-import { Aptitude } from './dark-heresy-ii';
-import { TalentName } from './talents';
-export type HomeworldNames =
+import { DHII_Aptitude } from './dark-heresy-ii';
+import { DHII_TalentName } from './talents';
+import { DHII_SkillName } from './dhii-skill';
+export type DHII_HomeworldNames =
   | 'feral'
   | 'forge'
   | 'highborn'
@@ -18,9 +19,8 @@ export type HomeworldNames =
   | 'penal'
   | 'quarantine';
 
-export type SkillName = string;
 
-export interface Homeworld {
+export interface DHII_Homeworld {
   name: string;
   bonus: string;
   attributes: {
@@ -30,11 +30,11 @@ export interface Homeworld {
   wounds: number;
   fate: number;
   blessingThreshold: number;
-  aptitude: Aptitude;
-  talents?: TalentName[];
-  skills?: SkillName[];
+  aptitude: DHII_Aptitude;
+  talents?: DHII_TalentName[];
+  skills?: DHII_SkillName[];
 }
-export const HOMEWORLDS: Map<HomeworldNames, Homeworld> = new Map<HomeworldNames, Homeworld>([
+export const HOMEWORLDS: Map<DHII_HomeworldNames, DHII_Homeworld> = new Map<DHII_HomeworldNames, DHII_Homeworld>([
   [
     'feral',
     {

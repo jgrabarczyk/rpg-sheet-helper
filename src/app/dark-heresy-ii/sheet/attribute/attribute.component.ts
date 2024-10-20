@@ -8,9 +8,9 @@ import { MatInputModule } from '@angular/material/input';
 import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
-import {MatMenuModule} from '@angular/material/menu';
-import { AppComponent } from "../../../app.component";
-import { RollboxComponent } from "../rollbox/rollbox.component"; 
+import { MatMenuModule } from '@angular/material/menu';
+import { AppComponent } from '../../../app.component';
+import { RollboxComponent } from '../rollbox/rollbox.component';
 @Component({
   selector: 'app-attribute',
   standalone: true,
@@ -25,7 +25,7 @@ import { RollboxComponent } from "../rollbox/rollbox.component";
     MatMenuModule,
     AppComponent,
     RollboxComponent
-],
+  ],
   providers: [
     {
       provide: MAT_FORM_FIELD_DEFAULT_OPTIONS,
@@ -41,6 +41,7 @@ export class AttributeComponent {
   @Input() max: number = 100;
   @Input() maxLevel: number = 0;
   @Input() currentLevel: number = 0;
+  @Input() mode: 'play' | 'create' = 'play';
   @Input() set editable(isEditable: boolean) {
     isEditable ? this.field.enable() : this.field.disable();
   }
