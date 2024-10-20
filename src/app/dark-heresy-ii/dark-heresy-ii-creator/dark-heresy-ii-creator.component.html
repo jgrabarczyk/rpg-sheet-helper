@@ -1,107 +1,146 @@
 <mat-stepper [linear]="true" #stepper>
-  <mat-step [stepControl]="firstFormGroup">
-    <form [formGroup]="firstFormGroup">
-      <ng-template matStepLabel> Choose your Homeworld </ng-template>
+  <mat-step>
+    <ng-template matStepLabel> Choose your Homeworld </ng-template>
 
-      <div class="homeworlds">
-        @for(homeworld of sheetService.homeworlds; track homeworld[0]){
-        <app-homeworld-card
-          class="card"
-          [homeworld]="homeworld[1]"
-          (click)="chooseHomeworld(homeworld)"
-        />
-        }
-      </div>
-
-      <div>
-        <button mat-button matStepperNext>Next</button>
-      </div>
-    </form>
-  </mat-step>
-  <mat-step [stepControl]="secondFormGroup" label="Fill out your address">
-    <form [formGroup]="secondFormGroup">
-      <ng-template matStepLabel> Choose your Background </ng-template>
-
-      <div class="backgrounds">
-        @for(background of sheetService.backgrounds; track background[0]){
-        <app-background-card
-          class="card"
-          [background]="background[1]"
-          (click)="chooseBackground(background)"
-        />
-        }
-      </div>
-
-      <div>
-        <button mat-button matStepperPrevious>Back</button>
-        <button mat-button matStepperNext>Next</button>
-      </div>
-    </form>
-  </mat-step>
-  <mat-step [stepControl]="thirdFormGroup" label="Fill out your address">
-    <form [formGroup]="thirdFormGroup">
-      <ng-template matStepLabel> Choose your Role </ng-template>
-
-      <div class="roles">
-        @for(role of sheetService.roles; track role[0]){
-        <app-role-card class="card" [role]="role[1]" (click)="chooseRole(role)" />
-        }
-      </div>
-
-      <div>
-        <button mat-button matStepperPrevious>Back</button>
-        <button mat-button matStepperNext>Next</button>
-      </div>
-    </form>
-  </mat-step>
-  <mat-step [stepControl]="thirdFormGroup" label="Fill out your address">
-    <form [formGroup]="thirdFormGroup">
-      <ng-template matStepLabel> Determin Attribiutes </ng-template>
-
-      @let attributes = sheetService.attributes$ | async;
-      @if(attributes){
-        <div class="attributes">
-          @let bonus = sheetService.character.homeworld?.attributes?.bonus; 
-          @let penality= sheetService.character.homeworld?.attributes?.penality;
-          <br />
-          <app-attributes-group
-            [attributes]="attributes"
-            [bonus]="bonus"
-            [penality]="penality"
-            mode="create"
-            (roll)="reroll($event)"
-          />
-          <button mat-button type="button" (click)="generateAttributes()">roll</button>
-        </div>
+    <div class="homeworlds">
+      @for(homeworld of creatorService.homeworlds; track homeworld[0]){
+      <app-homeworld-card
+        class="card"
+        [homeworld]="homeworld[1]"
+        (click)="chooseHomeworld(homeworld)"
+      />
       }
+    </div>
 
-      <div>
-        <button mat-button matStepperPrevious>Back</button>
-        <button mat-button matStepperNext>Next</button>
-      </div>
-    </form>
+    <div>
+      <button mat-button matStepperNext>Next</button>
+    </div>
   </mat-step>
-  <mat-step [stepControl]="thirdFormGroup" label="Fill out your address">
-    <form [formGroup]="thirdFormGroup">
-      <ng-template matStepLabel> Determin Aptitudes </ng-template>
 
-      
-      @let aptitudes = sheetService.aptitudes$ | async; 
-      @if(aptitudes){
-        <div class="aptitudes">
-          <br />
-          <app-aptitudes-group
-            [aptitudes]="aptitudes"
-            mode="create"
-          />
-        </div>
+  <mat-step>
+    <ng-template matStepLabel> Choose your Background </ng-template>
+
+    <div class="backgrounds">
+      @for(background of creatorService.backgrounds; track background[0]){
+      <app-background-card
+        class="card"
+        [background]="background[1]"
+        (click)="chooseBackground(background)"
+      />
       }
-      <div>
-        <button mat-button matStepperPrevious>Back</button>
-        <button mat-button matStepperNext>Next</button>
-      </div>
-    </form>
+    </div>
+
+    <div>
+      <button mat-button matStepperPrevious>Back</button>
+      <button mat-button matStepperNext>Next</button>
+    </div>
   </mat-step>
+
+  <mat-step>
+    <ng-template matStepLabel> Choose your Role </ng-template>
+
+    <div class="roles">
+      @for(role of creatorService.roles; track role[0]){
+      <app-role-card class="card" [role]="role[1]" (click)="chooseRole(role)" />
+      }
+    </div>
+
+    <div>
+      <button mat-button matStepperPrevious>Back</button>
+      <button mat-button matStepperNext>Next</button>
+    </div>
+  </mat-step>
+
+  <mat-step>
+    <ng-template matStepLabel> Determin Attribiutes </ng-template>
+
+    @let attributes = sheetService.attributes$ | async; @if(attributes){
+    <div class="attributes">
+      @let bonus = sheetService.character.homeworld?.attributes?.bonus; @let penality=
+      sheetService.character.homeworld?.attributes?.penality;
+      <br />
+      <app-attributes-group
+        [attributes]="attributes"
+        [bonus]="bonus"
+        [penality]="penality"
+        mode="create"
+        (roll)="reroll($event)"
+      />
+      <button mat-button type="button" (click)="generateAttributes()">roll</button>
+    </div>
+    }
+
+    <div>
+      <button mat-button matStepperPrevious>Back</button>
+      <button mat-button matStepperNext>Next</button>
+    </div>
+  </mat-step>
+
+  <mat-step>
+    <ng-template matStepLabel> Determin Aptitudes </ng-template>
+
+    @let aptitudes = creatorService.aptitudes$ | async; @let aptitudesToPick =
+    creatorService.aptitudesToPick$ | async; @if(aptitudes){
+    <div class="aptitudes">
+      <br />
+      <app-aptitudes-group [aptitudes]="aptitudes" mode="create" />
+    </div>
+    } @if(aptitudesToPick){
+
+    <div class="pick">
+      @for(options of aptitudesToPick; track options){
+
+      <mat-form-field>
+        <mat-label>Choose an option</mat-label>
+        <mat-select>
+          @for(option of options; track option){
+          <mat-option [value]="option">
+            {{ option }}
+          </mat-option>
+          }
+        </mat-select>
+      </mat-form-field>
+      }
+    </div>
+    }
+    <div>
+      <button mat-button matStepperPrevious>Back</button>
+      <button mat-button matStepperNext>Next</button>
+    </div>
+  </mat-step>
+
+  <mat-step>
+    <ng-template matStepLabel> Pick Talents </ng-template>
+
+    @let talents = creatorService.talents$ | async; @let talentsToPick =
+    creatorService.talentsToPick$ | async; @if(talents){
+    <div class="talents">
+      <br />
+    </div>
+    } @if(talentsToPick){
+
+    <div class="pick">
+      @for(options of talentsToPick; track options){
+
+      <mat-form-field>
+        <mat-label>Choose an option</mat-label>
+        <mat-select>
+          @for(option of options; track option){
+          <mat-option [value]="option">
+            {{ option }}
+          </mat-option>
+          }
+        </mat-select>
+      </mat-form-field>
+      }
+    </div>
+    }
+    <div>
+      <button mat-button matStepperPrevious>Back</button>
+      <button mat-button matStepperNext>Next</button>
+    </div>
+  </mat-step>
+
   <mat-step>
     <ng-template matStepLabel>Done</ng-template>
     <p>You are now done.</p>

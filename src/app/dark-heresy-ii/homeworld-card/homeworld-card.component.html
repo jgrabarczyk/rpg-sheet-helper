@@ -10,21 +10,20 @@
     alt="Photo of a Shiba Inu"
   /> -->
   <mat-card-content>
-    <p> Homeworld aptitude {{ homeworld.aptitude }} </p>
-    <p> Homeworld attributes:<br/>
-        bonus: {{homeworld.attributes.bonus}} <br/>
-        penality: {{homeworld.attributes.penality}}
-     </p>
-    <p> Homeworld fate {{ homeworld.fate  }} </p>
-    @if(homeworld.skills){
-        <p> Homeworld skills {{ homeworld.skills  }} </p>
+    <p>aptitude {{ homeworld.aptitude }}</p>
+    <p>
+      
+      attributes bonus: {{ homeworld.attributes.bonus }} <br />
+      attributes penality: {{ homeworld.attributes.penality }}
+    </p>
+    <p>fate {{ homeworld.fate }}</p>    
+    @if(homeworld.skills || homeworld.pick?.skills){
+      <p>skills {{ homeworld.skills }} {{ homeworld.pick?.talents | or }}</p>
     }
-
-    @if(homeworld.talents){
-        <p> Homeworld talents {{ homeworld.talents  }} </p>
+    @if(homeworld.talents || homeworld.pick?.talents){
+      <p>talents {{ homeworld.talents }} {{ homeworld.pick?.talents | or }}</p>
     }
-    <p> Homeworld wounds {{ homeworld.wounds  }} </p>
+    <p>wounds {{ homeworld.wounds }}</p>
   </mat-card-content>
-  <mat-card-actions>
-  </mat-card-actions>
+  <mat-card-actions> </mat-card-actions>
 </mat-card>

@@ -1,6 +1,5 @@
 import { DHII_Homeworld, DHII_HomeworldNames } from '../types/dhii-homeworlds';
 import { CommonModule } from '@angular/common';
-import { DHII_SheetService } from './../service/dhii-sheet.service';
 import { Component, inject, ViewChild } from '@angular/core';
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -16,7 +15,9 @@ import { AttributesGroupComponent } from '../sheet/attribute/attributes-group/at
 import { DHII_AttributeName } from '../types/dhii-attribute';
 import { Roll } from '../../types/roll';
 import { AptitudesGroupComponent } from "../sheet/aptitude/aptitudes-group.component";
-
+import {MatSelectModule} from '@angular/material/select'; 
+import { DHII_CreatorService } from './dhii-creator.service';
+import { DHII_SheetService } from '../service/dhii-sheet.service';
 @Component({
   selector: 'app-dark-heresy-ii-creator',
   standalone: true,
@@ -31,13 +32,15 @@ import { AptitudesGroupComponent } from "../sheet/aptitude/aptitudes-group.compo
     BackgroundCardComponent,
     RoleCardComponent,
     AttributesGroupComponent,
-    AptitudesGroupComponent
+    AptitudesGroupComponent,
+    MatSelectModule
 ],
   templateUrl: './dark-heresy-ii-creator.component.html',
   styleUrl: './dark-heresy-ii-creator.component.scss'
 })
 export class DarkHeresyIICreatorComponent {
   protected sheetService: DHII_SheetService = inject(DHII_SheetService);
+  protected creatorService: DHII_CreatorService = inject(DHII_CreatorService);
   @ViewChild('stepper') stepper?: MatStepper;
 
   firstFormGroup: FormGroup = new FormGroup({
@@ -51,24 +54,24 @@ export class DarkHeresyIICreatorComponent {
   });
 
   chooseHomeworld([, homeworld]: [DHII_HomeworldNames, DHII_Homeworld]) {
-    this.sheetService.updateHomeworld(homeworld);
+    this.creatorService.setHomeworld(homeworld);
     this.stepper?.next();
   }
 
   chooseBackground([, background]: [DHII_BackgroundNames, DHII_Background]) {
-    this.sheetService.updateBackground(background);
+    this.creatorService.setBackground(background);
     this.stepper?.next();
   }
   chooseRole([, role]: [DHII_RoleNames, DHII_Role]) {
-    this.sheetService.updateRole(role);
+    this.creatorService.setRole(role);
     this.stepper?.next();
   }
 
   generateAttributes() {
-    this.sheetService.generateAttributes();
+    this.creatorService.generateAttributes();
   }
 
   reroll(roll: Roll) {
-    this.sheetService.rerollAttribute(roll.name as DHII_AttributeName);
+    this.creatorService.rerollAttribute(roll.name as DHII_AttributeName);
   }
 }

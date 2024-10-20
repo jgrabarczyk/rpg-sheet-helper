@@ -19,7 +19,6 @@ export type DHII_HomeworldNames =
   | 'penal'
   | 'quarantine';
 
-
 export interface DHII_Homeworld {
   name: string;
   bonus: string;
@@ -31,10 +30,17 @@ export interface DHII_Homeworld {
   fate: number;
   blessingThreshold: number;
   aptitude: DHII_Aptitude;
+  pick?: {
+    talents?: DHII_TalentName[][];
+    skills?: DHII_SkillName[][];
+  };
   talents?: DHII_TalentName[];
   skills?: DHII_SkillName[];
 }
-export const HOMEWORLDS: Map<DHII_HomeworldNames, DHII_Homeworld> = new Map<DHII_HomeworldNames, DHII_Homeworld>([
+export const HOMEWORLDS: Map<DHII_HomeworldNames, DHII_Homeworld> = new Map<
+  DHII_HomeworldNames,
+  DHII_Homeworld
+>([
   [
     'feral',
     {
@@ -48,8 +54,7 @@ export const HOMEWORLDS: Map<DHII_HomeworldNames, DHII_Homeworld> = new Map<DHII
       bonus:
         "The Old Ways: A Feral World character's Low-Tech weapons lose any present Primitive Qualities and gain the Proven (3) Quality.",
       fate: 2,
-      wounds: 9,
-      talents: []
+      wounds: 9
     }
   ],
   [
@@ -66,7 +71,7 @@ export const HOMEWORLDS: Map<DHII_HomeworldNames, DHII_Homeworld> = new Map<DHII
       wounds: 8,
       bonus:
         "Omnissiah's Chosen: A Forge World character gains the Technical Knock or Weapon-Tech Talent. ",
-      talents: ['Technical Knock', 'Weapon-Tech']
+      pick: { talents: [['Technical Knock', 'Weapon-Tech']] }
     }
   ],
   [
@@ -82,7 +87,6 @@ export const HOMEWORLDS: Map<DHII_HomeworldNames, DHII_Homeworld> = new Map<DHII
       fate: 4,
       bonus:
         'Breeding Counts: A Highborn character reduces Influence losses by 1, to a minimum loss of 1. ',
-      talents: [],
       wounds: 9
     }
   ],
@@ -99,7 +103,6 @@ export const HOMEWORLDS: Map<DHII_HomeworldNames, DHII_Homeworld> = new Map<DHII
       fate: 2,
       bonus:
         'Teeming Masses in Metal Mountains: A Hive World character moves through crowds as if they were open terrain and gains a +20 bonus to Navigate (Surface) Tests in closed spaces. ',
-      talents: [],
       wounds: 8
     }
   ],
@@ -116,7 +119,6 @@ export const HOMEWORLDS: Map<DHII_HomeworldNames, DHII_Homeworld> = new Map<DHII
       fate: 3,
       bonus:
         "Faith in the Creed: When spending a Fate Point, a Shrine World character's number of Fate Points are not reduced on a 1d10 result of 1.",
-      talents: [],
       wounds: 8
     }
   ],
@@ -271,7 +273,7 @@ export const HOMEWORLDS: Map<DHII_HomeworldNames, DHII_Homeworld> = new Map<DHII
         'Finger on the Pulse: One survives a penal colony by instinctively knowing who is in charge and who is a threat. A penal colony character begins with one rank in Common Lore (Underworld) and Scrutiny skills, and starts with the Peer (Criminal Cartels) talent.',
       talents: ['Peer (Criminal Cartels)'],
       aptitude: 'Toughness',
-      name: 'Penal Colony',
+      name: 'Penal Colony'
     }
   ],
   [

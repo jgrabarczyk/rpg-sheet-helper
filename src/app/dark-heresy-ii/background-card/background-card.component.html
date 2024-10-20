@@ -4,13 +4,26 @@
     <mat-card-title> {{ background.name }} </mat-card-title>
     <mat-card-subtitle> Bonus: {{ background.bonus }}</mat-card-subtitle>
   </mat-card-header>
-  
+
   <mat-card-content>
-    <p>background aptitude {{ background.aptitudes }}</p>
+    <p>aptitude {{ background.pick?.aptitudes | or }}</p>
 
-    <p>background skills {{ background.skills }}</p>
+    <p>
+      skills {{ background.skills }}
+      @if(background.skills){, }
+      {{ background.pick?.skills | or }}
+    </p>
 
-    <p>background talents {{ background.talents }}</p>
+    <p>
+      talents {{ background.talents }} @if(background.talents){, }
+      {{ background.pick?.talents | or }}
+    </p>
+    <p>
+      Equipment
+      
+      {{ background.equipment }} @if(background.equipment){, }
+      {{ background.pick?.equipment | or }}
+    </p>
   </mat-card-content>
   <mat-card-actions> </mat-card-actions>
 </mat-card>

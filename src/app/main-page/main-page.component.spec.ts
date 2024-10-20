@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { MainPageComponent } from './main-page.component';
+import { RouterLink } from '@angular/router';
 
 describe('MainPageComponent', () => {
   let component: MainPageComponent;
@@ -8,7 +9,7 @@ describe('MainPageComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [MainPageComponent]
+      imports: [MainPageComponent, RouterLink]
     })
     .compileComponents();
 

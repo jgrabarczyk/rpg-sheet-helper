@@ -1,3 +1,4 @@
+import { DHII_CreatorService } from './../dark-heresy-ii/dark-heresy-ii-creator/dhii-creator.service';
 import { CommonModule } from '@angular/common';
 import { Component, inject } from '@angular/core';
 import { DHII_SheetService } from '../dark-heresy-ii/service/dhii-sheet.service';
@@ -9,6 +10,7 @@ import { Roll } from '../types/roll';
 import { DHII_Attribute } from '../dark-heresy-ii/types/dhii-attribute';
 import { DHII_Skill } from '../dark-heresy-ii/types/dhii-skill';
 import { SkillGroupComponent } from '../dark-heresy-ii/sheet/skill/skill-group/skill-group.component';
+import { rollTest } from '../utility/roll';
 
 @Component({
   selector: 'app-sheet',
@@ -27,6 +29,7 @@ export class SheetComponent {
   step = 5;
   editable = false;
   protected sheetService = inject(DHII_SheetService);
+  protected creatorService = inject(DHII_CreatorService);
 
   updateAttribute(attribute: Characteristic) {
     this.sheetService.updateAttribute(attribute as DHII_Attribute);
@@ -37,6 +40,6 @@ export class SheetComponent {
   }
 
   rollDice(roll: Roll) {
-    this.sheetService.rollTest(roll);
+    rollTest(roll);
   }
 }

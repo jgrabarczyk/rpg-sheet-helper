@@ -24,6 +24,6 @@
       (roll)="rollDice($event)"
     />
 
-    <app-aptitudes-group [aptitudes]="(sheetService.aptitudes$ | async) ?? []" />
+    <app-aptitudes-group [aptitudes]="(creatorService.aptitudes$ | async) ?? []" />
   </div>
 }
