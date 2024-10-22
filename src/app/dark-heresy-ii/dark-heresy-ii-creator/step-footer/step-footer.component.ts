@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { MatStepperModule } from '@angular/material/stepper';
 
 @Component({
@@ -8,4 +8,9 @@ import { MatStepperModule } from '@angular/material/stepper';
   templateUrl: './step-footer.component.html',
   styleUrl: './step-footer.component.scss'
 })
-export class StepFooterComponent {}
+export class StepFooterComponent {
+  @Input() step?: 'first' | 'last';
+  
+  @Output() resetAll: EventEmitter<void> = new EventEmitter();
+  @Output() save: EventEmitter<void> = new EventEmitter();
+}

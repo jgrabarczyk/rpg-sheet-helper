@@ -11,18 +11,21 @@ const SKILLS: Map<DHII_SkillName<string>, DHII_Skill> = structuredClone(DHII_SKI
   providedIn: 'root'
 })
 export class DHII_SheetService {
+  private readonly INITIAL_CHARACTER: DHII_Character = {
+    attributes: ATTRIBUTES,
+    skills: new Map(Array.from(SKILLS, ([name, skill]) => this.initializeSkills(name, skill))),
+    aptitudes: ['General']
+  };
+
   protected characterSubject$: BehaviorSubject<DHII_Character> =
-    new BehaviorSubject<DHII_Character>({
-      attributes: ATTRIBUTES,
-      skills: new Map(Array.from(SKILLS, ([name, skill]) => this.initializeSkills(name, skill))),
-      aptitudes: ['General']
-    });
+    new BehaviorSubject<DHII_Character>(this.INITIAL_CHARACTER);
 
   public readonly character$: Observable<DHII_Character> = this.characterSubject$.asObservable();
   public readonly character = this.characterSubject$.value;
 
-  public readonly attributes$: Observable<DHII_Attributes> =
-    this.characterSubject$.asObservable().pipe(map(character => character.attributes));
+  public readonly attributes$: Observable<DHII_Attributes> = this.characterSubject$
+    .asObservable()
+    .pipe(map(character => character.attributes));
   public readonly attributes = this.character.attributes;
 
   public readonly skills$: Observable<Map<DHII_SkillName, DHII_Skill>> = this.character$.pipe(
@@ -30,15 +33,13 @@ export class DHII_SheetService {
   );
   public readonly skills = this.character.skills;
 
-  protected aptitudesSubject$: BehaviorSubject<DHII_Aptitude[]> = new BehaviorSubject<
-    DHII_Aptitude[]
-  >([]);
-  public readonly aptitudes$: Observable<DHII_Aptitude[]> = this.aptitudesSubject$.asObservable();
-  public readonly aptitudes: DHII_Aptitude[] = this.aptitudesSubject$.value;
-
-  updtaeAptitudes(aptitudes: DHII_Aptitude[]) {
-    this.aptitudesSubject$.next(aptitudes);
-  }
+  // protected aptitudesSubject$: BehaviorSubject<DHII_Aptitude[]> = new BehaviorSubject<
+  //   DHII_Aptitude[]
+  // >([]);
+  public readonly aptitudes$: Observable<DHII_Aptitude[]> = this.character$.pipe(
+    map(character => character.aptitudes)
+  );
+  public readonly aptitudes: DHII_Aptitude[] = this.character.aptitudes;
 
   updateCharacter(character: DHII_Character) {
     this.characterSubject$.next(character);
@@ -70,6 +71,15 @@ export class DHII_SheetService {
     this.skills.get(changedSkill.name)!.value = this.calculateSkillValue(changedSkill, attribute);
 
     this.characterSubject$.next(this.character);
+  }
+
+  updateAptitudes(aptitudes: DHII_Aptitude[]) {
+    this.character.aptitudes = aptitudes;
+    this.characterSubject$.next(this.character);
+  }
+
+  resetAll() {
+    this.characterSubject$.next(this.INITIAL_CHARACTER);
   }
 
   private updateSkillsBasedOnAttribute(changedAttribute: DHII_Attribute) {

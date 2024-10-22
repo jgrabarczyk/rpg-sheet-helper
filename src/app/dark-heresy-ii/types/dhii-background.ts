@@ -27,11 +27,11 @@ export type DHII_Background = {
     equipment?: string[][];
   };
   skills: DHII_SkillName[];
-  talents: DHII_TalentName[];
+  talents?: DHII_TalentName[];
   equipment: string[];
 };
 
-export type DHII_Backgrounds = Map<DHII_BackgroundNames, DHII_Background> ;
+export type DHII_Backgrounds = Map<DHII_BackgroundNames, DHII_Background>;
 export const BACKGROUNDS: DHII_Backgrounds = new Map([
   [
     'admin',
@@ -50,7 +50,7 @@ export const BACKGROUNDS: DHII_Backgrounds = new Map([
         'Logic',
         'Scholastic Lore'
       ],
-      talents: [],
+
       equipment: ['Imperial Robes', 'Autoquill', 'Chrono', 'Dataslate', 'Medi-Kit'],
       name: 'Adeptus Administratum'
     }
@@ -76,7 +76,7 @@ export const BACKGROUNDS: DHII_Backgrounds = new Map([
         'Intimidate',
         'Scrutiny'
       ],
-      talents: [],
+
       equipment: ['3 doses of Stimm', 'Manacles', '12 Lho Sticks'],
       name: 'Adeptus Arbites'
     }
@@ -327,11 +327,7 @@ export const BACKGROUNDS: DHII_Backgrounds = new Map([
       bonus:
         'Touched by a Daemon: An exorcised character counts his Insanity Bonus as 2 higher for purposes of avoiding Fear tests. Additionally, he can never again be possessed by a daemon. In addition, an exorcised character begins with one Malignancy',
       skills: ['Awareness', 'Dodge', 'Forbidden Lore (Daemonology)'],
-      talents: [
-        'Hatred (Daemon)',
-        'Weapon Training (Solid Projectile)',
-        'Weapon Training (Chain)'
-      ],
+      talents: ['Hatred (Daemon)', 'Weapon Training (Solid Projectile)', 'Weapon Training (Chain)'],
       equipment: ['Chainblade', 'Imperial Robes', 'Rebreather', 'Stablight', 'Glow-globe'],
       name: 'Exorcised'
     }

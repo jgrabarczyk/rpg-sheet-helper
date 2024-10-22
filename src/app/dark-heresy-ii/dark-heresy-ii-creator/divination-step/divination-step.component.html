@@ -5,7 +5,4 @@ Divination:
 description: {{ divination!.description }}
 }
 
-<div>
-  <button mat-button matStepperPrevious>Back</button>
-  <button mat-button (click)="resetStepper.emit()">Reset</button>
-</div>
+<app-step-footer step="last" (resetAll)="resetAll.emit()" (save)="save.emit()"/>

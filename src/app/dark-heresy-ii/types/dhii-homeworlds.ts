@@ -153,7 +153,6 @@ export const HOMEWORLDS: DHII_Homeworlds = new Map<DHII_HomeworldNames, DHII_Hom
         'Strength from the Land: An agri-world character starts with the Brutal Charge (2) Trait',
       aptitude: 'Strength',
       name: 'Agri-World',
-      talents: []
     }
   ],
   [
@@ -170,7 +169,6 @@ export const HOMEWORLDS: DHII_Homeworlds = new Map<DHII_HomeworldNames, DHII_Hom
         'At Home in Armour: A feudal world character ignores the maximum Agility value imposed by any armour he is wearing',
       aptitude: 'Weapon Skill',
       name: 'Feudal World',
-      talents: []
     }
   ],
   [
@@ -187,7 +185,6 @@ export const HOMEWORLDS: DHII_Homeworlds = new Map<DHII_HomeworldNames, DHII_Hom
         'Rely on None but Yourself: A frontier world character gains a +20 bonus to Tech-Use tests when applying a personal weapon modification, and a +10 bonus when repairing damaged items',
       aptitude: 'Ballistic Skill',
       name: 'Frontier World',
-      talents: []
     }
   ],
   [
@@ -204,7 +201,6 @@ export const HOMEWORLDS: DHII_Homeworlds = new Map<DHII_HomeworldNames, DHII_Hom
         "Survivor's Paranoia: While a death world character is Surprised, non-Surprised attackers do not gain the normal +30 bonus to their Weapon and Ballistic Skill tests when targeting this character",
       aptitude: 'Fieldcraft',
       name: 'Death World',
-      talents: []
     }
   ],
   [
@@ -221,7 +217,6 @@ export const HOMEWORLDS: DHII_Homeworlds = new Map<DHII_HomeworldNames, DHII_Hom
         'Serenity of the Green: A garden world character halves the duration (rounding up) of any result from Shock or Mental Traumas, and can remove Insanity Points for 50xp per point, rather than the normal 100xp',
       aptitude: 'Social',
       name: 'Garden World',
-      talents: []
     }
   ],
   [
@@ -238,7 +233,6 @@ export const HOMEWORLDS: DHII_Homeworlds = new Map<DHII_HomeworldNames, DHII_Hom
         'Pursuit of Data: Whenever a research station character reaches Rank 2 (Trained) in a Scholastic Lore skill, he also gains Rank 1 (Known) in one related or identical Forbidden Lore skill specialisation of their choice. The GM is the final arbiter of whether the two specialisations are related.',
       aptitude: 'Knowledge',
       name: 'Research Station',
-      talents: []
     }
   ],
   [
@@ -256,7 +250,6 @@ export const HOMEWORLDS: DHII_Homeworlds = new Map<DHII_HomeworldNames, DHII_Hom
       aptitude: 'Willpower',
       skills: ['Psyniscience'],
       name: 'Daemon World',
-      talents: []
     }
   ],
   [
@@ -290,7 +283,6 @@ export const HOMEWORLDS: DHII_Homeworlds = new Map<DHII_HomeworldNames, DHII_Hom
         "Secretive by Nature: Those who manage to leave a quarantine world learn how to keep secrets. Wheneve the warband's Subtlety would decrease, it decreases by 2 less (to a minimum of 1)",
       aptitude: 'Fieldcraft',
       name: 'Quarantine World',
-      talents: []
     }
   ]
 ]);

@@ -18,7 +18,9 @@ import { pickDivination } from '../types/dhii-divination';
 export class DHII_CreatorService {
   sheetService = inject(DHII_SheetService);
 
-  private readonly homeworldsSubject$: BehaviorSubject<DHII_Homeworlds> = new BehaviorSubject(HOMEWORLDS);
+  private readonly homeworldsSubject$: BehaviorSubject<DHII_Homeworlds> = new BehaviorSubject(
+    HOMEWORLDS
+  );
   public readonly homeworlds$: Observable<DHII_Homeworlds> = this.homeworldsSubject$.asObservable();
   public readonly homeworlds: DHII_Homeworlds = this.homeworldsSubject$.value;
 
@@ -68,6 +70,7 @@ export class DHII_CreatorService {
         ];
       })
     );
+
   public readonly skills$: Observable<DHII_SkillName[]> = this.sheetService.character$.pipe(
     map(character =>
       [...(character.homeworld?.skills ?? []), ...(character.background?.skills ?? [])].filter(
@@ -115,9 +118,8 @@ export class DHII_CreatorService {
 
   setAptitudes(newAptitudes: DHII_Aptitude[]) {
     const chararcter: DHII_Character = this.sheetService.character;
-    
     chararcter.aptitudes = newAptitudes;
-    this.sheetService.updtaeAptitudes(newAptitudes);
+    this.sheetService.updateAptitudes(newAptitudes);
   }
 
   setWounds() {
@@ -135,7 +137,7 @@ export class DHII_CreatorService {
     const chararcter: DHII_Character = this.sheetService.character;
     chararcter.divination = pickDivination();
   }
-  
+
   setFate() {
     const chararcter: DHII_Character = this.sheetService.character;
     const homeworld: DHII_Homeworld | undefined = chararcter?.homeworld;
@@ -148,7 +150,7 @@ export class DHII_CreatorService {
     if (rollDices('1d10') >= homeworld.blessingThreshold) {
       chararcter.fate++;
     }
-    
+
     this.sheetService.updateCharacter(chararcter);
     this.sheetService.updateCharacter(chararcter);
   }
@@ -193,6 +195,10 @@ export class DHII_CreatorService {
       }) + 20;
 
     this.sheetService.updateAttribute(attribute);
+  }
+
+  reset() {
+    this.sheetService.resetAll();
   }
 
   private rollAttribute(roll: {

@@ -1,4 +1,44 @@
 /* You can add global styles to this file, and also import other style files */
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, 'Helvetica Neue', sans-serif;
+}
+
+.creator-card {
+  .title {
+    display: block;
+    margin-bottom: 0.5rem;
+    text-align: center;
+  }
+
+  .subtitle {
+    display: block;
+    margin-bottom: 1.5rem;
+    font-style: italic;
+    text-align: center;
+  }
+
+  .row {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    justify-content: space-between;
+    padding: 0.5rem;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.494);
+    &:nth-child(2n) {
+      background-color: #8080803b;
+    }
+
+    .name {
+      font-weight: 500;
+    }
+    .value {
+      text-align: right;
+      font-weight: 300;
+    }
+  }
+}

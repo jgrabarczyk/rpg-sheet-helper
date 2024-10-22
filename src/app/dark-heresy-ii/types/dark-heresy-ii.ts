@@ -27,7 +27,7 @@ export type DHII_Character = {
   homeworld?: DHII_Homeworld;
   role?: DHII_Role;
   background?: DHII_Background;
-  wounds?: number
-  fate?: number
-  divination?:DHII_Divination
+  wounds?: number;
+  fate?: number;
+  divination?: DHII_Divination;
 };

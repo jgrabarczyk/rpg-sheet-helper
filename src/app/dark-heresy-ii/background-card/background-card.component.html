@@ -1,29 +1,46 @@
-<mat-card class="example-card" appearance="outlined">
+<mat-card class="creator-card" appearance="outlined">
   <mat-card-header>
-    <div mat-card-avatar class="example-header-image"></div>
-    <mat-card-title> {{ background.name }} </mat-card-title>
-    <mat-card-subtitle> Bonus: {{ background.bonus }}</mat-card-subtitle>
+    <mat-card-title class="title"> {{ background.name }} </mat-card-title>
+    <mat-card-subtitle class="subtitle"> {{ background.bonus }}</mat-card-subtitle>
   </mat-card-header>
 
   <mat-card-content>
-    <p>aptitude {{ background.pick?.aptitudes | or }}</p>
+    <div class="row">
+      <div class="name">Aptitude:</div>
+      <div class="value">{{ background.pick?.aptitudes | or }}</div>
+    </div>
 
-    <p>
-      skills {{ background.skills }}
-      @if(background.skills){, }
-      {{ background.pick?.skills | or }}
-    </p>
+    <div class="row">
+      <div class="name">Skills</div>
+      <div class="value">
+        @if(background.skills){
+          {{ background.skills | spread }}
+          , 
+        }
+        {{ background.pick?.skills | or }}
+      </div>
+    </div>
 
-    <p>
-      talents {{ background.talents }} @if(background.talents){, }
-      {{ background.pick?.talents | or }}
-    </p>
-    <p>
-      Equipment
-      
-      {{ background.equipment }} @if(background.equipment){, }
-      {{ background.pick?.equipment | or }}
-    </p>
+    <div class="row">
+      <div class="name">Talents</div>
+      <div class="value">
+        @if(background.talents){
+          {{ background.talents | spread }}
+          , 
+        }
+        {{ background.pick?.talents | or }}
+      </div>
+    </div>
+    <div class="row">
+      <div class="name">Equipment</div>
+      <div class="value">
+        @if(background.equipment){
+          {{ background.equipment | spread }}
+          , 
+        }
+        {{ background.pick?.equipment | or }}
+      </div>
+    </div>
   </mat-card-content>
   <mat-card-actions> </mat-card-actions>
 </mat-card>

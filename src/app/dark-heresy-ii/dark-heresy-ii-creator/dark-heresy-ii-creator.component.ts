@@ -1,9 +1,6 @@
 import { DHII_Homeworld } from '../types/dhii-homeworlds';
 import { CommonModule } from '@angular/common';
 import { Component, inject, ViewChild } from '@angular/core';
-import { FormControl, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatInputModule } from '@angular/material/input';
 import { MatStepperModule } from '@angular/material/stepper';
 import { HomeworldCardComponent } from '../homeworld-card/homeworld-card.component';
 import { MatStepper } from '@angular/material/stepper';
@@ -15,7 +12,6 @@ import { AttributesGroupComponent } from '../sheet/attribute/attributes-group/at
 import { DHII_AttributeName } from '../types/dhii-attribute';
 import { Roll } from '../../types/roll';
 import { AptitudesGroupComponent } from '../sheet/aptitude/aptitudes-group.component';
-import { MatSelectModule } from '@angular/material/select';
 import { DHII_CreatorService } from './dhii-creator.service';
 import { DHII_SheetService } from '../service/dhii-sheet.service';
 import { HomeworldStepComponent } from './homeworld-step/homeworld-step.component';
@@ -35,16 +31,11 @@ import { TelentStepComponent } from "./telent-step/telent-step.component";
   imports: [
     CommonModule,
     MatStepperModule,
-    ReactiveFormsModule,
-    FormsModule,
-    MatFormFieldModule,
-    MatInputModule,
     HomeworldCardComponent,
     BackgroundCardComponent,
     RoleCardComponent,
     AttributesGroupComponent,
     AptitudesGroupComponent,
-    MatSelectModule,
     HomeworldStepComponent,
     BackgroundStepComponent,
     RoleStepComponent,
@@ -64,15 +55,6 @@ export class DarkHeresyIICreatorComponent {
   protected creatorService: DHII_CreatorService = inject(DHII_CreatorService);
   @ViewChild('stepper') stepper?: MatStepper;
 
-  firstFormGroup: FormGroup = new FormGroup({
-    firstCtrl: new FormControl()
-  });
-  secondFormGroup: FormGroup = new FormGroup({
-    secondCtrl: new FormControl()
-  });
-  thirdFormGroup: FormGroup = new FormGroup({
-    thirdCtrl: new FormControl()
-  });
 
   chooseHomeworld(homeworld: DHII_Homeworld) {
     this.creatorService.setHomeworld(homeworld);
@@ -113,4 +95,14 @@ export class DarkHeresyIICreatorComponent {
   setDivination() {
     this.creatorService.setDivination();
   }
+  
+  resetAll() {
+    this.stepper?.reset();
+    this.creatorService.reset()
+  }
+
+  save(){
+    console.log('save')
+  }
+
 }

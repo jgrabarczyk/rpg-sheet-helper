@@ -1,9 +1,10 @@
 @let character = creatorService.character$ | async; 
 
-<mat-stepper [linear]="true" #stepper>
+<mat-stepper [orientation]="'vertical'" [linear]="true" #stepper>
   <mat-step>
     <ng-template matStepLabel> Choose your Homeworld </ng-template>
-    <app-homeworld-step
+    <app-homeworld-step 
+      class="homeworlds"
       [homeworlds]="creatorService.homeworlds$ | async"
       (chooseHomeworld)="chooseHomeworld($event)"
     />
@@ -12,6 +13,7 @@
   <mat-step>
     <ng-template matStepLabel> Choose your Background </ng-template>
     <app-background-step
+      class="backgrounds"
       [backgrounds]="creatorService.backgrounds$ | async"
       (chooseBackground)="chooseBackground($event)"
     />
@@ -19,7 +21,11 @@
 
   <mat-step>
     <ng-template matStepLabel> Choose your Role </ng-template>
-    <app-role-step [roles]="creatorService.roles$ | async" (chooseRole)="chooseRole($event)" />
+    <app-role-step
+      class="backgrounds"
+      [roles]="creatorService.roles$ | async" 
+      (chooseRole)="chooseRole($event)" 
+    />
   </mat-step>
 
   <mat-step>
@@ -96,7 +102,12 @@
 
   <mat-step>
     <ng-template matStepLabel>Determin Divination</ng-template>
-    <app-divination-step [divination]="character?.divination"/> 
+    <app-divination-step 
+      [divination]="character?.divination"
+      (setDivination)="setDivination()"
+      (resetAll)="resetAll()"
+      (save)="save()"
+    /> 
   </mat-step>
 
   
