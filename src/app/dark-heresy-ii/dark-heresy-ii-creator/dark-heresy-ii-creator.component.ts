@@ -28,6 +28,7 @@ import { SkillStepComponent } from "./skill-step/skill-step.component";
 import { EquipmentStepComponent } from "./equipment-step/equipment-step.component";
 import { DivinationStepComponent } from "./divination-step/divination-step.component";
 import { StepFooterComponent } from "./step-footer/step-footer.component";
+import { TelentStepComponent } from "./telent-step/telent-step.component";
 @Component({
   selector: 'app-dark-heresy-ii-creator',
   standalone: true,
@@ -52,7 +53,8 @@ import { StepFooterComponent } from "./step-footer/step-footer.component";
     SkillStepComponent,
     EquipmentStepComponent,
     DivinationStepComponent,
-    StepFooterComponent
+    StepFooterComponent,
+    TelentStepComponent
 ],
   templateUrl: './dark-heresy-ii-creator.component.html',
   styleUrl: './dark-heresy-ii-creator.component.scss'
