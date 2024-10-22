@@ -64,25 +64,25 @@ export class DHII_CreatorService {
 
 
   setHomeworld(homeworld: DHII_Homeworld) {
-    const chararcter: Partial<DHII_Character> = this.sheetService.character;
+    const chararcter: DHII_Character = this.sheetService.character;
     chararcter.homeworld = homeworld;
     this.sheetService.updateCharacter(chararcter);
   }
 
   setBackground(background: DHII_Background) {
-    const chararcter: Partial<DHII_Character> = this.sheetService.character;
+    const chararcter: DHII_Character = this.sheetService.character;
     chararcter.background = background;
     this.sheetService.updateCharacter(chararcter);
   }
 
   setRole(role: DHII_Role) {
-    const chararcter: Partial<DHII_Character> = this.sheetService.character;
+    const chararcter: DHII_Character = this.sheetService.character;
     chararcter.role = role;
     this.sheetService.updateCharacter(chararcter);
   }
 
   setAptitudes(newAptitudes: DHII_Aptitude[]) {
-    const chararcter: Partial<DHII_Character> = this.sheetService.character;
+    const chararcter: DHII_Character = this.sheetService.character;
     chararcter.aptitudes = newAptitudes;
     this.sheetService.updtaeAptitudes(newAptitudes);
   }

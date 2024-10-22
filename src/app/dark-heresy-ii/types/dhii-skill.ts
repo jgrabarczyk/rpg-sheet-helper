@@ -295,7 +295,7 @@ export const DHII_SKILLS: Map<DHII_SkillName, DHII_Skill> = new Map([
       value: 0,
       name: 'Dodge',
       basedOn: 'Agility',
-      aptitudes: ['Agility', 'Defense']
+      aptitudes: ['Agility', 'Defence']
     }
   ],
   [
@@ -569,7 +569,7 @@ export const DHII_SKILLS: Map<DHII_SkillName, DHII_Skill> = new Map([
       value: 0,
       name: 'Parry',
       basedOn: 'Weapon Skill',
-      aptitudes: ['Weapon Skill', 'Defense']
+      aptitudes: ['Weapon Skill', 'Defence']
     }
   ],
   [

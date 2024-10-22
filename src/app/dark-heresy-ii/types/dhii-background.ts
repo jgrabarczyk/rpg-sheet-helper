@@ -58,7 +58,7 @@ export const BACKGROUNDS: Map<DHII_BackgroundNames, DHII_Background> = new Map([
     'arbite',
     {
       pick: {
-        aptitudes: [['Offensive', 'Defense']],
+        aptitudes: [['Offence', 'Defence']],
         skills: [['Inquiry', 'Interrogation']],
         talents: [['Weapon Training (Shock)', 'Weapon Training (Solid Projectile)']],
         equipment: [
@@ -84,7 +84,7 @@ export const BACKGROUNDS: Map<DHII_BackgroundNames, DHII_Background> = new Map([
     'astra',
     {
       pick: {
-        aptitudes: [['Defense', 'Psyker']],
+        aptitudes: [['Defence', 'Psyker']],
         skills: [['Deceive', 'Interrogation']],
         equipment: [
           ['Staff', 'Whip'],
@@ -191,7 +191,7 @@ export const BACKGROUNDS: Map<DHII_BackgroundNames, DHII_Background> = new Map([
     'sororitas',
     {
       pick: {
-        aptitudes: [['Offensive', 'Social']],
+        aptitudes: [['Offence', 'Social']],
         skills: [
           ['Charm', 'Intimidate'],
           ['Medicae', 'Parry']
@@ -218,7 +218,7 @@ export const BACKGROUNDS: Map<DHII_BackgroundNames, DHII_Background> = new Map([
     'mutant',
     {
       pick: {
-        aptitudes: [['Fieldcraft', 'Offensive']],
+        aptitudes: [['Fieldcraft', 'Offence']],
         skills: [
           ['Acrobatics', 'Athletics'],
           ['Deceive', 'Intimidate']
@@ -265,7 +265,7 @@ export const BACKGROUNDS: Map<DHII_BackgroundNames, DHII_Background> = new Map([
     'navy',
     {
       pick: {
-        aptitudes: [['Offensive', 'Tech']],
+        aptitudes: [['Offence', 'Tech']],
         skills: [
           ['Command', 'Intimidate'],
           ['Operate (Aeronautica)', 'Operate (Voidship)']
@@ -311,7 +311,7 @@ export const BACKGROUNDS: Map<DHII_BackgroundNames, DHII_Background> = new Map([
     'exorcised',
     {
       pick: {
-        aptitudes: [['Defense', 'Knowledge']],
+        aptitudes: [['Defence', 'Knowledge']],
         skills: [
           ['Deceive', 'Inquiry'],
           ['Intimidate', 'Scrutiny']

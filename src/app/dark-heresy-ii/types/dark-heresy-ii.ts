@@ -3,6 +3,7 @@ import { DHII_Homeworld } from './dhii-homeworlds';
 import { DHII_SkillName, DHII_Skill } from './dhii-skill';
 import { DHII_Attribute, DHII_AttributeName } from './dhii-attribute';
 import { DHII_Role } from './dhii-role';
+import { DHII_Talent, DHII_TalentName } from './talents';
 
 export type DHII_Aptitude =
   | 'General'
@@ -10,8 +11,8 @@ export type DHII_Aptitude =
   | 'Social'
   | 'Leadership'
   | 'Knowledge'
-  | 'Defense'
-  | 'Offensive'
+  | 'Defence'
+  | 'Offence'
   | 'Finesse'
   | 'Psyker'
   | 'Tech'
@@ -20,11 +21,9 @@ export type DHII_Aptitude =
 export type DHII_Character = {
   aptitudes: DHII_Aptitude[];
   attributes: Map<DHII_AttributeName, DHII_Attribute>;
-  skills?: Map<DHII_SkillName, DHII_Skill>;
-  tallents?: {
-    [key in string]: string;
-  };
-  homeworld: DHII_Homeworld;
-  role: DHII_Role;
-  background: DHII_Background
+  skills: Map<DHII_SkillName, DHII_Skill>;
+  tallents?: Map<DHII_TalentName, DHII_Talent>;
+  homeworld?: DHII_Homeworld;
+  role?: DHII_Role;
+  background?: DHII_Background;
 };

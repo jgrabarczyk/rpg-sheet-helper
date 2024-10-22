@@ -1,41 +1,34 @@
 import { Injectable } from '@angular/core';
 import { DHII_Aptitude, DHII_Character } from '../types/dark-heresy-ii';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { BehaviorSubject, map, Observable } from 'rxjs';
 import { DHII_Attribute, DHII_AttributeName, DHII_ATTRIBUTES } from '../types/dhii-attribute';
 import { DHII_Skill, DHII_SkillName, DHII_SKILLS } from '../types/dhii-skill';
+
+const ATTRIBUTES: Map<DHII_AttributeName, DHII_Attribute> = structuredClone(DHII_ATTRIBUTES);
+const SKILLS: Map<DHII_SkillName<string>, DHII_Skill> = structuredClone(DHII_SKILLS);
 
 @Injectable({
   providedIn: 'root'
 })
 export class DHII_SheetService {
-  protected characterSubject$: BehaviorSubject<Partial<DHII_Character>> = new BehaviorSubject<
-    Partial<DHII_Character>
-  >({});
+  protected characterSubject$: BehaviorSubject<DHII_Character> =
+    new BehaviorSubject<DHII_Character>({
+      attributes: ATTRIBUTES,
+      skills: new Map(Array.from(SKILLS, ([name, skill]) => this.initializeSkills(name, skill))),
+      aptitudes: ['General']
+    });
 
-  public readonly character$: Observable<Partial<DHII_Character>> =
-    this.characterSubject$.asObservable();
+  public readonly character$: Observable<DHII_Character> = this.characterSubject$.asObservable();
   public readonly character = this.characterSubject$.value;
 
-  protected attributesSubject$ = new BehaviorSubject<Map<DHII_AttributeName, DHII_Attribute>>(
-    structuredClone(DHII_ATTRIBUTES)
+  public readonly attributes$: Observable<Map<DHII_AttributeName, DHII_Attribute> | undefined> =
+    this.characterSubject$.asObservable().pipe(map(character => character.attributes));
+  public readonly attributes = this.character.attributes;
+
+  public readonly skills$: Observable<Map<DHII_SkillName, DHII_Skill>> = this.character$.pipe(
+    map(character => character.skills)
   );
-
-  public readonly attributes$: Observable<Map<DHII_AttributeName, DHII_Attribute>> =
-    this.attributesSubject$.asObservable();
-  public readonly attributes = this.attributesSubject$.value;
-
-  protected readonly skillSubject$: BehaviorSubject<Map<DHII_SkillName, DHII_Skill>> =
-    new BehaviorSubject<Map<DHII_SkillName, DHII_Skill>>(
-      new Map(
-        Array.from(structuredClone(DHII_SKILLS), ([name, skill]) =>
-          this.initializeSkills(name, skill)
-        )
-      )
-    );
-
-  public readonly skills$: Observable<Map<DHII_SkillName, DHII_Skill>> =
-    this.skillSubject$.asObservable();
-  public readonly skills = this.skillSubject$.value;
+  public readonly skills = this.character.skills;
 
   protected aptitudesSubject$: BehaviorSubject<DHII_Aptitude[]> = new BehaviorSubject<
     DHII_Aptitude[]
@@ -47,14 +40,12 @@ export class DHII_SheetService {
     this.aptitudesSubject$.next(aptitudes);
   }
 
-  updateCharacter(character: Partial<DHII_Character>) {
-    console.log('🚀 ~ DHII_SheetService ~ updateCharacter ~ character:', character);
+  updateCharacter(character: DHII_Character) {
     this.characterSubject$.next(character);
   }
 
   updateAttribute(changedAttribute: DHII_Attribute) {
-    const attributes: Map<DHII_AttributeName, DHII_Attribute> = this.attributesSubject$.value;
-    const attribute: DHII_Attribute | undefined = attributes.get(changedAttribute.name);
+    const attribute: DHII_Attribute | undefined = this.attributes.get(changedAttribute.name);
     if (!attribute) {
       throw Error('No attribute found with name ' + changedAttribute.name);
     }
@@ -68,30 +59,26 @@ export class DHII_SheetService {
       attribute.lvl = changedAttribute.lvl;
     }
 
-    this.attributesSubject$.next(attributes);
+    this.characterSubject$.next(this.character);
 
     this.updateSkillsBasedOnAttribute(attribute);
   }
 
   updateSkill(changedSkill: DHII_Skill) {
-    const attribute: DHII_Attribute = this.attributesSubject$.value.get(changedSkill.basedOn)!;
-    const skills: Map<DHII_SkillName, DHII_Skill> = this.skillSubject$.value;
+    const attribute: DHII_Attribute = this.attributes.get(changedSkill.basedOn)!;
 
-    skills.get(changedSkill.name)!.value = this.calculateSkillValue(changedSkill, attribute);
+    this.skills.get(changedSkill.name)!.value = this.calculateSkillValue(changedSkill, attribute);
 
-    this.skillSubject$.next(skills);
+    this.characterSubject$.next(this.character);
   }
 
   private updateSkillsBasedOnAttribute(changedAttribute: DHII_Attribute) {
-    const skills: Map<DHII_SkillName, DHII_Skill> = this.skillSubject$.value;
-
-    skills.forEach(skill => {
+    this.skills.forEach(skill => {
       if (skill.basedOn === changedAttribute.name) {
         skill.value = this.calculateSkillValue(skill, changedAttribute);
       }
     });
-
-    this.skillSubject$.next(skills);
+    this.characterSubject$.next(this.character);
   }
 
   private calculateAttributeValue(attribute: {
@@ -110,7 +97,7 @@ export class DHII_SheetService {
   }
 
   private initializeSkills(name: DHII_SkillName, skill: DHII_Skill): [DHII_SkillName, DHII_Skill] {
-    const attribute: DHII_Attribute = this.attributesSubject$.value.get(skill.basedOn)!;
+    const attribute: DHII_Attribute = ATTRIBUTES.get(skill.basedOn)!;
 
     return [
       name,

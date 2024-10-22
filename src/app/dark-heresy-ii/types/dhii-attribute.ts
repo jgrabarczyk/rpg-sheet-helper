@@ -34,7 +34,7 @@ export const DHII_ATTRIBUTES: Map<DHII_AttributeName, DHII_Attribute> = new Map(
       },
       name: 'Weapon Skill',
       value: 0,
-      aptitudes: ['Weapon Skill', 'Offensive']
+      aptitudes: ['Weapon Skill', 'Offence']
     }
   ],
   [
@@ -58,7 +58,7 @@ export const DHII_ATTRIBUTES: Map<DHII_AttributeName, DHII_Attribute> = new Map(
       },
       name: 'Strength',
       value: 0,
-      aptitudes: ['Strength', 'Offensive']
+      aptitudes: ['Strength', 'Offence']
     }
   ],
   [
@@ -70,7 +70,7 @@ export const DHII_ATTRIBUTES: Map<DHII_AttributeName, DHII_Attribute> = new Map(
       },
       name: 'Toughness',
       value: 0,
-      aptitudes: ['Toughness', 'Defense']
+      aptitudes: ['Toughness', 'Defence']
     }
   ],
   [
@@ -150,7 +150,7 @@ export const DHII_ATTRIBUTE_LIST: DHII_Attribute[] = [
     },
     name: 'Weapon Skill',
     value: 0,
-    aptitudes: ['Weapon Skill', 'Offensive']
+    aptitudes: ['Weapon Skill', 'Offence']
   },
   {
     lvl: {
@@ -168,7 +168,7 @@ export const DHII_ATTRIBUTE_LIST: DHII_Attribute[] = [
     },
     name: 'Strength',
     value: 0,
-    aptitudes: ['Strength', 'Offensive']
+    aptitudes: ['Strength', 'Offence']
   },
   {
     lvl: {
@@ -177,7 +177,7 @@ export const DHII_ATTRIBUTE_LIST: DHII_Attribute[] = [
     },
     name: 'Toughness',
     value: 0,
-    aptitudes: ['Toughness', 'Defense']
+    aptitudes: ['Toughness', 'Defence']
   },
   {
     lvl: {

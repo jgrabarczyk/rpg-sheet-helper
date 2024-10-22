@@ -71,7 +71,6 @@ export class AttributesGroupComponent {
   }
 
   rollDice(name: DHII_AttributeName, modifier: number): void {
-    console.log("🚀 ~ AttributesGroupComponent ~ rollDice ~ name:", name)
     const attribute: DHII_Attribute | undefined = this.attributes.get(name);
 
     if (!attribute) {
