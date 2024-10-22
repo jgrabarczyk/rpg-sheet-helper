@@ -67,7 +67,7 @@ export const ROLES: Map<DHII_RoleNames, DHII_Role> = new Map<DHII_RoleNames, DHI
     'hierophant',
     {
       pick: {
-        talents: [['Double Team', 'Hatred (Choose Group)']]
+        talents: [['Double Team', 'Hatred (Pick One)']]
       },
       aptitudes: ['Fellowship', 'Offence', 'Social', 'Toughness', 'Willpower'],
       bonus:

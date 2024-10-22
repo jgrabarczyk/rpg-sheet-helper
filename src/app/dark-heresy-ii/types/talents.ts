@@ -1,139 +1,167 @@
 import { DHII_Aptitude } from './dark-heresy-ii';
+export type WeaponTraining = 'Shock' | 'Chain' | 'Las' | 'Flame' | 'Low-Tech' | 'Solid Projectile';
+export type Resistance = 'Cold' | 'Fear' | 'Heat' | 'Poisons' | 'Psychic Powers';
+export type Mechadendrite = 'Gun' | 'Manipulator' | 'Medicae' | 'Optical' | 'Utility';
+export type Peer =
+  | 'Academics'
+  | 'Adeptus Arbites'
+  | 'Adeptus Mechanicus'
+  | 'Administratum'
+  | 'Astropaths'
+  | 'Criminal Cartels'
+  | 'Ecclesiarchy'
+  | 'Feral Worlders'
+  | 'Government'
+  | 'Hivers'
+  | 'Inquisition'
+  | 'Middle Classes'
+  | 'Military'
+  | 'Nobility'
+  | 'The Insane'
+  | 'Underworld'
+  | 'Void Born'
+  | 'Workers';
 
-export type DHII_TalentName = 
-| 'Ambidextrous'
-| 'Blind Fighting'
-| 'Bodyguard'
-| 'Catfall'
-| 'Clues from the Crowds'
-| 'Die Hard'
-| 'Disarm'
-| 'Double Team'
-| 'Enemy'
-| 'Ferric Summons'
-| 'Flagellant'
-| 'Frenzy'
-| 'Grenadier'
-| 'Iron Jaw'
-| 'Jaded'
-| 'Keen Intuition'
-| 'Leap Up'
-| 'Leaping Dodge'
-| 'Mounted Warrior'
-| 'Nowhere to Hide'
-| 'Peer'
-| 'Quick Draw'
-| 'Rapid Reload'
-| 'Resistance'
-| 'Sound Constitution'
-| 'Skilled Rider'
-| 'Takedown'
-| 'Technical Knock'
-| 'Warp Sense'
-| 'Weapon-Tech'
-| 'Weapon Training'
-| 'Ambassador Imperialis'
-| 'Archivator'
-| 'Armour-Monger'
-| 'Battle Rage'
-| 'Bulging Biceps'
-| 'Bulwark of Faith'
-| 'Combat Master'
-| 'Constant Vigilance'
-| 'Contact Network'
-| 'Coordinated Interrogation'
-| 'Counter Attack'
-| 'Cover-Up'
-| 'Daemonhunter'
-| 'Daemonologist'
-| 'Deny the Witch'
-| 'Devastating Assault'
-| 'Double Tap'
-| 'Exotic Weapon Training'
-| 'Face in a Crowd'
-| 'Field Vivisection'
-| 'Hard Target'
-| 'Hardened Soul'
-| 'Hardy'
-| 'Hatred'
-| 'Hip Shooting'
-| 'Hotshot Pilot'
-| 'Independent Targeting'
-| 'Inescapable Attack'
-| 'Inspiring Aura'
-| 'Iron Resolve'
-| 'Killing Strike'
-| 'Lexographer'
-| 'Lumien Shock'
-| 'Maglev Transcendence'
-| 'Marksman'
-| 'Mechadendrite Use'
-| 'One-on-One'
-| 'Penitent Psyker'
-| 'Precision Killer'
-| 'Prosanguine'
-| 'Purity of Hatred'
-| 'Rites of Banishment'
-| 'Strong Minded'
-| 'Swift Attack'
-| 'Tainted Psyker'
-| 'Two-Weapon Wielder'
-| 'Unarmed Specialist'
-| 'Warp Conduit'
-| 'Whirlwind of Death'
-| 'Witch Finder'
-| 'Xenosavant'
-| 'Aegis of Contempt'
-| 'Adamantium Faith'
-| 'Assassin Strike'
-| 'Bastion of Iron Will'
-| 'Blademaster'
-| 'Crushing Blow'
-| 'Daemonic Disruption'
-| 'Dark Soul'
-| 'Deathdealer'
-| 'Delicate Interrogation'
-| 'Divine Protection'
-| 'Eye of Vengeance'
-| 'Favoured by the Warp'
-| 'Flash of Insight'
-| 'Halo of Command'
-| 'Hammer Blow'
-| 'Hull Down'
-| 'Infused Knowledge'
-| 'Instrument of His Will'
-| 'Iron Faith'
-| 'Lightning Attack'
-| 'Luminen Blast'
-| 'Mastery'
-| 'Mighty Shot'
-| 'Never Die'
-| 'Preternatural Speed'
-| 'Push the Limit'
-| 'Sanctic Purity'
-| 'Shield Wall'
-| 'Sprint'
-| 'Step Aside'
-| 'Superior Chirurgeon'
-| 'Target Selection'
-| 'Thunder Charge'
-| 'True Grit'
-| 'Two-Weapon Master'
-| 'Warp Lock'
-//talents with specific specialisation choosen;
-  | 'Weapon Training (Shock)'
-  | 'Weapon Training (Low-Tech | Solid Projectile)'
-  | 'Weapon Training (Chain)'
-  | 'Weapon Training (Las)'
-  | 'Weapon Training (Flame)'
-  | 'Weapon Training (Low-Tech)'
-  | 'Weapon Training (Solid Projectile)'
-  | 'Mechadendrite Use (Utility)'
-  | 'Resistance (Pick One)'
-  | 'Resistance (Psychic Powers)'
-  | 'Hatred (Choose Group)'
-  | 'Hatred (Daemons)'
-  | 'Peer (Criminal Cartels)'
+export type PickOne = 'Pick One';
+export type Hatred =
+  | 'Criminal'
+  | `Cult (${PickOne})`
+  | 'Daemon'
+  | `Xeno (${PickOne})`
+  | 'Psyker'
+  | 'Heretic'
+  | 'Mutant'
+  | 'Chaos Space Marine'
+  | 'Pirate'
+  | 'Inquisitio'
+  | 'Ecclesiarch'
+  | 'Space Marine'
+  | `Space Marines (${PickOne})`
+  | `Inquisition (${PickOne})`
+  | 'Inquisition'
+  | 'Rogue Traders.';
+
+export type DHII_TalentName =
+  | 'Ambidextrous'
+  | 'Blind Fighting'
+  | 'Bodyguard'
+  | 'Catfall'
+  | 'Clues from the Crowds'
+  | 'Die Hard'
+  | 'Disarm'
+  | 'Double Team'
+  | `Enemy (${Peer | PickOne})`
+  | 'Ferric Summons'
+  | 'Flagellant'
+  | 'Frenzy'
+  | 'Grenadier'
+  | 'Iron Jaw'
+  | 'Jaded'
+  | 'Keen Intuition'
+  | 'Leap Up'
+  | 'Leaping Dodge'
+  | 'Mounted Warrior'
+  | 'Nowhere to Hide'
+  | `Peer (${Peer | PickOne})`
+  | 'Quick Draw'
+  | 'Rapid Reload'
+  | `Resistance (${Resistance | PickOne})`
+  | 'Sound Constitution'
+  | 'Skilled Rider'
+  | 'Takedown'
+  | 'Technical Knock'
+  | 'Warp Sense'
+  | 'Weapon-Tech'
+  | 'Weapon Training'
+  | `Weapon Training (${WeaponTraining | PickOne})`
+  | 'Ambassador Imperialis'
+  | 'Archivator'
+  | 'Armour-Monger'
+  | 'Battle Rage'
+  | 'Bulging Biceps'
+  | 'Bulwark of Faith'
+  | 'Combat Master'
+  | 'Constant Vigilance'
+  | 'Contact Network'
+  | 'Coordinated Interrogation'
+  | 'Counter Attack'
+  | 'Cover-Up'
+  | 'Daemonhunter'
+  | 'Daemonologist'
+  | 'Deny the Witch'
+  | 'Devastating Assault'
+  | 'Double Tap'
+  | 'Exotic Weapon Training'
+  | 'Face in a Crowd'
+  | 'Field Vivisection'
+  | 'Hard Target'
+  | 'Hardened Soul'
+  | 'Hardy'
+  | `Hatred (${Hatred | PickOne})`
+  | 'Hip Shooting'
+  | 'Hotshot Pilot'
+  | 'Independent Targeting'
+  | 'Inescapable Attack'
+  | 'Inspiring Aura'
+  | 'Iron Resolve'
+  | 'Killing Strike'
+  | 'Lexographer'
+  | 'Lumien Shock'
+  | 'Maglev Transcendence'
+  | 'Marksman'
+  | `Mechadendrite Use (${Mechadendrite | PickOne})`
+  | 'One-on-One'
+  | 'Penitent Psyker'
+  | 'Precision Killer'
+  | 'Prosanguine'
+  | 'Purity of Hatred'
+  | 'Rites of Banishment'
+  | 'Strong Minded'
+  | 'Swift Attack'
+  | 'Tainted Psyker'
+  | 'Two-Weapon Wielder'
+  | 'Unarmed Specialist'
+  | 'Warp Conduit'
+  | 'Whirlwind of Death'
+  | 'Witch Finder'
+  | 'Xenosavant'
+  | 'Aegis of Contempt'
+  | 'Adamantium Faith'
+  | 'Assassin Strike'
+  | 'Bastion of Iron Will'
+  | 'Blademaster'
+  | 'Crushing Blow'
+  | 'Daemonic Disruption'
+  | 'Dark Soul'
+  | 'Deathdealer'
+  | 'Delicate Interrogation'
+  | 'Divine Protection'
+  | 'Eye of Vengeance'
+  | 'Favoured by the Warp'
+  | 'Flash of Insight'
+  | 'Halo of Command'
+  | 'Hammer Blow'
+  | 'Hull Down'
+  | 'Infused Knowledge'
+  | 'Instrument of His Will'
+  | 'Iron Faith'
+  | 'Lightning Attack'
+  | 'Luminen Blast'
+  | 'Mastery'
+  | 'Mighty Shot'
+  | 'Never Die'
+  | 'Preternatural Speed'
+  | 'Push the Limit'
+  | 'Sanctic Purity'
+  | 'Shield Wall'
+  | 'Sprint'
+  | 'Step Aside'
+  | 'Superior Chirurgeon'
+  | 'Target Selection'
+  | 'Thunder Charge'
+  | 'True Grit'
+  | 'Two-Weapon Master'
+  | 'Warp Lock';
 
 export type DHII_Talent = {
   name: string;
@@ -144,7 +172,7 @@ export type DHII_Talent = {
   specialisations?: string[];
 };
 
-export const talents: Map<string, DHII_Talent> = new Map([
+export const talents: Map<DHII_TalentName, DHII_Talent> = new Map([
   [
     'Ambidextrous',
     {
@@ -234,7 +262,6 @@ to the ground. Should the Acolyte score three or more degrees of success, he can
     {
       name: 'Double Team',
       tier: 1,
-      prerequisite: ' None',
       aptitudes: ['General', 'Offence'],
       description: `The Acolyte has experience of fighting in paired teams that work together to take down their enemies. When Ganging Up on an opponent,
 he gains an additional +10 bonus to Weapon Skill tests. If both the characters that outnumber the enemy have this talent, then both
@@ -243,12 +270,30 @@ gain an additional +10 bonus, for a total of +20. This bonus is in addition to t
     }
   ],
   [
-    'Enemy',
+    'Enemy (Pick One)',
     {
       name: 'Enemy',
       tier: 1,
-      prerequisite: ' None',
-      specialisations: ['Any listed in the sidebar The Powers of Askellon'],
+      specialisations: [
+        'Academics',
+        'Adeptus Arbites',
+        'Adeptus Mechanicus',
+        'Administratum',
+        'Astropaths',
+        'Criminal Cartels',
+        'Ecclesiarchy',
+        'Feral Worlders',
+        'Government',
+        'Hivers',
+        'Inquisition',
+        'Middle Classes',
+        'Military',
+        'Nobility',
+        'The Insane',
+        'Underworld',
+        'Void Born',
+        'Workers'
+      ],
       aptitudes: ['General', 'Social'],
       description: `
 The opposite of Peer (see page 130), the Acolyte is particularly despised and possibly hunted by a specific social group or
@@ -291,7 +336,6 @@ effects of this talent.`
     {
       name: 'Frenzy',
       tier: 1,
-      prerequisite: ' None',
       aptitudes: ['Strength', 'Offence'],
       description: `The Acolyte’s temper and passion boil just below the surface of his psyche, mostly held in check by his rational mind, but easily
 released when needed. If he spends one full round fuelling his anger—by flagellation, drugs, or other means—on the next round, he goes
@@ -410,13 +454,30 @@ that does not require a skill test, he adds 1 instead.`
     }
   ],
   [
-    'Peer',
+    'Peer (Pick One)',
     {
       name: 'Peer',
       tier: 1,
       prerequisite: ' Fellowship 30',
       specialisations: [
-        'Any listed in the sidebar The Powers of Askellon (see page 126), others at GM’s discretion'
+        'Academics',
+        'Adeptus Arbites',
+        'Adeptus Mechanicus',
+        'Administratum',
+        'Astropaths',
+        'Criminal Cartels',
+        'Ecclesiarchy',
+        'Feral Worlders',
+        'Government',
+        'Hivers',
+        'Inquisition',
+        'Middle Classes',
+        'Military',
+        'Nobility',
+        'The Insane',
+        'Underworld',
+        'Void Born',
+        'Workers'
       ],
       aptitudes: ['Fellowship', 'Social'],
       description: `
@@ -434,7 +495,6 @@ Additionally, when the character acquires this talent, he increases his Influenc
     {
       name: 'Quick Draw',
       tier: 1,
-      prerequisite: ' None',
       aptitudes: ['Agility', 'Finesse'],
       description: `The Acolyte has practised so frequently with his weapons that they practically leap into his hands in response to a simple thought. As
 a Free Action, the character may draw and ready a Pistol or Basic weapon, or a one-handed Melee weapon.`
@@ -445,7 +505,6 @@ a Free Action, the character may draw and ready a Pistol or Basic weapon, or a o
     {
       name: 'Rapid Reload',
       tier: 1,
-      prerequisite: ' None',
       aptitudes: ['Agility', 'Fieldcraft'],
       description: `The firing ranges and weapon drill chambers are the Acolyte’s constant abode. Hours of reloading countless magazines or power cells
 means that he can replace them without looking and without thinking, even in the middle of combat. He halves all reload times, rounding
@@ -453,11 +512,10 @@ down. Thus, a Half Action reload becomes a Free Action, a Full Action reload bec
     }
   ],
   [
-    'Resistance',
+    'Resistance (Pick One)',
     {
       name: 'Resistance',
       tier: 1,
-      prerequisite: ' None',
       specialisations: [
         'Cold',
         'Fear',
@@ -507,7 +565,6 @@ vehicle as a Free Action.`
     {
       name: 'Takedown',
       tier: 1,
-      prerequisite: ' None',
       aptitudes: ['Weapon Skill', 'Offence'],
       description: `When making a Standard Attack or Charge action, the Acolyte can declare that he is attempting a takedown of his target. He then rolls
 to hit (using his Weapon Skill) as normal, applying all the regular modifiers for the attack action. If the character hits and would
@@ -559,7 +616,6 @@ bonus until the end of the round.`
     {
       name: 'Weapon Training',
       tier: 1,
-      prerequisite: ' None',
       specialisations: [
         'Bolt',
         'Chain',
@@ -807,8 +863,7 @@ scored one or more successful hits.`
     {
       name: 'Exotic Weapon Training',
       tier: 2,
-      prerequisite: ' None',
-      specialisations: ['Each different exotic weapon'],
+      specialisations: ['Each different exotic weapon'], //funny one
       aptitudes: ['Intelligence', 'Finesse'],
       description: `
 The Acolyte is trained to use a particularly obscure type of weapon, such as a graviton gun or needle pistol. Weapons requiring this
@@ -881,18 +936,27 @@ injuries, he always recovers damage as if Lightly Damaged, regardless of the lev
     }
   ],
   [
-    'Hatred',
+    'Hatred (Pick One)',
     {
       name: 'Hatred',
       tier: 2,
-      prerequisite: ' None',
       specialisations: [
-        'Chaos Space Marines',
-        'Daemons',
-        'Mutants',
-        'Psykers',
-        'Xenos (specific)',
-        'others including groups from The Powers of Askellon (page 94)'
+        'Criminal',
+        `Cult (PickOne)`,
+        'Daemon',
+        `Xeno (PickOne)`,
+        'Psyker',
+        'Heretic',
+        'Mutant',
+        'Chaos Space Marine',
+        'Pirate',
+        'Inquisitio',
+        'Ecclesiarch',
+        'Space Marine',
+        `Space Marines (PickOne)`,
+        `Inquisition (PickOne)`,
+        'Inquisition',
+        'Rogue Traders.'
       ],
       aptitudes: ['Weapon Skill', 'Social'],
       description: `
@@ -1047,12 +1111,12 @@ protection against the character’s marksmanship, and he suffers no penalties f
     }
   ],
   [
-    'Mechadendrite Use',
+    'Mechadendrite Use (Pick One)',
     {
       name: 'Mechadendrite Use',
       tier: 2,
       prerequisite: ' Mechanicus Implants',
-      specialisations: ['Weapon', 'Utility'],
+      specialisations: ['Gun', 'Manipulator', 'Medicae', 'Optical', 'Utility'],
       aptitudes: ['Intelligence', 'Tech'],
       description: `
 The Acolyte is trained in the use of a particular kind of mechadendrite (see page 183) in much the same way as Weapon Training allows
@@ -1128,7 +1192,7 @@ Autosanguinator for one week.
       name: 'Purity of Hatred',
       tier: 2,
       prerequisites: ' Hatred (Any)',
-      specialisations: ['Any group for which the character possesses the Hatred talent'],
+      specialisations: ['Any group for which the character possesses the Hatred talent'], // this will be funny to
       aptitudes: ['Offence', 'Willpower'],
       description: `
 The Acolyte has honed his hatred to a razor’s edge, pure and unsullied by mercy or doubt. When facing the object of his hatred, whether
@@ -1581,7 +1645,7 @@ after making an attack with it, he must pass a Toughness test or suffer 1 level 
       name: 'Mastery',
       tier: 3,
       prerequisite: ' Rank 4 in selected skill',
-      specialisations: ['Any skill'],
+      specialisations: ['Any skill'], // this will be funny to implement
       aptitudes: ['Intelligence', 'Knowledge'],
       description: `
 The Acolyte has mastered a single skill. He can spend a Fate point to automatically pass a skill test with his chosen skill, provided
@@ -1672,7 +1736,6 @@ point in order to negate the result entirely.
     {
       name: 'Sprint',
       tier: 3,
-      prerequisite: ' None',
       aptitudes: ['Agility', 'Fieldcraft'],
       description: `The Acolyte moves at great speeds, and when taking a Full Move action can move an extra number of metres equal to his Agility bonus.
 Additionally, whenever he takes a Run action, he may move double the normal distance. If he did so in the previous round, however, he

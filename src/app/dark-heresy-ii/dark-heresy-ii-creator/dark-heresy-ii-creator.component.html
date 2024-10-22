@@ -30,10 +30,7 @@
       }
     </div>
 
-    <div>
-      <button mat-button matStepperPrevious>Back</button>
-      <button mat-button matStepperNext>Next</button>
-    </div>
+    <ng-container *ngTemplateOutlet="footer"></ng-container>
   </mat-step>
 
   <mat-step>
@@ -45,10 +42,7 @@
       }
     </div>
 
-    <div>
-      <button mat-button matStepperPrevious>Back</button>
-      <button mat-button matStepperNext>Next</button>
-    </div>
+    <ng-container *ngTemplateOutlet="footer"></ng-container>
   </mat-step>
 
   <mat-step>
@@ -70,10 +64,7 @@
     </div>
     }
 
-    <div>
-      <button mat-button matStepperPrevious>Back</button>
-      <button mat-button matStepperNext>Next</button>
-    </div>
+    <ng-container *ngTemplateOutlet="footer"></ng-container>
   </mat-step>
 
   <mat-step>
@@ -103,10 +94,7 @@
       }
     </div>
     }
-    <div>
-      <button mat-button matStepperPrevious>Back</button>
-      <button mat-button matStepperNext>Next</button>
-    </div>
+    <ng-container *ngTemplateOutlet="footer"></ng-container>
   </mat-step>
 
   <mat-step>
@@ -115,7 +103,9 @@
     @let talents = creatorService.talents$ | async; @let talentsToPick =
     creatorService.talentsToPick$ | async; @if(talents){
     <div class="talents">
-      <br />
+      @for(talent of talents; track talent){
+      {{ talent }}<br />
+      }
     </div>
     } @if(talentsToPick){
 
@@ -135,18 +125,111 @@
       }
     </div>
     }
+    <ng-container *ngTemplateOutlet="footer"></ng-container>
+  </mat-step>
+
+  <mat-step>
+    <ng-template matStepLabel> Pick Skills </ng-template>
+
+    @let skills = creatorService.skills$ | async; @let skillsToPick = creatorService.skillsToPick$ |
+    async; @if(skills){
+    <div class="skills">
+      @for(skill of skills; track skill){
+      {{ skill }}<br />
+      }
+    </div>
+    } @if(skillsToPick){
+
+    <div class="pick">
+      @for(options of skillsToPick; track options){
+
+      <mat-form-field>
+        <mat-label>Choose an option</mat-label>
+        <mat-select>
+          @for(option of options; track option){
+          <mat-option [value]="option">
+            {{ option }}
+          </mat-option>
+          }
+        </mat-select>
+      </mat-form-field>
+      }
+    </div>
+    }
+    <ng-container *ngTemplateOutlet="footer"></ng-container>
+  </mat-step>
+
+  <mat-step>
+    <ng-template matStepLabel> Pick Equipment </ng-template>
+
+    @let equipment = creatorService.equipment$ | async; @let equipmentToPick =
+    creatorService.equipmentToPick$ | async; @if(equipment){
+    <div class="equipment">
+      @for(item of equipment; track item){
+      {{ item }}
+      <br />
+      }
+    </div>
+    } @if(equipmentToPick){
+
+    <div class="pick">
+      @for(options of equipmentToPick; track options){
+
+      <mat-form-field>
+        <mat-label>Choose an option</mat-label>
+        <mat-select>
+          @for(option of options; track option){
+          <mat-option [value]="option">
+            {{ option }}
+          </mat-option>
+          }
+        </mat-select>
+      </mat-form-field>
+      }
+    </div>
+    }
+    <ng-container *ngTemplateOutlet="footer"></ng-container>
+  </mat-step>
+
+  <mat-step>
+    <ng-template matStepLabel>Determin Wounds And Fate</ng-template>
+    @let character = creatorService.character$ | async; wounds <br />
+    @if(character?.homeworld?.wounds){ Base: {{ character!.homeworld!.wounds }} <br />
+    total: {{ character?.wounds ?? '' }}
+    <button (click)="setWounds()">add 1d5 to wounds</button>
+    }
+    <br />
+    Fate <br />
+    Base: {{ character?.homeworld?.fate }} | threshold:
+    {{ character?.homeworld?.blessingThreshold }} total: {{ character?.fate }}
+    <button (click)="setFate()">roll 1d10</button>
+    <ng-container *ngTemplateOutlet="footer"></ng-container>
+  </mat-step>
+
+  <mat-step>
+    <ng-template matStepLabel>Determin Divination</ng-template>
+    Divination:
+    <button (click)="setDivination()">roll 1d100</button>
+    @if(character?.divination){
+      name: {{character!.divination!.name}} <br>
+      description: {{character!.divination!.description}} 
+    }
+    
+
+    <ng-container *ngTemplateOutlet="footer"></ng-container>
+  </mat-step>
+
+  <ng-template #footer>
     <div>
       <button mat-button matStepperPrevious>Back</button>
       <button mat-button matStepperNext>Next</button>
     </div>
-  </mat-step>
+  </ng-template>
 
-  <mat-step>
-    <ng-template matStepLabel>Done</ng-template>
-    <p>You are now done.</p>
+  <ng-template #footerFinish>
     <div>
       <button mat-button matStepperPrevious>Back</button>
       <button mat-button (click)="stepper.reset()">Reset</button>
     </div>
-  </mat-step>
+  </ng-template>
 </mat-stepper>

@@ -9,6 +9,8 @@ import { DHII_SheetService } from '../service/dhii-sheet.service';
 import { DHII_Attribute, DHII_AttributeName } from '../types/dhii-attribute';
 import { DiceRoll } from '../../types/roll';
 import { rollDices } from '../../utility/roll';
+import { DHII_SkillName } from '../types/dhii-skill';
+import { pickDivination } from '../types/dhii-divination';
 
 @Injectable({
   providedIn: 'root'
@@ -17,34 +19,37 @@ export class DHII_CreatorService {
   sheetService = inject(DHII_SheetService);
 
   private readonly homeworldsSubject$ = new BehaviorSubject(HOMEWORLDS);
-  public homeworlds$ = this.homeworldsSubject$.asObservable();
-  public homeworlds = this.homeworldsSubject$.value;
+  public readonly homeworlds$ = this.homeworldsSubject$.asObservable();
+  public readonly homeworlds = this.homeworldsSubject$.value;
 
   private readonly backgroundsSubject$ = new BehaviorSubject(BACKGROUNDS);
-  public backgrounds$ = this.backgroundsSubject$.asObservable();
-  public backgrounds = this.backgroundsSubject$.value;
+  public readonly backgrounds$ = this.backgroundsSubject$.asObservable();
+  public readonly backgrounds = this.backgroundsSubject$.value;
 
   private readonly rolesSubject$ = new BehaviorSubject(ROLES);
-  public roles$ = this.rolesSubject$.asObservable();
-  public roles = this.rolesSubject$.value;
+  public readonly roles$ = this.rolesSubject$.asObservable();
+  public readonly roles = this.rolesSubject$.value;
 
-  public aptitudes$: Observable<DHII_Aptitude[]> = this.sheetService.character$.pipe(
+  public readonly character$: Observable<DHII_Character> = this.sheetService.character$;
+
+  public readonly aptitudes$: Observable<DHII_Aptitude[]> = this.sheetService.character$.pipe(
     map(character =>
       [character.homeworld?.aptitude, ...(character.role?.aptitudes ?? [])].filter(a => !!a)
     ),
     map(array => [...array, 'General'])
   );
 
-  public aptitudesToPick$: Observable<DHII_Aptitude[][]> = this.sheetService.character$.pipe(
-    map(character => {
-      return [
-        ...(character.background?.pick?.aptitudes ?? []),
-        ...(character.role?.pick.aptitudes ?? [])
-      ];
-    })
-  );
+  public readonly aptitudesToPick$: Observable<DHII_Aptitude[][]> =
+    this.sheetService.character$.pipe(
+      map(character => {
+        return [
+          ...(character.background?.pick?.aptitudes ?? []),
+          ...(character.role?.pick.aptitudes ?? [])
+        ];
+      })
+    );
 
-  public talents$: Observable<DHII_TalentName[]> = this.sheetService.character$.pipe(
+  public readonly talents$: Observable<DHII_TalentName[]> = this.sheetService.character$.pipe(
     map(character =>
       [...(character.homeworld?.talents ?? []), ...(character.background?.talents ?? [])].filter(
         a => !!a
@@ -52,16 +57,42 @@ export class DHII_CreatorService {
     )
   );
 
-  public talentsToPick$: Observable<DHII_TalentName[][]> = this.sheetService.character$.pipe(
+  public readonly talentsToPick$: Observable<DHII_TalentName[][]> =
+    this.sheetService.character$.pipe(
+      map(character => {
+        return [
+          ...(character.homeworld?.pick?.talents ?? []),
+          ...(character.background?.pick?.talents ?? []),
+          ...(character.role?.pick.talents ?? [])
+        ];
+      })
+    );
+  public readonly skills$: Observable<DHII_SkillName[]> = this.sheetService.character$.pipe(
+    map(character =>
+      [...(character.homeworld?.skills ?? []), ...(character.background?.skills ?? [])].filter(
+        a => !!a
+      )
+    )
+  );
+
+  public readonly skillsToPick$: Observable<DHII_SkillName[][]> = this.sheetService.character$.pipe(
     map(character => {
       return [
-        ...(character.homeworld?.pick?.talents ?? []),
-        ...(character.background?.pick?.talents ?? []),
-        ...(character.role?.pick.talents ?? [])
+        ...(character.homeworld?.pick?.skills ?? []),
+        ...(character.background?.pick?.skills ?? [])
       ];
     })
   );
 
+  public readonly equipment$: Observable<string[]> = this.sheetService.character$.pipe(
+    map(character => [...(character.background?.equipment ?? [])].filter(a => !!a))
+  );
+
+  public readonly equipmentToPick$: Observable<string[][]> = this.sheetService.character$.pipe(
+    map(character => {
+      return [...(character.background?.pick?.equipment ?? [])];
+    })
+  );
 
   setHomeworld(homeworld: DHII_Homeworld) {
     const chararcter: DHII_Character = this.sheetService.character;
@@ -85,6 +116,39 @@ export class DHII_CreatorService {
     const chararcter: DHII_Character = this.sheetService.character;
     chararcter.aptitudes = newAptitudes;
     this.sheetService.updtaeAptitudes(newAptitudes);
+  }
+
+  setWounds() {
+    const chararcter: DHII_Character = this.sheetService.character;
+    const wounds: number | undefined = chararcter?.homeworld?.wounds;
+    if (!wounds) {
+      throw new Error('character.homewolrd is not set');
+    }
+
+    chararcter.wounds = wounds + rollDices('1d5');
+    this.sheetService.updateCharacter(chararcter);
+  }
+
+  setDivination() {
+    const chararcter: DHII_Character = this.sheetService.character;
+    chararcter.divination = pickDivination();
+  }
+  
+  setFate() {
+    const chararcter: DHII_Character = this.sheetService.character;
+    const homeworld: DHII_Homeworld | undefined = chararcter?.homeworld;
+    if (!homeworld) {
+      throw new Error('character.homewolrd is not set');
+    }
+
+    chararcter.fate = homeworld.fate;
+
+    if (rollDices('1d10') >= homeworld.blessingThreshold) {
+      chararcter.fate++;
+    }
+    
+    this.sheetService.updateCharacter(chararcter);
+    this.sheetService.updateCharacter(chararcter);
   }
 
   generateAttributes() {

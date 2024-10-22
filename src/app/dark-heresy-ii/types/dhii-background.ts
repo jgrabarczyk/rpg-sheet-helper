@@ -21,10 +21,10 @@ export type DHII_Background = {
   name: string;
   bonus: string;
   pick?: {
-    aptitudes?: Array<DHII_Aptitude[]>;
-    skills?: Array<DHII_SkillName[]>;
-    talents?: Array<DHII_TalentName[]>;
-    equipment?: Array<string[]>;
+    aptitudes?: DHII_Aptitude[][];
+    skills?: DHII_SkillName[][];
+    talents?: DHII_TalentName[][];
+    equipment?: string[][];
   };
   skills: DHII_SkillName[];
   talents: DHII_TalentName[];
@@ -134,12 +134,13 @@ export const BACKGROUNDS: Map<DHII_BackgroundNames, DHII_Background> = new Map([
         equipment: [
           ['Hand Flamer', 'Warhammer and Stub Revolver'],
           ['Imperial Robes', 'Flak Vest']
-        ]
+        ],
+        talents: [['Weapon Training (Low-Tech)', 'Weapon Training (Solid Projectile)']]
       },
       bonus:
         'Faith is All: When spending a Fate point to gain a+10 bonus to any one test, an Adeptus Ministorum character gains a +20 bonus instead.',
       skills: ['Charm', 'Command', 'Common Lore (Adeptus Ministorum)', 'Linguistics (High Gothic)'],
-      talents: ['Weapon Training (Flame)', 'Weapon Training (Low-Tech | Solid Projectile)'],
+      talents: ['Weapon Training (Flame)'],
       equipment: ['Backpack', 'Glow-globe', 'Monotask Servo-skull (Laud Hailer)'],
       name: 'Adeptus Ministorum'
     }
@@ -326,7 +327,7 @@ export const BACKGROUNDS: Map<DHII_BackgroundNames, DHII_Background> = new Map([
         'Touched by a Daemon: An exorcised character counts his Insanity Bonus as 2 higher for purposes of avoiding Fear tests. Additionally, he can never again be possessed by a daemon. In addition, an exorcised character begins with one Malignancy',
       skills: ['Awareness', 'Dodge', 'Forbidden Lore (Daemonology)'],
       talents: [
-        'Hatred (Daemons)',
+        'Hatred (Daemon)',
         'Weapon Training (Solid Projectile)',
         'Weapon Training (Chain)'
       ],

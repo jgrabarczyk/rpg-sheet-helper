@@ -4,6 +4,7 @@ import { DHII_SkillName, DHII_Skill } from './dhii-skill';
 import { DHII_Attribute, DHII_AttributeName } from './dhii-attribute';
 import { DHII_Role } from './dhii-role';
 import { DHII_Talent, DHII_TalentName } from './talents';
+import { DHII_Divination } from './dhii-divination';
 
 export type DHII_Aptitude =
   | 'General'
@@ -26,4 +27,7 @@ export type DHII_Character = {
   homeworld?: DHII_Homeworld;
   role?: DHII_Role;
   background?: DHII_Background;
+  wounds?: number
+  fate?: number
+  divination?:DHII_Divination
 };

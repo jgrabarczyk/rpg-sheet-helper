@@ -74,4 +74,16 @@ export class DarkHeresyIICreatorComponent {
   reroll(roll: Roll) {
     this.creatorService.rerollAttribute(roll.name as DHII_AttributeName);
   }
+
+  setWounds(){
+    this.creatorService.setWounds()
+  }
+
+  setFate(){
+    this.creatorService.setFate()
+  }
+
+  setDivination(){
+    this.creatorService.setDivination()
+  }
 }

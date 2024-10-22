@@ -14,7 +14,9 @@ export function rollDices(roll: DiceRoll, modifier?: 'bonus' | 'penality'): numb
     results.pop();
   }
 
-  return results.reduce((acc, current) => acc + current);
+  const final: number = results.reduce((acc, current) => acc + current);
+  console.log('rollDice:', roll, '|', final);
+  return final;
 }
 
 export function rollTest(roll: Roll) {
