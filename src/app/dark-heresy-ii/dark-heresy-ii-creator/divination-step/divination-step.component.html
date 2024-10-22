@@ -1,0 +1,11 @@
+Divination:
+<button (click)="setDivination.emit()">roll 1d100</button>
+
+@if(divination){ name: {{ divination!.name }} <br />
+description: {{ divination!.description }}
+}
+
+<div>
+  <button mat-button matStepperPrevious>Back</button>
+  <button mat-button (click)="resetStepper.emit()">Reset</button>
+</div>

@@ -25,7 +25,8 @@ export type DHII_RoleNames =
   | 'ace'
   | 'crusader';
 
-export const ROLES: Map<DHII_RoleNames, DHII_Role> = new Map<DHII_RoleNames, DHII_Role>([
+export type DHII_Roles = Map<DHII_RoleNames, DHII_Role>;
+export const ROLES: DHII_Roles = new Map<DHII_RoleNames, DHII_Role>([
   [
     'assassin',
     {

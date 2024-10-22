@@ -24,7 +24,8 @@ export type DHII_Attribute =
     })
   | Characteristic<'Influence'>;
 
-export const DHII_ATTRIBUTES: Map<DHII_AttributeName, DHII_Attribute> = new Map([
+export type DHII_Attributes = Map<DHII_AttributeName, DHII_Attribute>;
+export const DHII_ATTRIBUTES: DHII_Attributes = new Map([
   [
     'Weapon Skill',
     {

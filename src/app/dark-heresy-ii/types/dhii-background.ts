@@ -31,7 +31,8 @@ export type DHII_Background = {
   equipment: string[];
 };
 
-export const BACKGROUNDS: Map<DHII_BackgroundNames, DHII_Background> = new Map([
+export type DHII_Backgrounds = Map<DHII_BackgroundNames, DHII_Background> ;
+export const BACKGROUNDS: DHII_Backgrounds = new Map([
   [
     'admin',
     {

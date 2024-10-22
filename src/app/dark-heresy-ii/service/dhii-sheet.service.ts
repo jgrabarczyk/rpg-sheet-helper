@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
 import { DHII_Aptitude, DHII_Character } from '../types/dark-heresy-ii';
 import { BehaviorSubject, map, Observable } from 'rxjs';
-import { DHII_Attribute, DHII_AttributeName, DHII_ATTRIBUTES } from '../types/dhii-attribute';
+import { DHII_Attributes, DHII_Attribute, DHII_ATTRIBUTES } from '../types/dhii-attribute';
 import { DHII_Skill, DHII_SkillName, DHII_SKILLS } from '../types/dhii-skill';
 
-const ATTRIBUTES: Map<DHII_AttributeName, DHII_Attribute> = structuredClone(DHII_ATTRIBUTES);
+const ATTRIBUTES: DHII_Attributes = structuredClone(DHII_ATTRIBUTES);
 const SKILLS: Map<DHII_SkillName<string>, DHII_Skill> = structuredClone(DHII_SKILLS);
 
 @Injectable({
@@ -21,7 +21,7 @@ export class DHII_SheetService {
   public readonly character$: Observable<DHII_Character> = this.characterSubject$.asObservable();
   public readonly character = this.characterSubject$.value;
 
-  public readonly attributes$: Observable<Map<DHII_AttributeName, DHII_Attribute> | undefined> =
+  public readonly attributes$: Observable<DHII_Attributes> =
     this.characterSubject$.asObservable().pipe(map(character => character.attributes));
   public readonly attributes = this.character.attributes;
 

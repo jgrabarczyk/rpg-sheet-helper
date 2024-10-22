@@ -1,4 +1,4 @@
-import { DHII_Homeworld, DHII_HomeworldNames } from '../types/dhii-homeworlds';
+import { DHII_Homeworld } from '../types/dhii-homeworlds';
 import { CommonModule } from '@angular/common';
 import { Component, inject, ViewChild } from '@angular/core';
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -8,16 +8,26 @@ import { MatStepperModule } from '@angular/material/stepper';
 import { HomeworldCardComponent } from '../homeworld-card/homeworld-card.component';
 import { MatStepper } from '@angular/material/stepper';
 import { BackgroundCardComponent } from '../background-card/background-card.component';
-import { DHII_Background, DHII_BackgroundNames } from '../types/dhii-background';
+import { DHII_Background } from '../types/dhii-background';
 import { RoleCardComponent } from '../role-card/role-card.component';
-import { DHII_Role, DHII_RoleNames } from '../types/dhii-role';
+import { DHII_Role } from '../types/dhii-role';
 import { AttributesGroupComponent } from '../sheet/attribute/attributes-group/attributes-group.component';
 import { DHII_AttributeName } from '../types/dhii-attribute';
 import { Roll } from '../../types/roll';
-import { AptitudesGroupComponent } from "../sheet/aptitude/aptitudes-group.component";
-import {MatSelectModule} from '@angular/material/select'; 
+import { AptitudesGroupComponent } from '../sheet/aptitude/aptitudes-group.component';
+import { MatSelectModule } from '@angular/material/select';
 import { DHII_CreatorService } from './dhii-creator.service';
 import { DHII_SheetService } from '../service/dhii-sheet.service';
+import { HomeworldStepComponent } from './homeworld-step/homeworld-step.component';
+import { BackgroundStepComponent } from './background-step/background-step.component';
+import { RoleStepComponent } from './role-step/role-step.component';
+import { AttributeStepComponent } from "./attribute-step/attribute-step.component";
+import { DHII_Aptitude } from '../types/dark-heresy-ii';
+import { AptitudeStepComponent } from './aptitude-step/aptitude-step.component';
+import { SkillStepComponent } from "./skill-step/skill-step.component";
+import { EquipmentStepComponent } from "./equipment-step/equipment-step.component";
+import { DivinationStepComponent } from "./divination-step/divination-step.component";
+import { StepFooterComponent } from "./step-footer/step-footer.component";
 @Component({
   selector: 'app-dark-heresy-ii-creator',
   standalone: true,
@@ -33,7 +43,16 @@ import { DHII_SheetService } from '../service/dhii-sheet.service';
     RoleCardComponent,
     AttributesGroupComponent,
     AptitudesGroupComponent,
-    MatSelectModule
+    MatSelectModule,
+    HomeworldStepComponent,
+    BackgroundStepComponent,
+    RoleStepComponent,
+    AttributeStepComponent,
+    AptitudeStepComponent,
+    SkillStepComponent,
+    EquipmentStepComponent,
+    DivinationStepComponent,
+    StepFooterComponent
 ],
   templateUrl: './dark-heresy-ii-creator.component.html',
   styleUrl: './dark-heresy-ii-creator.component.scss'
@@ -53,16 +72,22 @@ export class DarkHeresyIICreatorComponent {
     thirdCtrl: new FormControl()
   });
 
-  chooseHomeworld([, homeworld]: [DHII_HomeworldNames, DHII_Homeworld]) {
+  chooseHomeworld(homeworld: DHII_Homeworld) {
     this.creatorService.setHomeworld(homeworld);
     this.stepper?.next();
   }
 
-  chooseBackground([, background]: [DHII_BackgroundNames, DHII_Background]) {
+  chooseBackground(background: DHII_Background) {
     this.creatorService.setBackground(background);
     this.stepper?.next();
   }
-  chooseRole([, role]: [DHII_RoleNames, DHII_Role]) {
+
+  chooseAptitudes(aptitudes: DHII_Aptitude[]) {
+    this.creatorService.setAptitudes(aptitudes);
+    this.stepper?.next();
+  }
+
+  chooseRole(role: DHII_Role) {
     this.creatorService.setRole(role);
     this.stepper?.next();
   }
@@ -75,15 +100,15 @@ export class DarkHeresyIICreatorComponent {
     this.creatorService.rerollAttribute(roll.name as DHII_AttributeName);
   }
 
-  setWounds(){
-    this.creatorService.setWounds()
+  setWounds() {
+    this.creatorService.setWounds();
   }
 
-  setFate(){
-    this.creatorService.setFate()
+  setFate() {
+    this.creatorService.setFate();
   }
 
-  setDivination(){
-    this.creatorService.setDivination()
+  setDivination() {
+    this.creatorService.setDivination();
   }
 }

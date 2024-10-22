@@ -1,0 +1,4 @@
+@for(role of roles; track role[0]){
+    <app-role-card class="card" [role]="role[1]" (click)="chooseRole.emit(role[1])" />
+}
+<app-step-footer />

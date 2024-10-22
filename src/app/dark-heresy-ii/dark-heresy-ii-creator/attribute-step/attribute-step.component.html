@@ -1,0 +1,13 @@
+
+<div class="attributes">
+  <app-attributes-group
+    [attributes]="attributes"
+    [bonus]="bonus"
+    [penality]="penality"
+    mode="create"
+    (roll)="reroll.emit()"
+  />
+  <button mat-button type="button" (click)="generateAll.emit()">roll</button>
+</div>
+
+<app-step-footer />

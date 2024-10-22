@@ -2,11 +2,11 @@ import { inject, Injectable } from '@angular/core';
 import { Observable, map, BehaviorSubject } from 'rxjs';
 import { DHII_Aptitude, DHII_Character } from '../types/dark-heresy-ii';
 import { BACKGROUNDS, DHII_Background } from '../types/dhii-background';
-import { DHII_Homeworld, HOMEWORLDS } from '../types/dhii-homeworlds';
+import { DHII_Homeworld, DHII_Homeworlds, HOMEWORLDS } from '../types/dhii-homeworlds';
 import { DHII_Role, ROLES } from '../types/dhii-role';
 import { DHII_TalentName } from '../types/talents';
 import { DHII_SheetService } from '../service/dhii-sheet.service';
-import { DHII_Attribute, DHII_AttributeName } from '../types/dhii-attribute';
+import { DHII_Attributes, DHII_Attribute, DHII_AttributeName } from '../types/dhii-attribute';
 import { DiceRoll } from '../../types/roll';
 import { rollDices } from '../../utility/roll';
 import { DHII_SkillName } from '../types/dhii-skill';
@@ -18,9 +18,9 @@ import { pickDivination } from '../types/dhii-divination';
 export class DHII_CreatorService {
   sheetService = inject(DHII_SheetService);
 
-  private readonly homeworldsSubject$ = new BehaviorSubject(HOMEWORLDS);
-  public readonly homeworlds$ = this.homeworldsSubject$.asObservable();
-  public readonly homeworlds = this.homeworldsSubject$.value;
+  private readonly homeworldsSubject$: BehaviorSubject<DHII_Homeworlds> = new BehaviorSubject(HOMEWORLDS);
+  public readonly homeworlds$: Observable<DHII_Homeworlds> = this.homeworldsSubject$.asObservable();
+  public readonly homeworlds: DHII_Homeworlds = this.homeworldsSubject$.value;
 
   private readonly backgroundsSubject$ = new BehaviorSubject(BACKGROUNDS);
   public readonly backgrounds$ = this.backgroundsSubject$.asObservable();
@@ -31,6 +31,7 @@ export class DHII_CreatorService {
   public readonly roles = this.rolesSubject$.value;
 
   public readonly character$: Observable<DHII_Character> = this.sheetService.character$;
+  public readonly attributes$: Observable<DHII_Attributes> = this.sheetService.attributes$;
 
   public readonly aptitudes$: Observable<DHII_Aptitude[]> = this.sheetService.character$.pipe(
     map(character =>
@@ -114,6 +115,7 @@ export class DHII_CreatorService {
 
   setAptitudes(newAptitudes: DHII_Aptitude[]) {
     const chararcter: DHII_Character = this.sheetService.character;
+    
     chararcter.aptitudes = newAptitudes;
     this.sheetService.updtaeAptitudes(newAptitudes);
   }

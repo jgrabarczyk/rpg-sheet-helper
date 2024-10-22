@@ -37,10 +37,10 @@ export interface DHII_Homeworld {
   talents?: DHII_TalentName[];
   skills?: DHII_SkillName[];
 }
-export const HOMEWORLDS: Map<DHII_HomeworldNames, DHII_Homeworld> = new Map<
-  DHII_HomeworldNames,
-  DHII_Homeworld
->([
+
+export type DHII_Homeworlds = Map<DHII_HomeworldNames, DHII_Homeworld>;
+
+export const HOMEWORLDS: DHII_Homeworlds = new Map<DHII_HomeworldNames, DHII_Homeworld>([
   [
     'feral',
     {

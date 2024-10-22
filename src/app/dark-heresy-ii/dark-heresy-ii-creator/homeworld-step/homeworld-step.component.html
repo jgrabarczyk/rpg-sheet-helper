@@ -1,0 +1,11 @@
+@for(homeworld of homeworlds; track homeworld[0]){
+<app-homeworld-card
+  class="card"
+  [homeworld]="homeworld[1]"
+  (click)="chooseHomeworld.emit(homeworld[1])"
+/>
+}
+
+<div>
+  <button mat-button matStepperNext>Next</button>
+</div>

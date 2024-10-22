@@ -1,0 +1,9 @@
+@for(background of backgrounds; track background[0]){
+<app-background-card
+  class="card"
+  [background]="background[1]"
+  (click)="chooseBackground.emit(background[1])"
+/>
+}
+
+<app-step-footer />
