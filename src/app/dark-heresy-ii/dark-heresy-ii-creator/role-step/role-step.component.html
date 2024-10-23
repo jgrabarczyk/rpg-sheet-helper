@@ -1,4 +1,19 @@
-@for(role of roles; track role[0]){
-    <app-role-card class="card" [role]="role[1]" (click)="chooseRole.emit(role[1])" />
-}
-<app-step-footer />
+<mat-card class="header" [appearance]="'outlined'">
+  <h3>What do you do now?</h3>
+  <h4>Choose role for your Character.</h4>
+</mat-card>
+
+<app-step-navigation/>
+
+<div class="step">
+  @for(role of roles; track role[0]){
+    <app-role-card
+      class="card"
+      [ngClass]="{ selected: role[0] === selectedRole }"
+      [role]="role[1]"
+      (click)="select(role)"
+    />
+  }
+</div>
+
+<app-step-navigation/>

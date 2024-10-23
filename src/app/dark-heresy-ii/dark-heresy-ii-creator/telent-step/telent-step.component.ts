@@ -2,12 +2,12 @@ import { Component, Input } from '@angular/core';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { DHII_TalentName } from '../../types/talents';
-import { StepFooterComponent } from "../step-footer/step-footer.component";
+import { StepNavigationComponent } from "../step-navigation/step-navigation.component";
 
 @Component({
   selector: 'app-telent-step',
   standalone: true,
-  imports: [MatInputModule, MatSelectModule, StepFooterComponent],
+  imports: [MatInputModule, MatSelectModule, StepNavigationComponent],
   templateUrl: './telent-step.component.html',
   styleUrl: './telent-step.component.scss'
 })

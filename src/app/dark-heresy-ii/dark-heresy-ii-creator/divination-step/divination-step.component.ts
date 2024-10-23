@@ -1,11 +1,11 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { DHII_Divination } from '../../types/dhii-divination';
-import { StepFooterComponent } from "../step-footer/step-footer.component";
+import { StepNavigationComponent } from "../step-navigation/step-navigation.component";
 
 @Component({
   selector: 'app-divination-step',
   standalone: true,
-  imports: [StepFooterComponent],
+  imports: [StepNavigationComponent],
   templateUrl: './divination-step.component.html',
   styleUrl: './divination-step.component.scss'
 })

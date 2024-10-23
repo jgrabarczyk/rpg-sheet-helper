@@ -1,9 +1,17 @@
-@for(background of backgrounds; track background[0]){
-<app-background-card
-  class="card"
-  [background]="background[1]"
-  (click)="chooseBackground.emit(background[1])"
-/>
-}
+<mat-card class="header" [appearance]="'outlined'">
+  <h3>What did you do before it all started?</h3>
+  <h4>Choose origin background for your Character.</h4>
+</mat-card>
+<app-step-navigation />
 
-<app-step-footer />
+<div class="step">
+  @for(background of backgrounds; track background[0]){
+  <app-background-card
+    class="card"
+    [ngClass]="{ selected: background[0] === selectedBackground }"
+    [background]="background[1]"
+    (click)="select(background)"
+  />
+  }
+</div>
+<app-step-navigation />

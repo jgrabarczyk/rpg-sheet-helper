@@ -1,12 +1,13 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { AttributesGroupComponent } from '../../sheet/attribute/attributes-group/attributes-group.component';
 import { DHII_AttributeName, DHII_Attributes } from '../../types/dhii-attribute';
-import { StepFooterComponent } from "../step-footer/step-footer.component";
+import { StepNavigationComponent } from "../step-navigation/step-navigation.component";
+import { MatButtonModule } from '@angular/material/button';
 
 @Component({
   selector: 'app-attribute-step',
   standalone: true,
-  imports: [AttributesGroupComponent, StepFooterComponent],
+  imports: [AttributesGroupComponent, StepNavigationComponent, MatButtonModule],
   templateUrl: './attribute-step.component.html',
   styleUrl: './attribute-step.component.scss'
 })

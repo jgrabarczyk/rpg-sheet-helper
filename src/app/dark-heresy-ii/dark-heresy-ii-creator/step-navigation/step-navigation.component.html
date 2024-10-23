@@ -1,0 +1,13 @@
+@if(step !== 'first'){
+  <button mat-flat-button color="secondary" matStepperPrevious>Back</button>
+} 
+@if(step !== 'last'){
+  <button mat-flat-button color="primary" matStepperNext>Next</button>
+}
+
+@if(step === 'last'){
+  <div>
+    <button mat-flat-button (click)="resetAll.emit()">Reset all</button>
+    <button mat-flat-button (click)="save.emit()">Save</button>
+  </div>
+}

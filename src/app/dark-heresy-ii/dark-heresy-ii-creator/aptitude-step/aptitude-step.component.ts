@@ -3,13 +3,13 @@ import { DHII_Aptitude } from '../../types/dark-heresy-ii';
 import { AptitudesGroupComponent } from "../../sheet/aptitude/aptitudes-group.component";
 import { MatFormField } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
-import { StepFooterComponent } from "../step-footer/step-footer.component";
+import { StepNavigationComponent } from "../step-navigation/step-navigation.component";
 import { MatListModule } from '@angular/material/list';
 
 @Component({
   selector: 'app-aptitude-step',
   standalone: true,
-  imports: [AptitudesGroupComponent, MatFormField, MatSelectModule, StepFooterComponent, MatListModule],
+  imports: [AptitudesGroupComponent, MatFormField, MatSelectModule, StepNavigationComponent, MatListModule],
   templateUrl: './aptitude-step.component.html',
   styleUrl: './aptitude-step.component.scss'
 })

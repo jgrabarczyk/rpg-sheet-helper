@@ -1,39 +1,39 @@
-@let character = creatorService.character$ | async; 
+@let character = creatorService.character$ | async;
 
-<mat-stepper [orientation]="'vertical'" [linear]="true" #stepper>
-  <mat-step>
-    <ng-template matStepLabel> Choose your Homeworld </ng-template>
-    <app-homeworld-step 
-      class="homeworlds"
+<mat-stepper class="creator" orientation="horizontal" [linear]="true" #stepper>
+  <mat-step [completed]="character?.homeworld?.key">
+    <ng-template matStepLabel> Homeworld </ng-template>
+    <app-homeworld-step
       [homeworlds]="creatorService.homeworlds$ | async"
+      [selectedHomeworld]="character?.homeworld?.key"
       (chooseHomeworld)="chooseHomeworld($event)"
     />
   </mat-step>
 
-  <mat-step>
-    <ng-template matStepLabel> Choose your Background </ng-template>
+  <mat-step [completed]="character?.background?.key">
+    <ng-template matStepLabel> Background </ng-template>
+
     <app-background-step
-      class="backgrounds"
       [backgrounds]="creatorService.backgrounds$ | async"
+      [selectedBackground]="character?.background?.key"
       (chooseBackground)="chooseBackground($event)"
     />
   </mat-step>
 
-  <mat-step>
-    <ng-template matStepLabel> Choose your Role </ng-template>
+  <mat-step [completed]="character?.role?.key">
+    <ng-template matStepLabel> Role </ng-template>
+    
     <app-role-step
-      class="backgrounds"
-      [roles]="creatorService.roles$ | async" 
-      (chooseRole)="chooseRole($event)" 
+      [roles]="creatorService.roles$ | async"
+      [selectedRole]="character?.role?.key"
+      (chooseRole)="chooseRole($event)"
     />
   </mat-step>
 
-  <mat-step>
+  <mat-step [completed]="true">
     <ng-template matStepLabel> Determin Attribiutes </ng-template>
-    @let attributes = creatorService.attributes$| async;
-    @let homeworldAttributes = character?.homeworld?.attributes; 
-    
-    @if(homeworldAttributes && attributes){
+    @let attributes = creatorService.attributes$| async; @let homeworldAttributes =
+    character?.homeworld?.value?.attributes; @if(homeworldAttributes && attributes){
     <app-attribute-step
       [bonus]="homeworldAttributes.bonus"
       [penality]="homeworldAttributes.penality"
@@ -44,7 +44,7 @@
     }
   </mat-step>
 
-  <mat-step>
+  <mat-step [completed]="true">
     <ng-template matStepLabel> Determin Aptitudes </ng-template>
     <app-aptitude-step
       [aptitudes]="(creatorService.aptitudes$ | async) ?? []"
@@ -54,61 +54,52 @@
     </app-aptitude-step>
   </mat-step>
 
-  <mat-step>
+  <mat-step [completed]="true">
     <ng-template matStepLabel> Pick Talents </ng-template>
-    @let talents = (creatorService.talents$ | async) ?? []; 
-    @let talentsToPick = (creatorService.talentsToPick$ | async) ?? []; 
+    @let talents = (creatorService.talents$ | async) ?? []; @let talentsToPick =
+    (creatorService.talentsToPick$ | async) ?? [];
 
-    <app-telent-step
-      [talents]="talents"
-      [talentsToPick]="talentsToPick"
-    />
-    
+    <app-telent-step [talents]="talents" [talentsToPick]="talentsToPick" />
   </mat-step>
 
-  <mat-step>
+  <mat-step [completed]="true">
     <ng-template matStepLabel> Pick Skills </ng-template>
-    @let skills = creatorService.skills$ | async; 
-    @let skillsToPick = creatorService.skillsToPick$ | async; 
-    <app-skill-step [skills]="skills ?? []" [skillsToPick]="skillsToPick?? []"/>
+    @let skills = creatorService.skills$ | async; @let skillsToPick = creatorService.skillsToPick$ |
+    async;
+    <app-skill-step [skills]="skills ?? []" [skillsToPick]="skillsToPick ?? []" />
   </mat-step>
 
-  <mat-step>
+  <mat-step [completed]="true">
     <ng-template matStepLabel> Pick Equipment </ng-template>
-    @let equipment = (creatorService.equipment$ | async) ?? []; 
-    @let equipmentToPick =(creatorService.equipmentToPick$ | async) ?? []; 
+    @let equipment = (creatorService.equipment$ | async) ?? []; @let equipmentToPick
+    =(creatorService.equipmentToPick$ | async) ?? [];
 
-    <app-equipment-step 
-      [equipment]="equipment"
-      [equipmentToPick]="equipmentToPick"
-    />
+    <app-equipment-step [equipment]="equipment" [equipmentToPick]="equipmentToPick" />
   </mat-step>
 
-  <mat-step>
+  <mat-step [completed]="true">
     <ng-template matStepLabel>Determin Wounds And Fate</ng-template>
-  
-    @if(character?.homeworld?.wounds){ Base: {{ character!.homeworld!.wounds }} <br />
+
+    @if(character?.homeworld?.value?.wounds){ Base: {{ character!.homeworld!.value.wounds }} <br />
     total: {{ character?.wounds ?? '' }}
     <button (click)="setWounds()">add 1d5 to wounds</button>
     }
     <br />
     Fate <br />
-    Base: {{ character?.homeworld?.fate }} | threshold:
-    {{ character?.homeworld?.blessingThreshold }} total: {{ character?.fate }}
+    Base: {{ character?.homeworld?.value?.fate }} | threshold:
+    {{ character?.homeworld?.value?.blessingThreshold }} total: {{ character?.fate }}
     <button (click)="setFate()">roll 1d10</button>
-    
-    <app-step-footer />
+
+    <app-step-navigation />
   </mat-step>
 
-  <mat-step>
+  <mat-step [completed]="true">
     <ng-template matStepLabel>Determin Divination</ng-template>
-    <app-divination-step 
+    <app-divination-step
       [divination]="character?.divination"
       (setDivination)="setDivination()"
       (resetAll)="resetAll()"
       (save)="save()"
-    /> 
+    />
   </mat-step>
-
-  
 </mat-stepper>

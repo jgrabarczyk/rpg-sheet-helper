@@ -1,13 +1,10 @@
-import { DHII_Homeworld } from '../types/dhii-homeworlds';
 import { CommonModule } from '@angular/common';
 import { Component, inject, ViewChild } from '@angular/core';
 import { MatStepperModule } from '@angular/material/stepper';
 import { HomeworldCardComponent } from '../homeworld-card/homeworld-card.component';
 import { MatStepper } from '@angular/material/stepper';
 import { BackgroundCardComponent } from '../background-card/background-card.component';
-import { DHII_Background } from '../types/dhii-background';
 import { RoleCardComponent } from '../role-card/role-card.component';
-import { DHII_Role } from '../types/dhii-role';
 import { AttributesGroupComponent } from '../sheet/attribute/attributes-group/attributes-group.component';
 import { DHII_AttributeName } from '../types/dhii-attribute';
 import { Roll } from '../../types/roll';
@@ -17,20 +14,27 @@ import { DHII_SheetService } from '../service/dhii-sheet.service';
 import { HomeworldStepComponent } from './homeworld-step/homeworld-step.component';
 import { BackgroundStepComponent } from './background-step/background-step.component';
 import { RoleStepComponent } from './role-step/role-step.component';
-import { AttributeStepComponent } from "./attribute-step/attribute-step.component";
-import { DHII_Aptitude } from '../types/dark-heresy-ii';
+import { AttributeStepComponent } from './attribute-step/attribute-step.component';
+import {
+  DHII_Aptitude,
+  DHII_CharacterBackground,
+  DHII_CharacterHomeworld,
+  DHII_CharacterRole
+} from '../types/dark-heresy-ii';
 import { AptitudeStepComponent } from './aptitude-step/aptitude-step.component';
-import { SkillStepComponent } from "./skill-step/skill-step.component";
-import { EquipmentStepComponent } from "./equipment-step/equipment-step.component";
-import { DivinationStepComponent } from "./divination-step/divination-step.component";
-import { StepFooterComponent } from "./step-footer/step-footer.component";
-import { TelentStepComponent } from "./telent-step/telent-step.component";
+import { SkillStepComponent } from './skill-step/skill-step.component';
+import { EquipmentStepComponent } from './equipment-step/equipment-step.component';
+import { DivinationStepComponent } from './divination-step/divination-step.component';
+import { StepNavigationComponent } from './step-navigation/step-navigation.component';
+import { TelentStepComponent } from './telent-step/telent-step.component';
+import { MatCardModule } from '@angular/material/card';
 @Component({
   selector: 'app-dark-heresy-ii-creator',
   standalone: true,
   imports: [
     CommonModule,
     MatStepperModule,
+    MatCardModule,
     HomeworldCardComponent,
     BackgroundCardComponent,
     RoleCardComponent,
@@ -44,9 +48,9 @@ import { TelentStepComponent } from "./telent-step/telent-step.component";
     SkillStepComponent,
     EquipmentStepComponent,
     DivinationStepComponent,
-    StepFooterComponent,
+    StepNavigationComponent,
     TelentStepComponent
-],
+  ],
   templateUrl: './dark-heresy-ii-creator.component.html',
   styleUrl: './dark-heresy-ii-creator.component.scss'
 })
@@ -55,25 +59,24 @@ export class DarkHeresyIICreatorComponent {
   protected creatorService: DHII_CreatorService = inject(DHII_CreatorService);
   @ViewChild('stepper') stepper?: MatStepper;
 
-
-  chooseHomeworld(homeworld: DHII_Homeworld) {
+  chooseHomeworld(homeworld: DHII_CharacterHomeworld) {
     this.creatorService.setHomeworld(homeworld);
-    this.stepper?.next();
+    // this.stepper?.next();
   }
 
-  chooseBackground(background: DHII_Background) {
+  chooseBackground(background: DHII_CharacterBackground) {
     this.creatorService.setBackground(background);
-    this.stepper?.next();
+    // this.stepper?.next();
   }
 
   chooseAptitudes(aptitudes: DHII_Aptitude[]) {
     this.creatorService.setAptitudes(aptitudes);
-    this.stepper?.next();
+    // this.stepper?.next();
   }
 
-  chooseRole(role: DHII_Role) {
+  chooseRole(role: DHII_CharacterRole) {
     this.creatorService.setRole(role);
-    this.stepper?.next();
+    // this.stepper?.next();
   }
 
   generateAttributes() {
@@ -95,14 +98,13 @@ export class DarkHeresyIICreatorComponent {
   setDivination() {
     this.creatorService.setDivination();
   }
-  
+
   resetAll() {
     this.stepper?.reset();
-    this.creatorService.reset()
+    this.creatorService.reset();
   }
 
-  save(){
-    console.log('save')
+  save() {
+    console.log('save');
   }
-
 }

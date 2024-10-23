@@ -3,6 +3,8 @@
 html,
 body {
   height: 100%;
+  background-color: var(--mat-app-background-color);
+  color: var(--mat-app-text-color)
 }
 body {
   margin: 0;
@@ -10,6 +12,7 @@ body {
 }
 
 .creator-card {
+  
   .title {
     display: block;
     margin-bottom: 0.5rem;
@@ -41,4 +44,66 @@ body {
       font-weight: 300;
     }
   }
+}
+
+.creator {
+  .header{
+    padding: 1rem;
+    margin-bottom: 1rem;
+    text-align: center;
+  }
+
+  .step {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 1rem;
+  }
+
+  .card {
+    display: grid;
+
+    &.selected mat-card {
+      border: 1px solid var(--mat-stepper-header-selected-state-icon-background-color);
+    }
+  }
+
+  /* medium monitor*/
+  @media screen and (max-width: 1440px) {
+    .step {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+  
+  /* small monitor*/
+  @media screen and (max-width: 1200px) {
+    .step {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  /* Tablet*/
+  @media screen and (max-width: 991px) {
+    .step {
+      display: block;
+    }
+    .card {
+      margin: 1rem;
+    }
+  }
+
+  @media screen and (max-width: 768px) {
+    .creator-card {
+      .subtitle {
+        margin-bottom: 0.5rem;
+      }
+      .row {
+        display: block;
+        &,
+        .value {
+          text-align: center;
+        }
+      }
+    }
+  }
+
 }

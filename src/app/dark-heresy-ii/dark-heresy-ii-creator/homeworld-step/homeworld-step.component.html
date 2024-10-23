@@ -1,9 +1,19 @@
-@for(homeworld of homeworlds; track homeworld[0]){
-<app-homeworld-card
-  class="card"
-  [homeworld]="homeworld[1]"
-  (click)="chooseHomeworld.emit(homeworld[1])"
-/>
-}
+<mat-card class="header" [appearance]="'outlined'">
+  <h3>Where are you from?</h3>
+  <h4>Choose origin homeworld for your Character.</h4>
+</mat-card>
 
-<app-step-footer step="first"/>
+<app-step-navigation step="first" />
+
+<div class="step">
+  @for(homeworld of homeworlds; track homeworld[0]){
+  <app-homeworld-card
+    class="card"
+    [ngClass]="{ selected: homeworld[0] === selectedHomeworld }"
+    [homeworld]="homeworld[1]"
+    (click)="select(homeworld)"
+  />
+  }
+</div>
+
+<app-step-navigation step="first" />
