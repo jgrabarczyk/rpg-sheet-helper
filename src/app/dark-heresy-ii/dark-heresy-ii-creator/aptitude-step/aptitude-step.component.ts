@@ -4,11 +4,11 @@ import { DHII_Aptitude } from '../../types/dark-heresy-ii';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
 import { MatListModule } from '@angular/material/list';
-import { CardListStepComponent } from '../card-list-step/card-list-step.component';
-import { FormArray, FormControl, ReactiveFormsModule } from '@angular/forms';
+import { FormArray, FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { CommonModule } from '@angular/common';
+import { TwoColumnStepComponent } from "../two-column-step/two-column-step.component";
 
 @Component({
   selector: 'app-aptitude-step',
@@ -20,18 +20,16 @@ import { CommonModule } from '@angular/common';
     MatButtonModule,
     MatListModule,
     MatCardModule,
-    CardListStepComponent,
-    ReactiveFormsModule
-  ],
+    ReactiveFormsModule,
+    TwoColumnStepComponent
+],
   templateUrl: './aptitude-step.component.html',
   styleUrl: './aptitude-step.component.scss'
 })
 export class AptitudeStepComponent {
   @Input() set aptitudes(aptitudes: DHII_Aptitude[]) {
-    console.log("🚀 ~ AptitudeStepComponent ~ @Input ~ aptitudes:", aptitudes)
     //get unique values
     this.uniqueAptitudes = Array.from(new Set(aptitudes));
-    console.log("🚀 ~ AptitudeStepComponent ~ @Input ~ uniqueAptitudes:", this.uniqueAptitudes)
 
     //remove duplicates
     this.uniqueAptitudes.forEach(el => {
@@ -41,24 +39,20 @@ export class AptitudeStepComponent {
 
     //create duplicates options
     this.duplicates = [];
-    // this.formDuplicates = new FormArray<FormControl>([]);
-
+    this.formDuplicates = new FormArray<FormControl>([]);
     aptitudes.forEach(() => {
       this.duplicates.push(this.defaultOptions);
-      this.formDuplicates.push(new FormControl(''));
+      this.formDuplicates.push(new FormControl(null,Validators.required));
     });
-
-
   }
 
   @Input() set aptitudesToPick(newAptitudesToChoose: DHII_Aptitude[][]) {
     this.aptitudesToChoose = newAptitudesToChoose;
 
-    // this.formChooseFrom = new FormArray<FormControl>([]);
+    this.formChooseFrom = new FormArray<FormControl>([]);
     this.aptitudesToChoose.forEach(() => {
-      this.formChooseFrom.push(new FormControl());
+      this.formChooseFrom.push(new FormControl(null,Validators.required));
     });
-    console.log('aptitudesToPick', newAptitudesToChoose);
   }
 
   @Output() updateAptitudes: EventEmitter<DHII_Aptitude[]> = new EventEmitter<DHII_Aptitude[]>();
@@ -74,7 +68,11 @@ export class AptitudeStepComponent {
   formChooseFrom = new FormArray<FormControl>([]);
 
   save() {
-    console.log([...this.formChooseFrom.value, ...this.formDuplicates.value, ...this.uniqueAptitudes]);
+    if(this.formChooseFrom.invalid || this.formDuplicates.invalid){
+      console.log('can not be empty');
+      return;
+    }
+
     this.updateAptitudes.emit([
       ...this.formChooseFrom.value,
       ...this.formDuplicates.value,

@@ -2,21 +2,19 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { AttributesGroupComponent } from '../../sheet/attribute/attributes-group/attributes-group.component';
 import { DHII_AttributeName, DHII_Attributes } from '../../types/dhii-attribute';
 import { MatButtonModule } from '@angular/material/button';
-import { CardListStepComponent } from '../card-list-step/card-list-step.component';
 import { MatCardModule } from '@angular/material/card';
-import { MatDividerModule } from '@angular/material/divider';
 import { Roll } from '../../../types/roll';
+import { TwoColumnStepComponent } from "../two-column-step/two-column-step.component";
 
 @Component({
   selector: 'app-attribute-step',
   standalone: true,
   imports: [
     AttributesGroupComponent,
+    TwoColumnStepComponent,
     MatButtonModule,
-    CardListStepComponent,
     MatCardModule,
-    MatDividerModule
-  ],
+],
   templateUrl: './attribute-step.component.html',
   styleUrl: './attribute-step.component.scss'
 })

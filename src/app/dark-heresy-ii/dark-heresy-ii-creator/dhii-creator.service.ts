@@ -1,5 +1,5 @@
 import { inject, Injectable } from '@angular/core';
-import { Observable, map, BehaviorSubject, distinctUntilChanged } from 'rxjs';
+import { Observable, map, BehaviorSubject, distinctUntilChanged, tap } from 'rxjs';
 import {
   DHII_Aptitude,
   DHII_Character,
@@ -42,7 +42,12 @@ export class DHII_CreatorService {
   public readonly attributes$: Observable<DHII_Attributes> = this.sheetService.attributes$;
 
   public readonly aptitudes$: Observable<DHII_Aptitude[]> = this.character$.pipe(
-    distinctUntilChanged((p, c) => this.distinctAptitude(p, c)),
+    distinctUntilChanged(
+      (p, c) =>
+        JSON.stringify(p.homeworld?.value.aptitude) ===
+          JSON.stringify(c.homeworld?.value.aptitude) &&
+        JSON.stringify(p.role?.value.aptitudes) === JSON.stringify(c.role?.value.aptitudes)
+    ),
     map(character =>
       [character.homeworld?.value.aptitude, ...(character.role?.value.aptitudes ?? [])].filter(
         a => !!a
@@ -53,7 +58,13 @@ export class DHII_CreatorService {
 
   public readonly aptitudesToPick$: Observable<DHII_Aptitude[][]> =
     this.sheetService.character$.pipe(
-      distinctUntilChanged((p, c) => this.distinctAptitude(p, c)),
+      distinctUntilChanged(
+        (p, c) =>
+          JSON.stringify(p.background?.value.pick?.aptitudes) ===
+            JSON.stringify(c.background?.value.pick?.aptitudes) &&
+          JSON.stringify(p.role?.value.pick.aptitudes) ===
+            JSON.stringify(c.role?.value.pick.aptitudes)
+      ),
       map(character => {
         return [
           ...(character.background?.value.pick?.aptitudes ?? []),
@@ -63,16 +74,31 @@ export class DHII_CreatorService {
     );
 
   public readonly talents$: Observable<DHII_TalentName[]> = this.sheetService.character$.pipe(
-    map(character =>
-      [
-        ...(character.homeworld?.value.talents ?? []),
-        ...(character.background?.value.talents ?? [])
-      ].filter(a => !!a)
+    distinctUntilChanged(
+      (p, c) =>
+        JSON.stringify(p.homeworld?.value.talents) === JSON.stringify(c.homeworld?.value.talents) &&
+        JSON.stringify(p.background?.value.talents) === JSON.stringify(c.background?.value.talents)
+    ),
+    map(
+      character =>
+        [
+          ...(character.homeworld?.value.talents ?? []),
+          ...(character.background?.value.talents ?? [])
+        ].filter(a => !!a),
+      tap(v => console.log('talents', v))
     )
   );
 
   public readonly talentsToPick$: Observable<DHII_TalentName[][]> =
     this.sheetService.character$.pipe(
+      distinctUntilChanged(
+        (p, c) =>
+          JSON.stringify(p.homeworld?.value.pick?.talents) ===
+            JSON.stringify(c.homeworld?.value.pick?.talents) &&
+          JSON.stringify(p.background?.value.pick?.talents) ===
+            JSON.stringify(c.background?.value.pick?.talents) &&
+          JSON.stringify(p.role?.value.pick.talents) === JSON.stringify(c.role?.value.pick.talents)
+      ),
       map(character => {
         return [
           ...(character.homeworld?.value.pick?.talents ?? []),
@@ -83,6 +109,11 @@ export class DHII_CreatorService {
     );
 
   public readonly skills$: Observable<DHII_SkillName[]> = this.sheetService.character$.pipe(
+    distinctUntilChanged(
+      (p, c) =>
+        JSON.stringify(p.homeworld?.value.skills) === JSON.stringify(c.homeworld?.value.skills) &&
+        JSON.stringify(p.background?.value.skills) === JSON.stringify(c.background?.value.skills)
+    ),
     map(character =>
       [
         ...(character.homeworld?.value.skills ?? []),
@@ -92,6 +123,13 @@ export class DHII_CreatorService {
   );
 
   public readonly skillsToPick$: Observable<DHII_SkillName[][]> = this.sheetService.character$.pipe(
+    distinctUntilChanged(
+      (p, c) =>
+        JSON.stringify(p.homeworld?.value.pick?.skills) ===
+          JSON.stringify(c.homeworld?.value.pick?.skills) &&
+        JSON.stringify(p.background?.value.pick?.skills) ===
+          JSON.stringify(c.background?.value.pick?.skills)
+    ),
     map(character => {
       return [
         ...(character.homeworld?.value.pick?.skills ?? []),
@@ -101,10 +139,20 @@ export class DHII_CreatorService {
   );
 
   public readonly equipment$: Observable<string[]> = this.sheetService.character$.pipe(
+    distinctUntilChanged(
+      (p, c) =>
+        JSON.stringify(p.background?.value.equipment) ===
+        JSON.stringify(c.background?.value.equipment)
+    ),
     map(character => [...(character.background?.value.equipment ?? [])].filter(a => !!a))
   );
 
   public readonly equipmentToPick$: Observable<string[][]> = this.sheetService.character$.pipe(
+    distinctUntilChanged(
+      (p, c) =>
+        JSON.stringify(p.background?.value.pick?.equipment) ===
+        JSON.stringify(c.background?.value.pick?.equipment)
+    ),
     map(character => {
       return [...(character.background?.value.pick?.equipment ?? [])];
     })
@@ -227,12 +275,5 @@ export class DHII_CreatorService {
       modifier = 'penality';
     }
     return rollDices(diceRoll, modifier);
-  }
-
-  private distinctAptitude(p: DHII_Character, c: DHII_Character) {
-    return (
-      p.homeworld?.value.aptitude === c.homeworld?.value.aptitude &&
-      p.role?.value.aptitudes === c.role?.value.aptitudes
-    );
   }
 }

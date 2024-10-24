@@ -3,10 +3,10 @@
   subtitle="Choose origin homeworld for your Character."
   [valid]="!!selectedHomeworld"
 >
-  <div class="step">
+  <div class="creator-step-content">
     @for(homeworld of homeworlds; track homeworld[0]){
     <app-homeworld-card
-      class="card"
+      class="creator-card-wrapper"
       [ngClass]="{ selected: homeworld[0] === selectedHomeworld }"
       [homeworld]="homeworld[1]"
       (click)="select(homeworld)"

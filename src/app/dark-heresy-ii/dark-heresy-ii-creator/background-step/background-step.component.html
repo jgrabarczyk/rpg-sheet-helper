@@ -3,10 +3,10 @@
   subtitle="Choose origin background for your Character."
   [valid]="!!selectedBackground"
 >
-  <div class="step">
+  <div class="creator-step-content">
     @for(background of backgrounds; track background[0]){
     <app-background-card
-      class="card"
+      class="creator-card-wrapper"
       [ngClass]="{ selected: background[0] === selectedBackground }"
       [background]="background[1]"
       (click)="select(background)"

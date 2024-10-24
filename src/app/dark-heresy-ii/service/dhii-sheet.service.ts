@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { DHII_Aptitude, DHII_Character } from '../types/dark-heresy-ii';
-import { BehaviorSubject, map, Observable, shareReplay, tap } from 'rxjs';
+import { BehaviorSubject, map, Observable, shareReplay } from 'rxjs';
 import { DHII_Attributes, DHII_Attribute, DHII_ATTRIBUTES } from '../types/dhii-attribute';
 import { DHII_Skill, DHII_SkillName, DHII_SKILLS } from '../types/dhii-skill';
 

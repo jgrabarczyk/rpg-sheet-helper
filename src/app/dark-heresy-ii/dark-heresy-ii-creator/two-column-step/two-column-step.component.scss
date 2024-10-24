@@ -1,0 +1,11 @@
+.content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 1rem;
+}
+
+.description-card {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+}

@@ -1,6 +1,6 @@
 @let character = creatorService.character$ | async;
 
-<mat-stepper class="creator mat-body" orientation="horizontal" [linear]="true" #stepper>
+<mat-stepper class="creator-wrapper mat-body" orientation="horizontal" [linear]="true" #stepper>
   <mat-step [completed]="character?.homeworld?.key">
     <ng-template matStepLabel> Homeworld </ng-template>
     <app-homeworld-step
@@ -32,8 +32,11 @@
 
   <mat-step [completed]="true">
     <ng-template matStepLabel> Determin Attribiutes </ng-template>
-    @let attributes = creatorService.attributes$| async; @let homeworldAttributes =
+    
+    @let attributes = creatorService.attributes$| async; 
+    @let homeworldAttributes =
     character?.homeworld?.value?.attributes; @if(homeworldAttributes && attributes){
+      
     <app-attribute-step
       [bonus]="homeworldAttributes.bonus"
       [penality]="homeworldAttributes.penality"
@@ -56,22 +59,28 @@
 
   <mat-step [completed]="true">
     <ng-template matStepLabel> Pick Talents </ng-template>
-    @let talents = (creatorService.talents$ | async) ?? []; @let talentsToPick =
+    
+    @let talents = (creatorService.talents$ | async) ?? []; 
+    @let talentsToPick =
     (creatorService.talentsToPick$ | async) ?? [];
 
-    <app-telent-step [talents]="talents" [talentsToPick]="talentsToPick" />
+    <app-talent-step [talents]="talents" [talentsToPick]="talentsToPick" />
   </mat-step>
 
   <mat-step [completed]="true">
     <ng-template matStepLabel> Pick Skills </ng-template>
-    @let skills = creatorService.skills$ | async; @let skillsToPick = creatorService.skillsToPick$ |
+    
+    @let skills = creatorService.skills$ | async; 
+    @let skillsToPick = creatorService.skillsToPick$ |
     async;
     <app-skill-step [skills]="skills ?? []" [skillsToPick]="skillsToPick ?? []" />
   </mat-step>
 
   <mat-step [completed]="true">
     <ng-template matStepLabel> Pick Equipment </ng-template>
-    @let equipment = (creatorService.equipment$ | async) ?? []; @let equipmentToPick
+    
+    @let equipment = (creatorService.equipment$ | async) ?? []; 
+    @let equipmentToPick
     =(creatorService.equipmentToPick$ | async) ?? [];
 
     <app-equipment-step [equipment]="equipment" [equipmentToPick]="equipmentToPick" />

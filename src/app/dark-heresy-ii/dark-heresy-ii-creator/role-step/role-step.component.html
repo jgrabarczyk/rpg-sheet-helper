@@ -1,12 +1,12 @@
 <app-card-list-step
   title="What do you do now?"
-  subititle="Choose role for your Character."
+  subtitle="Choose role for your Character."
   [valid]="!!selectedRole"
 >
-  <div class="step">
+  <div class="creator-step-content">
     @for(role of roles; track role[0]){
     <app-role-card
-      class="card"
+      class="creator-card-wrapper"
       [ngClass]="{ selected: role[0] === selectedRole }"
       [role]="role[1]"
       (click)="select(role)"

@@ -1,0 +1,25 @@
+<mat-card class="header" [appearance]="'outlined'">
+  <h2>{{ title }}</h2>
+  <h3>{{ subtitle }}</h3>
+</mat-card>
+
+<ng-container *ngTemplateOutlet="navigation"></ng-container>
+
+<div class="content">
+  <mat-card class="description-card" appearance="outlined">
+    <mat-card-content>
+      <ng-content select="[card-content]"></ng-content>
+    </mat-card-content>
+    <mat-card-actions align="start">
+      <ng-content select="[card-actions]"></ng-content>
+    </mat-card-actions>
+  </mat-card>
+
+  <ng-content select="[right-column]"></ng-content>
+</div>
+
+<ng-container *ngTemplateOutlet="navigation"></ng-container>
+
+<ng-template #navigation>
+  <app-step-navigation [valid]="valid" />
+</ng-template>

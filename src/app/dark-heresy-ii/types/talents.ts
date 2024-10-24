@@ -72,7 +72,6 @@ export type DHII_TalentName =
   | 'Technical Knock'
   | 'Warp Sense'
   | 'Weapon-Tech'
-  | 'Weapon Training'
   | `Weapon Training (${WeaponTraining | PickOne})`
   | 'Ambassador Imperialis'
   | 'Archivator'
@@ -171,8 +170,8 @@ export type DHII_Talent = {
   prerequisite?: string;
   specialisations?: string[];
 };
-
-export const talents: Map<DHII_TalentName, DHII_Talent> = new Map([
+export type DHII_Talents =Map<DHII_TalentName, DHII_Talent>;
+export const TALENTS: Map<DHII_TalentName, DHII_Talent> = new Map([
   [
     'Ambidextrous',
     {
@@ -612,7 +611,7 @@ bonus until the end of the round.`
     }
   ],
   [
-    'Weapon Training',
+    'Weapon Training (Pick One)',
     {
       name: 'Weapon Training',
       tier: 1,
@@ -942,9 +941,9 @@ injuries, he always recovers damage as if Lightly Damaged, regardless of the lev
       tier: 2,
       specialisations: [
         'Criminal',
-        `Cult (PickOne)`,
+        `Cult (Pick One)`,
         'Daemon',
-        `Xeno (PickOne)`,
+        `Xeno (Pick One)`,
         'Psyker',
         'Heretic',
         'Mutant',
@@ -953,8 +952,8 @@ injuries, he always recovers damage as if Lightly Damaged, regardless of the lev
         'Inquisitio',
         'Ecclesiarch',
         'Space Marine',
-        `Space Marines (PickOne)`,
-        `Inquisition (PickOne)`,
+        `Space Marines (Pick One)`,
+        `Inquisition (Pick One)`,
         'Inquisition',
         'Rogue Traders.'
       ],
