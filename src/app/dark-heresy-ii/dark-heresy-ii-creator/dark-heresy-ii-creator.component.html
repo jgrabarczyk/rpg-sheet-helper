@@ -1,6 +1,6 @@
 @let character = creatorService.character$ | async;
 
-<mat-stepper class="creator" orientation="horizontal" [linear]="true" #stepper>
+<mat-stepper class="creator mat-body" orientation="horizontal" [linear]="true" #stepper>
   <mat-step [completed]="character?.homeworld?.key">
     <ng-template matStepLabel> Homeworld </ng-template>
     <app-homeworld-step
@@ -22,7 +22,7 @@
 
   <mat-step [completed]="character?.role?.key">
     <ng-template matStepLabel> Role </ng-template>
-    
+
     <app-role-step
       [roles]="creatorService.roles$ | async"
       [selectedRole]="character?.role?.key"

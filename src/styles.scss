@@ -1,10 +1,20 @@
 /* You can add global styles to this file, and also import other style files */
 
+@use '@angular/material' as mat;
+@use 'm3-theme';
+@import url('https://fonts.googleapis.com/css2?family=Abel:wght@300;400;500&display=swap');
+
+@include mat.core();
+
+html {
+  @include mat.all-component-themes(m3-theme.$light-theme);
+}
+
 html,
 body {
   height: 100%;
   background-color: var(--mat-app-background-color);
-  color: var(--mat-app-text-color)
+  color: var(--mat-app-text-color);
 }
 body {
   margin: 0;
@@ -12,7 +22,7 @@ body {
 }
 
 .creator-card {
-  
+  cursor: pointer;
   .title {
     display: block;
     margin-bottom: 0.5rem;
@@ -47,7 +57,7 @@ body {
 }
 
 .creator {
-  .header{
+  .header {
     padding: 1rem;
     margin-bottom: 1rem;
     text-align: center;
@@ -61,7 +71,15 @@ body {
 
   .card {
     display: grid;
-
+    mat-card{
+      transition: all .35s ease;
+    }
+    &:hover{
+      mat-card {
+        background-color: var(--mat-autocomplete-background-color)
+      }
+    }
+    
     &.selected mat-card {
       border: 1px solid var(--mat-stepper-header-selected-state-icon-background-color);
     }
@@ -73,7 +91,7 @@ body {
       grid-template-columns: 1fr 1fr;
     }
   }
-  
+
   /* small monitor*/
   @media screen and (max-width: 1200px) {
     .step {
@@ -105,5 +123,4 @@ body {
       }
     }
   }
-
 }
