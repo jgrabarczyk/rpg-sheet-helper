@@ -1,5 +1,5 @@
 import { inject, Injectable } from '@angular/core';
-import { Observable, map, BehaviorSubject } from 'rxjs';
+import { Observable, map, BehaviorSubject, distinctUntilChanged } from 'rxjs';
 import {
   DHII_Aptitude,
   DHII_Character,
@@ -41,17 +41,19 @@ export class DHII_CreatorService {
   public readonly character$: Observable<DHII_Character> = this.sheetService.character$;
   public readonly attributes$: Observable<DHII_Attributes> = this.sheetService.attributes$;
 
-  public readonly aptitudes$: Observable<DHII_Aptitude[]> = this.sheetService.character$.pipe(
+  public readonly aptitudes$: Observable<DHII_Aptitude[]> = this.character$.pipe(
+    distinctUntilChanged((p, c) => this.distinctAptitude(p, c)),
     map(character =>
       [character.homeworld?.value.aptitude, ...(character.role?.value.aptitudes ?? [])].filter(
         a => !!a
       )
     ),
-    map(array => [...array, 'General'])
+    map(array => [...array, 'General' as DHII_Aptitude])
   );
 
   public readonly aptitudesToPick$: Observable<DHII_Aptitude[][]> =
     this.sheetService.character$.pipe(
+      distinctUntilChanged((p, c) => this.distinctAptitude(p, c)),
       map(character => {
         return [
           ...(character.background?.value.pick?.aptitudes ?? []),
@@ -109,31 +111,31 @@ export class DHII_CreatorService {
   );
 
   setHomeworld(homeworld: DHII_CharacterHomeworld) {
-    const chararcter: DHII_Character = this.sheetService.character;
+    const chararcter: DHII_Character = this.sheetService.getCharacter();
     chararcter.homeworld! = homeworld;
     this.sheetService.updateCharacter(chararcter);
   }
 
   setBackground(background: DHII_CharacterBackground) {
-    const chararcter: DHII_Character = this.sheetService.character;
+    const chararcter: DHII_Character = this.sheetService.getCharacter();
     chararcter.background! = background;
     this.sheetService.updateCharacter(chararcter);
   }
 
   setRole(role: DHII_CharacterRole) {
-    const chararcter: DHII_Character = this.sheetService.character;
+    const chararcter: DHII_Character = this.sheetService.getCharacter();
     chararcter.role! = role;
     this.sheetService.updateCharacter(chararcter);
   }
 
   setAptitudes(newAptitudes: DHII_Aptitude[]) {
-    const chararcter: DHII_Character = this.sheetService.character;
+    const chararcter: DHII_Character = this.sheetService.getCharacter();
     chararcter.aptitudes = newAptitudes;
     this.sheetService.updateAptitudes(newAptitudes);
   }
 
   setWounds() {
-    const chararcter: DHII_Character = this.sheetService.character;
+    const chararcter: DHII_Character = this.sheetService.getCharacter();
     const wounds: number | undefined = chararcter?.homeworld?.value.wounds;
     if (!wounds) {
       throw new Error('character.homewolrd is not set');
@@ -144,12 +146,12 @@ export class DHII_CreatorService {
   }
 
   setDivination() {
-    const chararcter: DHII_Character = this.sheetService.character;
+    const chararcter: DHII_Character = this.sheetService.getCharacter();
     chararcter.divination = pickDivination();
   }
 
   setFate() {
-    const chararcter: DHII_Character = this.sheetService.character;
+    const chararcter: DHII_Character = this.sheetService.getCharacter();
     const homeworld: DHII_Homeworld | undefined = chararcter?.homeworld?.value;
     if (!homeworld) {
       throw new Error('character.homewolrd is not set');
@@ -162,20 +164,19 @@ export class DHII_CreatorService {
     }
 
     this.sheetService.updateCharacter(chararcter);
-    this.sheetService.updateCharacter(chararcter);
   }
 
-  generateAttributes() {
+  setAttributes() {
+    const character: DHII_Character = this.sheetService.getCharacter();
     const bonus: [DHII_AttributeName, DHII_AttributeName] | undefined =
-      this.sheetService.character.homeworld?.value.attributes.bonus;
-    const penality: DHII_AttributeName | undefined =
-      this.sheetService.character.homeworld?.value.attributes.penality;
+      character.homeworld?.value.attributes.bonus;
+    const penality: DHII_AttributeName | undefined = character.homeworld?.value.attributes.penality;
 
     if (!bonus || !penality) {
       throw Error('this.character is incomplete');
     }
 
-    this.sheetService.attributes?.forEach(attribute => {
+    character.attributes?.forEach(attribute => {
       attribute.value =
         this.rollAttribute({
           attribute,
@@ -183,16 +184,15 @@ export class DHII_CreatorService {
           penality
         }) + 20;
     });
+    this.sheetService.updateCharacter(character);
   }
 
   rerollAttribute(attributeName: DHII_AttributeName) {
-    const attribute: DHII_Attribute = this.sheetService.attributes.get(attributeName)!;
-
+    const character: DHII_Character = this.sheetService.getCharacter();
+    const attribute: DHII_Attribute = character.attributes.get(attributeName)!;
     const bonus: [DHII_AttributeName, DHII_AttributeName] | undefined =
-      this.sheetService.character.homeworld?.value.attributes.bonus;
-
-    const penality: DHII_AttributeName | undefined =
-      this.sheetService.character.homeworld?.value.attributes.penality;
+      character.homeworld?.value.attributes.bonus;
+    const penality: DHII_AttributeName | undefined = character.homeworld?.value.attributes.penality;
     if (!bonus || !penality) {
       throw Error('this.character.homeworld is missing');
     }
@@ -227,5 +227,12 @@ export class DHII_CreatorService {
       modifier = 'penality';
     }
     return rollDices(diceRoll, modifier);
+  }
+
+  private distinctAptitude(p: DHII_Character, c: DHII_Character) {
+    return (
+      p.homeworld?.value.aptitude === c.homeworld?.value.aptitude &&
+      p.role?.value.aptitudes === c.role?.value.aptitudes
+    );
   }
 }

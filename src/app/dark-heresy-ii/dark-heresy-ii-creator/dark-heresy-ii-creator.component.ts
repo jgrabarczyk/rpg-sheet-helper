@@ -80,7 +80,7 @@ export class DarkHeresyIICreatorComponent {
   }
 
   generateAttributes() {
-    this.creatorService.generateAttributes();
+    this.creatorService.setAttributes();
   }
 
   reroll(roll: Roll) {
