@@ -1,26 +1,22 @@
 import { CommonModule } from '@angular/common';
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { MatStepperModule } from '@angular/material/stepper';
 import {
   DHII_Background,
   DHII_BackgroundNames,
   DHII_Backgrounds
 } from '../../types/dhii-background';
 import { BackgroundCardComponent } from '../../background-card/background-card.component';
-import { StepNavigationComponent } from '../step-navigation/step-navigation.component';
 import { DHII_CharacterBackground } from '../../types/dark-heresy-ii';
-import { MatCardModule } from '@angular/material/card';
+import { CardListStepComponent } from "../card-list-step/card-list-step.component";
 
 @Component({
   selector: 'app-background-step',
   standalone: true,
   imports: [
     CommonModule,
-    MatStepperModule,
-    MatCardModule,
     BackgroundCardComponent,
-    StepNavigationComponent
-  ],
+    CardListStepComponent
+],
   templateUrl: './background-step.component.html',
   styleUrl: './background-step.component.scss'
 })

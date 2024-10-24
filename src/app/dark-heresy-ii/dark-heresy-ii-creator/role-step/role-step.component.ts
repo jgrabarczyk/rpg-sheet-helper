@@ -1,14 +1,13 @@
-import { MatCardModule } from '@angular/material/card';
 import { CommonModule } from '@angular/common';
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { RoleCardComponent } from '../../role-card/role-card.component';
 import { DHII_Role, DHII_RoleNames, DHII_Roles } from '../../types/dhii-role';
-import { StepNavigationComponent } from '../step-navigation/step-navigation.component';
+import { CardListStepComponent } from '../card-list-step/card-list-step.component';
 
 @Component({
   selector: 'app-role-step',
   standalone: true,
-  imports: [CommonModule, MatCardModule,RoleCardComponent, StepNavigationComponent],
+  imports: [CommonModule, RoleCardComponent, CardListStepComponent],
   templateUrl: './role-step.component.html',
   styleUrl: './role-step.component.scss'
 })

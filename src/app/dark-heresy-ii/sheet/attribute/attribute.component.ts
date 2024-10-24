@@ -41,6 +41,7 @@ export class AttributeComponent {
   @Input() max: number = 100;
   @Input() maxLevel: number = 0;
   @Input() currentLevel: number = 0;
+  @Input() showReroll: boolean = false;
   @Input() mode: 'play' | 'create' = 'play';
   @Input() set editable(isEditable: boolean) {
     isEditable ? this.field.enable() : this.field.disable();

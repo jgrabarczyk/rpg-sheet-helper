@@ -23,6 +23,7 @@ export class AttributesGroupComponent {
   @Input() editable: boolean = false;
   @Input() mode: 'create' | 'play' = 'play';
   @Input() step: number = 5;
+  @Input() isRerollAtributeAvalible!: boolean;
 
   @Output() updatedAttribute = new EventEmitter<DHII_Attribute>();
   @Output() roll = new EventEmitter<Roll>();
@@ -74,7 +75,7 @@ export class AttributesGroupComponent {
     const attribute: DHII_Attribute | undefined = this.attributes.get(name);
 
     if (!attribute) {
-      return;
+      throw Error('No attribute fond for name: ' + name)
     }
 
     const value: number = attribute.value + modifier;

@@ -11,7 +11,8 @@ import { MatStepperModule } from '@angular/material/stepper';
 })
 export class StepNavigationComponent {
   @Input() step?: 'first' | 'last';
-  
+  @Input() valid: boolean = false;
+
   @Output() resetAll: EventEmitter<void> = new EventEmitter();
   @Output() save: EventEmitter<void> = new EventEmitter();
 }

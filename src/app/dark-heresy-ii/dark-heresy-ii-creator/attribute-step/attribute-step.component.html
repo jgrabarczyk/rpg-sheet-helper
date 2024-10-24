@@ -1,13 +1,43 @@
+<app-card-list-step
+  title="Determine Attributes"
+  subtitle="Roll to determine starting value for your attributes."
+  [valid]="valid"
+>
+  <div class="attributes">
+    <mat-card appearance="outlined">
+      <mat-card-content>
+        <p>Basic attribute - determined by rolling 2d10 + 20</p>
+        <p>
+          <span class="bonus">Bonus attributes</span> - determined by rolling 3d10 and discarding
+          the lowest roll then adding 20.<br />
+          Due to your character's <i>Homeworld</i> this attributes are more developed.
+        </p>
+        <p>
+          <span class="penality">Penality attribute</span> - determined by rolling 3d10 and
+          discarding the highest roll then adding 20.<br />
+          Due to your character's <i>Homeworld</i> this attributes are less developed.
+        </p>
+        <mat-divider />
+        <div class="roll">
+          <button  mat-flat-button (click)="roll()">Generate All</button>
+        </div>
+        <mat-divider />
+        <p>
+          Lowest roll possible 22
+        </p>
+        <p>
+          Highest roll possible 40
+        </p>
+      </mat-card-content>
+    </mat-card>
 
-<div class="attributes">
-  <app-attributes-group
-    [attributes]="attributes"
-    [bonus]="bonus"
-    [penality]="penality"
-    mode="create"
-    (roll)="reroll.emit()"
-  />
-  <button mat-raised-button type="button" (click)="generateAll.emit()">roll</button>
-</div>
-
-<app-step-navigation/>
+    <app-attributes-group
+      [attributes]="attributes"
+      [bonus]="bonus"
+      [penality]="penality"
+      [isRerollAtributeAvalible]="isRerollAtributeAvalible"
+      mode="create"
+      (roll)="useReroll($event)"
+    />
+  </div>
+</app-card-list-step>

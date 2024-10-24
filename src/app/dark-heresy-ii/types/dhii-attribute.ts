@@ -14,6 +14,19 @@ export type DHII_AttributeName =
   | 'Fellowship'
   | 'Influence';
 
+export const DHII_ATTRIBUTE_NAMES: DHII_AttributeName[] = [
+  'Weapon Skill',
+  'Ballistic Skill',
+  'Strength',
+  'Toughness',
+  'Agility',
+  'Intelligence',
+  'Perception',
+  'Willpower',
+  'Fellowship',
+  'Influence'
+];
+
 const DHII_MAX_ATTRIBUTE_LEVEL: 5 = 5 as const;
 export type DHII_AttributeLevel = Level<5>;
 

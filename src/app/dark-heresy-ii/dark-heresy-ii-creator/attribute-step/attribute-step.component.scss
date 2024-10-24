@@ -1,0 +1,20 @@
+.attributes {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 1rem;
+}
+
+.bonus {
+  color: green;
+}
+.penality {
+  color: red;
+}
+
+.roll {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}

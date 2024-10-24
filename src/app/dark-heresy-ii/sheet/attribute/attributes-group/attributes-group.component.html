@@ -1,4 +1,4 @@
-<mat-card>
+<mat-card appearance="outlined">
   <mat-card-header>
     <mat-card-title>{{ title }}</mat-card-title>
     <mat-card-subtitle>{{ subtitle }}</mat-card-subtitle>
@@ -23,6 +23,7 @@
           [value]="attribute.value"
           [label]="attribute.name"
           [editable]="editable"
+          [showReroll]="isRerollAtributeAvalible"
           (valueChange)="updateValue($event, name)"
           (increase)="increase(name)"
           (decrease)="decrease(name)"

@@ -32,6 +32,6 @@
   <app-rollbox class="roll" (roll)="roll.emit($event)"/>
 }
 
-@if(mode === 'create'){
+@if(mode === 'create' && showReroll){
   <button mat-button (click)="roll.emit(0)"> Reroll attribute </button>
 }
