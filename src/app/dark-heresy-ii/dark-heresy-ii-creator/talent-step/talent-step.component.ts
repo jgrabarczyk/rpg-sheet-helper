@@ -1,4 +1,3 @@
-import { GetTalentPipe } from './../pipes/get-talent.pipe';
 import { CommonModule } from '@angular/common';
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { MatSelectModule } from '@angular/material/select';
@@ -21,8 +20,7 @@ import { DynamicListComponent } from '../dynamic-list/dynamic-list.component';
     MatSelectModule,
     ReactiveFormsModule,
     TwoColumnStepComponent,
-    DynamicListComponent,
-    GetTalentPipe
+    DynamicListComponent
   ],
   templateUrl: './talent-step.component.html',
   styleUrl: './talent-step.component.scss'

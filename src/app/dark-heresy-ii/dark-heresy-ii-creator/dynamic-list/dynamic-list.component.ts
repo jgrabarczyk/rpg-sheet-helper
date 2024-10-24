@@ -5,7 +5,6 @@ import { MatCardModule } from '@angular/material/card';
 import { MatListModule } from '@angular/material/list';
 import { MatSelectModule } from '@angular/material/select';
 import { TwoColumnStepComponent } from '../two-column-step/two-column-step.component';
-import { GetTalentPipe } from '../pipes/get-talent.pipe';
 
 @Component({
   selector: 'app-dynamic-list',
@@ -17,7 +16,6 @@ import { GetTalentPipe } from '../pipes/get-talent.pipe';
     MatListModule,
     ReactiveFormsModule,
     TwoColumnStepComponent,
-    GetTalentPipe
   ],
   templateUrl: './dynamic-list.component.html',
   styleUrl: './dynamic-list.component.scss'
