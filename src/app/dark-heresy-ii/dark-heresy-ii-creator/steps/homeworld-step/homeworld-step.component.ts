@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 
-import { CardListStepComponent } from '@dhii/partials/card-list-step/card-list-step.component';
+import { CardListStepComponent } from '@dhii/stepper-partials/card-list-step/card-list-step.component';
 import { DHII_CharacterHomeworld } from '@dhii/types/dark-heresy-ii';
 import { DHII_Homeworlds, DHII_HomeworldNames, DHII_Homeworld } from '@dhii/types/dhii-homeworlds';
 

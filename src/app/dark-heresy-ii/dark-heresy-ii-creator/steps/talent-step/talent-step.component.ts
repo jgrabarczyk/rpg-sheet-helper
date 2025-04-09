@@ -6,8 +6,8 @@ import { MatListModule } from '@angular/material/list';
 import { FormArray, FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 
-import { DynamicListComponent } from '@dhii/partials/dynamic-list/dynamic-list.component';
-import { TwoColumnStepComponent } from '@dhii/partials/two-column-step/two-column-step.component';
+import { DynamicListComponent } from '@dhii/stepper-partials/dynamic-list/dynamic-list.component';
+import { TwoColumnStepComponent } from '@dhii/stepper-partials/two-column-step/two-column-step.component';
 import { DHII_TalentName } from '@dhii/types/dhii-talents';
 
 @Component({

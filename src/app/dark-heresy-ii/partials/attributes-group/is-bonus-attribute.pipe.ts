@@ -1,5 +1,5 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { DHII_AttributeName } from '../../../types/dhii-attribute';
+import { DHII_AttributeName } from '../../types/dhii-attribute';
 
 @Pipe({ name: 'isBonusAttribute', standalone: true })
 export class IsBonusAttributePipe implements PipeTransform {

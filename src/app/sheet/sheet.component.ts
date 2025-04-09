@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { Component, inject } from '@angular/core';
 import { DHII_SheetService } from '../dark-heresy-ii/service/dhii-sheet.service';
 import { Characteristic } from '../types/characteristic';
-import { AttributesGroupComponent } from '../dark-heresy-ii/sheet/attribute/attributes-group/attributes-group.component';
+import { AttributesGroupComponent } from '../dark-heresy-ii/partials/attributes-group/attributes-group.component';
 import { AptitudesGroupComponent } from '../dark-heresy-ii/sheet/aptitude/aptitudes-group.component';
 import { SheetHeaderComponent } from '../dark-heresy-ii/sheet/sheet-header/sheet-header.component';
 import { Roll } from '../types/roll';

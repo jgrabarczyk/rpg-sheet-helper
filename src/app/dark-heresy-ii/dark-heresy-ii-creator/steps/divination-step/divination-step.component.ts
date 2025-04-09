@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { MatCardModule } from '@angular/material/card';
 
-import { TwoColumnStepComponent } from '@dhii/partials/two-column-step/two-column-step.component';
+import { TwoColumnStepComponent } from '@dhii/stepper-partials/two-column-step/two-column-step.component';
 import { DHII_Divination } from '@dhii/types/dhii-divination';
 
 @Component({

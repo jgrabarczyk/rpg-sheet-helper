@@ -2,11 +2,10 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 
-import { TwoColumnStepComponent } from '@dhii/partials/two-column-step/two-column-step.component';
+import { AttributesGroupComponent } from '@dhii/partials/attributes-group/attributes-group.component';
+import { TwoColumnStepComponent } from '@dhii/stepper-partials/two-column-step/two-column-step.component';
 import { DHII_Attributes, DHII_AttributeName } from '@dhii/types/dhii-attribute';
 
-/** @todo move to partials */
-import { AttributesGroupComponent } from 'dark-heresy-ii/sheet/attribute/attributes-group/attributes-group.component';
 import { Roll } from 'types/roll';
 
 @Component({

@@ -6,8 +6,8 @@ import { FormArray, FormControl, ReactiveFormsModule, Validators } from '@angula
 import { MatButtonModule } from '@angular/material/button';
 
 import { DHII_SkillName } from '@dhii/types/dhii-skill';
-import { DynamicListComponent } from '@dhii/partials/dynamic-list/dynamic-list.component';
-import { TwoColumnStepComponent } from '@dhii/partials/two-column-step/two-column-step.component';
+import { DynamicListComponent } from '@dhii/stepper-partials/dynamic-list/dynamic-list.component';
+import { TwoColumnStepComponent } from '@dhii/stepper-partials/two-column-step/two-column-step.component';
 
 @Component({
   selector: 'app-skill-step',

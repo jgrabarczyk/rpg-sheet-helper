@@ -27,7 +27,8 @@
       "@dhii/types/*": ["dark-heresy-ii/types/*"],
       "@dhii/util/*": ["dark-heresy-ii/utility/*"],
       "@dhii/steps/*": ["dark-heresy-ii/dark-heresy-ii-creator/steps/*"],
-      "@dhii/partials/*": ["dark-heresy-ii/dark-heresy-ii-creator/partial/*"],
+      "@dhii/stepper-partials/*": ["dark-heresy-ii/dark-heresy-ii-creator/partials/*"],
+      "@dhii/partials/*": ["dark-heresy-ii/partials/*"],
 
       // global paths
       "@util/*": ["utility/*"]

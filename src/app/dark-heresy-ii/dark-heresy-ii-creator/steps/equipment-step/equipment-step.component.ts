@@ -3,8 +3,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
 import { FormControl, Validators, FormArray } from '@angular/forms';
 
-import { DynamicListComponent } from '@dhii/partials/dynamic-list/dynamic-list.component';
-import { TwoColumnStepComponent } from '@dhii/partials/two-column-step/two-column-step.component';
+import { DynamicListComponent } from '@dhii/stepper-partials/dynamic-list/dynamic-list.component';
+import { TwoColumnStepComponent } from '@dhii/stepper-partials/two-column-step/two-column-step.component';
 
 @Component({
   selector: 'app-equipment-step',

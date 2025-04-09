@@ -9,7 +9,7 @@ import { CommonModule } from '@angular/common';
 
 import { DHII_Aptitude } from '@dhii/types/dark-heresy-ii';
 import { DHII_ATTRIBUTE_NAMES } from '@dhii/types/dhii-attribute';
-import { TwoColumnStepComponent } from '@dhii/partials/two-column-step/two-column-step.component';
+import { TwoColumnStepComponent } from '@dhii/stepper-partials/two-column-step/two-column-step.component';
 
 
 @Component({
