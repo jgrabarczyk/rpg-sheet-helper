@@ -1,21 +1,23 @@
-import { rollDices } from '../../utility/roll';
 
 export type DHII_Divination = {
   name: string;
   description: string;
 };
 
-export function pickDivination(): DHII_Divination {
-  const result: number = rollDices('1d100');
-  const key: string | undefined = Array.from(DIVINATIONS.keys()).find(range => {
-    const [min, max] = range.split('-');
-    return result >= Number(min) && result <= Number(max);
-  });
+export function pickDivination(result: number): DHII_Divination {
+  const key: string | undefined = findDivinationRange(result);
 
   if(!key){
     throw Error (`not found DIVINATIONS.key for result ${result}`);
   }
   return DIVINATIONS.get(key)!;
+}
+
+function findDivinationRange(roll:number){
+  return Array.from(DIVINATIONS.keys()).find(range => {
+    const [min, max] = range.split('-');
+    return roll >= Number(min) && roll <= Number(max);
+  });
 }
 
 export const DIVINATIONS: Map<string, DHII_Divination> = new Map<string, DHII_Divination>([

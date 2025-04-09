@@ -1,9 +1,9 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { AttributesGroupComponent } from '../../sheet/attribute/attributes-group/attributes-group.component';
-import { DHII_AttributeName, DHII_Attributes } from '../../types/dhii-attribute';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { Roll } from '../../../types/roll';
+import { AttributesGroupComponent } from '../../sheet/attribute/attributes-group/attributes-group.component';
+import { DHII_AttributeName, DHII_Attributes } from '../../types/dhii-attribute';
 import { TwoColumnStepComponent } from "../two-column-step/two-column-step.component";
 
 @Component({

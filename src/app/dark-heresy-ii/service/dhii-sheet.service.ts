@@ -83,6 +83,12 @@ export class DHII_SheetService {
     this.characterSubject$.next(character);
   }
 
+  //@todo save to localstorage
+  saveSheet() {
+    const value: DHII_Character = this.characterSubject$.value;
+    console.log(value);
+  }
+
   resetAll() {
     this.characterSubject$.next(this.INITIAL_CHARACTER);
   }
@@ -104,7 +110,7 @@ export class DHII_SheetService {
   }): number {
     return attribute.updated.name === 'Influence' || attribute.current.name === 'Influence'
       ? attribute.updated.value
-      : attribute.current.value +
+      : attribute.updated.value +
           (attribute.updated.lvl.current - attribute.current.lvl.current) * 5;
   }
 

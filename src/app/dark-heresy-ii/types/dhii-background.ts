@@ -1,6 +1,6 @@
 import { DHII_Aptitude } from './dark-heresy-ii';
 import { DHII_SkillName } from './dhii-skill';
-import { DHII_TalentName } from './talents';
+import { DHII_TalentName } from './dhii-talents';
 
 export type DHII_BackgroundNames =
   | 'admin'

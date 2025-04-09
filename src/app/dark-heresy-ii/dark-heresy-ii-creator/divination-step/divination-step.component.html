@@ -1,8 +1,25 @@
-Divination:
-<button (click)="setDivination.emit()">roll 1d100</button>
+<app-two-column-step
+  title="Determine Divination"
+  step="last"
+  [valid]="valid"
+  (save)="save.emit()"
+  (resetAll)="resetAll.emit()"
+>
+  <p card-content>Determine you divinations. It can provide additional perk for your character</p>
 
-@if(divination){ name: {{ divination!.name }} <br />
-description: {{ divination!.description }}
-}
-
-<app-step-navigation step="last" (resetAll)="resetAll.emit()" (save)="save.emit()"/>
+  <mat-card appearance="outlined" right-column class="creator-step-content">
+    @if(divination){
+    <div class="creator-card">
+      <div class="row">
+        <div class="name">Name</div>
+        <div class="value">{{ divination.name }}</div>
+      </div>
+      <div class="row">
+        <div class="name">Description</div>
+        <div class="value">{{ divination.description }}</div>
+      </div>
+    </div>
+    }
+    <button mat-flat-button (click)="set()">roll 1d100</button>
+  </mat-card>
+</app-two-column-step>

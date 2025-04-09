@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { MatSelectModule } from '@angular/material/select';
-import { DHII_TalentName } from '../../types/talents';
+import { DHII_TalentName } from '../../types/dhii-talents';
 import { MatCardModule } from '@angular/material/card';
 import { MatListModule } from '@angular/material/list';
 import { FormArray, FormControl, ReactiveFormsModule, Validators } from '@angular/forms';

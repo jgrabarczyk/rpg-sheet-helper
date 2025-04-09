@@ -1,5 +1,5 @@
 import { DHII_Aptitude } from './dark-heresy-ii';
-import { DHII_TalentName } from './talents';
+import { DHII_TalentName } from './dhii-talents';
 
 export type DHII_Role = {
   aptitudes: DHII_Aptitude[];

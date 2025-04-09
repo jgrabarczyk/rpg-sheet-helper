@@ -1,5 +1,5 @@
 import { inject, Injectable } from '@angular/core';
-import { Observable, map, BehaviorSubject, distinctUntilChanged, tap } from 'rxjs';
+import { Observable, map, BehaviorSubject, distinctUntilChanged } from 'rxjs';
 import {
   DHII_Aptitude,
   DHII_Character,
@@ -10,19 +10,20 @@ import {
 import { BACKGROUNDS } from '../types/dhii-background';
 import { DHII_Homeworld, DHII_Homeworlds, HOMEWORLDS } from '../types/dhii-homeworlds';
 import { ROLES } from '../types/dhii-role';
-import { DHII_TalentName } from '../types/talents';
+import { DHII_Talent, DHII_TalentName, DHII_Talents, TALENTS } from '../types/dhii-talents';
 import { DHII_SheetService } from '../service/dhii-sheet.service';
 import { DHII_Attributes, DHII_Attribute, DHII_AttributeName } from '../types/dhii-attribute';
 import { DiceRoll } from '../../types/roll';
-import { rollDices } from '../../utility/roll';
-import { DHII_SkillName } from '../types/dhii-skill';
+import { DHII_Skill, DHII_SkillName } from '../types/dhii-skill';
 import { pickDivination } from '../types/dhii-divination';
+import { RollService } from '../../shared/roll/roll.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class DHII_CreatorService {
-  sheetService = inject(DHII_SheetService);
+  private sheetService = inject(DHII_SheetService);
+  private rollService = inject(RollService);
 
   private readonly homeworldsSubject$: BehaviorSubject<DHII_Homeworlds> = new BehaviorSubject(
     HOMEWORLDS
@@ -85,7 +86,6 @@ export class DHII_CreatorService {
           ...(character.homeworld?.value.talents ?? []),
           ...(character.background?.value.talents ?? [])
         ].filter(a => !!a),
-      tap(v => console.log('talents', v))
     )
   );
 
@@ -159,59 +159,100 @@ export class DHII_CreatorService {
   );
 
   setHomeworld(homeworld: DHII_CharacterHomeworld) {
-    const chararcter: DHII_Character = this.sheetService.getCharacter();
-    chararcter.homeworld! = homeworld;
-    this.sheetService.updateCharacter(chararcter);
+    const character: DHII_Character = this.sheetService.getCharacter();
+    character.homeworld! = homeworld;
+    this.sheetService.updateCharacter(character);
   }
 
   setBackground(background: DHII_CharacterBackground) {
-    const chararcter: DHII_Character = this.sheetService.getCharacter();
-    chararcter.background! = background;
-    this.sheetService.updateCharacter(chararcter);
+    const character: DHII_Character = this.sheetService.getCharacter();
+    character.background! = background;
+    this.sheetService.updateCharacter(character);
   }
 
   setRole(role: DHII_CharacterRole) {
-    const chararcter: DHII_Character = this.sheetService.getCharacter();
-    chararcter.role! = role;
-    this.sheetService.updateCharacter(chararcter);
+    const character: DHII_Character = this.sheetService.getCharacter();
+    character.role! = role;
+    this.sheetService.updateCharacter(character);
   }
 
   setAptitudes(newAptitudes: DHII_Aptitude[]) {
-    const chararcter: DHII_Character = this.sheetService.getCharacter();
-    chararcter.aptitudes = newAptitudes;
+    const character: DHII_Character = this.sheetService.getCharacter();
+    character.aptitudes = newAptitudes;
     this.sheetService.updateAptitudes(newAptitudes);
   }
 
+  setTalents(talents: DHII_TalentName[]) {
+    const character: DHII_Character = this.sheetService.getCharacter();
+    character.tallents = this.getTalentsByNames(talents);
+    this.sheetService.updateCharacter(character);
+  }
+
+  setSkills(skillNames: DHII_SkillName[]) {
+    const character: DHII_Character = this.sheetService.getCharacter();
+    skillNames.forEach(skillName => {
+      const skill: DHII_Skill | undefined = character.skills.get(skillName);
+      if (skill) {
+        skill.lvl.current++;
+      }
+    });
+  
+    this.sheetService.updateCharacter(character);
+
+    skillNames.forEach(skillName => {
+      const skill: DHII_Skill | undefined = character.skills.get(skillName);
+      this.sheetService.updateSkill(skill!);
+    });
+  }
+
   setWounds() {
-    const chararcter: DHII_Character = this.sheetService.getCharacter();
-    const wounds: number | undefined = chararcter?.homeworld?.value.wounds;
+    const character: DHII_Character = this.sheetService.getCharacter();
+    const wounds: number | undefined = character?.homeworld?.value.wounds;
+
     if (!wounds) {
       throw new Error('character.homewolrd is not set');
     }
 
-    chararcter.wounds = wounds + rollDices('1d5');
-    this.sheetService.updateCharacter(chararcter);
+    const woundRoll: number = this.rollService.rollDices({
+      roll: '1d5',
+      type: 'default',
+      title: 'Determine Wounds'
+    });
+
+    character.wounds = wounds + woundRoll;
+    this.sheetService.updateCharacter(character);
   }
 
   setDivination() {
-    const chararcter: DHII_Character = this.sheetService.getCharacter();
-    chararcter.divination = pickDivination();
+    const character: DHII_Character = this.sheetService.getCharacter();
+    const divinationRoll: number = this.rollService.rollDices({
+      roll: '1d100',
+      type: 'default',
+      title: 'Set Divination',      
+    });
+
+    character.divination = pickDivination(divinationRoll);
+  
+    this.sheetService.updateCharacter(character);
   }
 
   setFate() {
-    const chararcter: DHII_Character = this.sheetService.getCharacter();
-    const homeworld: DHII_Homeworld | undefined = chararcter?.homeworld?.value;
+    const character: DHII_Character = this.sheetService.getCharacter();
+    const homeworld: DHII_Homeworld | undefined = character?.homeworld?.value;
+
     if (!homeworld) {
       throw new Error('character.homewolrd is not set');
     }
 
-    chararcter.fate = homeworld.fate;
+    const fateRoll: number = this.rollService.rollDices({
+      roll: '1d10',
+      type: 'default',
+      title: 'Determine Fate'
+    });
 
-    if (rollDices('1d10') >= homeworld.blessingThreshold) {
-      chararcter.fate++;
-    }
+    character.fate = fateRoll >= homeworld.blessingThreshold ? homeworld.fate + 1 : homeworld.fate;
 
-    this.sheetService.updateCharacter(chararcter);
+    this.sheetService.updateCharacter(character);
   }
 
   setAttributes() {
@@ -221,7 +262,7 @@ export class DHII_CreatorService {
     const penality: DHII_AttributeName | undefined = character.homeworld?.value.attributes.penality;
 
     if (!bonus || !penality) {
-      throw Error('this.character is incomplete');
+      throw Error('this.character.homeworld is incomplete');
     }
 
     character.attributes?.forEach(attribute => {
@@ -232,7 +273,9 @@ export class DHII_CreatorService {
           penality
         }) + 20;
     });
+
     this.sheetService.updateCharacter(character);
+    character.skills.forEach(skill => this.sheetService.updateSkill(skill));
   }
 
   rerollAttribute(attributeName: DHII_AttributeName) {
@@ -255,7 +298,11 @@ export class DHII_CreatorService {
     this.sheetService.updateAttribute(attribute);
   }
 
-  reset() {
+  saveCharacter() {
+    this.sheetService.saveSheet();
+  }
+
+  resetAll() {
     this.sheetService.resetAll();
   }
 
@@ -274,6 +321,34 @@ export class DHII_CreatorService {
       diceRoll = '3d10';
       modifier = 'penality';
     }
-    return rollDices(diceRoll, modifier);
+
+    return this.rollService.rollDices({
+      roll: diceRoll,
+      modifier,
+      type: 'default',
+      title: `Roll ${roll.attribute.name}`
+    });
+  }
+
+  /**
+   * @TODO create additional options for talents with "PICK ONE" option Use specialistaion to propagate specific options.   
+   */
+  private getTalentsByNames(talentNames: DHII_TalentName[]): DHII_Talents {
+    const talents: DHII_Talents = new Map();
+
+    talentNames.forEach(talentName => {
+      const key: string = talentName.includes('(') ? `${talentName.split(' (')[0]} (Pick One)` : talentName;
+  
+      if (!key) {
+        throw Error('Unable to find talent with key: ' + key);
+      }
+      const value: DHII_Talent | undefined = TALENTS.get(key as DHII_TalentName);
+      if (!value) {
+        throw Error('Unable to find talent value for key' + key);
+      }
+      talents.set(talentName, value);
+    });
+
+    return talents;
   }
 }

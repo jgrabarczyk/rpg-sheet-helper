@@ -1,34 +1,31 @@
 import { CommonModule } from '@angular/common';
-import { Component, inject, ViewChild } from '@angular/core';
-import { MatStepperModule } from '@angular/material/stepper';
-import { HomeworldCardComponent } from '../homeworld-card/homeworld-card.component';
-import { MatStepper } from '@angular/material/stepper';
-import { BackgroundCardComponent } from '../background-card/background-card.component';
-import { RoleCardComponent } from '../role-card/role-card.component';
-import { AttributesGroupComponent } from '../sheet/attribute/attributes-group/attributes-group.component';
-import { DHII_AttributeName } from '../types/dhii-attribute';
+import { Component, inject, OnInit, ViewChild } from '@angular/core';
+import { MatCardModule } from '@angular/material/card';
+import { MatStepper, MatStepperModule } from '@angular/material/stepper';
+import { MainNavigationComponent } from "../../shared/main-navigation/main-navigation.component";
+import { RollLogerComponent } from "../../shared/roll/roll-loger/roll-loger.component";
 import { Roll } from '../../types/roll';
-import { AptitudesGroupComponent } from '../sheet/aptitude/aptitudes-group.component';
-import { DHII_CreatorService } from './dhii-creator.service';
-import { DHII_SheetService } from '../service/dhii-sheet.service';
-import { HomeworldStepComponent } from './homeworld-step/homeworld-step.component';
-import { BackgroundStepComponent } from './background-step/background-step.component';
-import { RoleStepComponent } from './role-step/role-step.component';
-import { AttributeStepComponent } from './attribute-step/attribute-step.component';
 import {
   DHII_Aptitude,
   DHII_CharacterBackground,
   DHII_CharacterHomeworld,
   DHII_CharacterRole
 } from '../types/dark-heresy-ii';
+import { DHII_AttributeName } from '../types/dhii-attribute';
+import { DHII_SkillName } from '../types/dhii-skill';
+import { DHII_TalentName } from '../types/dhii-talents';
 import { AptitudeStepComponent } from './aptitude-step/aptitude-step.component';
-import { SkillStepComponent } from './skill-step/skill-step.component';
-import { EquipmentStepComponent } from './equipment-step/equipment-step.component';
+import { AttributeStepComponent } from './attribute-step/attribute-step.component';
+import { BackgroundStepComponent } from './background-step/background-step.component';
+import { DHII_CreatorService } from './dhii-creator.service';
 import { DivinationStepComponent } from './divination-step/divination-step.component';
-import { StepNavigationComponent } from './step-navigation/step-navigation.component';
+import { EquipmentStepComponent } from './equipment-step/equipment-step.component';
+import { HomeworldStepComponent } from './homeworld-step/homeworld-step.component';
+import { RoleStepComponent } from './role-step/role-step.component';
+import { SkillStepComponent } from './skill-step/skill-step.component';
 import { TalentStepComponent } from './talent-step/talent-step.component';
-import { MatCardModule } from '@angular/material/card';
-import { MainNavigationComponent } from "../../shared/main-navigation/main-navigation.component";
+import { WoundsAndFateStepComponent } from "./wounds-and-fate-step/wounds-and-fate-step.component";
+
 @Component({
   selector: 'app-dark-heresy-ii-creator',
   standalone: true,
@@ -36,11 +33,6 @@ import { MainNavigationComponent } from "../../shared/main-navigation/main-navig
     CommonModule,
     MatStepperModule,
     MatCardModule,
-    HomeworldCardComponent,
-    BackgroundCardComponent,
-    RoleCardComponent,
-    AttributesGroupComponent,
-    AptitudesGroupComponent,
     HomeworldStepComponent,
     BackgroundStepComponent,
     RoleStepComponent,
@@ -49,40 +41,45 @@ import { MainNavigationComponent } from "../../shared/main-navigation/main-navig
     SkillStepComponent,
     EquipmentStepComponent,
     DivinationStepComponent,
-    StepNavigationComponent,
     TalentStepComponent,
-    MainNavigationComponent
+    MainNavigationComponent,
+    WoundsAndFateStepComponent,
+    RollLogerComponent
 ],
   templateUrl: './dark-heresy-ii-creator.component.html',
   styleUrl: './dark-heresy-ii-creator.component.scss'
 })
-export class DarkHeresyIICreatorComponent {
-  protected sheetService: DHII_SheetService = inject(DHII_SheetService);
-  protected creatorService: DHII_CreatorService = inject(DHII_CreatorService);
+export class DarkHeresyIICreatorComponent implements OnInit {
   @ViewChild('stepper') stepper?: MatStepper;
 
-  chooseHomeworld(homeworld: DHII_CharacterHomeworld) {
+  protected creatorService: DHII_CreatorService = inject(DHII_CreatorService);
+
+  ngOnInit(){
+    this.resetStepperAndCreationService();
+  }
+
+  setHomeworld(homeworld: DHII_CharacterHomeworld) {
     this.creatorService.setHomeworld(homeworld);
   }
 
-  chooseBackground(background: DHII_CharacterBackground) {
+  setBackground(background: DHII_CharacterBackground) {
     this.creatorService.setBackground(background);
   }
 
-  chooseAptitudes(aptitudes: DHII_Aptitude[]) {
+  setAptitudes(aptitudes: DHII_Aptitude[]) {
     this.creatorService.setAptitudes(aptitudes);
   }
 
-  chooseRole(role: DHII_CharacterRole) {
+  setRole(role: DHII_CharacterRole) {
     this.creatorService.setRole(role);
   }
 
-  generateAttributes() {
-    this.creatorService.setAttributes();
+  setTalents(talents: DHII_TalentName[]) {
+    this.creatorService.setTalents(talents);
   }
 
-  reroll(roll: Roll) {
-    this.creatorService.rerollAttribute(roll.name as DHII_AttributeName);
+  setSkills(skills: DHII_SkillName[]) {
+    this.creatorService.setSkills(skills);
   }
 
   setWounds() {
@@ -97,12 +94,20 @@ export class DarkHeresyIICreatorComponent {
     this.creatorService.setDivination();
   }
 
-  resetAll() {
+  setAttributes() {
+    this.creatorService.setAttributes();
+  }
+
+  rerollAttribute(roll: Roll) {
+    this.creatorService.rerollAttribute(roll.name as DHII_AttributeName);
+  }
+
+  resetStepperAndCreationService() {
     this.stepper?.reset();
-    // this.creatorService.reset();
+    this.creatorService.resetAll();
   }
 
   save() {
-    console.log('save');
+    this.creatorService.saveCharacter();
   }
 }

@@ -1,0 +1,12 @@
+.grid {
+  display: grid;
+  grid-template: 'content logger' / 85% 15%;
+
+  .content{
+    grid-area: content;
+  }
+
+  .logger{
+    grid-area: logger;
+  }
+}
