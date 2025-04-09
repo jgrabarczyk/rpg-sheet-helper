@@ -1,0 +1,15 @@
+.main-nav {
+  display: flex;
+  justify-content: start;
+  gap: 1rem;
+}
+
+.nav-item {
+  text-decoration: none;
+  color: inherit;
+}
+
+.active {
+  color: var(--mdc-filled-text-field-active-indicator-color);
+  text-decoration: underline;
+}

@@ -11,6 +11,7 @@ import { DHII_Attribute } from '../dark-heresy-ii/types/dhii-attribute';
 import { DHII_Skill } from '../dark-heresy-ii/types/dhii-skill';
 import { SkillGroupComponent } from '../dark-heresy-ii/sheet/skill/skill-group/skill-group.component';
 import { rollTest } from '../utility/roll';
+import { MainNavigationComponent } from "../shared/main-navigation/main-navigation.component";
 
 @Component({
   selector: 'app-sheet',
@@ -20,8 +21,9 @@ import { rollTest } from '../utility/roll';
     CommonModule,
     SkillGroupComponent,
     AptitudesGroupComponent,
-    SheetHeaderComponent
-  ],
+    SheetHeaderComponent,
+    MainNavigationComponent
+],
   templateUrl: './sheet.component.html',
   styleUrl: './sheet.component.scss'
 })

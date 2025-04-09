@@ -28,6 +28,7 @@ import { DivinationStepComponent } from './divination-step/divination-step.compo
 import { StepNavigationComponent } from './step-navigation/step-navigation.component';
 import { TalentStepComponent } from './talent-step/talent-step.component';
 import { MatCardModule } from '@angular/material/card';
+import { MainNavigationComponent } from "../../shared/main-navigation/main-navigation.component";
 @Component({
   selector: 'app-dark-heresy-ii-creator',
   standalone: true,
@@ -49,8 +50,9 @@ import { MatCardModule } from '@angular/material/card';
     EquipmentStepComponent,
     DivinationStepComponent,
     StepNavigationComponent,
-    TalentStepComponent
-  ],
+    TalentStepComponent,
+    MainNavigationComponent
+],
   templateUrl: './dark-heresy-ii-creator.component.html',
   styleUrl: './dark-heresy-ii-creator.component.scss'
 })
@@ -97,7 +99,7 @@ export class DarkHeresyIICreatorComponent {
 
   resetAll() {
     this.stepper?.reset();
-    this.creatorService.reset();
+    // this.creatorService.reset();
   }
 
   save() {

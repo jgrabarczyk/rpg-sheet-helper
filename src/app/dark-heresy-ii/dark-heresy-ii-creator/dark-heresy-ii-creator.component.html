@@ -1,5 +1,8 @@
 @let character = creatorService.character$ | async;
 
+<app-main-navigation></app-main-navigation>
+
+
 <mat-stepper class="creator-wrapper mat-body" orientation="horizontal" [linear]="true" #stepper>
   <mat-step [completed]="character?.homeworld?.key">
     <ng-template matStepLabel> Homeworld </ng-template>
