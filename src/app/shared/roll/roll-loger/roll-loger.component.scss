@@ -1,0 +1,22 @@
+.wrapper {
+  background-color: var(--mdc-outlined-card-container-color, var(--mat-app-surface));
+
+  &,
+  .item {
+    display: block;
+    border: 1px solid black;
+    border-radius: var(--mdc-outlined-card-container-shape, var(--mat-app-corner-medium));
+    border-width: var(--mdc-outlined-card-outline-width);
+    border-color: var(--mdc-outlined-card-outline-color, var(--mat-app-outline-variant));
+    box-shadow: var(--mdc-outlined-card-container-elevation, var(--mat-app-level0));
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+    padding: 1rem;
+  }
+  .item:nth-child(2n) {
+    background-color: var(--mat-autocomplete-background-color);
+  }
+}
+.title {
+  font-weight: 500;
+}

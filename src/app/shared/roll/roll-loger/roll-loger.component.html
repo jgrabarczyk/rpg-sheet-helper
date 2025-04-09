@@ -1,0 +1,12 @@
+<div class="wrapper">
+  <div class="header">
+    <h2>{{ 'Dice roll history' }}</h2>
+  </div>
+
+  @for(item of loggerStack$ |async; track item.id){
+  <div class="item">
+    <div class="title" [innerHTML]="item.title"></div>
+    <div [innerHTML]="item.message"></div>
+  </div>
+  }
+</div>
