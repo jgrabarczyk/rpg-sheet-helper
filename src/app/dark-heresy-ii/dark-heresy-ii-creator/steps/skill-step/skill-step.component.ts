@@ -1,12 +1,13 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { DHII_SkillName } from '../../types/dhii-skill';
 import { MatSelectModule } from '@angular/material/select';
 import { MatCardModule } from '@angular/material/card';
-import { TwoColumnStepComponent } from '../two-column-step/two-column-step.component';
 import { MatListModule } from '@angular/material/list';
 import { FormArray, FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
-import { DynamicListComponent } from '../dynamic-list/dynamic-list.component';
+
+import { DHII_SkillName } from '@dhii/types/dhii-skill';
+import { DynamicListComponent } from '@dhii/partials/dynamic-list/dynamic-list.component';
+import { TwoColumnStepComponent } from '@dhii/partials/two-column-step/two-column-step.component';
 
 @Component({
   selector: 'app-skill-step',

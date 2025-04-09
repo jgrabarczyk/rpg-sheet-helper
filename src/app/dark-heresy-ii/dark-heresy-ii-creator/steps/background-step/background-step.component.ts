@@ -1,13 +1,11 @@
 import { CommonModule } from '@angular/common';
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import {
-  DHII_Background,
-  DHII_BackgroundNames,
-  DHII_Backgrounds
-} from '../../types/dhii-background';
-import { BackgroundCardComponent } from '../../background-card/background-card.component';
-import { DHII_CharacterBackground } from '../../types/dark-heresy-ii';
-import { CardListStepComponent } from "../card-list-step/card-list-step.component";
+
+import { CardListStepComponent } from '@dhii/partials/card-list-step/card-list-step.component';
+import { DHII_CharacterBackground } from '@dhii/types/dark-heresy-ii';
+import { DHII_Backgrounds, DHII_BackgroundNames, DHII_Background } from '@dhii/types/dhii-background';
+
+import { BackgroundCardComponent } from './background-card/background-card.component';
 
 @Component({
   selector: 'app-background-step',

@@ -1,13 +1,14 @@
 import { CommonModule } from '@angular/common';
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { MatSelectModule } from '@angular/material/select';
-import { DHII_TalentName } from '../../types/dhii-talents';
 import { MatCardModule } from '@angular/material/card';
 import { MatListModule } from '@angular/material/list';
 import { FormArray, FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
-import { TwoColumnStepComponent } from '../two-column-step/two-column-step.component';
 import { MatButtonModule } from '@angular/material/button';
-import { DynamicListComponent } from '../dynamic-list/dynamic-list.component';
+
+import { DynamicListComponent } from '@dhii/partials/dynamic-list/dynamic-list.component';
+import { TwoColumnStepComponent } from '@dhii/partials/two-column-step/two-column-step.component';
+import { DHII_TalentName } from '@dhii/types/dhii-talents';
 
 @Component({
   selector: 'app-talent-step',

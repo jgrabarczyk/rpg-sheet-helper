@@ -1,9 +1,11 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
-import { DHII_CharacterHomeworld } from '../../types/dark-heresy-ii';
-import { TwoColumnStepComponent } from "../two-column-step/two-column-step.component";
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDividerModule } from '@angular/material/divider';
+
+import { TwoColumnStepComponent } from '@dhii/partials/two-column-step/two-column-step.component';
+import { DHII_CharacterHomeworld } from '@dhii/types/dark-heresy-ii';
+
 
 @Component({
   selector: 'app-wounds-and-fate-step',

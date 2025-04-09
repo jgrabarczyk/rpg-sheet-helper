@@ -1,15 +1,15 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
-import { StepNavigationComponent } from '../step-navigation/step-navigation.component';
-import { DynamicListComponent } from '../dynamic-list/dynamic-list.component';
 import { FormControl, Validators, FormArray } from '@angular/forms';
-import { TwoColumnStepComponent } from "../two-column-step/two-column-step.component";
+
+import { DynamicListComponent } from '@dhii/partials/dynamic-list/dynamic-list.component';
+import { TwoColumnStepComponent } from '@dhii/partials/two-column-step/two-column-step.component';
 
 @Component({
   selector: 'app-equipment-step',
   standalone: true,
-  imports: [MatFormFieldModule, MatSelectModule, StepNavigationComponent, DynamicListComponent, TwoColumnStepComponent],
+  imports: [MatFormFieldModule, MatSelectModule, DynamicListComponent, TwoColumnStepComponent],
   templateUrl: './equipment-step.component.html',
   styleUrl: './equipment-step.component.scss'
 })

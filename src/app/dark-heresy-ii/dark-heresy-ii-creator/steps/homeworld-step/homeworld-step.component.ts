@@ -1,9 +1,11 @@
 import { CommonModule } from '@angular/common';
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { HomeworldCardComponent } from '../../homeworld-card/homeworld-card.component';
-import { DHII_Homeworld, DHII_HomeworldNames, DHII_Homeworlds } from '../../types/dhii-homeworlds';
-import { DHII_CharacterHomeworld } from '../../types/dark-heresy-ii';
-import { CardListStepComponent } from '../card-list-step/card-list-step.component';
+
+import { CardListStepComponent } from '@dhii/partials/card-list-step/card-list-step.component';
+import { DHII_CharacterHomeworld } from '@dhii/types/dark-heresy-ii';
+import { DHII_Homeworlds, DHII_HomeworldNames, DHII_Homeworld } from '@dhii/types/dhii-homeworlds';
+
+import { HomeworldCardComponent } from './homeworld-card/homeworld-card.component';
 
 @Component({
   selector: 'app-homeworld-step',

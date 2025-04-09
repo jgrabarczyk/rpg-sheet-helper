@@ -1,6 +1,4 @@
-import { DHII_ATTRIBUTE_NAMES } from './../../types/dhii-attribute';
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { DHII_Aptitude } from '../../types/dark-heresy-ii';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
 import { MatListModule } from '@angular/material/list';
@@ -8,7 +6,11 @@ import { FormArray, FormControl, ReactiveFormsModule, Validators } from '@angula
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { CommonModule } from '@angular/common';
-import { TwoColumnStepComponent } from "../two-column-step/two-column-step.component";
+
+import { DHII_Aptitude } from '@dhii/types/dark-heresy-ii';
+import { DHII_ATTRIBUTE_NAMES } from '@dhii/types/dhii-attribute';
+import { TwoColumnStepComponent } from '@dhii/partials/two-column-step/two-column-step.component';
+
 
 @Component({
   selector: 'app-aptitude-step',

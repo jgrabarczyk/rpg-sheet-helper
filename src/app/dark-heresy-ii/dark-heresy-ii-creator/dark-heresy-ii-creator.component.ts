@@ -14,17 +14,18 @@ import {
 import { DHII_AttributeName } from '../types/dhii-attribute';
 import { DHII_SkillName } from '../types/dhii-skill';
 import { DHII_TalentName } from '../types/dhii-talents';
-import { AptitudeStepComponent } from './aptitude-step/aptitude-step.component';
-import { AttributeStepComponent } from './attribute-step/attribute-step.component';
-import { BackgroundStepComponent } from './background-step/background-step.component';
 import { DHII_CreatorService } from './dhii-creator.service';
-import { DivinationStepComponent } from './divination-step/divination-step.component';
-import { EquipmentStepComponent } from './equipment-step/equipment-step.component';
-import { HomeworldStepComponent } from './homeworld-step/homeworld-step.component';
-import { RoleStepComponent } from './role-step/role-step.component';
-import { SkillStepComponent } from './skill-step/skill-step.component';
-import { TalentStepComponent } from './talent-step/talent-step.component';
-import { WoundsAndFateStepComponent } from "./wounds-and-fate-step/wounds-and-fate-step.component";
+import { AptitudeStepComponent } from './steps/aptitude-step/aptitude-step.component';
+import { AttributeStepComponent } from './steps/attribute-step/attribute-step.component';
+import { BackgroundStepComponent } from './steps/background-step/background-step.component';
+import { DivinationStepComponent } from './steps/divination-step/divination-step.component';
+import { EquipmentStepComponent } from './steps/equipment-step/equipment-step.component';
+import { HomeworldStepComponent } from './steps/homeworld-step/homeworld-step.component';
+import { RoleStepComponent } from './steps/role-step/role-step.component';
+import { SkillStepComponent } from './steps/skill-step/skill-step.component';
+import { TalentStepComponent } from './steps/talent-step/talent-step.component';
+import { WoundsAndFateStepComponent } from './steps/wounds-and-fate-step/wounds-and-fate-step.component';
+
 
 @Component({
   selector: 'app-dark-heresy-ii-creator',

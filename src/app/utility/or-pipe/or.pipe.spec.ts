@@ -1,4 +1,4 @@
-import { OrPipe } from './or.pipe';
+import { OrPipe } from "./or.pipe";
 
 describe('OrPipe', () => {
   it('create an instance', () => {

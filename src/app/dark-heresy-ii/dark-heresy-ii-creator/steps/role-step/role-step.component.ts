@@ -1,8 +1,10 @@
 import { CommonModule } from '@angular/common';
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { RoleCardComponent } from '../../role-card/role-card.component';
-import { DHII_Role, DHII_RoleNames, DHII_Roles } from '../../types/dhii-role';
-import { CardListStepComponent } from '../card-list-step/card-list-step.component';
+
+import { CardListStepComponent } from '@dhii/partials/card-list-step/card-list-step.component';
+import { DHII_Roles, DHII_RoleNames, DHII_Role } from '@dhii/types/dhii-role';
+
+import { RoleCardComponent } from './role-card/role-card.component';
 
 @Component({
   selector: 'app-role-step',

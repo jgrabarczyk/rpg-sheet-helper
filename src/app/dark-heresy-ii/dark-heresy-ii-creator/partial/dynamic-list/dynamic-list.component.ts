@@ -4,7 +4,6 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatListModule } from '@angular/material/list';
 import { MatSelectModule } from '@angular/material/select';
-import { TwoColumnStepComponent } from '../two-column-step/two-column-step.component';
 
 @Component({
   selector: 'app-dynamic-list',
@@ -15,7 +14,6 @@ import { TwoColumnStepComponent } from '../two-column-step/two-column-step.compo
     MatCardModule,
     MatListModule,
     ReactiveFormsModule,
-    TwoColumnStepComponent,
   ],
   templateUrl: './dynamic-list.component.html',
   styleUrl: './dynamic-list.component.scss'
