@@ -1,5 +1,6 @@
-import { Characteristic } from '../../types/characteristic';
-import { Level } from '../../types/level';
+import { Characteristic } from '@appTypes/characteristic';
+import { Level } from '@appTypes/level';
+
 import { DHII_Aptitude } from './dark-heresy-ii';
 
 export type DHII_AttributeName =
