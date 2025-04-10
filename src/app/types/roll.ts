@@ -1,6 +1,6 @@
 export interface Roll {
   name: string;
-  value: number;
+  chance: number;
 }
 
 export type DiceRoll = `${number}d${number}`;

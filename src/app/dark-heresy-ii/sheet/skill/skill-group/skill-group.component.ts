@@ -50,7 +50,9 @@ export class SkillGroupComponent {
   rollDice(name: DHII_SkillName, modifier: number): void {
     const skill: DHII_Skill = this.skills.get(name)!;
     const value: number = skill.value + modifier;
-
-    this.roll.emit({ name: skill.name, value: value <= 1 ? 1 : value });
+    //make sure there is always 1% chance to success
+    const chance: number =  value <= 1 ? 1 : value;
+    
+    this.roll.emit({ name: skill.name, chance });
   }
 }

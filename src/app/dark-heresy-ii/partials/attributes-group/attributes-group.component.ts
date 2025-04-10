@@ -80,6 +80,6 @@ export class AttributesGroupComponent {
 
     const value: number = attribute.value + modifier;
 
-    this.roll.emit({ name: attribute.name, value: value <= 1 ? 1 : value });
+    this.roll.emit({ name: attribute.name, chance: value <= 1 ? 1 : value });
   }
 }
