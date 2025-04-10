@@ -1,31 +1,41 @@
 <app-main-navigation></app-main-navigation>
-
-@let attributes$ = sheetService.attributes$ | async;
-@let skills$ = sheetService.skills$ | async;
-
-@if(attributes$ && skills$){
+@let character$ = sheetService.character$ | async; 
   <div class="wrapper">
-    <app-sheet-header [editable]="editable" />
-    <app-attributes-group
-      title="Attributes"
-      subtitle="Basic attributes of your character"
-      [editable]="editable"
-      [step]="step"
-      [attributes]="attributes$"
-      (updatedAttribute)="updateAttribute($event)"
-      (roll)="rollDice($event)"
-    />
+    @if(character$){
+      <app-sheet-header [editable]="editable"  [character]="character$" />
+    } 
 
-    <app-skill-group
-      title="Skills"
-      subtitle="Basic attributes of your character"
-      [editable]="editable"
-      [step]="step"
-      [skills]="skills$"
-      (updateSkill)="updateSkill($event)"
-      (roll)="rollDice($event)"
-    />
+    @let attributes$ = character$?.attributes;
+    @if(attributes$) {
+      <app-attributes-group
+        title="Attributes"
+        subtitle="Basic attributes of your character"
+        [editable]="editable"
+        [step]="step"
+        [attributes]="attributes$"
+        (updatedAttribute)="updateAttribute($event)"
+        (roll)="rollDice($event)"
+      />
+    }
 
-    <app-aptitudes-group [aptitudes]="(creatorService.aptitudes$ | async) ?? []" />
+    @let skills$ = character$?.skills;
+    @if(skills$) {
+      <app-skill-group
+        title="Skills"
+        subtitle="Basic skills of your character"
+        [editable]="editable"
+        [step]="step"
+        [skills]="skills$"
+        (updateSkill)="updateSkill($event)"
+        (roll)="rollDice($event)"
+      />
+    }
+
+    <app-aptitudes-group [aptitudes]="character$?.aptitudes ?? []" />
+
+    @let talents = character$?.tallents;
+    @if(talents){
+      <app-talents-group title="Talents" subtitle="and special abilities"  [talents]="talents"></app-talents-group>
+    }
+
   </div>
-}

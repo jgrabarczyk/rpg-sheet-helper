@@ -1,13 +1,13 @@
 .wrapper {
   display: grid;
-  grid-template-columns: auto auto;
-  grid-template-rows:  auto auto 1fr;
-  grid-template-areas: 'header header' 'attributes skills' 'aptitude skills';
+  grid-template-columns: minmax(20px, 50%) minmax(20px, 50%);
+  grid-template-rows: auto auto auto 1fr;
+  grid-template-areas: 'header header' 'attributes skills' 'talents skills' 'aptitude skills';
   padding: 1rem;
   grid-gap: 1rem;
 }
 app-sheet-header {
-    grid-area: header;
+  grid-area: header;
 }
 app-attributes-group {
   grid-area: attributes;
@@ -19,4 +19,8 @@ app-skill-group {
 
 app-aptitude {
   grid-area: aptitude;
+}
+
+app-talents-group {
+  grid-area: talents;
 }

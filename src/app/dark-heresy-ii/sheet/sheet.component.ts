@@ -16,6 +16,7 @@ import { DHII_SheetService } from '../service/dhii-sheet.service';
 import { AptitudesGroupComponent } from './aptitude/aptitudes-group.component';
 import { SheetHeaderComponent } from './sheet-header/sheet-header.component';
 import { SkillGroupComponent } from './skill/skill-group/skill-group.component';
+import { TalentsGroupComponent } from "./talents-group/talents-group.component";
 
 @Component({
   selector: 'app-sheet',
@@ -26,8 +27,9 @@ import { SkillGroupComponent } from './skill/skill-group/skill-group.component';
     SkillGroupComponent,
     AptitudesGroupComponent,
     SheetHeaderComponent,
-    MainNavigationComponent
-  ],
+    MainNavigationComponent,
+    TalentsGroupComponent
+],
   templateUrl: './sheet.component.html',
   styleUrl: './sheet.component.scss'
 })

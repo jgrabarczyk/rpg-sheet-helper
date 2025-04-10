@@ -1,0 +1,18 @@
+<mat-card appearance="outlined">
+  <mat-card-header>
+    <mat-card-title>{{ title }}</mat-card-title>
+    <mat-card-subtitle>{{ subtitle }}</mat-card-subtitle>
+  </mat-card-header>
+
+  <mat-card-content>
+    <mat-list role="list">
+      @for(t of talents; track t[0]; let i = $index){ @let talent = t[1];
+      <mat-list-item>
+        <span matListItemTitle>{{ t[0] }} [tier {{ talent.tier }}]</span>
+        <p matListItemLine>{{ talent.description }}</p>
+      </mat-list-item>
+      <mat-divider></mat-divider>
+      }
+    </mat-list>
+  </mat-card-content>
+</mat-card>
