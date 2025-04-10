@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
-import { DiceRoll, Roll } from '../../types/roll';
+
+import { DiceRoll, Roll } from '@appTypes/roll';
 
 import { BehaviorSubject } from 'rxjs';
 

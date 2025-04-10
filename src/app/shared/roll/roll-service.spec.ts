@@ -1,6 +1,6 @@
 import { TestBed } from '@angular/core/testing';
 
-import { RollService } from './roll.service';
+import { RollService } from './roll-service';
 
 describe('RollService', () => {
   let service: RollService;

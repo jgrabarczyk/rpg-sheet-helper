@@ -2,7 +2,7 @@ import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { MatDividerModule } from '@angular/material/divider';
 import { Observable } from 'rxjs';
-import { LoggerItem, RollService } from './../roll.service';
+import { LoggerItem, RollService } from '../roll-service';
 
 @Component({
   selector: 'app-roll-loger',
