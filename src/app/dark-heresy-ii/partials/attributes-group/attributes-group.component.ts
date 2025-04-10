@@ -6,7 +6,7 @@ import { MatCardModule } from '@angular/material/card';
 
 import { Roll } from '@appTypes/roll';
 
-import { DHII_Attribute, DHII_AttributeName } from '@dhii/types/dhii-attribute';
+import { DHII_Attribute, DHII_AttributeName, DHII_Attributes } from '@dhii/types/dhii-attribute';
 import { IsBonusAttributePipe } from '@dhii/pipes/is-bonus-attribute/is-bonus-attribute.pipe';
 
 import { AttributeComponent } from '../../sheet/attribute/attribute.component';
@@ -20,7 +20,7 @@ import { AttributeComponent } from '../../sheet/attribute/attribute.component';
 export class AttributesGroupComponent {
   @Input() title?: string;
   @Input() subtitle?: string;
-  @Input() attributes: Map<DHII_AttributeName, DHII_Attribute> = new Map();
+  @Input() attributes!: DHII_Attributes;
   @Input() bonus?: [DHII_AttributeName, DHII_AttributeName ];
   @Input() penality?: DHII_AttributeName
   @Input() editable: boolean = false;

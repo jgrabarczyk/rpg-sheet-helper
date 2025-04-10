@@ -2,8 +2,10 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatListModule } from '@angular/material/list';
 import { MatCardModule } from '@angular/material/card';
-import { Roll } from '../../../../types/roll';
-import { DHII_SkillName, DHII_Skill, DHII_SkillLevel } from '../../../types/dhii-skill';
+
+import { DHII_Skill, DHII_SkillLevel, DHII_SkillName, DHII_Skills } from '@dhii/types/dhii-skill';
+import { Roll } from '@appTypes/roll';
+
 import { SkillComponent } from '../skill.component';
 
 @Component({
@@ -16,7 +18,7 @@ import { SkillComponent } from '../skill.component';
 export class SkillGroupComponent {
   @Input() title?: string;
   @Input() subtitle?: string;
-  @Input() skills: Map<DHII_SkillName, DHII_Skill> = new Map();
+  @Input() skills!: DHII_Skills;
   @Input() editable: boolean = false;
   @Input() step: number = 5;
 
@@ -51,8 +53,8 @@ export class SkillGroupComponent {
     const skill: DHII_Skill = this.skills.get(name)!;
     const value: number = skill.value + modifier;
     //make sure there is always 1% chance to success
-    const chance: number =  value <= 1 ? 1 : value;
-    
+    const chance: number = value <= 1 ? 1 : value;
+
     this.roll.emit({ name: skill.name, chance });
   }
 }
