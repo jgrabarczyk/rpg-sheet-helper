@@ -19,6 +19,10 @@ export type DHII_Aptitude =
   | 'Tech'
   | DHII_AttributeName;
 
+export type DHII_CharacterDetails = {
+  characterName: string;
+  age: number
+}
 export type DHII_CharacterHomeworld = { key: DHII_HomeworldNames; value: DHII_Homeworld };
 export type DHII_CharacterRole = { key: DHII_RoleNames; value: DHII_Role };
 export type DHII_CharacterBackground = { key: DHII_BackgroundNames; value: DHII_Background };
@@ -26,6 +30,7 @@ export type DHII_CharacterBackground = { key: DHII_BackgroundNames; value: DHII_
 export type DHII_Character = {
   aptitudes: DHII_Aptitude[];
   attributes: Map<DHII_AttributeName, DHII_Attribute>;
+  details?: DHII_CharacterDetails;
   skills: Map<DHII_SkillName, DHII_Skill>;
   tallents?: Map<DHII_TalentName, DHII_Talent>;
   homeworld?: DHII_CharacterHomeworld;

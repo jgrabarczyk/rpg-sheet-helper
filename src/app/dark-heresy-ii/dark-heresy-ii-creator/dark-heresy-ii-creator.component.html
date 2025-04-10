@@ -3,8 +3,12 @@
 <app-main-navigation></app-main-navigation>
 
 <div class="grid">
-  <mat-stepper class="content creator-wrapper mat-body" orientation="horizontal" [linear]="true" #stepper>
-  
+  <mat-stepper
+    class="content creator-wrapper mat-body"
+    orientation="horizontal"
+    [linear]="true"
+    #stepper
+  >
     <mat-step>
       <ng-template matStepLabel> Homeworld </ng-template>
       <app-homeworld-step
@@ -110,12 +114,20 @@
 
     <mat-step>
       <ng-template matStepLabel>Determin Divination</ng-template>
-      <app-divination-step
-        [divination]="character?.divination"
-        (setDivination)="setDivination()"
+      <app-divination-step [divination]="character?.divination" (setDivination)="setDivination()" />
+    </mat-step>
+
+    <mat-step>
+      <ng-template matStepLabel>Final Details</ng-template>
+      
+      @let details = character?.details;
+      
+      <app-final-details-step
+        [details]="details"
         (resetAll)="resetStepperAndCreationService()"
-        (save)="save()"
-      />
+        (setDetails)="setCharacterDetails($event)"
+        (save)="saveCharacter($event)"
+      ></app-final-details-step>
     </mat-step>
   </mat-stepper>
 

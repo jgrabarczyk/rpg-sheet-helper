@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
-import { DHII_Aptitude, DHII_Character } from '../types/dark-heresy-ii';
 import { BehaviorSubject, map, Observable, shareReplay } from 'rxjs';
-import { DHII_Attributes, DHII_Attribute, DHII_ATTRIBUTES } from '../types/dhii-attribute';
-import { DHII_Skill, DHII_SkillName, DHII_SKILLS } from '../types/dhii-skill';
+
+import { DHII_Aptitude, DHII_Character } from '@dhii/types/dark-heresy-ii';
+import { DHII_Attributes, DHII_Attribute, DHII_ATTRIBUTES } from '@dhii/types/dhii-attribute';
+import { DHII_Skill, DHII_SkillName, DHII_SKILLS } from '@dhii/types/dhii-skill';
 
 const ATTRIBUTES: DHII_Attributes = structuredClone(DHII_ATTRIBUTES);
 const SKILLS: Map<DHII_SkillName<string>, DHII_Skill> = structuredClone(DHII_SKILLS);
@@ -81,12 +82,6 @@ export class DHII_SheetService {
     const character: DHII_Character = this.getCharacter();
     character.aptitudes = aptitudes;
     this.characterSubject$.next(character);
-  }
-
-  //@todo save to localstorage
-  saveSheet() {
-    const value: DHII_Character = this.characterSubject$.value;
-    console.log(value);
   }
 
   resetAll() {

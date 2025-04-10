@@ -15,8 +15,6 @@ export class DivinationStepComponent {
   @Input() divination?: DHII_Divination;
   
   @Output() setDivination: EventEmitter<void> = new EventEmitter();
-  @Output() resetAll: EventEmitter<void> = new EventEmitter();
-  @Output() save: EventEmitter<void> = new EventEmitter();
 
   valid = false;
 

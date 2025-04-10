@@ -1,22 +1,28 @@
 import { inject, Injectable } from '@angular/core';
 import { Observable, map, BehaviorSubject, distinctUntilChanged } from 'rxjs';
+
+import { DHII_SheetService } from '../service/dhii-sheet.service';
+
+import { DiceRoll } from '@appTypes/roll';
+
 import {
   DHII_Aptitude,
   DHII_Character,
   DHII_CharacterBackground,
+  DHII_CharacterDetails,
   DHII_CharacterHomeworld,
   DHII_CharacterRole
-} from '../types/dark-heresy-ii';
-import { BACKGROUNDS } from '../types/dhii-background';
-import { DHII_Homeworld, DHII_Homeworlds, HOMEWORLDS } from '../types/dhii-homeworlds';
-import { ROLES } from '../types/dhii-role';
-import { DHII_Talent, DHII_TalentName, DHII_Talents, TALENTS } from '../types/dhii-talents';
-import { DHII_SheetService } from '../service/dhii-sheet.service';
-import { DHII_Attributes, DHII_Attribute, DHII_AttributeName } from '../types/dhii-attribute';
-import { DiceRoll } from '../../types/roll';
-import { DHII_Skill, DHII_SkillName } from '../types/dhii-skill';
-import { pickDivination } from '../types/dhii-divination';
-import { RollService } from '../../shared/roll/roll.service';
+} from '@dhii/types/dark-heresy-ii';
+import { BACKGROUNDS } from '@dhii/types/dhii-background';
+import { DHII_Homeworld, DHII_Homeworlds, HOMEWORLDS } from '@dhii/types/dhii-homeworlds';
+import { ROLES } from '@dhii/types/dhii-role';
+import { DHII_Talent, DHII_TalentName, DHII_Talents, TALENTS } from '@dhii/types/dhii-talents';
+import { DHII_Attributes, DHII_Attribute, DHII_AttributeName } from '@dhii/types/dhii-attribute';
+import { DHII_Skill, DHII_SkillName } from '@dhii/types/dhii-skill';
+import { pickDivination } from '@dhii/types/dhii-divination';
+
+import { RollService } from '@shared/roll/roll-service';
+import { LocalstorageService, StorageSaveName } from 'services/localstorage.service';
 
 @Injectable({
   providedIn: 'root'
@@ -24,6 +30,7 @@ import { RollService } from '../../shared/roll/roll.service';
 export class DHII_CreatorService {
   private sheetService = inject(DHII_SheetService);
   private rollService = inject(RollService);
+  private storageService = inject(LocalstorageService);
 
   private readonly homeworldsSubject$: BehaviorSubject<DHII_Homeworlds> = new BehaviorSubject(
     HOMEWORLDS
@@ -80,12 +87,11 @@ export class DHII_CreatorService {
         JSON.stringify(p.homeworld?.value.talents) === JSON.stringify(c.homeworld?.value.talents) &&
         JSON.stringify(p.background?.value.talents) === JSON.stringify(c.background?.value.talents)
     ),
-    map(
-      character =>
-        [
-          ...(character.homeworld?.value.talents ?? []),
-          ...(character.background?.value.talents ?? [])
-        ].filter(a => !!a),
+    map(character =>
+      [
+        ...(character.homeworld?.value.talents ?? []),
+        ...(character.background?.value.talents ?? [])
+      ].filter(a => !!a)
     )
   );
 
@@ -196,7 +202,7 @@ export class DHII_CreatorService {
         skill.lvl.current++;
       }
     });
-  
+
     this.sheetService.updateCharacter(character);
 
     skillNames.forEach(skillName => {
@@ -228,11 +234,11 @@ export class DHII_CreatorService {
     const divinationRoll: number = this.rollService.rollDices({
       roll: '1d100',
       type: 'default',
-      title: 'Set Divination',      
+      title: 'Set Divination'
     });
 
     character.divination = pickDivination(divinationRoll);
-  
+
     this.sheetService.updateCharacter(character);
   }
 
@@ -278,6 +284,12 @@ export class DHII_CreatorService {
     character.skills.forEach(skill => this.sheetService.updateSkill(skill));
   }
 
+  setCharacterDetails(details: DHII_CharacterDetails) {
+    const character: DHII_Character = this.sheetService.getCharacter();
+    character.details = details;
+    this.sheetService.updateCharacter(character);
+  }
+
   rerollAttribute(attributeName: DHII_AttributeName) {
     const character: DHII_Character = this.sheetService.getCharacter();
     const attribute: DHII_Attribute = character.attributes.get(attributeName)!;
@@ -298,8 +310,14 @@ export class DHII_CreatorService {
     this.sheetService.updateAttribute(attribute);
   }
 
-  saveCharacter() {
-    this.sheetService.saveSheet();
+  saveCharacterToLocalStorage(saveName: string) {
+    const value: DHII_Character = this.sheetService.getCharacter();
+    const key: StorageSaveName = `dhii+${saveName}`;
+    
+    this.storageService.setItem({
+      key,
+      value
+    });
   }
 
   resetAll() {
@@ -331,14 +349,16 @@ export class DHII_CreatorService {
   }
 
   /**
-   * @TODO create additional options for talents with "PICK ONE" option Use specialistaion to propagate specific options.   
+   * @todo create additional options for talents with "PICK ONE" option Use specialistaion to propagate specific options.
    */
   private getTalentsByNames(talentNames: DHII_TalentName[]): DHII_Talents {
     const talents: DHII_Talents = new Map();
 
     talentNames.forEach(talentName => {
-      const key: string = talentName.includes('(') ? `${talentName.split(' (')[0]} (Pick One)` : talentName;
-  
+      const key: string = talentName.includes('(')
+        ? `${talentName.split(' (')[0]} (Pick One)`
+        : talentName;
+
       if (!key) {
         throw Error('Unable to find talent with key: ' + key);
       }
