@@ -1,12 +1,15 @@
 import { CommonModule } from '@angular/common';
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { AttributeComponent } from '../../sheet/attribute/attribute.component';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatListModule } from '@angular/material/list';
 import { MatCardModule } from '@angular/material/card';
-import { Roll } from '../../../types/roll';
-import { DHII_Attribute, DHII_AttributeName } from '../../types/dhii-attribute';
-import { IsBonusAttributePipe } from './is-bonus-attribute.pipe';
+
+import { Roll } from '@appTypes/roll';
+
+import { DHII_Attribute, DHII_AttributeName } from '@dhii/types/dhii-attribute';
+import { IsBonusAttributePipe } from '@dhii/pipes/is-bonus-attribute/is-bonus-attribute.pipe';
+
+import { AttributeComponent } from '../../sheet/attribute/attribute.component';
 @Component({
   selector: 'app-attributes-group',
   standalone: true,

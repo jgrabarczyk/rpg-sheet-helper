@@ -4,8 +4,8 @@ import { MatCardModule } from '@angular/material/card';
 
 import { DHII_Role } from '@dhii/types/dhii-role';
 
-import { OrPipe } from '@util/or-pipe/or.pipe';
-import { SpreadPipe } from '@util/spread.pipe';
+import { OrPipe } from '@pipes/or-pipe/or.pipe';
+import { SpreadPipe } from '@pipes/spread-pipe/spread.pipe';
 
 @Component({
   selector: 'app-role-card',

@@ -1,15 +1,19 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { faCircle } from '@fortawesome/free-regular-svg-icons';
-import { faCircle as faCircleFilled } from '@fortawesome/free-solid-svg-icons';
-import { FillPipe } from '../../../utility/fill-pipe/fill.pipe';
 import { MatInputModule } from '@angular/material/input';
 import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatMenuModule } from '@angular/material/menu';
+
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { faCircle } from '@fortawesome/free-regular-svg-icons';
+import { faCircle as faCircleFilled } from '@fortawesome/free-solid-svg-icons';
+
+import { FillPipe } from '@pipes/fill-pipe/fill.pipe';
+
 import { RollboxComponent } from '../rollbox/rollbox.component';
+
 @Component({
   selector: 'app-attribute',
   standalone: true,

@@ -5,9 +5,8 @@ import { MatListModule } from '@angular/material/list';
 
 import { DHII_Background } from '@dhii/types/dhii-background';
 
-import { OrPipe } from '@util/or-pipe/or.pipe';
-import { SpreadPipe } from '@util/spread.pipe';
-
+import { OrPipe } from '@pipes/or-pipe/or.pipe';
+import { SpreadPipe } from '@pipes/spread-pipe/spread.pipe';
 
 @Component({
   selector: 'app-background-card',

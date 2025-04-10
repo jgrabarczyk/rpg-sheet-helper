@@ -3,12 +3,15 @@ import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { faCircle } from '@fortawesome/free-regular-svg-icons';
 import { faCircle as faCircleFilled } from '@fortawesome/free-solid-svg-icons';
-import { FillPipe } from '../../../utility/fill-pipe/fill.pipe';
+
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import {MatMenuModule} from '@angular/material/menu';
+
+import { FillPipe } from '@pipes/fill-pipe/fill.pipe';
+
 import { RollboxComponent } from "../rollbox/rollbox.component"; 
 
 @Component({
