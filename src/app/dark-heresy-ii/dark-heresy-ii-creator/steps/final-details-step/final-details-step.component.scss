@@ -1,0 +1,13 @@
+.form {
+  display: flex;
+  flex-direction: column;
+
+  .form-field {
+    display: block;
+    margin-bottom: .5rem;
+  }
+}
+.header{
+    margin-bottom: 1rem;
+    display: block;
+}
