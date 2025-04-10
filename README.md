@@ -1,10 +1,11 @@
 # RpgSheet
-Yet another rpg sheet creator.
+Create your new Dark Heresy II character step by step.
+Update Character stats, roll tests etc.  
 
-## Development server
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+## Development 
+Run `ng serve` for a dev server. 
+
+Navigate to `http://localhost:4200/`. 
 
 
 
-## TO DO 
-- everything
