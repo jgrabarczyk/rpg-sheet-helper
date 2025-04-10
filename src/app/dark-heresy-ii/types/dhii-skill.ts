@@ -86,7 +86,7 @@ export type DHII_Skill = Omit<Skill<DHII_AttributeName, DHII_SkillName>, 'lvl'> 
   lvl: DHII_SkillLevel;
   value: number;
 };
-
+export type DHII_Skills = Map<DHII_SkillName, DHII_Skill>;
 export const DHII_SKILLS: Map<DHII_SkillName, DHII_Skill> = new Map([
   [
     'Acrobatics',
