@@ -1,26 +1,12 @@
+import { RollableItemsMap, RollableItem, RollRange, pickRollableItem } from "@appTypes/roll-item";
 
-export type DHII_Divination = {
-  name: string;
-  description: string;
-};
+export type DHII_Divination = RollableItem;
 
-export function pickDivination(result: number): DHII_Divination {
-  const key: string | undefined = findDivinationRange(result);
-
-  if(!key){
-    throw Error (`not found DIVINATIONS.key for result ${result}`);
-  }
-  return DIVINATIONS.get(key)!;
+export function rollDivinationTable(result: number): DHII_Divination {
+  return pickRollableItem(result, DIVINATIONS)
 }
 
-function findDivinationRange(roll:number){
-  return Array.from(DIVINATIONS.keys()).find(range => {
-    const [min, max] = range.split('-');
-    return roll >= Number(min) && roll <= Number(max);
-  });
-}
-
-export const DIVINATIONS: Map<string, DHII_Divination> = new Map<string, DHII_Divination>([
+export const DIVINATIONS: RollableItemsMap = new Map<RollRange, DHII_Divination>([
   [
     '00-01',
     {
