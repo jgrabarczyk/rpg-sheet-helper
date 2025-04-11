@@ -6,8 +6,13 @@
 
 @include mat.core();
 
+:root{
+  @include m3-theme.theme(m3-theme.$light-theme);
+}
+
 html {
   @include mat.all-component-themes(m3-theme.$light-theme);
+  @include mat.color-variants-backwards-compatibility(m3-theme.$light-theme);
 }
 
 html,
@@ -22,7 +27,7 @@ body {
 }
 
 .creator-wrapper {
-  .header {
+  .step-header {
     padding: 1rem;
     margin-bottom: 1rem;
     text-align: center;

@@ -167,3 +167,12 @@ $dark-theme: mat.define-theme(
     )
   )
 );
+
+/*
+ * main theme space for m3
+ */
+@mixin theme($theme) {
+    mat-toolbar {
+      background: mat.get-theme-color($theme, primary-container);
+    }
+}
