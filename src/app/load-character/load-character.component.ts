@@ -5,7 +5,7 @@ import { MainNavigationComponent } from '../shared/main-navigation/main-navigati
 import { MatListModule } from '@angular/material/list';
 import { DHII_SheetService } from 'dark-heresy-ii/service/dhii-sheet.service';
 import { DHII_Character } from '@dhii/types/dark-heresy-ii';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDialog } from '@angular/material/dialog';
 import { ConfirmDialogComponent } from '@shared/dialogs/confirm-dialog/confirm-dialog.component';
@@ -17,7 +17,7 @@ const PREFIX: StoragePrefixes = 'dhii';
 @Component({
   selector: 'app-load-character',
   standalone: true,
-  imports: [MainNavigationComponent, MatCardModule, MatListModule, MatButtonModule, CommonModule],
+  imports: [RouterLink, MainNavigationComponent, MatCardModule, MatListModule, MatButtonModule, CommonModule],
   templateUrl: './load-character.component.html',
   styleUrl: './load-character.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush

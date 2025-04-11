@@ -1,25 +1,33 @@
 <app-main-navigation></app-main-navigation>
+@let saves = saveNames$ | async;
+
 <div class="wrapper">
   <mat-card appearance="outlined">
     <mat-card-header>
       <mat-card-title>Load Character</mat-card-title>
-      <mat-card-subtitle>Choose saved character from list below </mat-card-subtitle>
+      @if(saves?.length){
+        <mat-card-subtitle>Choose saved character from list below </mat-card-subtitle>
+      }
     </mat-card-header>
 
     <mat-card-content>
       <mat-list role="list">
-        @for(item of saveNames$ | async; track item) {
-        <mat-list-item role="listitem">
-          {{ item }}
-          <button mat-flat-button (click)="loadCharacter(item)">Load</button>
-          <button mat-stroked-button (click)="deleteCharacter(item)">Delete</button>
-        </mat-list-item>
+        @if(saves?.length){
+          @for(item of saves; track item) {
+            <mat-list-item role="listitem">
+              {{ item }}
+              <button mat-flat-button (click)="loadCharacter(item)">Load</button>
+              <button mat-stroked-button (click)="deleteCharacter(item)">Delete</button>
+            </mat-list-item>
+          }
+        } @else {
+          <p>It seems you have no character save yet.  </p>
+          <p>
+            <a mat-flat-button routerLink="/creator"> Create character</a>
+          </p>
+          
         }
       </mat-list>
     </mat-card-content>
-    <!-- <mat-card-actions align="start">
-
-    </mat-card-actions> -->
-    <mat-card-footer> Footer </mat-card-footer>
   </mat-card>
 </div>
