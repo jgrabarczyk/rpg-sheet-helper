@@ -4,15 +4,17 @@ import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
+import { MatExpansionModule } from '@angular/material/expansion';
+
 import { DHII_Character } from '@dhii/types/dark-heresy-ii';
 import { BACKGROUNDS, DHII_Backgrounds } from '@dhii/types/dhii-background';
 import { DHII_Homeworlds, HOMEWORLDS } from '@dhii/types/dhii-homeworlds';
 import { DHII_Roles, ROLES } from '@dhii/types/dhii-role';
 
+import { HeaderAccordionDataPipe } from "./header-accordion-data/header-accordion-data.pipe";
+
 /**
  * @todo add readonly option
- * @todo show homeworld bonus 
- * @todo show background bonus 
  */
 @Component({
   selector: 'app-sheet-header',
@@ -22,8 +24,10 @@ import { DHII_Roles, ROLES } from '@dhii/types/dhii-role';
     ReactiveFormsModule,
     MatFormFieldModule,
     MatInputModule,
-    MatSelectModule
-  ],
+    MatSelectModule,
+    MatExpansionModule,
+    HeaderAccordionDataPipe
+],
   templateUrl: './sheet-header.component.html',
   styleUrl: './sheet-header.component.scss'
 })

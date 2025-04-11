@@ -6,64 +6,68 @@
 
   <mat-card-content class="content">
     @if(editable){
-      <form [formGroup]="form">
-        <mat-form-field [appearance]="'outline'">
-          <mat-label>Character Name</mat-label>
-          <input matInput formControlName="characterName" />
-        </mat-form-field>
-        <mat-form-field [appearance]="'outline'">
-          <mat-label>Character Age</mat-label>
-          <input matInput formControlName="age" />
-        </mat-form-field>
+    <form [formGroup]="form">
+      <mat-form-field [appearance]="'outline'">
+        <mat-label>Character Name</mat-label>
+        <input matInput formControlName="characterName" />
+      </mat-form-field>
+      <mat-form-field [appearance]="'outline'">
+        <mat-label>Character Age</mat-label>
+        <input matInput formControlName="age" />
+      </mat-form-field>
 
-        <mat-form-field [appearance]="'outline'">
-          <mat-label>HomeWorld</mat-label>
-          <mat-select formControlName="homeworld">
-            @for(homeworld of homeworlds; track homeworld[0]){
-            <mat-option [value]="homeworld[0]">{{ homeworld[1].name }}</mat-option>
-            }
-          </mat-select>
-        </mat-form-field>
+      <mat-form-field [appearance]="'outline'">
+        <mat-label>HomeWorld</mat-label>
+        <mat-select formControlName="homeworld">
+          @for(homeworld of homeworlds; track homeworld[0]){
+          <mat-option [value]="homeworld[0]">{{ homeworld[1].name }}</mat-option>
+          }
+        </mat-select>
+      </mat-form-field>
 
-        <mat-form-field [appearance]="'outline'">
-          <mat-label>Background</mat-label>
-          <mat-select formControlName="background">
-            @for(background of backgrounds; track background[0]){
-            <mat-option [value]="background[0]">{{ background[1].name }}</mat-option>
-            }
-          </mat-select>
-        </mat-form-field>
+      <mat-form-field [appearance]="'outline'">
+        <mat-label>Background</mat-label>
+        <mat-select formControlName="background">
+          @for(background of backgrounds; track background[0]){
+          <mat-option [value]="background[0]">{{ background[1].name }}</mat-option>
+          }
+        </mat-select>
+      </mat-form-field>
 
-        <mat-form-field [appearance]="'outline'">
-          <mat-label>Role</mat-label>
-          <mat-select formControlName="role">
-            @for(role of roles; track role[0]){
-            <mat-option [value]="role[0]">{{ role[1].name }}</mat-option>
-            }
-          </mat-select>
-        </mat-form-field>
-      </form>
+      <mat-form-field [appearance]="'outline'">
+        <mat-label>Role</mat-label>
+        <mat-select formControlName="role">
+          @for(role of roles; track role[0]){
+          <mat-option [value]="role[0]">{{ role[1].name }}</mat-option>
+          }
+        </mat-select>
+      </mat-form-field>
+    </form>
     } @else {
-      <div class="summary">
-      <p>Character Name: {{form.value.characterName}}</p>
-      <p>Character Age: {{form.value.age}}</p>
-      <p>HomeWorld: {{character?.homeworld?.value?.name}}</p>
-      <p>Background: {{character?.background?.value?.name}}</p>
-      <p>Role: {{character?.role?.value?.name}}</p>
-    </div>
 
-    }
-    <div class="divination"> 
-      {{character?.divination?.name}} <br>
-      {{character?.divination?.description}}
+    <div class="summary">
+      <mat-accordion displayMode="default" [multi]="true" [hideToggle]="false">
+        @for(item of character | headerAccordionData; track item.description) {
+          <mat-expansion-panel [hideToggle]="true" [disabled]="item.disabled">
+            <mat-expansion-panel-header>
+              <mat-panel-title> {{item.title}} </mat-panel-title>
+              <mat-panel-description>
+                {{ item.description }}
+              </mat-panel-description>
+            </mat-expansion-panel-header>
+            {{item.content}}
+          </mat-expansion-panel>
+        }
+      </mat-accordion>
     </div>
-    @let exp = character?.experience;
-    
+    } 
+
+    @let exp = character?.experience; 
     @if(exp) {
       <div class="experience">
-        free: {{exp.free}} <br>
-        spent: {{exp.spent}} <br>
-        total: {{exp.free + exp.spent}}
+        free: {{ exp.free }} <br />
+        spent: {{ exp.spent }} <br />
+        total: {{ exp.free + exp.spent }}
       </div>
     }
   </mat-card-content>
