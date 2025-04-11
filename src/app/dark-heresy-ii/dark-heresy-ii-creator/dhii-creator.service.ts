@@ -19,7 +19,7 @@ import { ROLES } from '@dhii/types/dhii-role';
 import { DHII_Talent, DHII_TalentName, DHII_Talents, TALENTS } from '@dhii/types/dhii-talents';
 import { DHII_Attributes, DHII_Attribute, DHII_AttributeName } from '@dhii/types/dhii-attribute';
 import { DHII_Skill, DHII_SkillName } from '@dhii/types/dhii-skill';
-import { pickDivination } from '@dhii/types/dhii-divination';
+import { rollDivinationTable } from '@dhii/types/dhii-divination';
 
 import { RollService } from '@shared/roll/roll-service';
 import { LocalstorageService, StorageSaveName } from 'services/localstorage.service';
@@ -221,13 +221,14 @@ export class DHII_CreatorService {
       throw new Error('character.homewolrd is not set');
     }
 
-    const woundRoll: number = this.rollService.rollDices({
+    const woundRoll: number = wounds + this.rollService.rollDices({
       roll: '1d5',
       type: 'default',
       title: 'Determine Wounds'
-    });
-
-    character.wounds = wounds + woundRoll;
+    }) 
+    
+    character.wounds.current = woundRoll;
+    character.wounds.max = woundRoll;
     this.sheetService.updateCharacter(character);
   }
 
@@ -239,7 +240,7 @@ export class DHII_CreatorService {
       title: 'Set Divination'
     });
 
-    character.divination = pickDivination(divinationRoll);
+    character.divination = rollDivinationTable(divinationRoll);
 
     this.sheetService.updateCharacter(character);
   }
@@ -258,7 +259,9 @@ export class DHII_CreatorService {
       title: 'Determine Fate'
     });
 
-    character.fate = fateRoll >= homeworld.blessingThreshold ? homeworld.fate + 1 : homeworld.fate;
+    const fate:number = fateRoll >= homeworld.blessingThreshold ? homeworld.fate + 1 : homeworld.fate;
+    character.fate.max = fate;
+    character.fate.current=fate;
 
     this.sheetService.updateCharacter(character);
   }
@@ -298,6 +301,7 @@ export class DHII_CreatorService {
     const bonus: [DHII_AttributeName, DHII_AttributeName] | undefined =
       character.homeworld?.value.attributes.bonus;
     const penality: DHII_AttributeName | undefined = character.homeworld?.value.attributes.penality;
+    
     if (!bonus || !penality) {
       throw Error('this.character.homeworld is missing');
     }

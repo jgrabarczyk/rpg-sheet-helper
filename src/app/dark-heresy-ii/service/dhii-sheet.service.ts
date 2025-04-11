@@ -1,4 +1,3 @@
-import { JSONparse } from '@util/json-mappers';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, map, Observable, shareReplay } from 'rxjs';
 
@@ -8,27 +7,24 @@ import { DHII_Skill, DHII_SkillName, DHII_SKILLS } from '@dhii/types/dhii-skill'
 
 const ATTRIBUTES: DHII_Attributes = structuredClone(DHII_ATTRIBUTES);
 const SKILLS: Map<DHII_SkillName<string>, DHII_Skill> = structuredClone(DHII_SKILLS);
-const  QUICK_LOAD: DHII_Character = JSONparse(
-  localStorage.getItem('dhii+ron')!
-) as DHII_Character;
 
 @Injectable({
   providedIn: 'root'
 })
 export class DHII_SheetService {
   private readonly INITIAL_CHARACTER: DHII_Character = {
-    experience: {
-      free: 0,
-      spent: 0
-    },
+    corruption: 0,
+    insanity: 0,
+    experience: { free: 0, spent: 0 },
+    fate: { max: 0, current: 0 },
+    wounds: { max: 0, current: 0 },
     attributes: ATTRIBUTES,
     skills: new Map(Array.from(SKILLS, ([name, skill]) => this.initializeSkills(name, skill))),
     aptitudes: ['General']
   };
-  
+
   protected characterSubject$: BehaviorSubject<DHII_Character> =
-    new BehaviorSubject<DHII_Character>(QUICK_LOAD);
-  //   new BehaviorSubject<DHII_Character>(this.INITIAL_CHARACTER);
+    new BehaviorSubject<DHII_Character>(this.INITIAL_CHARACTER);
 
   public readonly character$: Observable<DHII_Character> = this.characterSubject$
     .asObservable()

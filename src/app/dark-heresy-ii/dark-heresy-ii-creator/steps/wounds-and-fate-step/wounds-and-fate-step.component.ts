@@ -4,7 +4,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatDividerModule } from '@angular/material/divider';
 
 import { TwoColumnStepComponent } from '@dhii/stepper-partials/two-column-step/two-column-step.component';
-import { DHII_CharacterHomeworld } from '@dhii/types/dark-heresy-ii';
+import { DHII_CharacterHomeworld, ResourcePool } from '@dhii/types/dark-heresy-ii';
 
 
 @Component({
@@ -17,8 +17,8 @@ import { DHII_CharacterHomeworld } from '@dhii/types/dark-heresy-ii';
 })
 export class WoundsAndFateStepComponent {
   @Input() homeworld!: DHII_CharacterHomeworld;
-  @Input() wounds?: number;
-  @Input() fate?: number;
+  @Input() wounds?: ResourcePool;
+  @Input() fate?: ResourcePool;
   @Output() setWounds = new EventEmitter();
   @Output() setFate = new EventEmitter();
 }

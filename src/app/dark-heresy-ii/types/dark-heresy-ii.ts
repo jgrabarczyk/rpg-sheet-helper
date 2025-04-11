@@ -21,17 +21,25 @@ export type DHII_Aptitude =
 
 export type DHII_CharacterDetails = {
   characterName: string;
-  age: number
-}
+  age: number;
+};
 export type DHII_CharacterHomeworld = { key: DHII_HomeworldNames; value: DHII_Homeworld };
 export type DHII_CharacterRole = { key: DHII_RoleNames; value: DHII_Role };
 export type DHII_CharacterBackground = { key: DHII_BackgroundNames; value: DHII_Background };
+export interface ResourcePool   {
+  max: number;
+  current: number;
+}
 
 export type DHII_Character = {
   experience: {
     spent: number;
     free: number;
-  }
+  };
+  corruption: number;
+  insanity: number;
+  wounds: ResourcePool;
+  fate: ResourcePool;
   aptitudes: DHII_Aptitude[];
   attributes: Map<DHII_AttributeName, DHII_Attribute>;
   details?: DHII_CharacterDetails;
@@ -40,7 +48,5 @@ export type DHII_Character = {
   homeworld?: DHII_CharacterHomeworld;
   role?: DHII_CharacterRole;
   background?: DHII_CharacterBackground;
-  wounds?: number;
-  fate?: number;
   divination?: DHII_Divination;
 };

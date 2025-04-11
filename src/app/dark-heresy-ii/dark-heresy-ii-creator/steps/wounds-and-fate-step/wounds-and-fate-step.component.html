@@ -1,7 +1,7 @@
 <app-two-column-step
   title="Determine fate and wounds"
   subtitle="Determine starting wounds and fate threshold"
-  [valid]="!!wounds && !!fate"
+  [valid]="!!wounds?.max && !!fate?.max"
 >
 <div card-content>
   <p>
@@ -24,7 +24,7 @@
           </div>
           <div class="row">
             <div class="name">Total Wounds:</div>
-            <div class="value">{{ wounds ?? '' }}</div>
+            <div class="value">{{ wounds?.max }}</div>
           </div>
           <button class="button" mat-flat-button (click)="setWounds.emit()">add 1d5 to wounds</button>
         </div>
@@ -40,7 +40,7 @@
           </div>
           <div class="row">
             <div class="name">Total Fate:</div>
-            <div class="value">{{ fate ?? '' }}</div>
+            <div class="value">{{ fate?.max }}</div>
           </div>
           <button class="button" mat-flat-button (click)="setFate.emit()">roll 1d10</button>
         </div>

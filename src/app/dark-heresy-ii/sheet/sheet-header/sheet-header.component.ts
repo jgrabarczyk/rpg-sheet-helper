@@ -15,6 +15,8 @@ import { HeaderAccordionDataPipe } from "./header-accordion-data/header-accordio
 
 /**
  * @todo add readonly option
+ * @todo add wounds | experience | corruption | insanity
+ * 
  */
 @Component({
   selector: 'app-sheet-header',
