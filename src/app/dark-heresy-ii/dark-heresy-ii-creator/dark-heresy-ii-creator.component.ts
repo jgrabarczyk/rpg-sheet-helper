@@ -98,6 +98,13 @@ export class DarkHeresyIICreatorComponent implements OnInit {
     this.creatorService.setDivination();
   }
 
+  /**
+   * @todo implement equipments
+   */
+  setEquipment(eq: string[]){
+    console.log(eq);
+  }
+
   setAttributes() {
     this.creatorService.setAttributes();
   }

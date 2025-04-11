@@ -13,11 +13,15 @@ const SKILLS: Map<DHII_SkillName<string>, DHII_Skill> = structuredClone(DHII_SKI
 })
 export class DHII_SheetService {
   private readonly INITIAL_CHARACTER: DHII_Character = {
+    experience: {
+      free: 0,
+      spent: 0
+    },
     attributes: ATTRIBUTES,
     skills: new Map(Array.from(SKILLS, ([name, skill]) => this.initializeSkills(name, skill))),
     aptitudes: ['General']
   };
-
+  
   protected characterSubject$: BehaviorSubject<DHII_Character> =
     new BehaviorSubject<DHII_Character>(this.INITIAL_CHARACTER);
 

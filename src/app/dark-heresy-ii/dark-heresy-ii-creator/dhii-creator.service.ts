@@ -35,6 +35,7 @@ export class DHII_CreatorService {
   private readonly homeworldsSubject$: BehaviorSubject<DHII_Homeworlds> = new BehaviorSubject(
     HOMEWORLDS
   );
+  
   public readonly homeworlds$: Observable<DHII_Homeworlds> = this.homeworldsSubject$.asObservable();
   public readonly homeworlds: DHII_Homeworlds = this.homeworldsSubject$.value;
 
@@ -47,6 +48,7 @@ export class DHII_CreatorService {
   public readonly roles = this.rolesSubject$.value;
 
   public readonly character$: Observable<DHII_Character> = this.sheetService.character$;
+
   public readonly attributes$: Observable<DHII_Attributes> = this.sheetService.attributes$;
 
   public readonly aptitudes$: Observable<DHII_Aptitude[]> = this.character$.pipe(

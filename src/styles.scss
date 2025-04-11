@@ -6,13 +6,26 @@
 
 @include mat.core();
 
-:root{
-  @include m3-theme.theme(m3-theme.$light-theme);
+:root {
+  --rs-list-odd-item-background-color: #8080803b;
+  --rs-list-item-border-color: #0000007e;
+}
+
+.rs-list-item {
+  justify-content: space-between;
+  padding: 0.5rem;
+  transition: background 375ms linear ;
+  border-bottom: 1px solid var(--rs-list-item-border-color);
+  
+  &:nth-child(2n) {
+    background-color: var(--rs-list-odd-item-background-color);
+  }
 }
 
 html {
   @include mat.all-component-themes(m3-theme.$light-theme);
   @include mat.color-variants-backwards-compatibility(m3-theme.$light-theme);
+  @include m3-theme.theme(m3-theme.$light-theme);
 }
 
 html,
@@ -56,12 +69,12 @@ body {
       .row {
         display: grid;
         grid-template-columns: 200px 1fr;
-        justify-content: space-between;
-        padding: 0.5rem;
-        border-bottom: 1px solid rgba(0, 0, 0, 0.494);
-        &:nth-child(2n) {
-          background-color: #8080803b;
-        }
+        // justify-content: space-between;
+        // padding: 0.5rem;
+        // border-bottom: 1px solid rgba(0, 0, 0, 0.494);
+        // &:nth-child(2n) {
+        //   background-color: var(--rs-list-odd-item-background-color);
+        // }
 
         .name {
           font-weight: 500;

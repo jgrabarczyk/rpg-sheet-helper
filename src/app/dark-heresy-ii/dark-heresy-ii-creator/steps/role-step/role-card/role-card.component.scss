@@ -1,33 +1,31 @@
 :host {
-    text-align: center;
-  }
-  .title {
+  text-align: center;
+}
+
+.title {
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.subtitle {
+  display: block;
+  margin-bottom: 1.5rem;
+  font-style: italic;
+}
+
+.row {
+  display: flex;
+  text-align: left;
+  .dent {
     display: block;
-    margin-bottom: 0.5rem;
+    margin-left: 0.5rem;
   }
-  .subtitle {
-    display: block;
-    margin-bottom: 1.5rem;
-    font-style: italic;
-  }
-  
-  .row {
-    display: flex;
-    justify-content: space-between;
-    padding: .5rem;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.494);
-    &:nth-child(2n){
-      background-color: #8080803b;
-    }
-    .dent {
-      display: block;
-      margin-left: 0.5rem;
-    }
-  }
-  .bold {
-    font-weight: 500;
-  }
-  .italic {
-    font-style: italic;
-  }
-  
+}
+
+.bold {
+  font-weight: 500;
+}
+
+.italic {
+  font-style: italic;
+}

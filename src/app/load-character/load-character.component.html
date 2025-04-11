@@ -14,10 +14,12 @@
       <mat-list role="list">
         @if(saves?.length){
           @for(item of saves; track item) {
-            <mat-list-item role="listitem">
-              {{ item }}
-              <button mat-flat-button (click)="loadCharacter(item)">Load</button>
-              <button mat-stroked-button (click)="deleteCharacter(item)">Delete</button>
+            <mat-list-item role="listitem" class="rs-list-item rs-list-item--hover">
+              <div class="item">
+                <span class="name">{{ item }}</span>
+                <button class="load" mat-flat-button  (click)="loadCharacter(item)">Load</button>
+                <button class="delete" mat-stroked-button (click)="deleteCharacter(item)">Delete</button>
+              </div>
             </mat-list-item>
           }
         } @else {

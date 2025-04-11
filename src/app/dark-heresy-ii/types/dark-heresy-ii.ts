@@ -28,6 +28,10 @@ export type DHII_CharacterRole = { key: DHII_RoleNames; value: DHII_Role };
 export type DHII_CharacterBackground = { key: DHII_BackgroundNames; value: DHII_Background };
 
 export type DHII_Character = {
+  experience: {
+    spent: number;
+    free: number;
+  }
   aptitudes: DHII_Aptitude[];
   attributes: Map<DHII_AttributeName, DHII_Attribute>;
   details?: DHII_CharacterDetails;

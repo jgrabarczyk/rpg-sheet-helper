@@ -1,3 +1,20 @@
-.wrapper{
-    padding: 1rem;
+.wrapper {
+  padding: 1rem;
+}
+
+.item {
+  display: grid;
+  grid-template-columns: 1fr auto auto;
+  grid-template-areas: 'name load delete';
+
+  .name {
+    grid-area: name;
+    line-height: 40px;
+  }
+  .load {
+    grid-area: load;
+  }
+  .delete {
+    grid-area: delete;
+  }
 }

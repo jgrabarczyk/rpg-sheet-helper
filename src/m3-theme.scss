@@ -175,4 +175,11 @@ $dark-theme: mat.define-theme(
     mat-toolbar {
       background: mat.get-theme-color($theme, primary-container);
     }
+
+    .rs-list-item--hover{
+      .rs-list-item:hover {
+        background-color: mat.get-theme-color($theme, primary, 95);
+        
+      }
+    }
 }

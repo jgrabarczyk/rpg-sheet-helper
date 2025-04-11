@@ -95,7 +95,7 @@
       @let equipment = (creatorService.equipment$ | async) ?? []; 
       @let equipmentToPick = (creatorService.equipmentToPick$ | async) ?? [];
 
-      <app-equipment-step [equipment]="equipment" [equipmentToPick]="equipmentToPick" />
+      <app-equipment-step [equipment]="equipment" [equipmentToPick]="equipmentToPick" (updateEquipment)="setEquipment($event)" />
     </mat-step>
 
     <mat-step>

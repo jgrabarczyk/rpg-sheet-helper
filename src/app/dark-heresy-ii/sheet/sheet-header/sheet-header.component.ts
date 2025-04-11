@@ -11,6 +11,8 @@ import { DHII_Roles, ROLES } from '@dhii/types/dhii-role';
 
 /**
  * @todo add readonly option
+ * @todo show homeworld bonus 
+ * @todo show background bonus 
  */
 @Component({
   selector: 'app-sheet-header',

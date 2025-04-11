@@ -5,39 +5,39 @@
   </mat-card-header>
 
   <mat-card-content>
-    <div class="row">
+    <div class="row rs-list-item">
       <div class="name">Aptitude:</div>
       <div class="value">{{ homeworld.aptitude }}</div>
     </div>
 
-    <div class="row">
+    <div class="row rs-list-item">
       <div class="name">Attributes bonus:</div>
       <div class="value">{{ homeworld.attributes.bonus | spread }}</div>
     </div>
-    <div class="row">
+    <div class="row rs-list-item">
       <div class="name">Attributes penality:</div>
       <div class="value">{{ homeworld.attributes.penality }}</div>
     </div>
 
-    <div class="row">
+    <div class="row rs-list-item">
       <div class="name">Base Fate:</div>
       <div class="value">{{ homeworld.fate }}</div>
     </div>
 
-    <div class="row">
+    <div class="row rs-list-item">
       <div class="name">Base Wounds:</div>
       <div class="value">{{ homeworld.wounds }}</div>
     </div>
 
     @if(homeworld.skills || homeworld.pick?.skills){
-    <div class="row">
+    <div class="row rs-list-item">
       <div class="name">Skills:</div>
       <div class="value">{{ homeworld.skills }} {{ homeworld.pick?.talents | or }}</div>
     </div>
     } 
 
     @if(homeworld.talents || homeworld.pick?.talents){
-    <div class="row">
+    <div class="row rs-list-item">
       <div class="name">Talents:</div>
       <div class="value">{{ homeworld.talents }} {{ homeworld.pick?.talents | or }}</div>
     </div>
