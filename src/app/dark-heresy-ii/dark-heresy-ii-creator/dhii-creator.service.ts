@@ -19,7 +19,7 @@ import { ROLES } from '@dhii/types/dhii-role';
 import { DHII_Talent, DHII_TalentName, DHII_Talents, TALENTS } from '@dhii/types/dhii-talents';
 import { DHII_Attributes, DHII_Attribute, DHII_AttributeName } from '@dhii/types/dhii-attribute';
 import { DHII_Skill, DHII_SkillName } from '@dhii/types/dhii-skill';
-import { rollDivinationTable } from '@dhii/types/dhii-divination';
+import { rollDivinationTable } from '@dhii/types/roll-tables/dhii-divination';
 
 import { RollService } from '@shared/roll/roll-service';
 import { LocalstorageService, StorageSaveName } from 'services/localstorage.service';

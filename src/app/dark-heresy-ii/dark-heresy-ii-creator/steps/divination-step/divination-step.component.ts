@@ -2,7 +2,7 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { MatCardModule } from '@angular/material/card';
 
 import { TwoColumnStepComponent } from '@dhii/stepper-partials/two-column-step/two-column-step.component';
-import { DHII_Divination } from '@dhii/types/dhii-divination';
+import { DHII_Divination } from '@dhii/types/roll-tables/dhii-divination';
 
 @Component({
   selector: 'app-divination-step',
