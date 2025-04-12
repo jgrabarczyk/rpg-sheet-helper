@@ -1,5 +1,18 @@
 import { DHII_Aptitude } from './dark-heresy-ii';
-export type WeaponTraining = 'Shock' | 'Chain' | 'Las' | 'Flame' | 'Low-Tech' | 'Solid Projectile';
+export type WeaponSpecialisation =
+  | 'Bolt'
+  | 'Heavy'
+  | 'Power'
+  | 'Shock'
+  | 'Las'
+  | 'Chain'
+  | 'Low-Tech' //primitive 
+  | 'Flame'
+  | 'Solid Projectile'
+  | 'Plasma'
+  | 'Melta' // Thermal
+  | 'Launcher';
+  
 export type Resistance = 'Cold' | 'Fear' | 'Heat' | 'Poisons' | 'Psychic Powers';
 export type Mechadendrite = 'Gun' | 'Manipulator' | 'Medicae' | 'Optical' | 'Utility';
 export type Peer =
@@ -72,7 +85,7 @@ export type DHII_TalentName =
   | 'Technical Knock'
   | 'Warp Sense'
   | 'Weapon-Tech'
-  | `Weapon Training (${WeaponTraining | PickOne})`
+  | `Weapon Training (${WeaponSpecialisation | PickOne})`
   | 'Ambassador Imperialis'
   | 'Archivator'
   | 'Armour-Monger'
@@ -170,7 +183,7 @@ export type DHII_Talent = {
   prerequisite?: string;
   specialisations?: string[];
 };
-export type DHII_Talents =Map<DHII_TalentName, DHII_Talent>;
+export type DHII_Talents = Map<DHII_TalentName, DHII_Talent>;
 export const TALENTS: Map<DHII_TalentName, DHII_Talent> = new Map([
   [
     'Ambidextrous',
