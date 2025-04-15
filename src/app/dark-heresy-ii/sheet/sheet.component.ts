@@ -17,6 +17,7 @@ import { AptitudesGroupComponent } from './aptitude/aptitudes-group.component';
 import { SheetHeaderComponent } from './sheet-header/sheet-header.component';
 import { SkillGroupComponent } from './skill/skill-group/skill-group.component';
 import { TalentsGroupComponent } from "./talents-group/talents-group.component";
+import { EquipmentComponent } from "./equipment/equipment.component";
 
 @Component({
   selector: 'app-sheet',
@@ -28,7 +29,8 @@ import { TalentsGroupComponent } from "./talents-group/talents-group.component";
     AptitudesGroupComponent,
     SheetHeaderComponent,
     MainNavigationComponent,
-    TalentsGroupComponent
+    TalentsGroupComponent,
+    EquipmentComponent
 ],
   templateUrl: './sheet.component.html',
   styleUrl: './sheet.component.scss'

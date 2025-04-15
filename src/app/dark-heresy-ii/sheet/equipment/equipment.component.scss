@@ -1,0 +1,113 @@
+.header {
+  font-weight: 500;
+  border-bottom: 1px solid var(--rs-list-item-border-color);
+}
+
+.backpack-item {
+  &:nth-child(2n) {
+    background-color: var(--rs-list-odd-item-background-color);
+  }
+
+  display: grid;
+  grid-template-areas: 'name quantity notes weightInKilos';
+  grid-template-columns: minmax(120px, auto) 45px 1fr 55px;
+  
+  span {
+    display: block;
+    padding: 0.5rem;
+  }
+
+  .name {
+    grid-area: name;
+  }
+  .quantity {
+    grid-area: quantity;
+    text-align: center;
+  }
+  .notes {
+    grid-area: notes;
+  }
+  .weightInKilos {
+    grid-area: weightInKilos;
+  }
+
+  .padding-h {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+}
+
+.weapon-item {
+  &:nth-child(2n) {
+    background-color: var(--rs-list-odd-item-background-color);
+  }
+  span {
+    display: block;
+    padding: 0.5rem;
+  }
+
+  display: grid;
+  grid-template-areas: 'name damage damageType armourPenetration family notes';
+  grid-template-columns: repeat(6,1fr);
+
+  .name {
+    grid-area: name;
+  }
+  .damage {
+    grid-area: damage;
+  }
+  .damageType {
+    grid-area: damageType;
+  }
+  .armourPenetration {
+    grid-area: armourPenetration;
+  }
+  .family {
+    grid-area: family;
+  }
+  .notes {
+    grid-area: notes;
+  }
+}
+
+
+.armour-item{
+  &:nth-child(2n) {
+    background-color: var(--rs-list-odd-item-background-color);
+  }
+
+  span {
+    display: block;
+    padding: 0.5rem;
+  }
+
+  display: grid;
+  grid-template-areas: 'name class protRating  agilityCap armorPoints protLocation weight notes';// protLocation notes weight';
+  grid-template-columns: repeat(8,1fr);
+
+  .name{
+    grid-area: name;
+  }
+  .class{
+    grid-area: class;
+  }
+  .protectionRating{
+    grid-area: protRating;
+  }
+  .notes{
+    grid-area: notes;
+  }
+  .agilityCap{
+    grid-area: agilityCap;
+  }
+  .armorPoints{
+    grid-area: armorPoints;
+  }
+  .protectedLocations{
+    grid-area: protLocation;
+  }
+  
+  .weightInKilos{
+    grid-area: weight;
+  }
+}

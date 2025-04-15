@@ -37,33 +37,7 @@
     @if(talents){
       <app-talents-group title="Talents" subtitle="and special abilities"  [talents]="talents"></app-talents-group>
     }
-    <div>
-      {{character$?.equipment | json}}
-      <br>
-      <br>
-      <br>
 
-      @let armours = character$?.equipment?.armours;
-      @let weapons = character$?.equipment?.weapons;
-      @let backpack = character$?.equipment?.backpack;
-
-     
-      <div>
-
-      </div>
-      Armour <br>
-      @for(armour of armours; track armour.name ){
-        {{armour.name}} | {{armour.notes}} <br>
-      }
-      <br><br>
-      Weapons <br>
-      @for(a of weapons; track a.name ){
-        - {{a.name}} | {{a.damage}} | {{a.damageType}} <br>
-      }
-      <br><br>
-      Backpack: <br> 
-      @for(a of backpack; track a.name ){
-        - {{a.name}} | {{a.quantity}} | {{a.notes}} <br>
-      }
-    </div>
+    <app-equipment [equipment]="character$?.equipment"></app-equipment>
+    
   </div>
