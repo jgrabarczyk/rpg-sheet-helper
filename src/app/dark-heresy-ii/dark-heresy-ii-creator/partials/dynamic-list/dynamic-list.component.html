@@ -1,9 +1,9 @@
 <mat-card appearance="outlined" right-column>
     <mat-card-content>
-      <mat-list class="skills">
+      <mat-list>
         @if(items) { 
           @for(item of items; track item) {
-            <mat-list-item>{{ item }}</mat-list-item>
+            <mat-list-item>{{ item.key }}</mat-list-item>
           } 
         } 
 
@@ -13,8 +13,8 @@
               <mat-form-field>
                 <mat-select [formControl]="form.at(index)">
                   @for(option of options; track option) {
-                    <mat-option [value]="option">
-                      {{ option }}
+                    <mat-option [value]="option.value">
+                      {{ option.key }}
                     </mat-option>
                   }
                 </mat-select>

@@ -20,21 +20,4 @@ Navigate to `http://localhost:4200/`.
 - add readonly option for sheet page
 
 ### In progress: EQ update
-- add armour 
-    - armour
-    - modifications
-- add items 
-    - gear
-    - tools
-    - cybernetics
-    - drugs & consumables 
 - rework talents - use specialisations to determin effective useage of armour, weaons etc. 
-- do not forget item quality
-``` 
-ItemQuality {
-    'Poor' : +10
-    'Common': 0
-    'Good': -20
-    'Exeptional': -30
-}
-``` 

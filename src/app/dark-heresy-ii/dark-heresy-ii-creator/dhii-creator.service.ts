@@ -13,7 +13,7 @@ import {
   DHII_CharacterHomeworld,
   DHII_CharacterRole
 } from '@dhii/types/dark-heresy-ii';
-import { BACKGROUNDS } from '@dhii/types/dhii-background';
+import { BACKGROUNDS, DHII_BackgroundEquipment } from '@dhii/types/dhii-background';
 import { DHII_Homeworld, DHII_Homeworlds, HOMEWORLDS } from '@dhii/types/dhii-homeworlds';
 import { ROLES } from '@dhii/types/dhii-role';
 import { DHII_Talent, DHII_TalentName, DHII_Talents, TALENTS } from '@dhii/types/dhii-talents';
@@ -23,6 +23,11 @@ import { rollDivinationTable } from '@dhii/types/roll-tables/dhii-divination';
 
 import { RollService } from '@shared/roll/roll-service';
 import { LocalstorageService, StorageSaveName } from 'services/localstorage.service';
+import { DHII_Equipment, GenericItem } from '@dhii/types/items/generic-item';
+import { Armour, ARMOURS } from '@dhii/types/items/armour/armour';
+import { WEAPONS } from '@dhii/types/items/weapon/weapons-data';
+import { Weapon } from '@dhii/types/items/weapon/weapon';
+import { BACKPACK_ITEMS } from '@dhii/types/items/all-items';
 
 @Injectable({
   providedIn: 'root'
@@ -35,7 +40,7 @@ export class DHII_CreatorService {
   private readonly homeworldsSubject$: BehaviorSubject<DHII_Homeworlds> = new BehaviorSubject(
     HOMEWORLDS
   );
-  
+
   public readonly homeworlds$: Observable<DHII_Homeworlds> = this.homeworldsSubject$.asObservable();
   public readonly homeworlds: DHII_Homeworlds = this.homeworldsSubject$.value;
 
@@ -146,25 +151,27 @@ export class DHII_CreatorService {
     })
   );
 
-  public readonly equipment$: Observable<string[]> = this.sheetService.character$.pipe(
-    distinctUntilChanged(
-      (p, c) =>
-        JSON.stringify(p.background?.value.equipment) ===
-        JSON.stringify(c.background?.value.equipment)
-    ),
-    map(character => [...(character.background?.value.equipment ?? [])].filter(a => !!a))
-  );
+  public readonly equipment$: Observable<DHII_BackgroundEquipment[]> =
+    this.sheetService.character$.pipe(
+      distinctUntilChanged(
+        (p, c) =>
+          JSON.stringify(p.background?.value.equipment) ===
+          JSON.stringify(c.background?.value.equipment)
+      ),
+      map(character => [...(character.background?.value.equipment ?? [])].filter(a => !!a))
+    );
 
-  public readonly equipmentToPick$: Observable<string[][]> = this.sheetService.character$.pipe(
-    distinctUntilChanged(
-      (p, c) =>
-        JSON.stringify(p.background?.value.pick?.equipment) ===
-        JSON.stringify(c.background?.value.pick?.equipment)
-    ),
-    map(character => {
-      return [...(character.background?.value.pick?.equipment ?? [])];
-    })
-  );
+  public readonly equipmentToPick$: Observable<DHII_BackgroundEquipment[][]> =
+    this.sheetService.character$.pipe(
+      distinctUntilChanged(
+        (p, c) =>
+          JSON.stringify(p.background?.value.pick?.equipment) ===
+          JSON.stringify(c.background?.value.pick?.equipment)
+      ),
+      map(character => {
+        return [...(character.background?.value.pick?.equipment ?? [])];
+      })
+    );
 
   setHomeworld(homeworld: DHII_CharacterHomeworld) {
     const character: DHII_Character = this.sheetService.getCharacter();
@@ -181,6 +188,12 @@ export class DHII_CreatorService {
   setRole(role: DHII_CharacterRole) {
     const character: DHII_Character = this.sheetService.getCharacter();
     character.role! = role;
+    this.sheetService.updateCharacter(character);
+  }
+
+  setEquipment(eq: string[]) {
+    const character: DHII_Character = this.sheetService.getCharacter();
+    character.equipment = this.getEquipment(eq);
     this.sheetService.updateCharacter(character);
   }
 
@@ -209,7 +222,10 @@ export class DHII_CreatorService {
 
     skillNames.forEach(skillName => {
       const skill: DHII_Skill | undefined = character.skills.get(skillName);
-      this.sheetService.updateSkill(skill!);
+      if (!skill) {
+        throw Error('Skill not found: ' + skillName);
+      }
+      this.sheetService.updateSkill(skill);
     });
   }
 
@@ -221,12 +237,14 @@ export class DHII_CreatorService {
       throw new Error('character.homewolrd is not set');
     }
 
-    const woundRoll: number = wounds + this.rollService.rollDices({
-      roll: '1d5',
-      type: 'default',
-      title: 'Determine Wounds'
-    }) 
-    
+    const woundRoll: number =
+      wounds +
+      this.rollService.rollDices({
+        roll: '1d5',
+        type: 'default',
+        title: 'Determine Wounds'
+      });
+
     character.wounds.current = woundRoll;
     character.wounds.max = woundRoll;
     this.sheetService.updateCharacter(character);
@@ -259,9 +277,10 @@ export class DHII_CreatorService {
       title: 'Determine Fate'
     });
 
-    const fate:number = fateRoll >= homeworld.blessingThreshold ? homeworld.fate + 1 : homeworld.fate;
+    const fate: number =
+      fateRoll >= homeworld.blessingThreshold ? homeworld.fate + 1 : homeworld.fate;
     character.fate.max = fate;
-    character.fate.current=fate;
+    character.fate.current = fate;
 
     this.sheetService.updateCharacter(character);
   }
@@ -301,7 +320,7 @@ export class DHII_CreatorService {
     const bonus: [DHII_AttributeName, DHII_AttributeName] | undefined =
       character.homeworld?.value.attributes.bonus;
     const penality: DHII_AttributeName | undefined = character.homeworld?.value.attributes.penality;
-    
+
     if (!bonus || !penality) {
       throw Error('this.character.homeworld is missing');
     }
@@ -319,7 +338,7 @@ export class DHII_CreatorService {
   saveCharacterToLocalStorage(saveName: string) {
     const value: DHII_Character = this.sheetService.getCharacter();
     const key: StorageSaveName = `dhii+${saveName}`;
-    
+
     this.storageService.setItem({
       key,
       value
@@ -376,5 +395,47 @@ export class DHII_CreatorService {
     });
 
     return talents;
+  }
+
+  private getEquipment(eq: string[]): DHII_Equipment {
+    const armours: Armour[] = [];
+    const weapons: Weapon[] = [];
+    const backpack: GenericItem[] = [];
+    const variation: { name: string; quantity: number }[] = eq.map(item => {
+      const el: string[] = item.split('|');
+      return {
+        name: el[0],
+        quantity: Number(el[1])
+      };
+    });
+
+    variation.forEach(el => {
+      const armourItem: Armour | undefined = ARMOURS.get(el.name);
+      if (armourItem) {
+        armourItem.quantity = el.quantity;
+        armours.push(armourItem);
+        return;
+      }
+
+      const weaponItem: Weapon | undefined = WEAPONS.get(el.name);
+      if (weaponItem) {
+        weaponItem.quantity = el.quantity;
+        weapons.push(weaponItem);
+        return;
+      }
+
+      const backpackItem: GenericItem | undefined = BACKPACK_ITEMS.get(el.name);
+      if (backpackItem) {
+        backpackItem.quantity = el.quantity;
+        backpack.push(backpackItem);
+        return;
+      }
+    });
+
+    return {
+      armours,
+      backpack,
+      weapons
+    };
   }
 }

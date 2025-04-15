@@ -98,18 +98,16 @@ export class DarkHeresyIICreatorComponent implements OnInit {
     this.creatorService.setDivination();
   }
 
-  /**
-   * @todo implement equipments
-   */
-  setEquipment(eq: string[]){
+  setEquipment(eq: string[]) {
+    this.creatorService.setEquipment(eq);
     console.log(eq);
   }
 
   setAttributes() {
     this.creatorService.setAttributes();
   }
-  
-  setCharacterDetails(details:DHII_CharacterDetails) {
+
+  setCharacterDetails(details: DHII_CharacterDetails) {
     this.creatorService.setCharacterDetails(details);
   }
 
@@ -122,7 +120,7 @@ export class DarkHeresyIICreatorComponent implements OnInit {
     this.creatorService.resetAll();
   }
 
-  saveCharacter(saveName:string){
-    this.creatorService.saveCharacterToLocalStorage(saveName)
+  saveCharacter(saveName: string) {
+    this.creatorService.saveCharacterToLocalStorage(saveName);
   }
 }

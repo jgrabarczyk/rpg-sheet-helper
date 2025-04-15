@@ -1,7 +1,11 @@
 <app-two-column-step title="Determine Equpiment" [valid]="valid">
   <p card-content>
-   Choose your Equipment
+   Choose your Equipment <br>
+   {{ equipment | json }}
+   <br>
+   {{ equipmentToChoose | json }}
   </p>
+
 
   <app-dynamic-list
     right-column

@@ -6,8 +6,12 @@ import { FormArray, FormControl, ReactiveFormsModule, Validators } from '@angula
 import { MatButtonModule } from '@angular/material/button';
 
 import { DHII_SkillName } from '@dhii/types/dhii-skill';
-import { DynamicListComponent } from '@dhii/stepper-partials/dynamic-list/dynamic-list.component';
+import {
+  DynamicListComponent,
+  SelectOption
+} from '@dhii/stepper-partials/dynamic-list/dynamic-list.component';
 import { TwoColumnStepComponent } from '@dhii/stepper-partials/two-column-step/two-column-step.component';
+import { mapStringArrayToSelectOptionArray } from '@util/map-string-to-select-option';
 
 @Component({
   selector: 'app-skill-step',
@@ -26,15 +30,24 @@ import { TwoColumnStepComponent } from '@dhii/stepper-partials/two-column-step/t
 })
 export class SkillStepComponent {
   @Input() valid: boolean = false;
-  @Input() skills: DHII_SkillName[] = [];
-  @Input() set skillsToPick(talentsToPick: DHII_SkillName[][]) {
-    this.skillsToChoose = talentsToPick;
-    this.skillsToChoose.forEach(() => this.form.push(new FormControl(null, Validators.required)));
-    this.valid = !this.skillsToChoose.length;
+  @Input() set skills(t: DHII_SkillName[]) {
+    this.skills_ = mapStringArrayToSelectOptionArray(t);
   }
+
+  @Input() set skillsToPick(skillsToPick: DHII_SkillName[][]) {
+    this.skillsToChoose = skillsToPick.map(skills => mapStringArrayToSelectOptionArray(skills));
+    this.skillsToChoose.forEach(() => this.form.push(new FormControl(null, Validators.required)));
+  }
+
+  get skills(): SelectOption[] {
+    return this.skills_;
+  }
+
+  private skills_: SelectOption[] = [];
+
   @Output() updateSkills: EventEmitter<DHII_SkillName[]> = new EventEmitter<DHII_SkillName[]>();
 
-  protected skillsToChoose: DHII_SkillName[][] = [];
+  protected skillsToChoose: SelectOption[][] = [];
   protected form = new FormArray<FormControl>([]);
 
   save(skills: string[]) {

@@ -791,7 +791,7 @@ gains the standard assistance bonuses as per page 25.`
     {
       name: 'Counter Attack',
       tier: 2,
-      prerequisite: ' Weapon Skill 40',
+      prerequisite: 'Weapon Skill 40',
       aptitudes: ['Weapon Skill', 'Defence'],
       description: `The Acolyte’s lightning ripostes are things of deadly beauty, swift and invisible as the wind. Once per turn, after successfully
 Parrying an opponent’s attack, this character may immediately make a Standard Attack action as a Free Action against that opponent
@@ -803,7 +803,7 @@ using the weapon with which he Parried. The character suffers a –20 penalty on
     {
       name: 'Cover-Up',
       tier: 2,
-      prerequisite: ' Intelligence 35',
+      prerequisite: 'Intelligence 35',
       aptitudes: ['Intelligence', 'Knowledge'],
       description: `Even the slightest whisper of the Inquisition’s presence can be enough to scatter suspected heretics and drive cults into hiding. To
 prevent the growth and spread of rumours, Acolytes use combinations of well-placed bribes, dire threats, and other means to keep their
@@ -816,7 +816,7 @@ For every point of Influence lost in this way, the Acolyte increases his warband
     {
       name: 'Daemonhunter',
       tier: 2,
-      prerequisites: ' Forbidden Lore (Daemonology), Willpower 40',
+      prerequisites: 'Forbidden Lore (Daemonology), Willpower 40',
       aptitudes: ['Offence', 'Willpower'],
       description: `Effect: The Acolyte may re-roll failed Awareness and Psyniscience tests to detect the presence of Daemons. In addition, his attacks
 against Daemons gain the Proven (3) quality.`

@@ -6,9 +6,13 @@ import { MatListModule } from '@angular/material/list';
 import { FormArray, FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 
-import { DynamicListComponent } from '@dhii/stepper-partials/dynamic-list/dynamic-list.component';
+import {
+  DynamicListComponent,
+  SelectOption
+} from '@dhii/stepper-partials/dynamic-list/dynamic-list.component';
 import { TwoColumnStepComponent } from '@dhii/stepper-partials/two-column-step/two-column-step.component';
 import { DHII_TalentName } from '@dhii/types/dhii-talents';
+import { mapStringArrayToSelectOptionArray } from '@util/map-string-to-select-option';
 
 @Component({
   selector: 'app-talent-step',
@@ -28,19 +32,30 @@ import { DHII_TalentName } from '@dhii/types/dhii-talents';
 })
 export class TalentStepComponent {
   @Input() valid: boolean = false;
-  @Input() talents: DHII_TalentName[] = [];
-  @Input() set talentsToPick(talentsToPick: DHII_TalentName[][]) {
-    this.talentsToChoose = talentsToPick;
-    this.talentsToChoose.forEach(() => this.form.push(new FormControl(null, Validators.required)));
+
+  @Input() set talents(t: DHII_TalentName[]) {
+    this.talents_ = mapStringArrayToSelectOptionArray(t);
   }
+  get talents(): SelectOption[] {
+    return this.talents_;
+  }
+  private talents_: SelectOption[] = [];
+
+  @Input() set talentsToPick(talentsToPick: DHII_TalentName[][]) {
+    this.talentsToPick_ = talentsToPick.map(talents => mapStringArrayToSelectOptionArray(talents));
+    this.talentsToPick_.forEach(() => this.form.push(new FormControl(null, Validators.required)));
+  }
+  get talentsToPick(): SelectOption[][] {
+    return this.talentsToPick_;
+  }
+  private talentsToPick_: SelectOption[][] = [];
 
   @Output() updateTalents: EventEmitter<DHII_TalentName[]> = new EventEmitter<DHII_TalentName[]>();
 
-  protected talentsToChoose: DHII_TalentName[][] = [];
   protected form = new FormArray<FormControl>([]);
 
   save(talents: string[]) {
-    this.updateTalents.emit(talents as DHII_TalentName[]);
+    this.updateTalents.emit(talents.map(el => el as DHII_TalentName));
     this.valid = true;
   }
 }

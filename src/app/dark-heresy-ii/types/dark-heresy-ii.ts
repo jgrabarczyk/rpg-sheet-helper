@@ -5,6 +5,7 @@ import { DHII_Attribute, DHII_AttributeName } from './dhii-attribute';
 import { DHII_Role, DHII_RoleNames } from './dhii-role';
 import { DHII_Talent, DHII_TalentName } from './dhii-talents';
 import { DHII_Divination } from './roll-tables/dhii-divination';
+import { DHII_Equipment } from './items/generic-item';
 
 export type DHII_Aptitude =
   | 'General'
@@ -36,6 +37,7 @@ export type DHII_Character = {
     spent: number;
     free: number;
   };
+  equipment?: DHII_Equipment;
   corruption: number;
   insanity: number;
   wounds: ResourcePool;
