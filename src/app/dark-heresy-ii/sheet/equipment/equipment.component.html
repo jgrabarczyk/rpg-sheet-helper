@@ -1,111 +1,34 @@
-@let armours  = equipment?.armours; 
-@let weapons = equipment?.weapons; 
-@let backpack = equipment?.backpack;
-
 <mat-card appearance="outlined">
-  <mat-card-header>
-    <mat-card-title>Armours</mat-card-title>
-    <mat-card-subtitle>Armour and force fields</mat-card-subtitle>
-  </mat-card-header>
-  <mat-card-content>
-    <div class="table">
-      <div class="armour-item header">
-        <span class="name">name</span>
-        <span class="class">class</span>
-        <span class="protectionRating">prot. Rate</span>
-        <span class="name">name</span>
-        <span class="class">class</span>
-        <span class="agilityCap">agilityCap</span>
-        <span class="armorPoints">armorPoints</span>
-        <span class="protectedLocations">prot Location</span>
-        <span class="weightInKilos">weightInKilos</span>
-        <span class="notes">notes</span>
+    <mat-card-header>
+        <mat-card-title>Equipment</mat-card-title>
+        <mat-card-subtitle>All your stuff</mat-card-subtitle>
+    </mat-card-header>
 
-      </div>
+    <mat-card-content class="eq-wrapper">
 
-      @for(a of armours; track a.name ){
-        <div class="armour-item">
-            @if(a.class === 'Force Field'){
-                <span class="name">{{a.name}}</span>
-                <span class="class">{{a.class}}</span>
-                <span class="protectionRating">{{a.protectionRating}}</span>
-                <span class="notes">{{a.notes}}</span>
-            }@else{
-                <span class="name">{{a.name}}</span>
-                <span class="class">{{a.class}}</span>
-                <span class="agilityCap">{{a.agilityCap}}</span>
-                <span class="armorPoints">{{a.armorPoints}}</span>
-                <span class="protectedLocations">{{a.protectedLocations}}</span>
-                <span class="weightInKilos">{{a.weightInKilos}}</span>
-                <span class="notes">{{a.notes}}</span>
-            }
-        </div>
-      }
-    </div>
-  </mat-card-content>
-  <mat-card-actions align="end" class="padding-h">
-    <button mat-flat-button>Add Item</button>
-  </mat-card-actions>
-</mat-card>
-
-<!-- divide all weapons to MELLE/RANGED/THROWN -->
-<mat-card appearance="outlined">
-  <mat-card-header>
-    <mat-card-title>Weapons</mat-card-title>
-    <mat-card-subtitle>Weapons in your possession</mat-card-subtitle>
-  </mat-card-header>
-  <mat-card-content>
-    <div class="table">
-      <div class="weapon-item header">
-        <span class="name"> Name</span>
-        <span class="damage"> Damage</span>
-        <span class="damageType"> Dmg.Type</span>
-        <span class="armourPenetration"> AP</span>
-        <span class="family"> Family/Class</span>
-        <span class="notes"> Additional Info</span>
-      </div>
-
-      @for(a of weapons; track a.name ){
-      <div class="weapon-item">
-        <span class="name">{{ a.name }}</span>
-        <span class="damage">{{ a.damage }}</span>
-        <span class="damageType">{{ a.damageType }}</span>
-        <span class="armourPenetration">{{ a.armourPenetration }}</span>
-        <span class="family">{{a.class}}/<br>{{ a.family }} </span>
-        <span class="notes">{{ a.notes }}</span>
-      </div>
-      }
-    </div>
-  </mat-card-content>
-  <mat-card-actions align="end" class="padding-h">
-    <button mat-flat-button>Add Item</button>
-  </mat-card-actions>
-</mat-card>
-
-<mat-card appearance="outlined">
-  <mat-card-header>
-    <mat-card-title>Backpack</mat-card-title>
-    <mat-card-subtitle>Items in your possession</mat-card-subtitle>
-  </mat-card-header>
-  <mat-card-content>
-    <div class="table">
-      <div class="backpack-item header">
-        <span class="name">Name </span>
-        <span class="quantity">Qty. </span>
-        <span class="notes">Description </span>
-        <span class="weightInKilos">Weight</span>
-      </div>
-      @for(a of backpack; track a.name ){
-      <div class="backpack-item">
-        <span class="name">{{ a.name }}</span>
-        <span class="quantity">{{ a.quantity }}</span>
-        <span class="notes">{{ a.notes }}</span>
-        <span class="weightInKilos">{{ a.weightInKilos }} kg</span>
-      </div>
-      }
-    </div>
-  </mat-card-content>
-  <mat-card-actions align="end" class="padding-h">
-    <button mat-flat-button>Add Item</button>
-  </mat-card-actions>
+@if(weapons.melee.data.length){
+    <app-backpack title="Weapons Melee" subtitle="Ork Smash" [table]="weapons.melee" />
+}
+@if(weapons.ranged.data.length){
+    <app-backpack title="Weapons Range" subtitle="Ork PEW PEW" [table]="weapons.ranged" />
+}
+@if(weapons.thrown.data.length){
+    <app-backpack title="Weapons Thrown" subtitle="Ork YEET" [table]="weapons.thrown" />
+}
+@if(protection.armours.data.length){
+    <app-backpack title="Armour" subtitle="Armours" [table]="protection.armours" />
+}
+@if(protection.forceFields.data.length){
+    <app-backpack title="Force Fields" subtitle="forceFields" [table]="protection.forceFields" />
+}
+@if(backpackTable.data.length){
+    <app-backpack title="Backpack" subtitle="Items in your inventory" [table]="backpackTable" />
+}
+</mat-card-content>
+<mat-card-actions align="end" class="eq-actions">
+    <button mat-flat-button (click)="addItem()">Add Item</button>
+</mat-card-actions>
+<mat-card-footer class="eq-footer">
+    <!-- Money: 00 -->
+</mat-card-footer>
 </mat-card>

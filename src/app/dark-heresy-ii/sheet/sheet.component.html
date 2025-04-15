@@ -38,6 +38,6 @@
       <app-talents-group title="Talents" subtitle="and special abilities"  [talents]="talents"></app-talents-group>
     }
 
-    <app-equipment [equipment]="character$?.equipment"></app-equipment>
+    <app-equipment [equipment]="character$?.equipment" [strength]="character$?.attributes?.get('Strength')?.value"></app-equipment>
     
   </div>

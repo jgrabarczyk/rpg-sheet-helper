@@ -71,7 +71,10 @@ export interface WeaponRanged extends WeaponBase {
   clipSize: number;
   reloadInActions: number; // "Full"= 2, "Half" = 1, "2 Full" = 4 etc
 }
-
+export type WeapnRangeReadOnly = Omit<WeaponRanged, 'rateOfFire' | 'reloadInActions'> & {
+  rateOfFire: string;
+  reloadInActions: string;
+}
 export interface WeaponThrown extends WeaponBase {
   class: 'Thrown' | 'Melee/Thrown' | 'Grenade';
   isRanged: true;
