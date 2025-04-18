@@ -18,6 +18,7 @@ import { SheetHeaderComponent } from './sheet-header/sheet-header.component';
 import { SkillGroupComponent } from './skill/skill-group/skill-group.component';
 import { TalentsGroupComponent } from "./talents-group/talents-group.component";
 import { EquipmentComponent } from "./equipment/equipment.component";
+import { DHII_Equipment } from '@dhii/types/items/generic-item';
 
 @Component({
   selector: 'app-sheet',
@@ -52,5 +53,9 @@ export class SheetComponent {
 
   rollDice(roll: Roll) {
     this.rollService.rollTest(roll);
+  }
+  
+  addEquipment(eq: DHII_Equipment){
+    this.sheetService.addEquipment(eq)
   }
 }

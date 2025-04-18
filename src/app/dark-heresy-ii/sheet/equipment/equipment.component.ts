@@ -1,5 +1,12 @@
 import { CommonModule, KeyValue } from '@angular/common';
-import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  inject,
+  Input,
+  Output,
+  EventEmitter
+} from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { BaseArmour, ForceFieldArmour } from '@dhii/types/items/armour/armour';
@@ -13,6 +20,9 @@ import {
 import { BackpackComponent, TableData } from './backpack/backpack.component';
 import { RateOfFirePipe } from '@dhii/pipes/rate-of-fire/rate-of-fire.pipe';
 import { ReloadTimePipe } from '@dhii/pipes/reload-time/reload-time.pipe';
+import { EquipmentDialogComponent } from '@shared/dialogs/equipment-dialog/equipment-dialog.component';
+import { MatDialog } from '@angular/material/dialog';
+import { filter } from 'rxjs';
 
 const GENERIC_ITEM_HEADERS: KeyValue<keyof GenericItem, string>[] = [
   { key: 'name', value: 'Name' },
@@ -37,6 +47,7 @@ const WEAPON_HEADERS: KeyValue<keyof WeaponBase, string>[] = [
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class EquipmentComponent {
+  private dialog: MatDialog = inject(MatDialog);
 
   @Input() strength?: number;
   @Input() set equipment(eq: DHII_Equipment | undefined) {
@@ -45,6 +56,8 @@ export class EquipmentComponent {
     }
     this.parseEquipment(eq);
   }
+  @Output() addEquipment: EventEmitter<DHII_Equipment> = new EventEmitter();
+
 
   weapons: {
     melee: TableData<WeaponMelee>;
@@ -108,8 +121,19 @@ export class EquipmentComponent {
   private rof: RateOfFirePipe = new RateOfFirePipe();
   private reloadTime: ReloadTimePipe = new ReloadTimePipe();
 
-  addItem() {
-    // this.dialog.open().afterClosed().subscribe()
+  addItems() {
+    this.dialog
+      .open<EquipmentDialogComponent, unknown, DHII_Equipment | null>(EquipmentDialogComponent, {
+        maxHeight: '100%',
+        maxWidth: '100%',
+        width: '75%',
+        height: '75%'
+      })
+      .afterClosed()
+      .pipe(filter(Boolean))
+      .subscribe(dialogResult => {
+        this.addEquipment.emit(dialogResult);
+      });
   }
 
   private parseEquipment(eq: DHII_Equipment) {

@@ -14,7 +14,7 @@ export type ArmourModification = {
   note: string;
 };
 
-export const armourModifications: Map<string, ArmourModification> = new Map([
+export const ARMOUR_MODIFICATIONS: Map<string, ArmourModification> = new Map([
   [
     'Adamantine Chainguard',
     {

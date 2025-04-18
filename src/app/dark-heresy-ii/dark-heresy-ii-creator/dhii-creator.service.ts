@@ -28,6 +28,7 @@ import { Armour, ARMOURS } from '@dhii/types/items/armour/armour';
 import { WEAPONS } from '@dhii/types/items/weapon/weapons-data';
 import { Weapon } from '@dhii/types/items/weapon/weapon';
 import { BACKPACK_ITEMS } from '@dhii/types/items/all-items';
+import { CYBERNETICS } from '@dhii/types/items/equipment/cybernetics';
 
 @Injectable({
   providedIn: 'root'
@@ -428,6 +429,12 @@ export class DHII_CreatorService {
       if (backpackItem) {
         backpackItem.quantity = el.quantity;
         backpack.push(backpackItem);
+        return;
+      }
+      
+      const cyberneticItem: GenericItem | undefined = CYBERNETICS.get(el.name);
+      if (cyberneticItem) {
+        backpack.push(cyberneticItem);
         return;
       }
     });

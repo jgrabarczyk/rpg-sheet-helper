@@ -11,7 +11,7 @@ export type WeaponModification = {
   upgrades: string;
 };
 
-export const weaponModifications: Map<string, WeaponModification> = new Map([
+export const WEAPON_MODIFICATIONS: Map<string, WeaponModification> = new Map([
   [
     'Auxiliary Grenade Launcher',
     {

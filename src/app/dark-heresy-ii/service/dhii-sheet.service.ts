@@ -4,6 +4,7 @@ import { BehaviorSubject, map, Observable, shareReplay } from 'rxjs';
 import { DHII_Aptitude, DHII_Character } from '@dhii/types/dark-heresy-ii';
 import { DHII_Attributes, DHII_Attribute, DHII_ATTRIBUTES } from '@dhii/types/dhii-attribute';
 import { DHII_Skill, DHII_SkillName, DHII_SKILLS } from '@dhii/types/dhii-skill';
+import { DHII_Equipment } from '@dhii/types/items/generic-item';
 
 const ATTRIBUTES: DHII_Attributes = structuredClone(DHII_ATTRIBUTES);
 const SKILLS: Map<DHII_SkillName<string>, DHII_Skill> = structuredClone(DHII_SKILLS);
@@ -50,9 +51,27 @@ export class DHII_SheetService {
     this.characterSubject$.next(character);
   }
 
+  addEquipment(equipment: DHII_Equipment) {
+    const character: DHII_Character = this.getCharacter();
+    const currentEquipment: DHII_Equipment | undefined = character.equipment;
+
+    if (!currentEquipment) {
+      return;
+    }
+
+    character.equipment = {
+      armours: [...currentEquipment.armours, ...equipment.armours],
+      weapons: [...currentEquipment.weapons, ...equipment.weapons],
+      backpack: [...currentEquipment.backpack, ...equipment.weapons]
+    };
+
+    this.updateCharacter(character);
+  }
+
   updateAttribute(changedAttribute: DHII_Attribute) {
     const character: DHII_Character = this.getCharacter();
     const attribute: DHII_Attribute | undefined = character.attributes.get(changedAttribute.name);
+
     if (!attribute) {
       throw Error('No attribute found with name ' + changedAttribute.name);
     }
@@ -66,8 +85,7 @@ export class DHII_SheetService {
       attribute.lvl = changedAttribute.lvl;
     }
 
-    this.characterSubject$.next(character);
-
+    this.updateCharacter(character);
     this.updateSkillsBasedOnAttribute(attribute);
   }
 
@@ -80,13 +98,14 @@ export class DHII_SheetService {
       attribute
     );
 
-    this.characterSubject$.next(character);
+    this.updateCharacter(character);
   }
 
   updateAptitudes(aptitudes: DHII_Aptitude[]) {
     const character: DHII_Character = this.getCharacter();
     character.aptitudes = aptitudes;
-    this.characterSubject$.next(character);
+
+    this.updateCharacter(character);
   }
 
   resetAll() {
@@ -95,13 +114,13 @@ export class DHII_SheetService {
 
   private updateSkillsBasedOnAttribute(changedAttribute: DHII_Attribute) {
     const character: DHII_Character = this.getCharacter();
-
     character.skills.forEach(skill => {
       if (skill.basedOn === changedAttribute.name) {
         skill.value = this.calculateSkillValue(skill, changedAttribute);
       }
     });
-    this.characterSubject$.next(character);
+
+    this.updateCharacter(character);
   }
 
   private calculateAttributeValue(attribute: {

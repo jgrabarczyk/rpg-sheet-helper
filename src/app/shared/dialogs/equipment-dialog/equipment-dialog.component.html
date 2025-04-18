@@ -1,0 +1,46 @@
+<h2 mat-dialog-title>Add items</h2>
+<mat-dialog-content>
+  
+
+<form class="eq-form" [formGroup]="form">
+  <mat-tab-group class="mh-100 tab-group">
+    @for(tab of tabs; track tab.fieldKey){
+    <mat-tab [label]="tab.label" class="mh-100">
+      <div class="autocomplete-header">
+        <mat-form-field>
+          <mat-label>Item Search</mat-label>
+          <input type="text" placeholder="Pick one" matInput [formControlName]="tab.fieldKey" />
+        </mat-form-field>
+
+        <mat-chip-set aria-label="Fish selection">
+          @for (item of tab.selectedOptions; track $index) {
+          <mat-chip>{{ item.name }}</mat-chip>
+          }
+        </mat-chip-set>
+      </div>
+
+      <div class="autocomplete-results">
+        @for (option of tab.filteredOptions | async; track option[0]) { @let item = option[1];
+        <div class="rs-list-item">
+          <div class="item">
+            <mat-checkbox [checked]="false" (change)="toggleItem(tab, item, $event.checked)">
+              <span class="name">{{ item.name }} </span><br />
+              <span class="note">{{ item.notes }}</span>
+            </mat-checkbox>
+          </div>
+          <div class="actions">
+            
+          </div>
+        </div>
+        }
+      </div>
+    </mat-tab>
+    }
+  </mat-tab-group>
+</form>
+<!-- //finish him -->
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-button mat-dialog-close>Cancel</button>
+  <button (click)="save()" mat-button cdkFocusInitial>Add items</button>
+</mat-dialog-actions>
