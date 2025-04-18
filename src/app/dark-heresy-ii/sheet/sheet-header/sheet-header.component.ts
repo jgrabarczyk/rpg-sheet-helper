@@ -1,10 +1,12 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { MatExpansionModule } from '@angular/material/expansion';
+import { MatButtonModule } from '@angular/material/button';
+import {MatButtonToggleModule} from '@angular/material/button-toggle';
 
 import { DHII_Character } from '@dhii/types/dark-heresy-ii';
 import { BACKGROUNDS, DHII_Backgrounds } from '@dhii/types/dhii-background';
@@ -28,7 +30,9 @@ import { HeaderAccordionDataPipe } from "./header-accordion-data/header-accordio
     MatInputModule,
     MatSelectModule,
     MatExpansionModule,
-    HeaderAccordionDataPipe
+    HeaderAccordionDataPipe,
+    MatButtonModule,
+    MatButtonToggleModule
 ],
   templateUrl: './sheet-header.component.html',
   styleUrl: './sheet-header.component.scss'
@@ -62,6 +66,10 @@ export class SheetHeaderComponent {
   }
 
   private editable_: boolean = false;
+
+
+  @Output() saveCharacter = new EventEmitter();
+  @Output() deleteCharacter = new EventEmitter();
 
   form: FormGroup = new FormGroup({
     characterName: new FormControl({

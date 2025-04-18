@@ -5,6 +5,7 @@ import { LoadCharacterComponent } from 'load-character/load-character.component'
 
 export const routes: Routes = [
     {path: '', redirectTo: '/load', pathMatch: 'full'},
+    {path: 'sheet/:prefix/:saveName', component: SheetComponent, pathMatch: 'full'},
     {path: 'sheet', component: SheetComponent},
     {path: 'creator', component: DarkHeresyIICreatorComponent},
     {path: 'load', component: LoadCharacterComponent},

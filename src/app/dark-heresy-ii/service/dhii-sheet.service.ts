@@ -1,10 +1,12 @@
-import { Injectable } from '@angular/core';
+import { inject, Injectable } from '@angular/core';
 import { BehaviorSubject, map, Observable, shareReplay } from 'rxjs';
 
 import { DHII_Aptitude, DHII_Character } from '@dhii/types/dark-heresy-ii';
 import { DHII_Attributes, DHII_Attribute, DHII_ATTRIBUTES } from '@dhii/types/dhii-attribute';
 import { DHII_Skill, DHII_SkillName, DHII_SKILLS } from '@dhii/types/dhii-skill';
 import { DHII_Equipment } from '@dhii/types/items/generic-item';
+import { LocalStorageService } from 'services/localstorage.service';
+import { Router } from '@angular/router';
 
 const ATTRIBUTES: DHII_Attributes = structuredClone(DHII_ATTRIBUTES);
 const SKILLS: Map<DHII_SkillName<string>, DHII_Skill> = structuredClone(DHII_SKILLS);
@@ -13,6 +15,9 @@ const SKILLS: Map<DHII_SkillName<string>, DHII_Skill> = structuredClone(DHII_SKI
   providedIn: 'root'
 })
 export class DHII_SheetService {
+  private storageService = inject(LocalStorageService);
+  private router = inject(Router);
+
   private readonly INITIAL_CHARACTER: DHII_Character = {
     corruption: 0,
     insanity: 0,
@@ -43,12 +48,48 @@ export class DHII_SheetService {
     map(character => character.aptitudes)
   );
 
-  public getCharacter(): DHII_Character {
+  public dhiiLocalStorageSaveNames$ = this.storageService.DHII_CharacterKeys$;
+
+  getCharacter(): DHII_Character {
     return structuredClone(this.characterSubject$.value);
   }
 
   updateCharacter(character: DHII_Character) {
     this.characterSubject$.next(character);
+  }
+
+  saveCharacterToLocalStorage() {
+    this.storageService.saveCharacterToLocalStorage(this.getCharacter(), 'dhii').subscribe(saveName => {
+      this.router.navigate(['/sheet', 'dhii', saveName]);
+    });
+  }
+
+  loadCurrentCharacter(){
+    this.storageService.loadCurrentCharacter()
+  }
+
+  loadCharacterFromLocalStorage(item: string, skipRedirect: boolean = false): void {
+    const loadedCharacter: DHII_Character = this.storageService.loadCharacterFromLocalStorage(
+      item,
+      'dhii'
+    );
+    this.updateCharacter(loadedCharacter);
+
+    if(skipRedirect){
+      return
+    }
+    
+    this.router.navigate(['/sheet', 'dhii', item]);
+  }
+
+  deleteCharacterFromLocalStorage(item: string) {
+    this.storageService.deleteCharacterFromLocalStorage(item, 'dhii').subscribe();
+  }
+
+  deleteCurrentCharacter() {
+    this.storageService.deleteCurrentCharacter().subscribe(() => {
+      this.router.navigate(['/load']);
+    });
   }
 
   addEquipment(equipment: DHII_Equipment) {

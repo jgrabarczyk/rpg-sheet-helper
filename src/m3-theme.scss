@@ -172,6 +172,18 @@ $dark-theme: mat.define-theme(
  * main theme space for m3
  */
 @mixin theme($theme) {
+    
+    mat-card-header.full-width .mat-mdc-card-header-text{
+      width: 100%;
+      display: block;
+    }
+    
+    // sheet header title 
+    mat-card-header.sheet-header .mat-mdc-card-header-text .mat-mdc-card-title{
+      display: flex;
+      justify-content: space-between;
+    }
+
     mat-toolbar {
       background: mat.get-theme-color($theme, primary-container);
     }

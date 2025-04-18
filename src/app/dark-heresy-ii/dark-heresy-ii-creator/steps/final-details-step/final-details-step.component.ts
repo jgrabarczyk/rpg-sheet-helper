@@ -2,7 +2,6 @@ import {
   ChangeDetectionStrategy,
   Component,
   EventEmitter,
-  inject,
   Input,
   Output
 } from '@angular/core';
@@ -16,9 +15,7 @@ import { TwoColumnStepComponent } from '@dhii/stepper-partials/two-column-step/t
 import { SheetComponent } from '../../../sheet/sheet.component';
 import { DHII_CharacterDetails } from '@dhii/types/dark-heresy-ii';
 import { CommonModule } from '@angular/common';
-import { MatDialog, MatDialogModule } from '@angular/material/dialog';
-import { SaveDialogComponent } from 'shared/dialogs/save-dialog/save-dialog.component';
-import { filter } from 'rxjs';
+import {  MatDialogModule } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-final-details-step',
@@ -39,11 +36,10 @@ import { filter } from 'rxjs';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class FinalDetailsStepComponent {
-  private dialog: MatDialog = inject(MatDialog);
   @Input() details?: DHII_CharacterDetails;
   @Output() resetAll: EventEmitter<void> = new EventEmitter();
   @Output() setDetails: EventEmitter<DHII_CharacterDetails> = new EventEmitter();
-  @Output() save: EventEmitter<string> = new EventEmitter();
+  @Output() save: EventEmitter<void> = new EventEmitter();
 
   form: FormGroup = new FormGroup({
     characterName: new FormControl<string>(
@@ -71,11 +67,6 @@ export class FinalDetailsStepComponent {
 
   saveSheet() {
     this.saveCharacterDetails();
-
-    this.dialog
-      .open(SaveDialogComponent)
-      .afterClosed()
-      .pipe(filter(dialogData => !!dialogData))
-      .subscribe(dialogData => this.save.emit(dialogData));
+    this.save.emit()
   }
 }

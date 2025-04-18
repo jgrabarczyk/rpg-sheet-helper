@@ -100,7 +100,6 @@ export class DarkHeresyIICreatorComponent implements OnInit {
 
   setEquipment(eq: string[]) {
     this.creatorService.setEquipment(eq);
-    console.log(eq);
   }
 
   setAttributes() {
@@ -120,7 +119,7 @@ export class DarkHeresyIICreatorComponent implements OnInit {
     this.creatorService.resetAll();
   }
 
-  saveCharacter(saveName: string) {
-    this.creatorService.saveCharacterToLocalStorage(saveName);
+  saveCharacterCreatorData() {
+    this.creatorService.saveCharacterToLocalStorage();
   }
 }

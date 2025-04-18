@@ -22,7 +22,6 @@ import { DHII_Skill, DHII_SkillName } from '@dhii/types/dhii-skill';
 import { rollDivinationTable } from '@dhii/types/roll-tables/dhii-divination';
 
 import { RollService } from '@shared/roll/roll-service';
-import { LocalstorageService, StorageSaveName } from 'services/localstorage.service';
 import { DHII_Equipment, GenericItem } from '@dhii/types/items/generic-item';
 import { Armour, ARMOURS } from '@dhii/types/items/armour/armour';
 import { WEAPONS } from '@dhii/types/items/weapon/weapons-data';
@@ -36,7 +35,6 @@ import { CYBERNETICS } from '@dhii/types/items/equipment/cybernetics';
 export class DHII_CreatorService {
   private sheetService = inject(DHII_SheetService);
   private rollService = inject(RollService);
-  private storageService = inject(LocalstorageService);
 
   private readonly homeworldsSubject$: BehaviorSubject<DHII_Homeworlds> = new BehaviorSubject(
     HOMEWORLDS
@@ -336,14 +334,8 @@ export class DHII_CreatorService {
     this.sheetService.updateAttribute(attribute);
   }
 
-  saveCharacterToLocalStorage(saveName: string) {
-    const value: DHII_Character = this.sheetService.getCharacter();
-    const key: StorageSaveName = `dhii+${saveName}`;
-
-    this.storageService.setItem({
-      key,
-      value
-    });
+  saveCharacterToLocalStorage() {
+    this.sheetService.saveCharacterToLocalStorage()
   }
 
   resetAll() {
@@ -431,7 +423,7 @@ export class DHII_CreatorService {
         backpack.push(backpackItem);
         return;
       }
-      
+
       const cyberneticItem: GenericItem | undefined = CYBERNETICS.get(el.name);
       if (cyberneticItem) {
         backpack.push(cyberneticItem);

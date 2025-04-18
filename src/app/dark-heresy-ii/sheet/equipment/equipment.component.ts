@@ -169,9 +169,9 @@ export class EquipmentComponent {
           rateOfFire: this.rof.transform(weapon.rateOfFire),
           reloadInActions: this.reloadTime.transform(weapon.reloadInActions)
         });
+        return
       }
     });
-
     eq.backpack.forEach(item => this.backpackTable.data.push(item));
   }
 }
