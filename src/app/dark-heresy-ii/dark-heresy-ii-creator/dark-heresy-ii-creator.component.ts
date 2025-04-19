@@ -3,7 +3,6 @@ import { Component, inject, OnInit, ViewChild } from '@angular/core';
 import { MatCardModule } from '@angular/material/card';
 import { MatStepper, MatStepperModule } from '@angular/material/stepper';
 
-import { MainNavigationComponent } from '@shared/main-navigation/main-navigation.component';
 import { RollLogerComponent } from '@shared/roll/roll-loger/roll-loger.component';
 import { Roll } from '@appTypes/roll';
 import {
@@ -45,7 +44,6 @@ import { DHII_CreatorService } from './dhii-creator.service';
     EquipmentStepComponent,
     DivinationStepComponent,
     TalentStepComponent,
-    MainNavigationComponent,
     WoundsAndFateStepComponent,
     RollLogerComponent,
     FinalDetailsStepComponent

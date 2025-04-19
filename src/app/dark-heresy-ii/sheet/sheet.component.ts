@@ -10,7 +10,6 @@ import { DHII_Attribute } from '@dhii/types/dhii-attribute';
 import { DHII_Equipment } from '@dhii/types/items/generic-item';
 import { DHII_Skill } from '@dhii/types/dhii-skill';
 
-import { MainNavigationComponent } from '@shared/main-navigation/main-navigation.component';
 import { RollService } from '@shared/roll/roll-service';
 
 import { AptitudesGroupComponent } from './aptitude/aptitudes-group.component';
@@ -29,7 +28,6 @@ import { TalentsGroupComponent } from './talents-group/talents-group.component';
     SkillGroupComponent,
     AptitudesGroupComponent,
     SheetHeaderComponent,
-    MainNavigationComponent,
     TalentsGroupComponent,
     EquipmentComponent
   ],
