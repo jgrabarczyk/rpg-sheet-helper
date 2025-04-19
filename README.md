@@ -11,13 +11,13 @@ Navigate to `http://localhost:4200/`.
 - add Roll logger to sheet page
 - add Equipment
 - add Experience
-
+- display filled progress in creator stepper. 
 
 ### Todo
-- add tests
 - improve dhii-DHII_CreatorService.getTalentsByNames()
 - in step-navigation use 'step' attribute as grid class 
 - add readonly option for sheet page
+- rework talents - use specialisations to determin effective useage of armour, weaons etc. 
 
 ### In progress: EQ update
-- rework talents - use specialisations to determin effective useage of armour, weaons etc. 
+- add tests

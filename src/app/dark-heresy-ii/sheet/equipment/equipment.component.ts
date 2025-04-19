@@ -23,6 +23,7 @@ import { ReloadTimePipe } from '@dhii/pipes/reload-time/reload-time.pipe';
 import { EquipmentDialogComponent } from '@shared/dialogs/equipment-dialog/equipment-dialog.component';
 import { MatDialog } from '@angular/material/dialog';
 import { filter } from 'rxjs';
+import { assertUnreachable } from '@util/assert-unreachable';
 
 const GENERIC_ITEM_HEADERS: KeyValue<keyof GenericItem, string>[] = [
   { key: 'name', value: 'Name' },
@@ -57,7 +58,6 @@ export class EquipmentComponent {
     this.parseEquipment(eq);
   }
   @Output() addEquipment: EventEmitter<DHII_Equipment> = new EventEmitter();
-
 
   weapons: {
     melee: TableData<WeaponMelee>;
@@ -169,7 +169,9 @@ export class EquipmentComponent {
           rateOfFire: this.rof.transform(weapon.rateOfFire),
           reloadInActions: this.reloadTime.transform(weapon.reloadInActions)
         });
-        return
+        return;
+      } else {
+        assertUnreachable(weapon.class);
       }
     });
     eq.backpack.forEach(item => this.backpackTable.data.push(item));

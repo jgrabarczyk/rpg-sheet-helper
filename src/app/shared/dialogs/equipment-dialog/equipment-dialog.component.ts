@@ -4,7 +4,6 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import {
-  AbstractControl,
   FormControl,
   ReactiveFormsModule,
   UntypedFormGroup
@@ -23,6 +22,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatDialogModule, MatDialogRef } from '@angular/material/dialog';
+import { assertUnreachable } from '@util/assert-unreachable';
 
 type ETab<L, O> = {
   label: string;
@@ -31,6 +31,7 @@ type ETab<L, O> = {
   filteredOptions: Observable<Map<string, O>>;
   selectedOptions: O[];
 };
+
 export type EqupimentTab =
   | ETab<'cybernetics' | 'backpackItems', GenericItem>
   | ETab<'weapons', Weapon>
@@ -63,16 +64,12 @@ export class EquipmentDialogComponent implements OnInit {
   protected cybernetics = CYBERNETICS;
   protected weapons = WEAPONS;
   protected armours = ARMOURS;
-  // protected armourModifications = ARMOUR_MODIFICATIONS;
-  // protected weaponModifications = WEAPON_MODIFICATIONS;
 
   protected form = new UntypedFormGroup({
     backpackItems: new FormControl(),
     cybernetics: new FormControl(),
     weapons: new FormControl(),
     armours: new FormControl()
-    // armourModifications: new FormControl(),
-    // weaponModifications: new FormControl()
   });
 
   protected tabs: EqupimentTab[] = [
@@ -107,93 +104,90 @@ export class EquipmentDialogComponent implements OnInit {
       filteredOptions: new Observable(),
       selectedOptions: []
     }
-
-    // {
-    //   label: 'Armour Modifications',
-    //   fieldKey: 'armourModifications',
-    //   options: this.armourModifications,
-    //   filteredOptions: new Observable()
-    // },
-
-    // {
-    //   label: 'Weapon Modifications',
-    //   fieldKey: 'weaponModifications',
-    //   options: this.weaponModifications,
-    //   filteredOptions: new Observable()
-    // }
   ];
 
   ngOnInit() {
-    this.tabs.forEach(el => {
-      const field: AbstractControl<string, string> = this.form.controls[el.fieldKey];
-      el.filteredOptions = field.valueChanges.pipe(
+    this.tabs.forEach(tab => {
+      tab.filteredOptions = this.form
+      .controls[tab.fieldKey]
+      .valueChanges
+      .pipe(
         startWith(''),
-        map(value => this.filterOptions(el, value))
+        map(searchQuery => this.getFilterOptionsFor(tab, searchQuery))
       );
     });
   }
 
   toggleItem<L, O>(tab: ETab<L, O>, item: O, checked: boolean) {
-    if (checked) {
-      this.selectItem(tab, item);
-    } else {
-      this.removeItem(tab, item);
-    }
-  }
-  selectItem<L, O>(tab: ETab<L, O>, item: O) {
-    if (tab.selectedOptions.indexOf(item) === -1) {
-      tab.selectedOptions.push(item);
-    }
+    checked ? this.selectItem(tab, item) : this.removeItem(tab, item);
   }
 
-  removeItem<L, O>(tab: ETab<L, O>, item: O) {
-    const index: number = tab.selectedOptions.indexOf(item);
-    tab.selectedOptions = tab.selectedOptions.filter((_, i) => i !== index);
-  }
-
+ 
   save() {
     const eq: DHII_Equipment = {
       armours: [],
       backpack: [],
       weapons: []
     };
-    
+
     this.tabs.forEach(tab => {
       if (tab.fieldKey === 'armours') {
         eq.armours = tab.selectedOptions;
+        return;
       }
       if (tab.fieldKey === 'weapons') {
         eq.weapons = tab.selectedOptions;
+        return;
       }
       if (tab.fieldKey === 'backpackItems' || tab.fieldKey === 'cybernetics') {
         eq.backpack = tab.selectedOptions;
+        return;
       }
+      
+      assertUnreachable(tab.fieldKey);
     });
 
     this.dialogRef.close(eq);
   }
-  private filterOptions(tab: EqupimentTab, value: string) {
-    if (tab.fieldKey === 'armours') {
-      return this.findFilteredOptionsForTab(tab, value);
-    }
-    if (tab.fieldKey === 'weapons') {
-      return this.findFilteredOptionsForTab(tab, value);
-    }
 
-    return this.findFilteredOptionsForTab(tab, value);
+  private selectItem<L, O>(tab: ETab<L, O>, item: O) {
+    if (tab.selectedOptions.indexOf(item) !== -1) {
+      return;
+    }
+    tab.selectedOptions.push(item);
   }
 
-  private findFilteredOptionsForTab<L, O extends GenericItem>(tab: ETab<L, O>, value: string) {
+  private removeItem<L, O>(tab: ETab<L, O>, item: O) {
+    const index: number = tab.selectedOptions.indexOf(item);
+    tab.selectedOptions = tab.selectedOptions.filter((_, i) => i !== index);
+  }
+
+  private getFilterOptionsFor(tab: EqupimentTab, searchQuery: string) {
+    if (tab.fieldKey === 'armours') {
+      return this.filterOptionsFor(tab, searchQuery);
+    }
+    if (tab.fieldKey === 'weapons') {
+      return this.filterOptionsFor(tab, searchQuery);
+    }
+    if (tab.fieldKey === 'backpackItems' || tab.fieldKey == 'cybernetics') {
+      return this.filterOptionsFor(tab, searchQuery);
+    }
+
+    assertUnreachable(tab.fieldKey);
+  }
+
+  private filterOptionsFor<L, O extends GenericItem>(tab: ETab<L, O>, searchQuery: string) {
     const filteredOptions: typeof tab.options = new Map();
+
     for (const [itemKey, item] of tab.options.entries()) {
-      if (this.isSearchValueIncludedInItemName(item.name, value)) {
+      if (this.isSearchQueryInItemName(item.name, searchQuery)) {
         filteredOptions.set(itemKey, item);
       }
     }
     return filteredOptions;
   }
 
-  private isSearchValueIncludedInItemName(itemName: string, searchValue: string): boolean {
+  private isSearchQueryInItemName(itemName: string, searchValue: string): boolean {
     return itemName.toLowerCase().includes(searchValue.toLowerCase());
   }
 }

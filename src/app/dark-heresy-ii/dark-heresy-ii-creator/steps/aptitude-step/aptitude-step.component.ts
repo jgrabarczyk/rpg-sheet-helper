@@ -70,11 +70,11 @@ export class AptitudeStepComponent {
   formChooseFrom = new FormArray<FormControl>([]);
 
   save() {
-    if(this.formChooseFrom.invalid){
+    if (this.formChooseFrom.invalid){
       throw Error('this.formChooseFrom.invalid');
     }
     
-    if(this.formDuplicates.invalid){
+    if (this.formDuplicates.invalid){
       throw Error('this.formDuplicates.invalid');
     }
 
