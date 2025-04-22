@@ -349,7 +349,7 @@ export class DHII_CreatorService {
   }): number {
     let diceRoll: DiceRoll = '2d10';
     let modifier: 'bonus' | 'penality' | undefined;
-
+    // @todo change roll implementation to not to require manually adding dice fot bonus/penality
     if (roll.bonus.includes(roll.attribute.name)) {
       diceRoll = '3d10';
       modifier = 'bonus';

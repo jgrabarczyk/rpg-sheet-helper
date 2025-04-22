@@ -20,4 +20,5 @@ Navigate to `http://localhost:4200/`.
 - rework talents - use specialisations to determin effective useage of armour, weaons etc. 
 
 ### In progress: EQ update
-- add tests
+- add integration tests
+- make sure components methods are protected to prevent testing them directly.
