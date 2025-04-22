@@ -12,44 +12,42 @@ interface SheetHeaderAccordionData {
   standalone: true
 })
 export class HeaderAccordionDataPipe implements PipeTransform {
-  transform(value: DHII_Character | null): SheetHeaderAccordionData[] {
-    return value !== null
-      ? [
-          {
-            title: 'Character Name',
-            disabled: true,
-            description: value.details?.characterName
-          },
-          {
-            title: 'Character Age',
-            disabled: true,
-            description: value.details?.age
-          },
-          {
-            title: 'Home World',
-            disabled: false,
-            description: value.homeworld?.value.name,
-            content: value.homeworld?.value.bonus
-          },
-          {
-            title: 'Background',
-            disabled: false,
-            description: value.background?.value.name,
-            content: value.background?.value.bonus
-          },
-          {
-            title: 'Role',
-            disabled: false,
-            description: value.role?.value.name,
-            content: value.role?.value.bonus
-          },
-          {
-            title: 'Divination',
-            disabled: false,
-            description: value.divination?.name,
-            content: value.divination?.description
-          }
-        ]
-      : [];
+  transform(character: DHII_Character): SheetHeaderAccordionData[] {
+    return [
+      {
+        title: 'Character Name',
+        disabled: true,
+        description: character.details?.characterName
+      },
+      {
+        title: 'Character Age',
+        disabled: true,
+        description: character.details?.age
+      },
+      {
+        title: 'Home World',
+        disabled: false,
+        description: character.homeworld?.value.name,
+        content: character.homeworld?.value.bonus
+      },
+      {
+        title: 'Background',
+        disabled: false,
+        description: character.background?.value.name,
+        content: character.background?.value.bonus
+      },
+      {
+        title: 'Role',
+        disabled: false,
+        description: character.role?.value.name,
+        content: character.role?.value.bonus
+      },
+      {
+        title: 'Divination',
+        disabled: false,
+        description: character.divination?.name,
+        content: character.divination?.description
+      }
+    ];
   }
 }
