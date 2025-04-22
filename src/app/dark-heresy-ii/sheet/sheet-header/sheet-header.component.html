@@ -49,22 +49,23 @@
       </mat-form-field>
     </form>
     } @else {
-
-    <div class="summary">
-      <mat-accordion displayMode="default" [multi]="true" [hideToggle]="false">
-        @for(item of character | headerAccordionData; track item.title) {
-          <mat-expansion-panel [hideToggle]="true" [disabled]="item.disabled">
-            <mat-expansion-panel-header>
-              <mat-panel-title> {{item.title}} </mat-panel-title>
-              <mat-panel-description>
-                {{ item.description }}
-              </mat-panel-description>
-            </mat-expansion-panel-header>
-            {{item.content}}
-          </mat-expansion-panel>
-        }
-      </mat-accordion>
-    </div>
+      @if(character) {
+        <div class="summary">
+          <mat-accordion displayMode="default" [multi]="true" [hideToggle]="false">
+            @for(item of character | headerAccordionData; track item.title) {
+              <mat-expansion-panel [hideToggle]="true" [disabled]="item.disabled">
+                <mat-expansion-panel-header>
+                  <mat-panel-title> {{item.title}} </mat-panel-title>
+                  <mat-panel-description>
+                    {{ item.description }}
+                  </mat-panel-description>
+                </mat-expansion-panel-header>
+                {{item.content}}
+              </mat-expansion-panel>
+            }
+          </mat-accordion>
+        </div>
+      } 
     } 
 
     @let exp = character?.experience; 
