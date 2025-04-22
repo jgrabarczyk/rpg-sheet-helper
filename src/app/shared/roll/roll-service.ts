@@ -33,13 +33,18 @@ export class RollService {
 
   public loggerStack$ = this.loggerStackSubject$.asObservable();
 
+  // @todo change roll implementation to not to require manually adding dice fot bonus/penality
   rollDices(loggerRoll: LoggerDiceRoll): number {
     const [diceQuantity, diceFaces] = loggerRoll.roll.split('d').map(el => Number(el));
+
+    if (diceQuantity === 0 || diceFaces === 0) {
+      return 0;
+    }
 
     const results: number[] = Array.from(
       { length: diceQuantity },
       () => Math.floor(Math.random() * diceFaces) + 1
-    ).sort((a, b) => a - b);
+    ).sort();
 
     if (loggerRoll.modifier === 'bonus') {
       results.shift();

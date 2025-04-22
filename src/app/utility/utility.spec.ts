@@ -60,7 +60,6 @@ describe('Utility Unit tests', () => {
 
       const result: string = '["@Set","a","b"]';
       const stringified: string = JSONstringify(set);
-      console.log(stringified);
       expect(stringified).toEqual(result);
       expect(stringified).toContain('@Set');
     });
@@ -69,7 +68,7 @@ describe('Utility Unit tests', () => {
   describe('JSONparse', () => {
     it('should parse string', () => {
       const stringified: string = '["@Set",["@Map",["a","b"]]]';
-      const result: Set<Map<string,string>> = new Set<Map<string,string>>();
+      const result: Set<Map<string, string>> = new Set<Map<string, string>>();
       result.add(new Map([['a', 'b']]));
 
       const parsed: object = JSONparse(stringified);
