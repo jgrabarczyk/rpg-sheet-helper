@@ -50,7 +50,6 @@ describe('Utility Unit tests', () => {
       const map: Map<string, string> = new Map([['a', 'b']]);
       const result: string = '["@Map",["a","b"]]';
       const stringified: string = JSONstringify(map);
-      console.log(stringified);
 
       expect(stringified).toEqual(result);
       expect(stringified).toContain('@Map');

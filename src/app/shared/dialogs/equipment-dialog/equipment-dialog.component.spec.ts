@@ -11,6 +11,7 @@ import { MatChipHarness, MatChipSetHarness } from '@angular/material/chips/testi
 import { EquipmentDialogComponent } from './equipment-dialog.component';
 import { MatButtonHarness } from '@angular/material/button/testing';
 import { DHII_Equipment } from '@dhii/types/items/generic-item';
+import { dialogRefMock } from '../../../../tests/mocks/dialog-ref';
 
 const CLOSE_DATA: DHII_Equipment = {
   armours: [],
@@ -60,9 +61,6 @@ const CLOSE_DATA: DHII_Equipment = {
   ]
 };
 
-const dialogRefMock: { close: unknown } = {
-  close: jasmine.createSpy('close')
-};
 
 describe('EquipmentDialogComponent', () => {
   let fixture: ComponentFixture<EquipmentDialogComponent>;
