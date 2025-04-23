@@ -16,9 +16,9 @@ export type StorageSaveName = `${StoragePrefixes}+${string}`;
 export class LocalStorageService {
   private dialog: MatDialog = inject(MatDialog);
 
-  protected storageSubject$: BehaviorSubject<Storage> = new BehaviorSubject<Storage>(localStorage);
-
   public readonly DHII_PREFIX = 'dhii';
+
+  protected storageSubject$: BehaviorSubject<Storage> = new BehaviorSubject<Storage>(localStorage);
   public DHII_CharacterKeys$ = this.storageSubject$.asObservable().pipe(
     map(storage =>
       Object.keys(storage)

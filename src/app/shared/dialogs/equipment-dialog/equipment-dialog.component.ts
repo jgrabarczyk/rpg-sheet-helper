@@ -113,17 +113,17 @@ export class EquipmentDialogComponent implements OnInit {
       .valueChanges
       .pipe(
         startWith(''),
-        map(searchQuery => this.getFilterOptionsFor(tab, searchQuery))
+        map(filterQuery => this.getFilterOptionsFor(tab, filterQuery))
       );
     });
   }
 
-  toggleItem<L, O>(tab: ETab<L, O>, item: O, checked: boolean) {
+  protected toggleItem<L, O>(tab: ETab<L, O>, item: O, checked: boolean) {
     checked ? this.selectItem(tab, item) : this.removeItem(tab, item);
   }
 
  
-  save() {
+  protected save() {
     const eq: DHII_Equipment = {
       armours: [],
       backpack: [],
@@ -146,7 +146,6 @@ export class EquipmentDialogComponent implements OnInit {
       
       assertUnreachable(tab.fieldKey);
     });
-
     this.dialogRef.close(eq);
   }
 
@@ -162,32 +161,32 @@ export class EquipmentDialogComponent implements OnInit {
     tab.selectedOptions = tab.selectedOptions.filter((_, i) => i !== index);
   }
 
-  private getFilterOptionsFor(tab: EqupimentTab, searchQuery: string) {
+  private getFilterOptionsFor(tab: EqupimentTab, filterQuery: string) {
     if (tab.fieldKey === 'armours') {
-      return this.filterOptionsFor(tab, searchQuery);
+      return this.filterOptionsFor(tab, filterQuery);
     }
     if (tab.fieldKey === 'weapons') {
-      return this.filterOptionsFor(tab, searchQuery);
+      return this.filterOptionsFor(tab, filterQuery);
     }
     if (tab.fieldKey === 'backpackItems' || tab.fieldKey == 'cybernetics') {
-      return this.filterOptionsFor(tab, searchQuery);
+      return this.filterOptionsFor(tab, filterQuery);
     }
 
     assertUnreachable(tab.fieldKey);
   }
 
-  private filterOptionsFor<L, O extends GenericItem>(tab: ETab<L, O>, searchQuery: string) {
+  private filterOptionsFor<L, O extends GenericItem>(tab: ETab<L, O>, filterQuery: string) {
     const filteredOptions: typeof tab.options = new Map();
 
     for (const [itemKey, item] of tab.options.entries()) {
-      if (this.isSearchQueryInItemName(item.name, searchQuery)) {
+      if (this.isFilterQueryInItemName(item.name, filterQuery)) {
         filteredOptions.set(itemKey, item);
       }
     }
     return filteredOptions;
   }
 
-  private isSearchQueryInItemName(itemName: string, searchValue: string): boolean {
-    return itemName.toLowerCase().includes(searchValue.toLowerCase());
+  private isFilterQueryInItemName(itemName: string, filterQuery: string): boolean {
+    return itemName.toLowerCase().includes(filterQuery.toLowerCase());
   }
 }
