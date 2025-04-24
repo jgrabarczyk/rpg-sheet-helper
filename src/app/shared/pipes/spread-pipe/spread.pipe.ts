@@ -16,6 +16,7 @@ export class SpreadPipe implements PipeTransform {
     if (!value) {
       return '';
     }
+
     if (typeof value[0] === 'string') {
       return value?.join(separator);
     }

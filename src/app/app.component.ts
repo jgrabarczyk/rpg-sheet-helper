@@ -10,6 +10,4 @@ import { MainNavigationComponent } from "./shared/main-navigation/main-navigatio
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
 })
-export class AppComponent {
-  title = 'rpg-sheet';
-}
+export class AppComponent {}
