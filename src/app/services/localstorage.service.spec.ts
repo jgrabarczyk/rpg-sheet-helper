@@ -1,93 +1,163 @@
 import { TestBed } from '@angular/core/testing';
 
-import { LocalStorageService, StoragePrefixes } from './localstorage.service';
+import { LocalStorageService } from './localstorage.service';
 import { MatDialog } from '@angular/material/dialog';
-import { of } from 'rxjs';
-import { DHII_Character } from '@dhii/types/dark-heresy-ii';
+import {
+  dialogOpen,
+  dialogOpenReturnMultipleValues,
+  DialogOpenSpy
+} from '../../tests/mocks/dialog-ref';
+type MockData = { character: string };
 
-const name: string = 'testName';
-const dialog: {
-  open: jasmine.Spy<jasmine.Func>;
-} = {
-  open: jasmine.createSpy().and.returnValue({
-    afterClosed: () => of(name)
-  })
+const openSpy: DialogOpenSpy = dialogOpen('testName');
+const mockData: MockData = { character: 'character' };
+const anotherMockData: MockData = {
+  character: 'otherCharacter'
 };
 
 describe('LocalstorageService', () => {
   let service: LocalStorageService;
+
+  /**
+   * Save multiple character mock to service
+   * @param saveNames array of keys to use as names
+   * @param data array of chracter data to use. If data index is empty {@link mockData} will be used.
+   */
+  function saveBulk(saveNames: string[], data?: MockData[]) {
+    saveNames.forEach((name, index) => {
+      service
+        .saveCharacterToLocalStorage(data?.[index] ?? mockData, 'dhii')
+        .subscribe(v => expect(v).toEqual(name));
+    });
+  }
 
   beforeEach(() => {
     TestBed.configureTestingModule({
       providers: [
         {
           provide: MatDialog,
-          useValue: dialog
+          useValue: openSpy
         }
       ]
     });
-    service = TestBed.inject(LocalStorageService);
   });
 
   afterEach(() => {
     localStorage.clear();
   });
+  describe('#saveCharacterToLocalStorage', () => {
+    const saveNames: string[] = ['Zorro', 'Andrzej', 'Vulkan', 'Angron', 'Magnus', 'Alpharius'];
 
-  it('#saveCharacterToLocalStorage should save character', done => {
-    service.saveCharacterToLocalStorage({ character: 'character' }, 'dhii').subscribe(v => {
-      expect(v).toEqual(name);
+    beforeEach(() => {
+      TestBed.overrideProvider(MatDialog, {
+        useValue: dialogOpenReturnMultipleValues(saveNames)
+      });
+      service = TestBed.inject(LocalStorageService);
     });
 
-    service.DHII_CharacterKeys$.subscribe(v => {
-      expect(v).toEqual([name]);
+    it('should save characters', done => {
+      saveBulk(saveNames);
+
+      service.DHII_CharacterKeys$.subscribe(v => {
+        expect(v).toEqual(saveNames.sort());
+      });
+      done();
     });
-    done();
   });
 
   describe('#loadCurrentCharacter', () => {
-    it('should load character', () => {
-      //save character
-      const mockData: DHII_Character = { character: 'character' } as unknown as DHII_Character;
-      const anotherMockData: DHII_Character = {
-        character: 'otherCharacter'
-      } as unknown as DHII_Character;
-      service.saveCharacterToLocalStorage(mockData, 'dhii').subscribe();
-      service.saveCharacterToLocalStorage(anotherMockData, 'dhii').subscribe();
+    const saveNames: string[] = ['Angron', 'Alpharius', 'Angron'];
 
-      const character: DHII_Character = service.loadCurrentCharacter();
-      expect(character).toEqual(anotherMockData);
+    beforeEach(() => {
+      TestBed.overrideProvider(MatDialog, {
+        useValue: dialogOpenReturnMultipleValues(saveNames)
+      });
+
+      service = TestBed.inject(LocalStorageService);
     });
+
+    it('should load last saved character', () => {
+      saveBulk(saveNames, [anotherMockData, anotherMockData, mockData]);
+
+      const character: MockData = service.loadCurrentCharacter<MockData>();
+      expect(character).toEqual(mockData);
+    });
+
     const throwMsg: string = 'There is no currentSave to load';
-    it(`should throw "${throwMsg}"`, () => {
-      expect(() => service.loadCurrentCharacter()).toThrowError(throwMsg);
+    it(`should throw "${throwMsg}" while loading from empty value`, () => {
+      expect(() => service.loadCurrentCharacter<MockData>()).toThrowError(throwMsg);
     });
   });
 
   describe('#deleteCurrentCharacter', () => {
+    const saveNames: string[] = ['Mortimer', 'Alparhius', 'Angron'];
+    beforeEach(() => {
+      TestBed.overrideProvider(MatDialog, {
+        useValue: dialogOpenReturnMultipleValues([
+          ...saveNames,
+          true // deleteCurrentCharacter response
+        ])
+      });
+
+      service = TestBed.inject(LocalStorageService);
+    });
     it('should succesfully delete character', done => {
-      const mockData: DHII_Character = { character: 'character' } as unknown as DHII_Character;
-      const anotherMockData: DHII_Character = {
-        character: 'otherCharacter'
-      } as unknown as DHII_Character;
-      service.saveCharacterToLocalStorage(mockData, 'dhii').subscribe();
-      service.saveCharacterToLocalStorage(anotherMockData, 'dhii').subscribe();
+      saveBulk(saveNames, [anotherMockData, anotherMockData, mockData]);
 
       service.deleteCurrentCharacter().subscribe(isDeleted => {
-        expect(!!isDeleted).toBeTrue();
-        done();
+        expect(isDeleted).toBeTrue();
       });
+
+      expect(() => service.loadCharacterFromLocalStorage('Angron', 'dhii')).toThrowError(
+        `There is no key dhii+Angron in localStorage`
+      );
+      done();
     });
 
     const throwMsg: string = 'There is no currentSave to delete';
-    it(`should throw "${throwMsg}"`, () => {
+    it(`should throw "${throwMsg}" while trying to delete from empty value`, () => {
       expect(() => service.deleteCurrentCharacter()).toThrowError(throwMsg);
+    });
+
+    it(`should throw "${throwMsg}" while trying to delete twice`, done => {
+      saveBulk(saveNames, [anotherMockData, anotherMockData, mockData]);
+
+      service.deleteCurrentCharacter().subscribe(isDeletionComplete => {
+        expect(isDeletionComplete).toBeTrue();
+      });
+
+      expect(() => service.deleteCurrentCharacter()).toThrowError(throwMsg);
+      done();
     });
   });
 
-  const prefix: StoragePrefixes = 'dhii'
-  const key: string = 'someInvalidKey';
-  const throwMsg: string = `There is no key ${prefix}+${key} in localStorage`;
-  it('#loadCharacterFromLocalStorage', () => {
-    expect(() => service.loadCharacterFromLocalStorage(key, prefix)).toThrowError(throwMsg);
+  describe('#loadCharacterFromLocalStorage', () => {
+    const saveNames: string[] = ['Mortimer', 'Alparhius', 'Angron', 'Angron'];
+    const nameToTestAgainst: string = saveNames[2];
+    const throwMsg: string = `There is no key dhii+${nameToTestAgainst} in localStorage`;
+
+    beforeEach(() => {
+      TestBed.overrideProvider(MatDialog, {
+        useValue: dialogOpenReturnMultipleValues([...saveNames, true])
+      });
+
+      service = TestBed.inject(LocalStorageService);
+    });
+
+    it(`should throw "${throwMsg}" while trying to load from empty value`, () => {
+      expect(() => service.loadCharacterFromLocalStorage(nameToTestAgainst, 'dhii')).toThrowError(
+        throwMsg
+      );
+    });
+    it(`should throw "${throwMsg}" while trying to load from deleted record`, done => {
+      saveBulk(saveNames);
+      service.deleteCharacterFromLocalStorage(nameToTestAgainst, 'dhii').subscribe(v => {
+        console.log(v);
+        expect(() => service.loadCharacterFromLocalStorage(nameToTestAgainst, 'dhii')).toThrowError(
+          throwMsg
+        );
+      });
+      done();
+    });
   });
 });
