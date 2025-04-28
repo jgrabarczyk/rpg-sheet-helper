@@ -75,7 +75,7 @@ export class RollService {
     const difficultyTier: number =
       Math.abs(Math.floor(testValue / 10) - Math.floor(roll.chance / 10)) + 1;
 
-    const message: string = this.composeRollMessage({
+    const message: string = this.composeTestRollMessage({
       roll,
       testValue,
       difficultyTier
@@ -95,13 +95,12 @@ export class RollService {
     this.loggerStackSubject$.next(stack);
   }
 
-  private composeRollMessage(data: {
+  private composeTestRollMessage(data: {
     roll: Roll;
     testValue: number;
     difficultyTier: number;
   }): string {
     return `
-      Test: ${data.roll.name} 
       \nChance:
       \n  ${data.roll.chance} 
       \nRoll: 

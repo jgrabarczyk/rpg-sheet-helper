@@ -1,12 +1,15 @@
-<div class="logger-wrapper">
-  <div class="header">
-    <h2>{{ 'Dice roll history' }}</h2>
-  </div>
-
-  @for(item of loggerStack$ |async; track item.id){
-  <div class="item">
-    <div class="title" [innerHTML]="item.title"></div>
-    <div [innerHTML]="item.message"></div>
-  </div>
-  }
-</div>
+<mat-card appearance="outlined" class="logger-wrapper">
+  <mat-card-header>
+    <mat-card-title> Dice roll history </mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <mat-list >
+      @for(item of loggerStack$ |async; track item.id){
+      <mat-list-item class="item">
+          <div matListItemTitle [innerHTML]="item.title"></div>
+          <div matListItemLine [innerHTML]="item.message"></div>
+      </mat-list-item>
+      }
+    </mat-list>
+  </mat-card-content>
+</mat-card>
