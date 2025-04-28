@@ -1,6 +1,6 @@
 import { Pipe, PipeTransform } from '@angular/core';
 import { DHII_Character } from '@dhii/types/dark-heresy-ii';
-interface SheetHeaderAccordionData {
+export interface SheetHeaderAccordionData {
   title: string;
   disabled: boolean;
   description?: string | number;
