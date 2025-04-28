@@ -7,7 +7,13 @@
         <div class="autocomplete-header">
           <mat-form-field>
             <mat-label>Item Search</mat-label>
-            <input type="text" placeholder="Pick one" matInput [formControlName]="tab.fieldKey" [name]="tab.fieldKey" />
+            <input
+              type="text"
+              placeholder="Pick one"
+              matInput
+              [formControlName]="tab.fieldKey"
+              [name]="tab.fieldKey"
+            />
           </mat-form-field>
 
           <mat-chip-set aria-label="Item selection" [role]="tab.fieldKey">
@@ -26,9 +32,7 @@
                 <span class="note">{{ item.notes }}</span>
               </mat-checkbox>
             </div>
-            <div class="actions">
-              
-            </div>
+            
           </div>
           }
         </div>
@@ -38,6 +42,6 @@
   </form>
 </mat-dialog-content>
 <mat-dialog-actions>
-  <button mat-button mat-dialog-close>Cancel</button>
-  <button (click)="save()" mat-button cdkFocusInitial>Add items</button>
+  <button name="cancel" mat-button mat-dialog-close>Cancel</button>
+  <button name="addItemsDialog" (click)="save()" mat-button cdkFocusInitial>Add items</button>
 </mat-dialog-actions>
