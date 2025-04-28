@@ -3,11 +3,7 @@ import { ChangeDetectionStrategy, Component, inject, OnInit } from '@angular/cor
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
-import {
-  FormControl,
-  ReactiveFormsModule,
-  UntypedFormGroup
-} from '@angular/forms';
+import { FormControl, ReactiveFormsModule, UntypedFormGroup } from '@angular/forms';
 import { map, Observable, startWith } from 'rxjs';
 import { MatInputModule } from '@angular/material/input';
 import { MatChipsModule } from '@angular/material/chips';
@@ -21,7 +17,13 @@ import { Weapon } from '@dhii/types/items/weapon/weapon';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCheckboxModule } from '@angular/material/checkbox';
-import { MatDialogModule, MatDialogRef } from '@angular/material/dialog';
+import {
+  MatDialogActions,
+  MatDialogClose,
+  MatDialogContent,
+  MatDialogRef,
+  MatDialogTitle
+} from '@angular/material/dialog';
 import { assertUnreachable } from '@util/assert-unreachable';
 
 type ETab<L, O> = {
@@ -51,15 +53,19 @@ export type EqupimentTab =
     MatIconModule,
     MatButtonModule,
     MatCheckboxModule,
-    MatDialogModule
+    MatDialogActions,
+    MatDialogClose,
+    MatDialogTitle,
+    MatDialogContent
   ],
   templateUrl: './equipment-dialog.component.html',
   styleUrl: './equipment-dialog.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class EquipmentDialogComponent implements OnInit {
-  private dialogRef: MatDialogRef<EquipmentDialogComponent, DHII_Equipment | null> =
-    inject(MatDialogRef);
+  private dialogRef: MatDialogRef<EquipmentDialogComponent, DHII_Equipment | null> = inject(
+    MatDialogRef<EquipmentDialogComponent>
+  );
   protected backpackItems: Map<string, GenericItem> = BACKPACK_ITEMS;
   protected cybernetics = CYBERNETICS;
   protected weapons = WEAPONS;
@@ -108,10 +114,7 @@ export class EquipmentDialogComponent implements OnInit {
 
   ngOnInit() {
     this.tabs.forEach(tab => {
-      tab.filteredOptions = this.form
-      .controls[tab.fieldKey]
-      .valueChanges
-      .pipe(
+      tab.filteredOptions = this.form.controls[tab.fieldKey].valueChanges.pipe(
         startWith(''),
         map(filterQuery => this.getFilterOptionsFor(tab, filterQuery))
       );
@@ -122,7 +125,6 @@ export class EquipmentDialogComponent implements OnInit {
     checked ? this.selectItem(tab, item) : this.removeItem(tab, item);
   }
 
- 
   protected save() {
     const eq: DHII_Equipment = {
       armours: [],
@@ -140,10 +142,10 @@ export class EquipmentDialogComponent implements OnInit {
         return;
       }
       if (tab.fieldKey === 'backpackItems' || tab.fieldKey === 'cybernetics') {
-        eq.backpack = tab.selectedOptions;
+        eq.backpack = [...eq.backpack, ...tab.selectedOptions];
         return;
       }
-      
+
       assertUnreachable(tab.fieldKey);
     });
     this.dialogRef.close(eq);

@@ -1,7 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { TestbedHarnessEnvironment } from '@angular/cdk/testing/testbed';
 import { HarnessLoader } from '@angular/cdk/testing';
-import { provideAnimations } from '@angular/platform-browser/animations';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { MatDialogRef } from '@angular/material/dialog';
 import { MatTabHarness } from '@angular/material/tabs/testing';
 import { MatInputHarness } from '@angular/material/input/testing';
@@ -10,56 +10,9 @@ import { MatChipHarness, MatChipSetHarness } from '@angular/material/chips/testi
 
 import { EquipmentDialogComponent } from './equipment-dialog.component';
 import { MatButtonHarness } from '@angular/material/button/testing';
-import { DHII_Equipment } from '@dhii/types/items/generic-item';
 import { dialogRefMock } from '../../../../tests/mocks/dialog-ref';
-
-const CLOSE_DATA: DHII_Equipment = {
-  armours: [],
-  backpack: [],
-  weapons: [
-    {
-      name: 'Laspistol',
-      family: 'Las',
-      class: 'Pistol',
-      rangeInMeters: 30,
-      isRanged: true,
-      weaponJamOn: 100,
-      rateOfFire: {
-        single: true,
-        semi: 2
-      },
-      damage: '1d10+2',
-      damageType: 'Energy',
-      armourPenetration: 0,
-      clipSize: 30,
-      reloadInActions: 1,
-      weightInKilos: 1.5,
-      availability: 10,
-      notes:
-        'Las Weapon Variable Setting: Overcharge: +1 Dam, 2 ammo. Overload: +2 Dam and Pen but uses 4 ammo, loses Reliable, and gains Unreliable'
-    },
-    {
-      name: 'Hot-shot Laspistol',
-      family: 'Las',
-      class: 'Pistol',
-      rangeInMeters: 20,
-      isRanged: true,
-      weaponJamOn: 96,
-      rateOfFire: {
-        single: true,
-        semi: 2
-      },
-      damage: '1d10+4',
-      damageType: 'Energy',
-      armourPenetration: 7,
-      clipSize: 40,
-      reloadInActions: 4,
-      weightInKilos: 4,
-      availability: -20,
-      notes: 'Do not benefit from the Las Weapon Variable Setting rules.'
-    }
-  ]
-};
+import { getButtonHarnessWithSelector } from '../../../../tests/harness-selector-helpers';
+import { EQ_DIALOG_CLOSE_DATA } from '../../../../tests/eqiupment-dialog';
 
 
 describe('EquipmentDialogComponent', () => {
@@ -68,8 +21,8 @@ describe('EquipmentDialogComponent', () => {
 
   beforeAll(async () => {
     await TestBed.configureTestingModule({
-      imports: [EquipmentDialogComponent],
-      providers: [{ provide: MatDialogRef, useValue: dialogRefMock }, provideAnimations()]
+      imports: [EquipmentDialogComponent, NoopAnimationsModule],
+      providers: [{ provide: MatDialogRef, useValue: dialogRefMock }]
     }).compileComponents();
 
     fixture = TestBed.createComponent(EquipmentDialogComponent);
@@ -115,11 +68,9 @@ describe('EquipmentDialogComponent', () => {
     });
 
     //save data
-    const saveButton: MatButtonHarness = await loader.getHarness(
-      MatButtonHarness.with({ text: 'Add items' })
-    );
+    const saveButton: MatButtonHarness = await getButtonHarnessWithSelector(loader, 'addItemsDialog');
     await saveButton.click();
 
-    expect(dialogRefMock.close).toHaveBeenCalledWith(CLOSE_DATA);
+    expect(dialogRefMock.close).toHaveBeenCalledWith(EQ_DIALOG_CLOSE_DATA);
   });
 });
