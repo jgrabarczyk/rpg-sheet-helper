@@ -6,12 +6,18 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { LoadCharacterComponent } from './load-character.component';
 
 import { DHII_SheetService } from 'dark-heresy-ii/service/dhii-sheet.service';
-import { of } from 'rxjs';
+import { Observable, of } from 'rxjs';
+import { getButtonHarnessWithSelector } from '../../tests/harness-selector-helpers';
+
+interface SheetServiceMock {
+  dhiiLocalStorageSaveNames$: Observable<string[]>;
+  loadCharacterFromLocalStorage: jasmine.Spy<jasmine.Func>;
+  deleteCharacterFromLocalStorage: jasmine.Spy<jasmine.Func>;
+}
 
 describe('LoadCharacterComponent', () => {
   const names: string[] = ['first value', 'second value', 'third valu'];
-  // eslint-disable-next-line @typescript-eslint/typedef
-  const sheetService = {
+  const sheetService: SheetServiceMock = {
     dhiiLocalStorageSaveNames$: of(names),
     loadCharacterFromLocalStorage: jasmine.createSpy('loadCharacterFromLocalStorage'),
     deleteCharacterFromLocalStorage: jasmine.createSpy('deleteCharacterFromLocalStorage')
@@ -40,17 +46,21 @@ describe('LoadCharacterComponent', () => {
   });
 
   it('should load first  character', async () => {
-    const loadItemButton: MatButtonHarness = await listHarness.getHarness(
-      MatButtonHarness.with({ text: 'Load' })
+    const loadItemButton: MatButtonHarness = await getButtonHarnessWithSelector(
+      listHarness,
+      'loadCharacter'
     );
+
     await loadItemButton.click();
     expect(sheetService.loadCharacterFromLocalStorage).toHaveBeenCalledWith(names[0]);
   });
 
   it('should delete first  character', async () => {
-    const deleteItemButton: MatButtonHarness = await listHarness.getHarness(
-      MatButtonHarness.with({ text: 'Delete' })
+    const deleteItemButton: MatButtonHarness = await getButtonHarnessWithSelector(
+      listHarness,
+      'deleteCharacter'
     );
+
     await deleteItemButton.click();
     expect(sheetService.deleteCharacterFromLocalStorage).toHaveBeenCalledWith(names[0]);
   });
