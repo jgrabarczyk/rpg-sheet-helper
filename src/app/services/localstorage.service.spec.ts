@@ -151,8 +151,7 @@ describe('LocalstorageService', () => {
     });
     it(`should throw "${throwMsg}" while trying to load from deleted record`, done => {
       saveBulk(saveNames);
-      service.deleteCharacterFromLocalStorage(nameToTestAgainst, 'dhii').subscribe(v => {
-        console.log(v);
+      service.deleteCharacterFromLocalStorage(nameToTestAgainst, 'dhii').subscribe(() => {
         expect(() => service.loadCharacterFromLocalStorage(nameToTestAgainst, 'dhii')).toThrowError(
           throwMsg
         );

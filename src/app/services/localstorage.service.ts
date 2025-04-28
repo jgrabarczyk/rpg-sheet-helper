@@ -31,7 +31,7 @@ export class LocalStorageService {
   private readonly currentSaveName$: BehaviorSubject<StorageSaveName | null> =
     new BehaviorSubject<StorageSaveName | null>(null);
 
-  saveCharacterToLocalStorage<T extends object>(character: T, prefix: StoragePrefixes) {
+  public saveCharacterToLocalStorage<T extends object>(character: T, prefix: StoragePrefixes): Observable<string> {
     return this.dialog
       .open<SaveDialogComponent, null, string>(SaveDialogComponent)
       .afterClosed()
@@ -49,14 +49,14 @@ export class LocalStorageService {
       );
   }
 
-  loadCharacterFromLocalStorage<T>(name: string, prefix: StoragePrefixes): T {
+  public loadCharacterFromLocalStorage<T>(name: string, prefix: StoragePrefixes): T {
     const currentSaveName: StorageSaveName = this.toSaveName({ name, prefix });
     const character: T = this.getItem<T>(currentSaveName);
     this.currentSaveName$.next(currentSaveName);
     return character;
   }
 
-  deleteCharacterFromLocalStorage(name: string, prefix: StoragePrefixes): Observable<true> {
+  public deleteCharacterFromLocalStorage(name: string, prefix: StoragePrefixes): Observable<true> {
     const saveName: StorageSaveName = this.toSaveName({ name, prefix });
     return this.dialog
       .open(ConfirmDialogComponent, {
@@ -77,7 +77,7 @@ export class LocalStorageService {
       );
   }
 
-  deleteCurrentCharacter(): Observable<true> {
+  public deleteCurrentCharacter(): Observable<true> {
     const currentSaveName: StorageSaveName | null = this.currentSaveName$.value;
 
     if (!currentSaveName) {
@@ -88,13 +88,12 @@ export class LocalStorageService {
     return this.deleteCharacterFromLocalStorage(name, prefix).pipe();
   }
 
-  loadCurrentCharacter<T>() {
+  public loadCurrentCharacter<T>(): T {
     const currentSaveName: StorageSaveName | null = this.currentSaveName$.value;
 
     if (!currentSaveName) {
       throw Error('There is no currentSave to load');
     }
-
     const [prefix, name] = this.splitSaveName(currentSaveName);
     return this.loadCharacterFromLocalStorage<T>(name, prefix);
   }
