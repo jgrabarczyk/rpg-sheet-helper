@@ -21,7 +21,7 @@ import { DHII_Attributes, DHII_Attribute, DHII_AttributeName } from '@dhii/types
 import { DHII_Skill, DHII_SkillName } from '@dhii/types/dhii-skill';
 import { rollDivinationTable } from '@dhii/types/roll-tables/dhii-divination';
 
-import { RollService } from '@shared/roll/roll-service';
+import { RollService } from '@shared/roll/roll.service';
 import { DHII_Equipment, GenericItem } from '@dhii/types/items/generic-item';
 import { Armour, ARMOURS } from '@dhii/types/items/armour/armour';
 import { WEAPONS } from '@dhii/types/items/weapon/weapons-data';
