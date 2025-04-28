@@ -2,13 +2,16 @@ import { CommonModule, KeyValue } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
+  EventEmitter,
   inject,
   Input,
-  Output,
-  EventEmitter
+  Output
 } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
+import { MatDialog } from '@angular/material/dialog';
+import { RateOfFirePipe } from '@dhii/pipes/rate-of-fire/rate-of-fire.pipe';
+import { ReloadTimePipe } from '@dhii/pipes/reload-time/reload-time.pipe';
 import { BaseArmour, ForceFieldArmour } from '@dhii/types/items/armour/armour';
 import { DHII_Equipment, GenericItem } from '@dhii/types/items/generic-item';
 import {
@@ -17,13 +20,10 @@ import {
   WeaponMelee,
   WeaponThrown
 } from '@dhii/types/items/weapon/weapon';
-import { BackpackComponent, TableData } from './backpack/backpack.component';
-import { RateOfFirePipe } from '@dhii/pipes/rate-of-fire/rate-of-fire.pipe';
-import { ReloadTimePipe } from '@dhii/pipes/reload-time/reload-time.pipe';
 import { EquipmentDialogComponent } from '@shared/dialogs/equipment-dialog/equipment-dialog.component';
-import { MatDialog } from '@angular/material/dialog';
-import { filter } from 'rxjs';
 import { assertUnreachable } from '@util/assert-unreachable';
+import { filter } from 'rxjs';
+import { BackpackComponent, TableData } from './backpack/backpack.component';
 
 const GENERIC_ITEM_HEADERS: KeyValue<keyof GenericItem, string>[] = [
   { key: 'name', value: 'Name' },
@@ -59,7 +59,7 @@ export class EquipmentComponent {
   }
   @Output() addEquipment: EventEmitter<DHII_Equipment> = new EventEmitter();
 
-  weapons: {
+  protected weapons: {
     melee: TableData<WeaponMelee>;
     ranged: TableData<WeapnRangeReadOnly>;
     thrown: TableData<WeaponThrown>;
@@ -94,7 +94,7 @@ export class EquipmentComponent {
     }
   };
 
-  protection: {
+  protected protection: {
     armours: TableData<BaseArmour>;
     forceFields: TableData<ForceFieldArmour>;
   } = {
@@ -113,15 +113,15 @@ export class EquipmentComponent {
     }
   };
 
-  backpackTable: TableData<GenericItem> = {
+  protected backpackTable: TableData<GenericItem> = {
     headers: [...GENERIC_ITEM_HEADERS],
     data: []
   };
 
-  private rof: RateOfFirePipe = new RateOfFirePipe();
+  private rateOfFirePipe: RateOfFirePipe = new RateOfFirePipe();
   private reloadTime: ReloadTimePipe = new ReloadTimePipe();
 
-  addItems() {
+  protected addItems() {
     this.dialog
       .open<EquipmentDialogComponent, unknown, DHII_Equipment | null>(EquipmentDialogComponent, {
         maxHeight: '100%',
@@ -131,9 +131,7 @@ export class EquipmentComponent {
       })
       .afterClosed()
       .pipe(filter(Boolean))
-      .subscribe(dialogResult => {
-        this.addEquipment.emit(dialogResult);
-      });
+      .subscribe(dialogResult => this.addEquipment.emit(dialogResult));
   }
 
   private parseEquipment(eq: DHII_Equipment) {
@@ -166,7 +164,7 @@ export class EquipmentComponent {
       ) {
         this.weapons.ranged.data.push({
           ...weapon,
-          rateOfFire: this.rof.transform(weapon.rateOfFire),
+          rateOfFire: this.rateOfFirePipe.transform(weapon.rateOfFire),
           reloadInActions: this.reloadTime.transform(weapon.reloadInActions)
         });
         return;
@@ -174,6 +172,7 @@ export class EquipmentComponent {
         assertUnreachable(weapon.class);
       }
     });
+    
     eq.backpack.forEach(item => this.backpackTable.data.push(item));
   }
 }
