@@ -4,9 +4,10 @@ import { ConfirmDialogComponent } from './confirm-dialog.component';
 import { HarnessLoader } from '@angular/cdk/testing';
 import { TestbedHarnessEnvironment } from '@angular/cdk/testing/testbed';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
-import { provideAnimations } from '@angular/platform-browser/animations';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { dialogRefMock } from '../../../../tests/mocks/dialog-ref';
 import { MatButtonHarness } from '@angular/material/button/testing';
+import { getButtonHarnessWithSelector } from '../../../../tests/harness-selector-helpers';
 
 describe('ConfirmDialogComponent', () => {
   let fixture: ComponentFixture<ConfirmDialogComponent>;
@@ -14,12 +15,11 @@ describe('ConfirmDialogComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [ConfirmDialogComponent],
+      imports: [ConfirmDialogComponent, NoopAnimationsModule],
       providers: [
         { provide: MatDialogRef, useValue: dialogRefMock },
-        { provide: MAT_DIALOG_DATA, useValue: {title: 'test title', text: 'test text'} },
-         provideAnimations()
-        ]
+        { provide: MAT_DIALOG_DATA, useValue: { title: 'test title', text: 'test text' } }
+      ]
     }).compileComponents();
 
     fixture = TestBed.createComponent(ConfirmDialogComponent);
@@ -27,13 +27,13 @@ describe('ConfirmDialogComponent', () => {
   });
 
   it('should close with true on confirm', async () => {
-    const button: MatButtonHarness = await loader.getHarness(MatButtonHarness.with({ text: 'Confirm' }));
+    const button: MatButtonHarness = await getButtonHarnessWithSelector(loader, 'confirm');
     await button.click();
-    expect(dialogRefMock.close).toHaveBeenCalledWith(true)
+    expect(dialogRefMock.close).toHaveBeenCalledWith(true);
   });
   it('should close with no data on cancel', async () => {
-    const button: MatButtonHarness = await loader.getHarness(MatButtonHarness.with({ text: 'Confirm' }));
+    const button: MatButtonHarness = await getButtonHarnessWithSelector(loader, 'cancel');
     await button.click();
-    expect(dialogRefMock.close).toHaveBeenCalled()
+    expect(dialogRefMock.close).toHaveBeenCalled();
   });
 });
