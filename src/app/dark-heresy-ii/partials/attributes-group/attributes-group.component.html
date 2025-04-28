@@ -6,31 +6,33 @@
 
   <mat-card-content>
     <mat-list role="list">
-      @for(a of attributes; track a[0]; let i = $index){ @let name = a[0]; @let attribute = a[1];
-      @let isInfluence = attribute.name === 'Influence';
-      <mat-list-item
-        [ngClass]="{
-          bonus: name | isBonusAttribute : bonus,
-          penality: name === penality
-        }"
-      >
-        <app-attribute
-          [max]="100"
-          [min]="isInfluence ? 0 : attribute.lvl.current * step"
-          [maxLevel]="isInfluence ? 0 : attribute.lvl.max"
-          [currentLevel]="isInfluence ? 0 : attribute.lvl.current"
-          [mode]="mode"
-          [value]="attribute.value"
-          [label]="attribute.name"
-          [editable]="editable"
-          [showReroll]="isRerollAtributeAvalible"
-          (valueChange)="updateValue($event, name)"
-          (increase)="increase(name)"
-          (decrease)="decrease(name)"
-          (roll)="rollDice(name, $event)"
-        />
-      </mat-list-item>
-      <mat-divider></mat-divider>
+      @for(a of attributes; track a[0]; let i = $index){
+        @let attributeKey = a[0]; 
+        @let attribute = a[1];
+        @let isInfluence = attribute.name === 'Influence';
+        <mat-list-item
+          [ngClass]="{
+            bonus: attributeKey | isBonusAttribute : bonus,
+            penality: attributeKey === penality
+          }"
+        >
+          <app-attribute
+            [max]="100"
+            [min]="isInfluence ? 0 : attribute.lvl.current * step"
+            [maxLevel]="isInfluence ? 0 : attribute.lvl.max"
+            [currentLevel]="isInfluence ? 0 : attribute.lvl.current"
+            [mode]="mode"
+            [value]="attribute.value"
+            [label]="attribute.name"
+            [editable]="editable"
+            [showReroll]="isRerollAtributeAvalible"
+            (valueChange)="updateValue($event, attributeKey)"
+            (increase)="increase(attributeKey)"
+            (decrease)="decrease(attributeKey)"
+            (roll)="rollDice(attributeKey, $event)"
+          />
+        </mat-list-item>
+        <mat-divider></mat-divider>
       }
     </mat-list>
   </mat-card-content>
