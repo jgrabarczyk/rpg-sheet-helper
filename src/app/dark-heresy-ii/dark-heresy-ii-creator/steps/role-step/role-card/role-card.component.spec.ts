@@ -31,7 +31,7 @@ describe('RoleCardComponent', () => {
     component = fixture.componentInstance;
   });
 
-  describe('for Ace roll', () => {
+  describe('for Ace role', () => {
     const aceRole: DHII_Role = ROLES.get('ace')!;
 
     beforeEach(() => {
@@ -48,7 +48,7 @@ describe('RoleCardComponent', () => {
     });
   });
 
-  describe('for penitent roll', () => {
+  describe('for Penitent role', () => {
     const penitentRole: DHII_Role = ROLES.get('penitent')!;
 
     beforeEach(() => {
