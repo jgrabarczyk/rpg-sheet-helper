@@ -5,14 +5,15 @@ import { HarnessLoader } from '@angular/cdk/testing';
 import { TestbedHarnessEnvironment } from '@angular/cdk/testing/testbed';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
-import { dialogRefMock } from '../../../../tests/mocks/dialog-ref';
+import { dialogClose, DialogCloseSpy } from '../../../../tests/mocks/dialog-ref';
 import { MatButtonHarness } from '@angular/material/button/testing';
 import { getButtonHarnessWithSelector } from '../../../../tests/harness-selector-helpers';
 
 describe('ConfirmDialogComponent', () => {
   let fixture: ComponentFixture<ConfirmDialogComponent>;
   let loader: HarnessLoader;
-
+  const dialogRefMock: DialogCloseSpy = dialogClose();
+  
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [ConfirmDialogComponent, NoopAnimationsModule],

@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { AttributeComponent } from './attribute.component';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
 describe('AttributeComponent', () => {
   let component: AttributeComponent;
@@ -8,7 +9,7 @@ describe('AttributeComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [AttributeComponent]
+      imports: [AttributeComponent, NoopAnimationsModule]
     })
     .compileComponents();
     

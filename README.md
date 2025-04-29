@@ -7,9 +7,11 @@ Run `ng serve` for a dev server.
 
 Navigate to `http://localhost:4200/`. 
 
+## Testing
+
+Run `ng test` to run tests.
+
 ## RoadMap
-- add Roll logger to sheet page
-- add Equipment
 - add Experience
 - display filled progress in creator stepper. 
 
@@ -20,5 +22,4 @@ Navigate to `http://localhost:4200/`.
 - rework talents - use specialisations to determin effective useage of armour, weaons etc. 
 
 ### In progress: EQ update
-- add integration tests
 - make sure components methods are protected to prevent testing them directly.

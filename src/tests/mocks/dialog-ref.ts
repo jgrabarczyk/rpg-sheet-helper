@@ -1,4 +1,5 @@
 import { Observable, of } from 'rxjs';
+
 export type DialogOpenSpy = {
   open: jasmine.Spy<jasmine.Func>;
 };
@@ -7,9 +8,11 @@ export type DialogCloseSpy = {
   close: jasmine.Spy<jasmine.Func>;
 };
 
-export const dialogRefMock: DialogCloseSpy = {
-  close: jasmine.createSpy('close')
-};
+export function dialogClose(): DialogCloseSpy {
+  return {
+    close: jasmine.createSpy('close')
+  };
+}
 
 export function dialogOpen(afterCloseData: unknown): DialogOpenSpy {
   return {

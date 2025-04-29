@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { DynamicListComponent } from './dynamic-list.component';
+import { CdkStepper } from '@angular/cdk/stepper';
 
 describe('DynamicListComponent', () => {
   let component: DynamicListComponent;
@@ -8,7 +9,8 @@ describe('DynamicListComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [DynamicListComponent]
+      imports: [DynamicListComponent],
+      providers: [{ provide: CdkStepper, useValue: {} }]
     })
     .compileComponents();
 

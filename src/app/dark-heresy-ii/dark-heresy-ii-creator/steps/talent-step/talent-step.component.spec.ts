@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { TalentStepComponent } from './talent-step.component';
+import { CdkStepper } from '@angular/cdk/stepper';
 
 describe('TelentStepComponent', () => {
   let component: TalentStepComponent;
@@ -8,9 +9,9 @@ describe('TelentStepComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [TalentStepComponent]
-    })
-    .compileComponents();
+      imports: [TalentStepComponent],
+      providers: [{ provide: CdkStepper, useValue: {} }]
+    }).compileComponents();
 
     fixture = TestBed.createComponent(TalentStepComponent);
     component = fixture.componentInstance;

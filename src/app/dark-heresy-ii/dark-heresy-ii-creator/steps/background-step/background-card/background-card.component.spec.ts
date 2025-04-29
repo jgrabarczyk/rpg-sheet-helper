@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { BackgroundCardComponent } from './background-card.component';
+import { BACKGROUNDS } from '@dhii/types/dhii-background';
 
 describe('BackgroundCardComponent', () => {
   let component: BackgroundCardComponent;
@@ -14,6 +15,7 @@ describe('BackgroundCardComponent', () => {
 
     fixture = TestBed.createComponent(BackgroundCardComponent);
     component = fixture.componentInstance;
+    component.background = BACKGROUNDS.get('rogue')!;
     fixture.detectChanges();
   });
 

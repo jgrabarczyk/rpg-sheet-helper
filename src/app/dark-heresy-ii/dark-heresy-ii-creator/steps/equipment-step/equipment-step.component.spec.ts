@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { EquipmentStepComponent } from './equipment-step.component';
+import { CdkStepper } from '@angular/cdk/stepper';
 
 describe('EquipmentStepComponent', () => {
   let component: EquipmentStepComponent;
@@ -8,7 +9,8 @@ describe('EquipmentStepComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [EquipmentStepComponent]
+      imports: [EquipmentStepComponent],
+      providers: [{ provide: CdkStepper, useValue: {} }]
     })
     .compileComponents();
 

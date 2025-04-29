@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { RoleStepComponent } from './role-step.component';
+import { CdkStepper } from '@angular/cdk/stepper';
 
 describe('RoleStepComponent', () => {
   let component: RoleStepComponent;
@@ -8,7 +9,8 @@ describe('RoleStepComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [RoleStepComponent]
+      imports: [RoleStepComponent],
+      providers: [{ provide: CdkStepper, useValue: {} }]
     })
     .compileComponents();
 

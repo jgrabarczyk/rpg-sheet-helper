@@ -16,7 +16,7 @@ import { DHII_CharacterHomeworld, ResourcePool } from '@dhii/types/dark-heresy-i
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class WoundsAndFateStepComponent {
-  @Input() homeworld!: DHII_CharacterHomeworld;
+  @Input({required: true}) homeworld!: DHII_CharacterHomeworld;
   @Input() wounds?: ResourcePool;
   @Input() fate?: ResourcePool;
   @Output() setWounds = new EventEmitter();

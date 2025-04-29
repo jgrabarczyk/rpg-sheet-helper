@@ -16,6 +16,6 @@ import { SpreadPipe } from '@pipes/spread-pipe/spread.pipe';
   styleUrl: './background-card.component.scss'
 })
 export class BackgroundCardComponent {
-  @Input() background!: DHII_Background;
+  @Input({required: true}) background!: DHII_Background;
 
 }

@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { TwoColumnStepComponent } from './two-column-step.component';
+import { CdkStepper } from '@angular/cdk/stepper';
 
 describe('TwoColumnStepComponent', () => {
   let component: TwoColumnStepComponent;
@@ -8,7 +9,8 @@ describe('TwoColumnStepComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [TwoColumnStepComponent]
+      imports: [TwoColumnStepComponent],
+      providers: [{ provide: CdkStepper, useValue: {} }]
     })
     .compileComponents();
 

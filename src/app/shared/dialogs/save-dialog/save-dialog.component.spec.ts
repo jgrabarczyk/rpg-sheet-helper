@@ -7,14 +7,14 @@ import { HarnessLoader } from '@angular/cdk/testing';
 import { TestbedHarnessEnvironment } from '@angular/cdk/testing/testbed';
 import { MatInputHarness } from '@angular/material/input/testing';
 
-import { dialogRefMock } from '../../../../tests/mocks/dialog-ref';
 import { MatButtonHarness } from '@angular/material/button/testing';
 import { getButtonHarnessWithSelector } from '../../../../tests/harness-selector-helpers';
+import { DialogCloseSpy, dialogClose } from '../../../../tests/mocks/dialog-ref';
 
 describe('SaveDialogComponent', () => {
   let fixture: ComponentFixture<SaveDialogComponent>;
   let loader: HarnessLoader;
-
+const dialogRefMock: DialogCloseSpy = dialogClose();
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [SaveDialogComponent, NoopAnimationsModule],

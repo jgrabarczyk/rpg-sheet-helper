@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { HomeworldStepComponent } from './homeworld-step.component';
+import { CdkStepper } from '@angular/cdk/stepper';
 
 describe('HomeworldStepComponent', () => {
   let component: HomeworldStepComponent;
@@ -8,7 +9,8 @@ describe('HomeworldStepComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [HomeworldStepComponent]
+      imports: [HomeworldStepComponent],
+      providers: [{ provide: CdkStepper, useValue: {} }]
     })
     .compileComponents();
 

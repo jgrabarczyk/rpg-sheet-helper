@@ -1,6 +1,8 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { FinalDetailsStepComponent } from './final-details-step.component';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { CdkStepper } from '@angular/cdk/stepper';
 
 describe('FinalDetailsStepComponent', () => {
   let component: FinalDetailsStepComponent;
@@ -8,9 +10,9 @@ describe('FinalDetailsStepComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [FinalDetailsStepComponent]
-    })
-    .compileComponents();
+      imports: [FinalDetailsStepComponent, NoopAnimationsModule],
+      providers: [{ provide: CdkStepper, useValue: {} }]
+    }).compileComponents();
 
     fixture = TestBed.createComponent(FinalDetailsStepComponent);
     component = fixture.componentInstance;

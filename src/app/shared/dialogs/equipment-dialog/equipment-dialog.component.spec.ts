@@ -10,15 +10,14 @@ import { MatChipHarness, MatChipSetHarness } from '@angular/material/chips/testi
 
 import { EquipmentDialogComponent } from './equipment-dialog.component';
 import { MatButtonHarness } from '@angular/material/button/testing';
-import { dialogRefMock } from '../../../../tests/mocks/dialog-ref';
+import { dialogClose, DialogCloseSpy } from '../../../../tests/mocks/dialog-ref';
 import { getButtonHarnessWithSelector } from '../../../../tests/harness-selector-helpers';
 import { EQ_DIALOG_CLOSE_DATA } from '../../../../tests/eqiupment-dialog';
-
 
 describe('EquipmentDialogComponent', () => {
   let fixture: ComponentFixture<EquipmentDialogComponent>;
   let loader: HarnessLoader;
-
+  const dialogRefMock: DialogCloseSpy = dialogClose();
   beforeAll(async () => {
     await TestBed.configureTestingModule({
       imports: [EquipmentDialogComponent, NoopAnimationsModule],
@@ -37,8 +36,8 @@ describe('EquipmentDialogComponent', () => {
     expect(await tab.isSelected()).toBe(true);
     expect(await tab.getLabel()).toBe(tabLabel);
 
-    //insert 'Laspistol' as filter query
-    const searchQuery: string = 'Laspistol';
+    //insert 'Lasgun' as filter query
+    const searchQuery: string = 'Lasgun';
     const input: MatInputHarness = await tab.getHarness(MatInputHarness);
     await input.setValue(searchQuery);
     expect(await input.getName()).toBe('weapons');
@@ -56,7 +55,7 @@ describe('EquipmentDialogComponent', () => {
     expect(await second.isChecked()).toBe(true);
 
     //check if chip-set includes all checked item
-    const selectedWeaponsNames: string[] = ['Laspistol', 'Hot-shot Laspistol'];
+    const selectedWeaponsNames: string[] = ['Lasgun', 'Hot-shot Lasgun'];
     const chipSet: MatChipSetHarness = await loader.getHarness(
       MatChipSetHarness.with({ selector: 'mat-chip-set[role=weapons]' })
     );
@@ -68,7 +67,10 @@ describe('EquipmentDialogComponent', () => {
     });
 
     //save data
-    const saveButton: MatButtonHarness = await getButtonHarnessWithSelector(loader, 'addItemsDialog');
+    const saveButton: MatButtonHarness = await getButtonHarnessWithSelector(
+      loader,
+      'addItemsDialog'
+    );
     await saveButton.click();
 
     expect(dialogRefMock.close).toHaveBeenCalledWith(EQ_DIALOG_CLOSE_DATA);
