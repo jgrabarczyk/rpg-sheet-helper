@@ -153,7 +153,7 @@ export class EquipmentDialogComponent implements OnInit {
 
   private selectItem<L, O>(tab: ETab<L, O>, item: O) {
     if (tab.selectedOptions.indexOf(item) !== -1) {
-      return;
+      throw Error('Unable to add item. Item is already selected', { cause: item });
     }
     tab.selectedOptions.push(item);
   }
