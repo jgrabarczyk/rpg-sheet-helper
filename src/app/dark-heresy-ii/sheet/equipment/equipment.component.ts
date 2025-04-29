@@ -154,7 +154,7 @@ export class EquipmentComponent {
       ) {
         this.weapons.thrown.data.push({
           ...weapon,
-          rangeInMeters: Math.floor(this.strength ?? 0 / 10) * 3
+          rangeInMeters: Math.floor((this.strength ?? 10) / 10) * 3
         });
         return;
       } else if (
@@ -172,7 +172,7 @@ export class EquipmentComponent {
         assertUnreachable(weapon.class);
       }
     });
-    
+
     eq.backpack.forEach(item => this.backpackTable.data.push(item));
   }
 }
