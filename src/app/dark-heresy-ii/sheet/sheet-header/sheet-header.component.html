@@ -1,9 +1,12 @@
 <mat-card appearance="outlined">
   <mat-card-header class="full-width sheet-header">
-    <mat-card-title>DARK HERSY II CHARACTER SHEET 
+    <mat-card-title
+      >DARK HERSY II CHARACTER SHEET
       <span class="button-group">
-        <button class="save" mat-flat-button (click)="saveCharacter.emit()"> Save Character</button>
-        <button class="delete" mat-stroked-button (click)="deleteCharacter.emit()"> Delete Character </button>
+        <button name="saveCharacter" class="save" mat-flat-button (click)="saveCharacter.emit()">Save Character</button>
+        <button name="deleteCharacter" class="delete" mat-stroked-button (click)="deleteCharacter.emit()">
+          Delete Character
+        </button>
       </span>
     </mat-card-title>
     <mat-card-subtitle>Only in death duty ends {{ editable }}</mat-card-subtitle>
@@ -14,16 +17,16 @@
     <form [formGroup]="form">
       <mat-form-field [appearance]="'outline'">
         <mat-label>Character Name</mat-label>
-        <input matInput formControlName="characterName" />
+        <input matInput name="characterName" formControlName="characterName" />
       </mat-form-field>
       <mat-form-field [appearance]="'outline'">
         <mat-label>Character Age</mat-label>
-        <input matInput formControlName="age" />
+        <input matInput name="age" formControlName="age" />
       </mat-form-field>
 
       <mat-form-field [appearance]="'outline'">
         <mat-label>HomeWorld</mat-label>
-        <mat-select formControlName="homeworld">
+        <mat-select name="homeworld" formControlName="homeworld">
           @for(homeworld of homeworlds; track homeworld[0]){
           <mat-option [value]="homeworld[0]">{{ homeworld[1].name }}</mat-option>
           }
@@ -32,7 +35,7 @@
 
       <mat-form-field [appearance]="'outline'">
         <mat-label>Background</mat-label>
-        <mat-select formControlName="background">
+        <mat-select name="background" formControlName="background">
           @for(background of backgrounds; track background[0]){
           <mat-option [value]="background[0]">{{ background[1].name }}</mat-option>
           }
@@ -41,33 +44,33 @@
 
       <mat-form-field [appearance]="'outline'">
         <mat-label>Role</mat-label>
-        <mat-select formControlName="role">
+        <mat-select name="role" formControlName="role">
           @for(role of roles; track role[0]){
           <mat-option [value]="role[0]">{{ role[1].name }}</mat-option>
           }
         </mat-select>
       </mat-form-field>
     </form>
-    } @else {
-
-    <div class="summary">
-      <mat-accordion displayMode="default" [multi]="true" [hideToggle]="false">
-        @for(item of character | headerAccordionData; track item.title) {
-          <mat-expansion-panel [hideToggle]="true" [disabled]="item.disabled">
-            <mat-expansion-panel-header>
-              <mat-panel-title> {{item.title}} </mat-panel-title>
-              <mat-panel-description>
-                {{ item.description }}
-              </mat-panel-description>
-            </mat-expansion-panel-header>
-            {{item.content}}
-          </mat-expansion-panel>
-        }
-      </mat-accordion>
-    </div>
+    } @else { 
+        @if(character) {
+          <div class="summary">
+            <mat-accordion displayMode="default" [multi]="true" [hideToggle]="false">
+              @for(item of character | headerAccordionData; track item.title) {
+              <mat-expansion-panel [hideToggle]="true" [disabled]="item.disabled">
+                <mat-expansion-panel-header>
+                  <mat-panel-title> {{ item.title }} </mat-panel-title>
+                  <mat-panel-description>
+                    {{ item.description }}
+                  </mat-panel-description>
+                </mat-expansion-panel-header>
+                {{ item.content }}
+              </mat-expansion-panel>
+              }
+            </mat-accordion>
+          </div>
+       } 
     } 
-
-    @let exp = character?.experience; 
+    @let exp = character.experience; 
     @if(exp) {
       <div class="experience">
         free: {{ exp.free }} <br />

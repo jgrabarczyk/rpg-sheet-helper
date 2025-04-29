@@ -715,7 +715,7 @@ export const WEAPONS: Map<string, Weapon> = new Map([
       notes:
         'Cannot be used with launcher weapons and cannot be thrown. Require Half Action to ready.'
     }
-    /** @todo check */
+    /** @todo figure out how to handle charges bombs and missles*/
   ],
   [
     'Melta Bomb',
@@ -1207,6 +1207,7 @@ export const WEAPONS: Map<string, Weapon> = new Map([
       notes: 'Two-handed weapon.'
     }
   ],
+  // * @todo figure out how to handle melee weapons with range
   [
     'Whip',
     {
@@ -1332,7 +1333,7 @@ export const WEAPONS: Map<string, Weapon> = new Map([
       availability: Availability.SCARCE
     }
     /**
-     * @todo check
+     * @todo figure out how to handle melee weapons with range
      */
   ],
   [
@@ -3157,7 +3158,7 @@ export const WEAPONS: Map<string, Weapon> = new Map([
       class: 'Basic',
       isRanged: true,
       weaponJamOn: WeaponJam.RELIABLE,
-      clipSize: NO_CLIP_SIZE_LIMIT, //infinity
+      clipSize: NO_CLIP_SIZE_LIMIT,
       reloadInActions: NO_RELOAD_NEEDED,
       rangeInMeters: 100,
       rateOfFire: {
@@ -3222,7 +3223,7 @@ export const WEAPONS: Map<string, Weapon> = new Map([
       class: 'Pistol',
       rangeInMeters: 30,
       isRanged: true,
-      clipSize: NO_CLIP_SIZE_LIMIT, //infinity
+      clipSize: NO_CLIP_SIZE_LIMIT, 
       reloadInActions: NO_RELOAD_NEEDED,
       weaponJamOn: WeaponJam.RELIABLE,
       rateOfFire: {
@@ -3264,7 +3265,7 @@ export const WEAPONS: Map<string, Weapon> = new Map([
       rangeInMeters: 75,
       isRanged: true,
       weaponJamOn: WeaponJam.RELIABLE,
-      clipSize: NO_CLIP_SIZE_LIMIT, //infinity
+      clipSize: NO_CLIP_SIZE_LIMIT,
       reloadInActions: NO_RELOAD_NEEDED,
       rateOfFire: {
         single: true
@@ -3362,7 +3363,7 @@ export const WEAPONS: Map<string, Weapon> = new Map([
       rateOfFire: {
         single: true
       },
-      clipSize: NO_CLIP_SIZE_LIMIT, //infinity,
+      clipSize: NO_CLIP_SIZE_LIMIT,
       reloadInActions: NO_RELOAD_NEEDED,
       damage: '2d10',
       damageType: 'Explosive',

@@ -8,8 +8,8 @@
     <div class="row rs-list-item">
       <div class="name">Aptitude:</div>
       <div class="value">
-        {{ role.aptitudes | spread }} @if(role.pick.aptitudes){ ,}
-        {{ role.pick.aptitudes | or }}
+        {{ role.aptitudes | spread }}
+        @if(role.pick.aptitudes){<ng-container *ngTemplateOutlet="pickAptitudes" />}
       </div>
     </div>
 
@@ -19,3 +19,5 @@
     </div>
   </mat-card-content>
 </mat-card>
+
+<ng-template #pickAptitudes> ,{{ role.pick.aptitudes | or }}</ng-template>

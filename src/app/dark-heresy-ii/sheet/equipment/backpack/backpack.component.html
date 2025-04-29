@@ -5,13 +5,13 @@
   </mat-card-header>
   <mat-card-content>
     <div class="table" >
-      <div class="backpack-item header" [appGridTemplateAreas]="table.headers">
+      <div name="backpackHeader" class="backpack-item header" [appGridTemplateAreas]="table.headers">
         @for(columnName of table.headers; track columnName.key){
         <span [class]="columnName.key">{{ columnName.value }} </span>
         }
       </div>
       @for(tableItem of table.data; track tableItem ){
-      <div class="backpack-item" [appGridTemplateAreas]="table.headers">
+      <div name="backpackRow" class="backpack-item" [appGridTemplateAreas]="table.headers">
         @for(columnName of table.headers; track columnName.key){
         <span [class]="columnName.key" [appGridArea]="columnName.key"> 
           {{ tableItem[columnName.key] }} 

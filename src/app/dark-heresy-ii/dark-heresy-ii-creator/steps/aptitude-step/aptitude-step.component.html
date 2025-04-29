@@ -1,4 +1,4 @@
-<app-two-column-step title="Determine Aptitudes" [valid]="valid">
+<app-two-column-step title="Determin Aptitudes" [valid]="valid">
   <p card-content>
     The people serving as Inquisitors to defend humanity represent a wide range of planets,
     organizations, and points of view. For this reason, each Acolyte finds it easier to acquire
@@ -29,34 +29,43 @@
   <mat-card appearance="outlined" right-column>
     <mat-card-content>
       <mat-list class="aptitudes">
-        @if(uniqueAptitudes){ @for(aptitude of uniqueAptitudes; track aptitude){
-        <mat-list-item>{{ aptitude }}</mat-list-item>
-        } } @if(aptitudesToChoose){ @for(options of aptitudesToChoose; track options; let index =
-        $index;){
-        <mat-list-item>
-          <mat-form-field>
-            <mat-select [formControl]="formChooseFrom.at(index)">
-              @for(option of options; track option){
-              <mat-option [value]="option" [disabled]="uniqueAptitudes.includes(option)">
-                {{ option }}
-              </mat-option>
-              }
-            </mat-select>
-          </mat-form-field>
-        </mat-list-item>
-        } } @if(duplicates){ @for(duplicate of duplicates; track duplicate; let index = $index){
-        <mat-list-item>
-          <mat-form-field>
-            <mat-select [formControl]="formDuplicates.at(index)">
-              @for(option of defaultOptions; track option){
-              <mat-option [value]="option" [disabled]="uniqueAptitudes.includes(option)">
-                {{ option }}
-              </mat-option>
-              }
-            </mat-select>
-          </mat-form-field>
-        </mat-list-item>
-        } }
+        @if(uniqueAptitudes) { 
+          @for(aptitude of uniqueAptitudes; track aptitude) {
+            <mat-list-item>{{ aptitude }}</mat-list-item>
+          } 
+        } 
+
+        @if(aptitudesToChoose) { 
+          @for(options of aptitudesToChoose; track options; let index = $index;) {
+            <mat-list-item>
+              <mat-form-field>
+                <mat-select [formControl]="formChooseFrom.at(index)">
+                  @for(option of options; track option) {
+                    <mat-option [value]="option" [disabled]="uniqueAptitudes.includes(option)">
+                      {{ option }}
+                    </mat-option>
+                  }
+                </mat-select>
+              </mat-form-field>
+            </mat-list-item>
+          }
+        }
+
+        @if(duplicates) {
+          @for(duplicate of duplicates; track duplicate; let index = $index) {
+            <mat-list-item>
+              <mat-form-field>
+                <mat-select [formControl]="formDuplicates.at(index)">
+                  @for(option of defaultOptions; track option) {
+                    <mat-option [value]="option" [disabled]="uniqueAptitudes.includes(option)">
+                      {{ option }}
+                    </mat-option>
+                  }
+                </mat-select>
+              </mat-form-field>
+            </mat-list-item>
+          } 
+        }
       </mat-list>
     </mat-card-content>
   </mat-card>

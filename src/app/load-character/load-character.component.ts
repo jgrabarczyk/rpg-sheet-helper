@@ -6,7 +6,6 @@ import { RouterLink } from '@angular/router';
 import { MatButtonModule } from '@angular/material/button';
 import { CommonModule } from '@angular/common';
 
-
 @Component({
   selector: 'app-load-character',
   standalone: true,
@@ -18,13 +17,13 @@ import { CommonModule } from '@angular/common';
 export class LoadCharacterComponent {
   private sheetService = inject(DHII_SheetService);
 
-  saveNames$ = this.sheetService.dhiiLocalStorageSaveNames$;
+  protected saveNames$ = this.sheetService.dhiiLocalStorageSaveNames$;
 
-  loadCharacter(item: string): void {
+  protected loadCharacter(item: string): void {
     this.sheetService.loadCharacterFromLocalStorage(item)
   }
 
-  deleteCharacter(item: string): void {
+  protected deleteCharacter(item: string): void {
     this.sheetService.deleteCharacterFromLocalStorage(item);
   }
 }

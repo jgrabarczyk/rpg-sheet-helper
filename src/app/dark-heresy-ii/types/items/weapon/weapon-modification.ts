@@ -1,7 +1,7 @@
 import { Availability } from '../accessibility-modifiers';
 
 /**
- * @todo add usedWith
+ * @todo add usedWith as in ArmourModification
  */
 export type WeaponModification = {
   name: string;

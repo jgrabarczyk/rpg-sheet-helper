@@ -7,6 +7,7 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
+    "test:w": "ng test --code-coverage",
     "lint": "ng lint",
     "lint:watch": "nodemon --exec \"npm run lint || exit 1\" --ext ts,html,scss"
   },

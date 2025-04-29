@@ -60,64 +60,64 @@ export class DarkHeresyIICreatorComponent implements OnInit {
     this.resetStepperAndCreationService();
   }
 
-  setHomeworld(homeworld: DHII_CharacterHomeworld) {
+  protected setHomeworld(homeworld: DHII_CharacterHomeworld): void {
     this.creatorService.setHomeworld(homeworld);
   }
 
-  setBackground(background: DHII_CharacterBackground) {
+  protected setBackground(background: DHII_CharacterBackground): void {
     this.creatorService.setBackground(background);
   }
 
-  setAptitudes(aptitudes: DHII_Aptitude[]) {
+  protected setAptitudes(aptitudes: DHII_Aptitude[]): void {
     this.creatorService.setAptitudes(aptitudes);
   }
 
-  setRole(role: DHII_CharacterRole) {
+  protected setRole(role: DHII_CharacterRole): void {
     this.creatorService.setRole(role);
   }
 
-  setTalents(talents: DHII_TalentName[]) {
+  protected setTalents(talents: DHII_TalentName[]): void {
     this.creatorService.setTalents(talents);
   }
 
-  setSkills(skills: DHII_SkillName[]) {
+  protected setSkills(skills: DHII_SkillName[]): void {
     this.creatorService.setSkills(skills);
   }
 
-  setWounds() {
+  protected setWounds(): void {
     this.creatorService.setWounds();
   }
 
-  setFate() {
+  protected setFate(): void {
     this.creatorService.setFate();
   }
 
-  setDivination() {
+  protected setDivination(): void {
     this.creatorService.setDivination();
   }
 
-  setEquipment(eq: string[]) {
+  protected setEquipment(eq: string[]): void {
     this.creatorService.setEquipment(eq);
   }
 
-  setAttributes() {
+  protected setAttributes(): void {
     this.creatorService.setAttributes();
   }
 
-  setCharacterDetails(details: DHII_CharacterDetails) {
+  protected setCharacterDetails(details: DHII_CharacterDetails): void {
     this.creatorService.setCharacterDetails(details);
   }
 
-  rerollAttribute(roll: Roll) {
+  protected rerollAttribute(roll: Roll): void {
     this.creatorService.rerollAttribute(roll.name as DHII_AttributeName);
   }
 
-  resetStepperAndCreationService() {
+  protected resetStepperAndCreationService(): void {
     this.stepper?.reset();
     this.creatorService.resetAll();
   }
 
-  saveCharacterCreatorData() {
+  protected saveCharacterCreatorData(): void {
     this.creatorService.saveCharacterToLocalStorage();
   }
 }

@@ -11,9 +11,6 @@ export function pickRollableItem<T = string>(
 ): RollableItem<T> {
   const key: RollRange = findRollRange(diceResult, map);
 
-  if (!key) {
-    throw Error(`unable to find key for result ${diceResult}`);
-  }
   return map.get(key)!;
 }
 
