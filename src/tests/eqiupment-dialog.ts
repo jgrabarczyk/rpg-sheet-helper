@@ -22,6 +22,7 @@ export const EQ_DIALOG_CLOSE_DATA: DHII_Equipment = {
       reloadInActions: 1,
       weightInKilos: 1.5,
       availability: 10,
+      quantity: 1,
       notes:
         'Las Weapon Variable Setting: Overcharge: +1 Dam, 2 ammo. Overload: +2 Dam and Pen but uses 4 ammo, loses Reliable, and gains Unreliable'
     },
