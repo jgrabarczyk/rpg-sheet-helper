@@ -3,48 +3,47 @@
   subtitle="Determine starting wounds and fate threshold"
   [valid]="!!wounds?.max && !!fate?.max"
 >
-<div card-content>
-  <p>
-    Wounds determine how much hit points your character has. 
-  </p>
-  <p>Base Wounds are tied to your <i>Homeworld</i>.</p>
-  <p>To determine Total Wounds roll d5 and add it to your homeworld's base wounds.</p>
-  
-  <p>Fate determine how lucky is your character.</p>
-  <p>Base Fate is tied to your <i>Homeworld</i>.</p>
-  <p>To Determine Total Fate roll d10 and compare it to your homewolrd's blessingThreshold ({{homeworld.value.blessingThreshold}}). If you roll equal or higer add 1 to your Total Fate</p>
-</div>
-  <div right-column>
-    <mat-card appearance="outlined">
-      <mat-card-content class="creator-step-content">
-        <div class="creator-card">
-          <div class="row">
-            <div class="name">Base Wounds:</div>
-            <div class="value">{{ homeworld.value.wounds }}</div>
-          </div>
-          <div class="row">
-            <div class="name">Total Wounds:</div>
-            <div class="value">{{ wounds?.max }}</div>
-          </div>
-          <button class="button" mat-flat-button (click)="setWounds.emit()">add 1d5 to wounds</button>
-        </div>
-        
-        <div class="creator-card">
-          <div class="row">
-            <div class="name">Base Fate:</div>
-            <div class="value">{{ homeworld.value.fate }}</div>
-          </div>
-          <div class="row">
-            <div class="name"> Blessing Threshold:</div>
-            <div class="value">{{ homeworld.value.blessingThreshold }}</div>
-          </div>
-          <div class="row">
-            <div class="name">Total Fate:</div>
-            <div class="value">{{ fate?.max }}</div>
-          </div>
-          <button class="button" mat-flat-button (click)="setFate.emit()">roll 1d10</button>
-        </div>
-      </mat-card-content>
-    </mat-card>
+  <div card-content>
+    <p>
+      Wounds determine how much hit points your character has. 
+    </p>
+    <p>Base Wounds are tied to your <i>Homeworld</i>.</p>
+    <p>To determine Total Wounds roll d5 and add it to your homeworld's base wounds.</p>
+    
+    <p>Fate determine how lucky is your character.</p>
+    <p>Base Fate is tied to your <i>Homeworld</i>.</p>
+    <p>To Determine Total Fate roll d10 and compare it to your homewolrd's blessingThreshold ({{homeworld.value.blessingThreshold}}). If you roll equal or higer add 1 to your Total Fate</p>
   </div>
+  
+  <mat-card appearance="outlined" right-column>
+    <mat-card-content class="creator-step-content">
+      <div class="creator-card">
+        <div class="row">
+          <div class="name">Base Wounds:</div>
+          <div class="value">{{ homeworld.value.wounds }}</div>
+        </div>
+        <div class="row">
+          <div class="name">Total Wounds:</div>
+          <div class="value">{{ wounds?.max }}</div>
+        </div>
+        <button class="button" mat-flat-button (click)="setWounds.emit()">add 1d5 to wounds</button>
+      </div>
+      
+      <div class="creator-card">
+        <div class="row">
+          <div class="name">Base Fate:</div>
+          <div class="value">{{ homeworld.value.fate }}</div>
+        </div>
+        <div class="row">
+          <div class="name"> Blessing Threshold:</div>
+          <div class="value">{{ homeworld.value.blessingThreshold }}</div>
+        </div>
+        <div class="row">
+          <div class="name">Total Fate:</div>
+          <div class="value">{{ fate?.max }}</div>
+        </div>
+        <button class="button" mat-flat-button (click)="setFate.emit()">roll 1d10</button>
+      </div>
+    </mat-card-content>
+  </mat-card>
 </app-two-column-step>

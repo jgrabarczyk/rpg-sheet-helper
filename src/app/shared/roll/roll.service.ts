@@ -33,13 +33,18 @@ export class RollService {
 
   public loggerStack$ = this.loggerStackSubject$.asObservable();
 
+  // @todo change roll implementation to not to require manually adding dice fot bonus/penality
   rollDices(loggerRoll: LoggerDiceRoll): number {
     const [diceQuantity, diceFaces] = loggerRoll.roll.split('d').map(el => Number(el));
+
+    if (diceQuantity === 0 || diceFaces === 0) {
+      return 0;
+    }
 
     const results: number[] = Array.from(
       { length: diceQuantity },
       () => Math.floor(Math.random() * diceFaces) + 1
-    ).sort((a, b) => a - b);
+    ).sort();
 
     if (loggerRoll.modifier === 'bonus') {
       results.shift();
@@ -70,13 +75,13 @@ export class RollService {
     const difficultyTier: number =
       Math.abs(Math.floor(testValue / 10) - Math.floor(roll.chance / 10)) + 1;
 
-    const message: string = this.composeRollMessage({
+    const message: string = this.composeTestRollMessage({
       roll,
       testValue,
       difficultyTier
     });
 
-    const title: string = 'RollTest ' + roll.name;
+    const title: string = 'Roll Test for: ' + roll.name;
 
     this.addToStack({
       message,
@@ -90,19 +95,11 @@ export class RollService {
     this.loggerStackSubject$.next(stack);
   }
 
-  private composeRollMessage(data: {
+  private composeTestRollMessage(data: {
     roll: Roll;
     testValue: number;
     difficultyTier: number;
   }): string {
-    return `
-      Test: ${data.roll.name} 
-      \nChance:
-      \n  ${data.roll.chance} 
-      \nRoll: 
-      \n  ${data.testValue} 
-      \nResult: 
-      \n  ${data.testValue <= data.roll.chance ? 'success' : 'fail'} (${data.difficultyTier}).
-    `;
+    return `\nChance:\n  ${data.roll.chance} \nRoll: \n  ${data.testValue} \nResult: \n  ${data.testValue <= data.roll.chance ? 'success' : 'fail'} (${data.difficultyTier}).`;
   }
 }

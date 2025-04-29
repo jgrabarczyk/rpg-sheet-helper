@@ -1,15 +1,18 @@
 import { inject, Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 import { BehaviorSubject, map, Observable, shareReplay } from 'rxjs';
 
-import { DHII_Aptitude, DHII_Character } from '@dhii/types/dark-heresy-ii';
-import { DHII_Attributes, DHII_Attribute, DHII_ATTRIBUTES } from '@dhii/types/dhii-attribute';
-import { DHII_Skill, DHII_SkillName, DHII_SKILLS } from '@dhii/types/dhii-skill';
+import {
+  calculateSkillValue,
+  DHII_Aptitude,
+  DHII_Character,
+  INITIAL_CHARACTER
+} from '@dhii/types/dark-heresy-ii';
+import { DHII_Attributes, DHII_Attribute } from '@dhii/types/dhii-attribute';
+import { DHII_Skill, DHII_SkillName } from '@dhii/types/dhii-skill';
 import { DHII_Equipment } from '@dhii/types/items/generic-item';
-import { LocalStorageService } from 'services/localstorage.service';
-import { Router } from '@angular/router';
 
-const ATTRIBUTES: DHII_Attributes = structuredClone(DHII_ATTRIBUTES);
-const SKILLS: Map<DHII_SkillName<string>, DHII_Skill> = structuredClone(DHII_SKILLS);
+import { LocalStorageService } from 'services/localstorage.service';
 
 @Injectable({
   providedIn: 'root'
@@ -18,16 +21,7 @@ export class DHII_SheetService {
   private storageService = inject(LocalStorageService);
   private router = inject(Router);
 
-  private readonly INITIAL_CHARACTER: DHII_Character = {
-    corruption: 0,
-    insanity: 0,
-    experience: { free: 0, spent: 0 },
-    fate: { max: 0, current: 0 },
-    wounds: { max: 0, current: 0 },
-    attributes: ATTRIBUTES,
-    skills: new Map(Array.from(SKILLS, ([name, skill]) => this.initializeSkills(name, skill))),
-    aptitudes: ['General']
-  };
+  private readonly INITIAL_CHARACTER: DHII_Character = INITIAL_CHARACTER;
 
   protected characterSubject$: BehaviorSubject<DHII_Character> =
     new BehaviorSubject<DHII_Character>(this.INITIAL_CHARACTER);
@@ -50,66 +44,67 @@ export class DHII_SheetService {
 
   public dhiiLocalStorageSaveNames$ = this.storageService.DHII_CharacterKeys$;
 
-  getCharacter(): DHII_Character {
+  public getCharacter(): DHII_Character {
     return structuredClone(this.characterSubject$.value);
   }
 
-  updateCharacter(character: DHII_Character) {
+  public updateCharacter(character: DHII_Character): void {
     this.characterSubject$.next(character);
   }
 
-  saveCharacterToLocalStorage() {
-    this.storageService.saveCharacterToLocalStorage(this.getCharacter(), 'dhii').subscribe(saveName => {
-      this.router.navigate(['/sheet', 'dhii', saveName]);
-    });
+  public saveCharacterToLocalStorage(): void {
+    this.storageService
+      .saveCharacterToLocalStorage(this.getCharacter(), 'dhii')
+      .subscribe(saveName => this.router.navigate(['/sheet', 'dhii', saveName]));
   }
 
-  loadCurrentCharacter(){
-    this.storageService.loadCurrentCharacter()
+  public loadCurrentCharacter(): void {
+    this.storageService.loadCurrentCharacter();
   }
 
-  loadCharacterFromLocalStorage(item: string, skipRedirect: boolean = false): void {
+  public loadCharacterFromLocalStorage(item: string, skipRedirect: boolean = false): void {
     const loadedCharacter: DHII_Character = this.storageService.loadCharacterFromLocalStorage(
       item,
       'dhii'
     );
+
     this.updateCharacter(loadedCharacter);
 
-    if(skipRedirect){
-      return
+    if (skipRedirect) {
+      return;
     }
-    
+
     this.router.navigate(['/sheet', 'dhii', item]);
   }
 
-  deleteCharacterFromLocalStorage(item: string) {
+  public deleteCharacterFromLocalStorage(item: string): void {
     this.storageService.deleteCharacterFromLocalStorage(item, 'dhii').subscribe();
   }
 
-  deleteCurrentCharacter() {
+  public deleteCurrentCharacter(): void {
     this.storageService.deleteCurrentCharacter().subscribe(() => {
       this.router.navigate(['/load']);
     });
   }
 
-  addEquipment(equipment: DHII_Equipment) {
+  public addEquipment(equipment: DHII_Equipment): void {
     const character: DHII_Character = this.getCharacter();
-    const currentEquipment: DHII_Equipment | undefined = character.equipment;
-
-    if (!currentEquipment) {
-      return;
-    }
+    const currentEquipment: DHII_Equipment | undefined = character.equipment ?? {
+      armours: [],
+      backpack: [],
+      weapons: []
+    };
 
     character.equipment = {
       armours: [...currentEquipment.armours, ...equipment.armours],
       weapons: [...currentEquipment.weapons, ...equipment.weapons],
-      backpack: [...currentEquipment.backpack, ...equipment.weapons]
+      backpack: [...currentEquipment.backpack, ...equipment.backpack]
     };
 
     this.updateCharacter(character);
   }
 
-  updateAttribute(changedAttribute: DHII_Attribute) {
+  public updateAttribute(changedAttribute: DHII_Attribute): void {
     const character: DHII_Character = this.getCharacter();
     const attribute: DHII_Attribute | undefined = character.attributes.get(changedAttribute.name);
 
@@ -130,34 +125,31 @@ export class DHII_SheetService {
     this.updateSkillsBasedOnAttribute(attribute);
   }
 
-  updateSkill(changedSkill: DHII_Skill) {
+  public updateSkill(changedSkill: DHII_Skill): void {
     const character: DHII_Character = this.getCharacter();
     const attribute: DHII_Attribute = character.attributes.get(changedSkill.basedOn)!;
 
-    character.skills.get(changedSkill.name)!.value = this.calculateSkillValue(
-      changedSkill,
-      attribute
-    );
+    character.skills.get(changedSkill.name)!.value = calculateSkillValue(changedSkill, attribute);
 
     this.updateCharacter(character);
   }
 
-  updateAptitudes(aptitudes: DHII_Aptitude[]) {
+  public updateAptitudes(aptitudes: DHII_Aptitude[]): void {
     const character: DHII_Character = this.getCharacter();
     character.aptitudes = aptitudes;
 
     this.updateCharacter(character);
   }
 
-  resetAll() {
+  public resetAll(): void {
     this.characterSubject$.next(this.INITIAL_CHARACTER);
   }
 
-  private updateSkillsBasedOnAttribute(changedAttribute: DHII_Attribute) {
+  private updateSkillsBasedOnAttribute(changedAttribute: DHII_Attribute): void {
     const character: DHII_Character = this.getCharacter();
     character.skills.forEach(skill => {
       if (skill.basedOn === changedAttribute.name) {
-        skill.value = this.calculateSkillValue(skill, changedAttribute);
+        skill.value = calculateSkillValue(skill, changedAttribute);
       }
     });
 
@@ -172,22 +164,5 @@ export class DHII_SheetService {
       ? attribute.updated.value
       : attribute.updated.value +
           (attribute.updated.lvl.current - attribute.current.lvl.current) * 5;
-  }
-
-  private calculateSkillValue(skill: DHII_Skill, attribute: DHII_Attribute): number {
-    const modifier: number = skill.lvl.current === 0 ? -20 : skill.lvl.current * 10 - 10;
-    return attribute.value + modifier;
-  }
-
-  private initializeSkills(name: DHII_SkillName, skill: DHII_Skill): [DHII_SkillName, DHII_Skill] {
-    const attribute: DHII_Attribute = ATTRIBUTES.get(skill.basedOn)!;
-
-    return [
-      name,
-      {
-        ...skill,
-        value: this.calculateSkillValue(skill, attribute)
-      }
-    ];
   }
 }

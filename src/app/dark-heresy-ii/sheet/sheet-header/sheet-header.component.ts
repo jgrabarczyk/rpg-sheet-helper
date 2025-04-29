@@ -42,9 +42,9 @@ export class SheetHeaderComponent {
   protected roles: DHII_Roles = ROLES;
   protected backgrounds: DHII_Backgrounds = BACKGROUNDS;
 
-  @Input() set character(char: DHII_Character | null) {
-    if (!char) {
-      return;
+  @Input() set character(char: DHII_Character) {
+    if(!char){
+      throw Error('char is missing')
     }
     this.character_ = char;
     this.updateForm();
@@ -54,7 +54,7 @@ export class SheetHeaderComponent {
     return this.character_;
   }
 
-  private character_: DHII_Character | null = null;
+  private character_!: DHII_Character;
 
   @Input() set editable(isEditable: boolean) {
     isEditable ? this.form.enable() : this.form.disable();
@@ -95,9 +95,6 @@ export class SheetHeaderComponent {
   });
 
   private updateForm() {
-    if (this.character_ === null) {
-      return;
-    }
     this.form.controls['characterName'].setValue(this.character_.details?.characterName);
     this.form.controls['age'].setValue(this.character_.details?.age);
     this.form.controls['homeworld'].setValue(this.character_.homeworld?.key);

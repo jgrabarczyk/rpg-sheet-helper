@@ -168,6 +168,19 @@ export const DHII_SKILLS: Map<DHII_SkillName, DHII_Skill> = new Map([
     }
   ],
   [
+    'Common Lore (Adeptus Administratum)',
+    {
+      lvl: {
+        current: 0,
+        max: DHII_MAX_SKILL_LEVEL
+      },
+      value: 0,
+      name: 'Common Lore (Adeptus Astra Telepathica)',
+      basedOn: 'Intelligence',
+      aptitudes: ['Intelligence', 'General']
+    }
+  ],
+  [
     'Common Lore (Adeptus Astra Telepathica)',
     {
       lvl: {
@@ -508,6 +521,19 @@ export const DHII_SKILLS: Map<DHII_SkillName, DHII_Skill> = new Map([
   ],
   [
     'Linguistics',
+    {
+      lvl: {
+        current: 0,
+        max: DHII_MAX_SKILL_LEVEL
+      },
+      value: 0,
+      name: 'Linguistics',
+      basedOn: 'Intelligence',
+      aptitudes: ['Intelligence', 'General']
+    }
+  ],
+  [
+    'Linguistics (High Gothic)',
     {
       lvl: {
         current: 0,

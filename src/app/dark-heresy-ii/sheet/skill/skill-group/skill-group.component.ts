@@ -25,7 +25,7 @@ export class SkillGroupComponent {
   @Output() updateSkill = new EventEmitter<DHII_Skill>();
   @Output() roll = new EventEmitter<Roll>();
 
-  decrease(name: DHII_SkillName): void {
+  protected decrease(name: DHII_SkillName): void {
     const lvl: DHII_SkillLevel = this.skills.get(name)!.lvl;
 
     if (lvl.current <= 0) {
@@ -37,7 +37,7 @@ export class SkillGroupComponent {
     this.updateSkill.next(this.skills.get(name)!);
   }
 
-  increase(name: DHII_SkillName): void {
+  protected increase(name: DHII_SkillName): void {
     const lvl: DHII_SkillLevel = this.skills.get(name)!.lvl;
 
     if (lvl.current >= lvl.max) {
@@ -49,9 +49,10 @@ export class SkillGroupComponent {
     this.updateSkill.next(this.skills.get(name)!);
   }
 
-  rollDice(name: DHII_SkillName, modifier: number): void {
+  protected rollDice(name: DHII_SkillName, modifier: number): void {
     const skill: DHII_Skill = this.skills.get(name)!;
     const value: number = skill.value + modifier;
+    
     //make sure there is always 1% chance to success
     const chance: number = value <= 1 ? 1 : value;
 

@@ -30,20 +30,19 @@ import { mapStringArrayToSelectOptionArray } from '@util/map-string-to-select-op
 })
 export class SkillStepComponent {
   @Input() valid: boolean = false;
+
   @Input() set skills(t: DHII_SkillName[]) {
     this.skills_ = mapStringArrayToSelectOptionArray(t);
   }
+  get skills(): SelectOption[] {
+    return this.skills_;
+  }
+  private skills_: SelectOption[] = [];
 
   @Input() set skillsToPick(skillsToPick: DHII_SkillName[][]) {
     this.skillsToChoose = skillsToPick.map(skills => mapStringArrayToSelectOptionArray(skills));
     this.skillsToChoose.forEach(() => this.form.push(new FormControl(null, Validators.required)));
   }
-
-  get skills(): SelectOption[] {
-    return this.skills_;
-  }
-
-  private skills_: SelectOption[] = [];
 
   @Output() updateSkills: EventEmitter<DHII_SkillName[]> = new EventEmitter<DHII_SkillName[]>();
 

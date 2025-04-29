@@ -22,9 +22,9 @@ export class ConfirmDialogComponent {
     MatDialogRef<ConfirmDialogComponent>
   );
 
-  data = inject(MAT_DIALOG_DATA);
+  protected data = inject(MAT_DIALOG_DATA);
 
-  confirm(): void {
+  protected confirm(): void {
     this.dialogRef.close(true);
   }
 }

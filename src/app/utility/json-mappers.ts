@@ -9,7 +9,7 @@ export const JSONstringify: (v: object) => string = (value: object) =>
 
 /**
  * Converts a JavaScript Object Notation (JSON) string into an object.
- * Unlike JSON.stringify it can stringify object with Map and Set parameters.
+ * Unlike JSON.parse it can parse object with Map and Set parameters.
  * @param text — A valid JSON string.
  */
 
@@ -61,7 +61,6 @@ function jsonMapSetReplacer(_: unknown, value_: Iterable<unknown> | ArrayLike<un
 
 /**
  * Provides a `JSON.parse` reviver function that supports Map and Set object deserialization.
- *
  * Must be used to deserialize JSON data serialized using #jsonMapSetReplacer.
  */
 

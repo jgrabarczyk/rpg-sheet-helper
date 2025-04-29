@@ -5,49 +5,50 @@ import { MatListModule } from '@angular/material/list';
 import { MatCardModule } from '@angular/material/card';
 
 import { Roll } from '@appTypes/roll';
-
 import { DHII_Attribute, DHII_AttributeName, DHII_Attributes } from '@dhii/types/dhii-attribute';
 import { IsBonusAttributePipe } from '@dhii/pipes/is-bonus-attribute/is-bonus-attribute.pipe';
+import { assertAttributeName } from '@util/assert-attribute-name';
 
 import { AttributeComponent } from '../../sheet/attribute/attribute.component';
+
 @Component({
   selector: 'app-attributes-group',
   standalone: true,
-  imports: [CommonModule, AttributeComponent, MatDividerModule, MatListModule, MatCardModule, IsBonusAttributePipe],
+  imports: [
+    CommonModule,
+    AttributeComponent,
+    MatDividerModule,
+    MatListModule,
+    MatCardModule,
+    IsBonusAttributePipe
+  ],
   templateUrl: './attributes-group.component.html',
   styleUrl: './attributes-group.component.scss'
 })
 export class AttributesGroupComponent {
-  @Input() title?: string;
-  @Input() subtitle?: string;
-  @Input() attributes!: DHII_Attributes;
-  @Input() bonus?: [DHII_AttributeName, DHII_AttributeName ];
-  @Input() penality?: DHII_AttributeName
+  @Input({ required: true }) attributes!: DHII_Attributes;
   @Input() editable: boolean = false;
   @Input() mode: 'create' | 'play' = 'play';
   @Input() step: number = 5;
-  @Input() isRerollAtributeAvalible!: boolean;
+  @Input() isAtributeRerollAvalible: boolean = false;
+  @Input() title?: string;
+  @Input() subtitle?: string;
+  @Input() bonus?: [DHII_AttributeName, DHII_AttributeName];
+  @Input() penality?: DHII_AttributeName;
 
   @Output() updatedAttribute = new EventEmitter<DHII_Attribute>();
   @Output() roll = new EventEmitter<Roll>();
 
-  updateValue(value: number, name: DHII_AttributeName) {
-    const attribute: DHII_Attribute | undefined = this.attributes.get(name);
-  
-    if (!attribute) {
-      return;
-    }
+  protected updateValue(value: number, name: DHII_AttributeName): void {
+    const attribute: DHII_Attribute = this.attributes.get(name)!;
 
     attribute.value = value;
     this.updatedAttribute.next(attribute);
   }
 
-  increase(name: DHII_AttributeName) {
-    const attribute: DHII_Attribute | undefined = structuredClone(this.attributes.get(name));
-
-    if (!attribute || attribute.name === 'Influence') {
-      return;
-    }
+  protected increase(name: DHII_AttributeName): void {
+    const attribute: DHII_Attribute = structuredClone(this.attributes.get(name)!);
+    assertAttributeName(attribute.name);
 
     if (attribute.lvl.current >= attribute.lvl.max) {
       alert('already maxed');
@@ -58,12 +59,9 @@ export class AttributesGroupComponent {
     this.updatedAttribute.next(attribute);
   }
 
-  decrease(name: DHII_AttributeName) {
-    const attribute: DHII_Attribute | undefined = structuredClone(this.attributes.get(name));
-
-    if (!attribute || attribute.name === 'Influence') {
-      return;
-    }
+  protected decrease(name: DHII_AttributeName): void {
+    const attribute: DHII_Attribute = structuredClone(this.attributes.get(name)!);
+    assertAttributeName(attribute.name);
 
     if (attribute.lvl.current <= 0) {
       alert('already lowest');
@@ -74,13 +72,8 @@ export class AttributesGroupComponent {
     this.updatedAttribute.next(attribute);
   }
 
-  rollDice(name: DHII_AttributeName, modifier: number): void {
-    const attribute: DHII_Attribute | undefined = this.attributes.get(name);
-
-    if (!attribute) {
-      throw Error('No attribute fond for name: ' + name)
-    }
-
+  protected rollDice(name: DHII_AttributeName, modifier: number): void {
+    const attribute: DHII_Attribute = this.attributes.get(name)!;
     const value: number = attribute.value + modifier;
 
     this.roll.emit({ name: attribute.name, chance: value <= 1 ? 1 : value });

@@ -38,7 +38,7 @@ import { RollboxComponent } from '../rollbox/rollbox.component';
   styleUrl: './attribute.component.scss'
 })
 export class AttributeComponent {
-  @Input() label?: string;
+  @Input({required: true}) label!: string;
   @Input() min = 0;
   @Input() max: number = 100;
   @Input() maxLevel: number = 0;

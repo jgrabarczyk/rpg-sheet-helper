@@ -1,10 +1,4 @@
-import {
-  ChangeDetectionStrategy,
-  Component,
-  EventEmitter,
-  Input,
-  Output
-} from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
@@ -12,10 +6,9 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 
 import { TwoColumnStepComponent } from '@dhii/stepper-partials/two-column-step/two-column-step.component';
-import { SheetComponent } from '../../../sheet/sheet.component';
 import { DHII_CharacterDetails } from '@dhii/types/dark-heresy-ii';
 import { CommonModule } from '@angular/common';
-import {  MatDialogModule } from '@angular/material/dialog';
+import { MatDialogModule } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-final-details-step',
@@ -27,7 +20,6 @@ import {  MatDialogModule } from '@angular/material/dialog';
     MatFormFieldModule,
     MatInputModule,
     ReactiveFormsModule,
-    SheetComponent,
     CommonModule,
     MatDialogModule
   ],
@@ -41,7 +33,7 @@ export class FinalDetailsStepComponent {
   @Output() setDetails: EventEmitter<DHII_CharacterDetails> = new EventEmitter();
   @Output() save: EventEmitter<void> = new EventEmitter();
 
-  form: FormGroup = new FormGroup({
+  protected form: FormGroup = new FormGroup({
     characterName: new FormControl<string>(
       <string>this.details?.characterName,
       Validators.required
@@ -57,16 +49,12 @@ export class FinalDetailsStepComponent {
     )
   });
 
-  saveCharacterDetails() {
-    if (this.form.invalid) {
-      return;
-    }
-
+  protected saveCharacterDetails(): void {
     this.setDetails.emit(this.form.value);
   }
 
-  saveSheet() {
+  protected saveSheet(): void {
     this.saveCharacterDetails();
-    this.save.emit()
+    this.save.emit();
   }
 }

@@ -7,20 +7,15 @@ import { DHII_BackgroundEquipment } from '@dhii/types/dhii-background';
 })
 export class OrPipe implements PipeTransform {
   /**
-   * Merge each string array into string combined by *or*
-   * @param value string[][]
+   * Merge each element of array into string combined by *or*
+   * @param value (string | DHII_BackgroundEquipment)[][]
    * @returns string[]
    */
   transform(value: (string | DHII_BackgroundEquipment)[][] | undefined): string[] {
-    if (!value) {
+    if (!value || value.length === 0) {
       return [''];
     }
-    if (typeof value[0] === 'string') {
-      return value?.map(el => el.join(' or ')) ?? [''];
-    }
 
-    return (
-      value?.map(el => el.map(e => (typeof e === 'object' ? e.value : e)).join(' or ')) ?? ['']
-    );
+    return value.map(el => el.map(e => (typeof e === 'object' ? e.value : e)).join(' or '));
   }
 }

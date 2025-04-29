@@ -21,7 +21,7 @@ import { DHII_Attributes, DHII_Attribute, DHII_AttributeName } from '@dhii/types
 import { DHII_Skill, DHII_SkillName } from '@dhii/types/dhii-skill';
 import { rollDivinationTable } from '@dhii/types/roll-tables/dhii-divination';
 
-import { RollService } from '@shared/roll/roll-service';
+import { RollService } from '@shared/roll/roll.service';
 import { DHII_Equipment, GenericItem } from '@dhii/types/items/generic-item';
 import { Armour, ARMOURS } from '@dhii/types/items/armour/armour';
 import { WEAPONS } from '@dhii/types/items/weapon/weapons-data';
@@ -349,7 +349,7 @@ export class DHII_CreatorService {
   }): number {
     let diceRoll: DiceRoll = '2d10';
     let modifier: 'bonus' | 'penality' | undefined;
-
+    // @todo change roll implementation to not to require manually adding dice fot bonus/penality
     if (roll.bonus.includes(roll.attribute.name)) {
       diceRoll = '3d10';
       modifier = 'bonus';
