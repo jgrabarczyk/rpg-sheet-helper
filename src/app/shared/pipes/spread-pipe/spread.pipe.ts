@@ -13,14 +13,10 @@ export class SpreadPipe implements PipeTransform {
    * @returns string
    */
   transform(value?: string[] | DHII_BackgroundEquipment[], separator: string = ', '): string {
-    if (!value) {
+    if (!value || value.length === 0) {
       return '';
     }
 
-    if (typeof value[0] === 'string') {
-      return value?.join(separator);
-    }
-
-    return value?.map(el => (typeof el === 'object' ? el.value : el))?.join(separator) ?? '';
+    return value.map(el => (typeof el === 'object' ? el.value : el)).join(separator);
   }
 }
