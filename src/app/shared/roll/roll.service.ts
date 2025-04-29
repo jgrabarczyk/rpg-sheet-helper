@@ -81,7 +81,7 @@ export class RollService {
       difficultyTier
     });
 
-    const title: string = 'RollTest ' + roll.name;
+    const title: string = 'Roll Test for: ' + roll.name;
 
     this.addToStack({
       message,
@@ -100,13 +100,6 @@ export class RollService {
     testValue: number;
     difficultyTier: number;
   }): string {
-    return `
-      \nChance:
-      \n  ${data.roll.chance} 
-      \nRoll: 
-      \n  ${data.testValue} 
-      \nResult: 
-      \n  ${data.testValue <= data.roll.chance ? 'success' : 'fail'} (${data.difficultyTier}).
-    `;
+    return `\nChance:\n  ${data.roll.chance} \nRoll: \n  ${data.testValue} \nResult: \n  ${data.testValue <= data.roll.chance ? 'success' : 'fail'} (${data.difficultyTier}).`;
   }
 }
