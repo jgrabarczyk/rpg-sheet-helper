@@ -7,10 +7,10 @@
     <mat-card-content class="eq-wrapper">
 
 @if(weapons.melee.data.length){
-    <app-backpack title="Weapons Melee" subtitle="Ork Smash" [table]="weapons.melee" />
+    <app-backpack title="Melee Weapons" subtitle="Ork Smash" [table]="weapons.melee" />
 }
 @if(weapons.ranged.data.length){
-    <app-backpack title="Weapons Range" subtitle="Ork PEW PEW" [table]="weapons.ranged" />
+    <app-backpack title="Ranged Weapons" subtitle="Ork PEW PEW" [table]="weapons.ranged" />
 }
 @if(weapons.thrown.data.length){
     <app-backpack title="Weapons Thrown" subtitle="Ork YEET" [table]="weapons.thrown" />
