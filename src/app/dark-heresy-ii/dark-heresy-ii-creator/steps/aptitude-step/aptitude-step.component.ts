@@ -11,7 +11,6 @@ import { DHII_Aptitude } from '@dhii/types/dark-heresy-ii';
 import { DHII_ATTRIBUTE_NAMES } from '@dhii/types/dhii-attribute';
 import { TwoColumnStepComponent } from '@dhii/stepper-partials/two-column-step/two-column-step.component';
 
-
 @Component({
   selector: 'app-aptitude-step',
   standalone: true,
@@ -24,7 +23,7 @@ import { TwoColumnStepComponent } from '@dhii/stepper-partials/two-column-step/t
     MatCardModule,
     ReactiveFormsModule,
     TwoColumnStepComponent
-],
+  ],
   templateUrl: './aptitude-step.component.html',
   styleUrl: './aptitude-step.component.scss'
 })
@@ -44,7 +43,7 @@ export class AptitudeStepComponent {
     this.formDuplicates = new FormArray<FormControl>([]);
     aptitudes.forEach(() => {
       this.duplicates.push(this.defaultOptions);
-      this.formDuplicates.push(new FormControl(null,Validators.required));
+      this.formDuplicates.push(new FormControl(null, Validators.required));
     });
   }
 
@@ -53,7 +52,7 @@ export class AptitudeStepComponent {
 
     this.formChooseFrom = new FormArray<FormControl>([]);
     this.aptitudesToChoose.forEach(() => {
-      this.formChooseFrom.push(new FormControl(null,Validators.required));
+      this.formChooseFrom.push(new FormControl(null, Validators.required));
     });
   }
 
@@ -63,21 +62,11 @@ export class AptitudeStepComponent {
   protected uniqueAptitudes: DHII_Aptitude[] = [];
   protected duplicates: DHII_Aptitude[][] = [];
   protected aptitudesToChoose: DHII_Aptitude[][] = [];
-
   protected valid = false;
+  protected formDuplicates = new FormArray<FormControl>([]);
+  protected formChooseFrom = new FormArray<FormControl>([]);
 
-  formDuplicates = new FormArray<FormControl>([]);
-  formChooseFrom = new FormArray<FormControl>([]);
-
-  save() {
-    if (this.formChooseFrom.invalid){
-      throw Error('this.formChooseFrom.invalid');
-    }
-    
-    if (this.formDuplicates.invalid){
-      throw Error('this.formDuplicates.invalid');
-    }
-
+  protected save() {
     this.updateAptitudes.emit([
       ...this.formChooseFrom.value,
       ...this.formDuplicates.value,
