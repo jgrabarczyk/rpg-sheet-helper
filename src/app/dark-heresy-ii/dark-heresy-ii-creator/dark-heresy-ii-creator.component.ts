@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, inject, OnInit, ViewChild } from '@angular/core';
+import { Component, inject, viewChild, AfterViewInit } from '@angular/core';
 import { MatCardModule } from '@angular/material/card';
 import { MatStepper, MatStepperModule } from '@angular/material/stepper';
 
@@ -29,33 +29,33 @@ import { FinalDetailsStepComponent } from './steps/final-details-step/final-deta
 import { DHII_CreatorService } from './dhii-creator.service';
 
 @Component({
-    selector: 'app-dark-heresy-ii-creator',
-    imports: [
-        CommonModule,
-        MatStepperModule,
-        MatCardModule,
-        HomeworldStepComponent,
-        BackgroundStepComponent,
-        RoleStepComponent,
-        AttributeStepComponent,
-        AptitudeStepComponent,
-        SkillStepComponent,
-        EquipmentStepComponent,
-        DivinationStepComponent,
-        TalentStepComponent,
-        WoundsAndFateStepComponent,
-        RollLogerComponent,
-        FinalDetailsStepComponent
-    ],
-    templateUrl: './dark-heresy-ii-creator.component.html',
-    styleUrl: './dark-heresy-ii-creator.component.scss'
+  selector: 'app-dark-heresy-ii-creator',
+  imports: [
+    CommonModule,
+    MatStepperModule,
+    MatCardModule,
+    HomeworldStepComponent,
+    BackgroundStepComponent,
+    RoleStepComponent,
+    AttributeStepComponent,
+    AptitudeStepComponent,
+    SkillStepComponent,
+    EquipmentStepComponent,
+    DivinationStepComponent,
+    TalentStepComponent,
+    WoundsAndFateStepComponent,
+    RollLogerComponent,
+    FinalDetailsStepComponent
+  ],
+  templateUrl: './dark-heresy-ii-creator.component.html',
+  styleUrl: './dark-heresy-ii-creator.component.scss'
 })
-export class DarkHeresyIICreatorComponent implements OnInit {
-  @ViewChild('stepper') stepper?: MatStepper;
+export class DarkHeresyIICreatorComponent implements AfterViewInit {
+  readonly stepper = viewChild.required<MatStepper>('stepper');
 
   protected creatorService: DHII_CreatorService = inject(DHII_CreatorService);
 
-  public ngOnInit() {
+  public ngAfterViewInit() {
     this.resetStepperAndCreationService();
   }
 
@@ -112,7 +112,7 @@ export class DarkHeresyIICreatorComponent implements OnInit {
   }
 
   protected resetStepperAndCreationService(): void {
-    this.stepper?.reset();
+    this.stepper().reset();
     this.creatorService.resetAll();
   }
 
