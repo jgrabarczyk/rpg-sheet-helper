@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 
 import { DiceRoll, Roll } from '@appTypes/roll';
 
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 
 export interface LoggerItem {
   message: string;
@@ -28,13 +28,14 @@ export type LoggerDiceRoll =
   providedIn: 'root'
 })
 export class RollService {
-  private idTracker: number = 0;
   private loggerStackSubject$ = new BehaviorSubject<LoggerItem[]>([]);
-
-  public loggerStack$ = this.loggerStackSubject$.asObservable();
-
+  
+  loggerStack$: Observable<LoggerItem[]> = this.loggerStackSubject$.asObservable();
+  
+  private idTracker: number = 0;
+  
   // @todo change roll implementation to not to require manually adding dice fot bonus/penality
-  rollDices(loggerRoll: LoggerDiceRoll): number {
+  public rollDices(loggerRoll: LoggerDiceRoll): number {
     const [diceQuantity, diceFaces] = loggerRoll.roll.split('d').map(el => Number(el));
 
     if (diceQuantity === 0 || diceFaces === 0) {
@@ -65,7 +66,7 @@ export class RollService {
     return final;
   }
 
-  rollTest(roll: Roll) {
+  public rollTest(roll: Roll): void {
     const testValue: number = this.rollDices({
       roll: '1d100',
       type: 'skipLog',
@@ -89,7 +90,7 @@ export class RollService {
     });
   }
 
-  private addToStack(item: Omit<LoggerItem, 'id'>) {
+  private addToStack(item: Omit<LoggerItem, 'id'>): void {
     const stack: LoggerItem[] = this.loggerStackSubject$.value;
     stack.push({ ...item, id: this.idTracker++ });
     this.loggerStackSubject$.next(stack);
@@ -100,6 +101,8 @@ export class RollService {
     testValue: number;
     difficultyTier: number;
   }): string {
-    return `\nChance:\n  ${data.roll.chance} \nRoll: \n  ${data.testValue} \nResult: \n  ${data.testValue <= data.roll.chance ? 'success' : 'fail'} (${data.difficultyTier}).`;
+    return `\nChance:\n  ${data.roll.chance} \nRoll: \n  ${data.testValue} \nResult: \n  ${
+      data.testValue <= data.roll.chance ? 'success' : 'fail'
+    } (${data.difficultyTier}).`;
   }
 }

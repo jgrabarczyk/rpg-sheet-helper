@@ -18,31 +18,30 @@ import { LocalStorageService } from 'services/localstorage.service';
   providedIn: 'root'
 })
 export class DHII_SheetService {
-  private storageService = inject(LocalStorageService);
-  private router = inject(Router);
+  private readonly storageService = inject(LocalStorageService);
+  private readonly router = inject(Router);
 
   private readonly INITIAL_CHARACTER: DHII_Character = INITIAL_CHARACTER;
-
-  protected characterSubject$: BehaviorSubject<DHII_Character> =
+  private readonly characterSubject$: BehaviorSubject<DHII_Character> =
     new BehaviorSubject<DHII_Character>(this.INITIAL_CHARACTER);
 
-  public readonly character$: Observable<DHII_Character> = this.characterSubject$
+  readonly character$: Observable<DHII_Character> = this.characterSubject$
     .asObservable()
     .pipe(shareReplay(1));
 
-  public readonly attributes$: Observable<DHII_Attributes> = this.characterSubject$
+  readonly attributes$: Observable<DHII_Attributes> = this.characterSubject$
     .asObservable()
     .pipe(map(character => character.attributes));
 
-  public readonly skills$: Observable<Map<DHII_SkillName, DHII_Skill>> = this.character$.pipe(
+  readonly skills$: Observable<Map<DHII_SkillName, DHII_Skill>> = this.character$.pipe(
     map(character => character.skills)
   );
 
-  public readonly aptitudes$: Observable<DHII_Aptitude[]> = this.character$.pipe(
+  readonly aptitudes$: Observable<DHII_Aptitude[]> = this.character$.pipe(
     map(character => character.aptitudes)
   );
 
-  public dhiiLocalStorageSaveNames$ = this.storageService.DHII_CharacterKeys$;
+  readonly dhiiLocalStorageSaveNames$ = this.storageService.DHII_CharacterKeys$;
 
   public getCharacter(): DHII_Character {
     return structuredClone(this.characterSubject$.value);

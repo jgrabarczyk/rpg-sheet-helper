@@ -12,7 +12,7 @@ export interface SheetHeaderAccordionData {
   standalone: true
 })
 export class HeaderAccordionDataPipe implements PipeTransform {
-  transform(character: DHII_Character): SheetHeaderAccordionData[] {
+  public transform(character: DHII_Character): SheetHeaderAccordionData[] {
     return [
       {
         title: 'Character Name',

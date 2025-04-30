@@ -44,35 +44,35 @@ export class SheetComponent implements OnInit {
   protected character$ = this.sheetService.character$;
   protected editable = false;
 
-  ngOnInit() {
+  public ngOnInit() {
     this.loadCharacter();
   }
 
-  protected addEquipment(eq: DHII_Equipment) {
+  protected addEquipment(eq: DHII_Equipment): void {
     this.sheetService.addEquipment(eq);
   }
 
-  protected deleteCharacter() {
+  protected deleteCharacter(): void {
     this.sheetService.deleteCurrentCharacter();
   }
 
-  protected updateAttribute(attribute: Characteristic) {
+  protected updateAttribute(attribute: Characteristic): void {
     this.sheetService.updateAttribute(attribute as DHII_Attribute);
   }
 
-  protected updateSkill(skill: DHII_Skill) {
+  protected updateSkill(skill: DHII_Skill): void {
     this.sheetService.updateSkill(skill);
   }
 
-  protected rollDice(roll: Roll) {
+  protected rollDice(roll: Roll): void {
     this.rollService.rollTest(roll);
   }
 
-  protected saveCharacter() {
+  protected saveCharacter(): void {
     this.sheetService.saveCharacterToLocalStorage();
   }
 
-  private loadCharacter() {
+  private loadCharacter(): void {
     this.activatedRoute.params.subscribe(params => {
       const saveName: string = params['saveName'];
       saveName

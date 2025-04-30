@@ -29,8 +29,6 @@ import { mapStringArrayToSelectOptionArray } from '@util/map-string-to-select-op
   styleUrl: './skill-step.component.scss'
 })
 export class SkillStepComponent {
-  @Input() valid: boolean = false;
-
   @Input() set skills(t: DHII_SkillName[]) {
     this.skills_ = mapStringArrayToSelectOptionArray(t);
   }
@@ -40,16 +38,20 @@ export class SkillStepComponent {
   private skills_: SelectOption[] = [];
 
   @Input() set skillsToPick(skillsToPick: DHII_SkillName[][]) {
-    this.skillsToChoose = skillsToPick.map(skills => mapStringArrayToSelectOptionArray(skills));
-    this.skillsToChoose.forEach(() => this.form.push(new FormControl(null, Validators.required)));
+    this.skillsToPick_ = skillsToPick.map(skills => mapStringArrayToSelectOptionArray(skills));
+    this.skillsToPick_.forEach(() => this.form.push(new FormControl(null, Validators.required)));
   }
+  get skillsToPick(): SelectOption[][] {
+    return this.skillsToPick_;
+  }
+  private skillsToPick_: SelectOption[][] = [];
 
   @Output() updateSkills: EventEmitter<DHII_SkillName[]> = new EventEmitter<DHII_SkillName[]>();
 
-  protected skillsToChoose: SelectOption[][] = [];
   protected form = new FormArray<FormControl>([]);
+  protected valid = false;
 
-  save(skills: string[]) {
+  protected save(skills: string[]): void {
     this.updateSkills.emit(skills as DHII_SkillName[]);
     this.valid = true;
   }

@@ -6,7 +6,7 @@ import { RateOfFire } from '@dhii/types/items/weapon/weapon';
   standalone: true
 })
 export class RateOfFirePipe implements PipeTransform {
-  transform(value: RateOfFire): string {
+  public transform(value: RateOfFire): string {
     let result: string = (value.single ? 'S' : '-') + '/';
     result += ('semi' in value ? value.semi : '-') + '/';
     result += 'full' in value ? value.full : '-';

@@ -56,7 +56,7 @@ export class DarkHeresyIICreatorComponent implements OnInit {
 
   protected creatorService: DHII_CreatorService = inject(DHII_CreatorService);
 
-  ngOnInit() {
+  public ngOnInit() {
     this.resetStepperAndCreationService();
   }
 

@@ -12,7 +12,7 @@ export class SpreadPipe implements PipeTransform {
    * @param separator string used as a Array.join() argument
    * @returns string
    */
-  transform(value?: string[] | DHII_BackgroundEquipment[], separator: string = ', '): string {
+  public transform(value?: string[] | DHII_BackgroundEquipment[], separator: string = ', '): string {
     if (!value || value.length === 0) {
       return '';
     }

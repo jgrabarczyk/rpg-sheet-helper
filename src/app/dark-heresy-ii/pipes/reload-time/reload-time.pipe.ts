@@ -5,7 +5,7 @@ import { Pipe, PipeTransform } from '@angular/core';
   standalone: true
 })
 export class ReloadTimePipe implements PipeTransform {
-  transform(reloadTimeInActions: number): string {
+  public transform(reloadTimeInActions: number): string {
     if (reloadTimeInActions === 1) {
       return 'Half';
     } else {

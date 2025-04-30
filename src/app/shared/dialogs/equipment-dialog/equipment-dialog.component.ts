@@ -112,7 +112,7 @@ export class EquipmentDialogComponent implements OnInit {
     }
   ];
 
-  ngOnInit() {
+  public ngOnInit() {
     this.tabs.forEach(tab => {
       tab.filteredOptions = this.form.controls[tab.fieldKey].valueChanges.pipe(
         startWith(''),
@@ -121,11 +121,11 @@ export class EquipmentDialogComponent implements OnInit {
     });
   }
 
-  protected toggleItem<L, O>(tab: ETab<L, O>, item: O, checked: boolean) {
+  protected toggleItem<L, O>(tab: ETab<L, O>, item: O, checked: boolean): void {
     checked ? this.selectItem(tab, item) : this.removeItem(tab, item);
   }
 
-  protected save() {
+  protected save(): void {
     const eq: DHII_Equipment = {
       armours: [],
       backpack: [],
@@ -151,19 +151,19 @@ export class EquipmentDialogComponent implements OnInit {
     this.dialogRef.close(eq);
   }
 
-  private selectItem<L, O>(tab: ETab<L, O>, item: O) {
+  private selectItem<L, O>(tab: ETab<L, O>, item: O): void {
     if (tab.selectedOptions.indexOf(item) !== -1) {
       throw Error('Unable to add item. Item is already selected', { cause: item });
     }
     tab.selectedOptions.push(item);
   }
 
-  private removeItem<L, O>(tab: ETab<L, O>, item: O) {
+  private removeItem<L, O>(tab: ETab<L, O>, item: O): void {
     const index: number = tab.selectedOptions.indexOf(item);
     tab.selectedOptions = tab.selectedOptions.filter((_, i) => i !== index);
   }
 
-  private getFilterOptionsFor(tab: EqupimentTab, filterQuery: string) {
+  private getFilterOptionsFor(tab: EqupimentTab, filterQuery: string): Map<string, GenericItem> {
     if (tab.fieldKey === 'armours') {
       return this.filterOptionsFor(tab, filterQuery);
     }
@@ -177,7 +177,7 @@ export class EquipmentDialogComponent implements OnInit {
     assertUnreachable(tab.fieldKey);
   }
 
-  private filterOptionsFor<L, O extends GenericItem>(tab: ETab<L, O>, filterQuery: string) {
+  private filterOptionsFor<L, O extends GenericItem>(tab: ETab<L, O>, filterQuery: string): Map<string, O> {
     const filteredOptions: typeof tab.options = new Map();
 
     for (const [itemKey, item] of tab.options.entries()) {

@@ -11,7 +11,7 @@ export class FillPipe implements PipeTransform {
    * @param value number
    * @return Array<number> with **value** length
    */
-  transform(value: number) {
+  public transform(value: number): number[] {
     return [...Array(value)].map((_, i) => i + 1);
   }
 }

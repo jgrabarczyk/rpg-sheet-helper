@@ -25,32 +25,32 @@ import { CommonModule } from '@angular/common';
   styleUrl: './equipment-step.component.scss'
 })
 export class EquipmentStepComponent {
-  @Input() valid: boolean = false;
   @Input() set equipment(eq: DHII_BackgroundEquipment[]) {
     this.equipment_ = this.mapEqArrayToSelectOptions(eq);
   }
-  @Input() set equipmentToPick(newEquipmentToPick: DHII_BackgroundEquipment[][]) {
-    this.equipmentToChoose_ = newEquipmentToPick.map(eq => this.mapEqArrayToSelectOptions(eq));
-    this.equipmentToChoose_.forEach(() =>
-      this.form.push(new FormControl(null, Validators.required))
-    );
-  }
-
   get equipment(): SelectOption[] {
     return this.equipment_;
   }
   private equipment_: SelectOption[] = [];
 
+  @Input() set equipmentToPick(newEquipmentToPick: DHII_BackgroundEquipment[][]) {
+    this.equipmentToPick_ = newEquipmentToPick.map(eq => this.mapEqArrayToSelectOptions(eq));
+    this.equipmentToPick_.forEach(() =>
+      this.form.push(new FormControl(null, Validators.required))
+    );
+  }
+  get equipmentToPick(): SelectOption[][] {
+    return this.equipmentToPick_;
+  }
+  private equipmentToPick_: SelectOption[][] = [];
+
+ 
   @Output() updateEquipment: EventEmitter<string[]> = new EventEmitter<string[]>();
 
-  get equipmentToChoose(): SelectOption[][] {
-    return this.equipmentToChoose_;
-  }
-  private equipmentToChoose_: SelectOption[][] = [];
-
   protected form = new FormArray<FormControl>([]);
+  protected valid = false;
 
-  save(equipment: string[]) {
+  protected save(equipment: string[]): void {
     this.updateEquipment.emit(equipment);
     this.valid = true;
   }

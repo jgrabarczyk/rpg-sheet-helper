@@ -121,7 +121,7 @@ export class EquipmentComponent {
   private rateOfFirePipe: RateOfFirePipe = new RateOfFirePipe();
   private reloadTime: ReloadTimePipe = new ReloadTimePipe();
 
-  protected addItems() {
+  protected addItems(): void {
     this.dialog
       .open<EquipmentDialogComponent, unknown, DHII_Equipment | null>(EquipmentDialogComponent, {
         maxHeight: '100%',
@@ -134,7 +134,7 @@ export class EquipmentComponent {
       .subscribe(dialogResult => this.addEquipment.emit(dialogResult));
   }
 
-  private parseEquipment(eq: DHII_Equipment) {
+  private parseEquipment(eq: DHII_Equipment): void {
     eq.armours.forEach(armour => {
       if (armour.class === 'Force Field') {
         this.protection.forceFields.data.push(armour);

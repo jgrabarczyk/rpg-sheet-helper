@@ -24,7 +24,7 @@ export class BackgroundStepComponent {
 
   @Output() chooseBackground: EventEmitter<DHII_CharacterBackground> = new EventEmitter();
 
-  select([key, value]: [DHII_BackgroundNames, DHII_Background]) {
+  protected select([key, value]: [DHII_BackgroundNames, DHII_Background]): void {
     this.chooseBackground.emit({ key, value });
   }
 }

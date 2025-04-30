@@ -23,7 +23,7 @@ describe('LocalstorageService', () => {
    * @param saveNames array of keys to use as names
    * @param data array of chracter data to use. If data index is empty {@link mockData} will be used.
    */
-  function saveBulk(saveNames: string[], data?: MockData[]) {
+  function saveBulk(saveNames: string[], data?: MockData[]): void {
     saveNames.forEach((name, index) => {
       service
         .saveCharacterToLocalStorage(data?.[index] ?? mockData, 'dhii')

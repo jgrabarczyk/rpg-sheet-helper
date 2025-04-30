@@ -16,6 +16,5 @@ import { MatListModule } from '@angular/material/list';
 })
 export class RollLogerComponent {
   private rollService: RollService = inject(RollService)
-
-  public loggerStack$: Observable<LoggerItem[]> = this.rollService.loggerStack$
+  protected loggerStack$: Observable<LoggerItem[]> = this.rollService.loggerStack$
 }

@@ -3,14 +3,14 @@
    Choose your Equipment <br>
    {{ equipment | json }}
    <br>
-   {{ equipmentToChoose | json }}
+   {{ equipmentToPick | json }}
   </p>
 
 
   <app-dynamic-list
     right-column
     [items]="equipment"
-    [optionalItems]="equipmentToChoose"
+    [optionalItems]="equipmentToPick"
     (update)="save($event)"
   />
 </app-two-column-step>

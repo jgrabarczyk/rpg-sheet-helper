@@ -80,10 +80,7 @@
             "styles": ["@angular/material/prebuilt-themes/pink-bluegrey.css", "src/styles.scss"],
             "scripts": [],
             "codeCoverage": true,
-            "codeCoverageExclude": [
-              "src/tests/**/*",
-              "**/*.harness.ts"
-            ]
+            "codeCoverageExclude": ["src/tests/**/*", "**/*.harness.ts"]
           }
         },
         "lint": {

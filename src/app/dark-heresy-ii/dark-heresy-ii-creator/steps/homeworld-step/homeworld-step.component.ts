@@ -24,7 +24,7 @@ export class HomeworldStepComponent {
 
   @Output() chooseHomeworld: EventEmitter<DHII_CharacterHomeworld> = new EventEmitter();
 
-  select([key, value]: [DHII_HomeworldNames, DHII_Homeworld]) {
+  protected select([key, value]: [DHII_HomeworldNames, DHII_Homeworld]): void {
     this.chooseHomeworld.emit({ key, value });
   }
 }

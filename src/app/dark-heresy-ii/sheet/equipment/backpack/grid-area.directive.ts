@@ -5,7 +5,7 @@ import { Directive, ElementRef, inject, Input } from '@angular/core';
   selector: '[appGridArea]'
 })
 export class GridAreaDirective {
-  @Input() set appGridArea(gridData: string | number | symbol) {
+  @Input() public set appGridArea(gridData: string | number | symbol) {
     this.el.nativeElement.style.gridArea = String(gridData);
   }
 

@@ -22,7 +22,7 @@ export class RoleStepComponent {
     value: DHII_Role;
   }>();
 
-  select([key, value]: [DHII_RoleNames, DHII_Role]) {
+  protected select([key, value]: [DHII_RoleNames, DHII_Role]): void {
     this.chooseRole.emit({ key, value });
   }
 }

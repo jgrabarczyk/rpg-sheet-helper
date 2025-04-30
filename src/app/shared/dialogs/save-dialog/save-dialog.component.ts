@@ -29,10 +29,10 @@ import { MatInputModule } from '@angular/material/input';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class SaveDialogComponent {
-  dialogRef: MatDialogRef<SaveDialogComponent, string | undefined | null> = inject(MatDialogRef<SaveDialogComponent>)
-  saveName = new FormControl(null, Validators.required);
+  protected saveName = new FormControl(null, Validators.required);
+  private dialogRef: MatDialogRef<SaveDialogComponent, string | undefined | null> = inject(MatDialogRef<SaveDialogComponent>)
 
-  save(): void {
+  protected save(): void {
     this.dialogRef.close(this.saveName.value)
   }
 }

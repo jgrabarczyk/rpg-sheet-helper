@@ -28,7 +28,7 @@ export class DynamicListComponent {
   protected optionals: SelectOption[][] = [];
   protected form = new FormArray<FormControl>([]);
 
-  save() {
+  protected save(): void {
     this.update.emit([...this.form.value, ...this.items.map(el => el.value)]);
   }
 }

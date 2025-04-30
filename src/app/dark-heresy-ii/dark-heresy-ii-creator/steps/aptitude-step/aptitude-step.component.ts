@@ -66,7 +66,7 @@ export class AptitudeStepComponent {
   protected formDuplicates = new FormArray<FormControl>([]);
   protected formChooseFrom = new FormArray<FormControl>([]);
 
-  protected save() {
+  protected save(): void {
     this.updateAptitudes.emit([
       ...this.formChooseFrom.value,
       ...this.formDuplicates.value,

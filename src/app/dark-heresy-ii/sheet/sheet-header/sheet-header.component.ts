@@ -6,19 +6,19 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatButtonModule } from '@angular/material/button';
-import {MatButtonToggleModule} from '@angular/material/button-toggle';
+import { MatButtonToggleModule } from '@angular/material/button-toggle';
 
 import { DHII_Character } from '@dhii/types/dark-heresy-ii';
 import { BACKGROUNDS, DHII_Backgrounds } from '@dhii/types/dhii-background';
 import { DHII_Homeworlds, HOMEWORLDS } from '@dhii/types/dhii-homeworlds';
 import { DHII_Roles, ROLES } from '@dhii/types/dhii-role';
 
-import { HeaderAccordionDataPipe } from "./header-accordion-data/header-accordion-data.pipe";
+import { HeaderAccordionDataPipe } from './header-accordion-data/header-accordion-data.pipe';
 
 /**
  * @todo add readonly option
  * @todo add wounds | experience | corruption | insanity
- * 
+ *
  */
 @Component({
   selector: 'app-sheet-header',
@@ -33,7 +33,7 @@ import { HeaderAccordionDataPipe } from "./header-accordion-data/header-accordio
     HeaderAccordionDataPipe,
     MatButtonModule,
     MatButtonToggleModule
-],
+  ],
   templateUrl: './sheet-header.component.html',
   styleUrl: './sheet-header.component.scss'
 })
@@ -42,36 +42,35 @@ export class SheetHeaderComponent {
   protected roles: DHII_Roles = ROLES;
   protected backgrounds: DHII_Backgrounds = BACKGROUNDS;
 
-  @Input() set character(char: DHII_Character) {
-    if(!char){
-      throw Error('char is missing')
+  @Input() public set character(char: DHII_Character) {
+    if (!char) {
+      throw Error('char is missing');
     }
     this.character_ = char;
     this.updateForm();
   }
 
-  get character() {
+  public get character(): DHII_Character {
     return this.character_;
   }
 
   private character_!: DHII_Character;
 
-  @Input() set editable(isEditable: boolean) {
+  @Input() public set editable(isEditable: boolean) {
     isEditable ? this.form.enable() : this.form.disable();
     this.editable_ = isEditable;
   }
 
-  get editable() {
+  public get editable(): boolean {
     return this.editable_;
   }
 
   private editable_: boolean = false;
 
-
   @Output() saveCharacter = new EventEmitter();
   @Output() deleteCharacter = new EventEmitter();
-
-  form: FormGroup = new FormGroup({
+  
+  protected form: FormGroup = new FormGroup({
     characterName: new FormControl({
       value: '',
       disabled: true
@@ -94,7 +93,7 @@ export class SheetHeaderComponent {
     })
   });
 
-  private updateForm() {
+  private updateForm(): void {
     this.form.controls['characterName'].setValue(this.character_.details?.characterName);
     this.form.controls['age'].setValue(this.character_.details?.age);
     this.form.controls['homeworld'].setValue(this.character_.homeworld?.key);

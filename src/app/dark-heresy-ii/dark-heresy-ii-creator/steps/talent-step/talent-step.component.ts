@@ -31,8 +31,6 @@ import { mapStringArrayToSelectOptionArray } from '@util/map-string-to-select-op
   styleUrl: './talent-step.component.scss'
 })
 export class TalentStepComponent {
-  @Input() valid: boolean = false;
-
   @Input() set talents(t: DHII_TalentName[]) {
     this.talents_ = mapStringArrayToSelectOptionArray(t);
   }
@@ -53,8 +51,9 @@ export class TalentStepComponent {
   @Output() updateTalents: EventEmitter<DHII_TalentName[]> = new EventEmitter<DHII_TalentName[]>();
 
   protected form = new FormArray<FormControl>([]);
+  protected valid = false;
 
-  save(talents: string[]) {
+  protected save(talents: string[]): void {
     this.updateTalents.emit(talents.map(el => el as DHII_TalentName));
     this.valid = true;
   }

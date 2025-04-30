@@ -8,19 +8,22 @@ import { MatCardHarness } from '@angular/material/card/testing';
 export class BackpackHarness extends ContentContainerComponentHarness {
   static hostSelector = 'app-backpack';
 
-  async getTitleText() {
+  public async getTitleText(): Promise<string> {
     const card: MatCardHarness = await this.getHarness(MatCardHarness);
     return card.getTitleText();
   }
-  async getSubtitleText() {
+
+  public async getSubtitleText(): Promise<string> {
     const card: MatCardHarness = await this.getHarness(MatCardHarness);
     return card.getSubtitleText();
   }
-  async getTableHeader() {
+
+  public async getTableHeader(): Promise<TestElement> {
     const headers: AsyncFactoryFn<TestElement> = await this.locatorFor('[name="backpackHeader"]');
     return await headers();
   }
-  async getTableRows() {
+
+  public async getTableRows(): Promise<TestElement[]> {
     const rows: AsyncFactoryFn<TestElement[]> = this.locatorForAll('[name="backpackRow"]');
     return await rows();
   }

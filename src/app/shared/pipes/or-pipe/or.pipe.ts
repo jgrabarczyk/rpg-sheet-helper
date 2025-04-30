@@ -11,7 +11,7 @@ export class OrPipe implements PipeTransform {
    * @param value (string | DHII_BackgroundEquipment)[][]
    * @returns string[]
    */
-  transform(value: (string | DHII_BackgroundEquipment)[][] | undefined): string[] {
+  public transform(value: (string | DHII_BackgroundEquipment)[][] | undefined): string[] {
     if (!value || value.length === 0) {
       return [''];
     }

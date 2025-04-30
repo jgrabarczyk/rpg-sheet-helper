@@ -14,12 +14,16 @@ export type SaveNameConfig = { name: string; prefix: StoragePrefixes };
   providedIn: 'root'
 })
 export class LocalStorageService {
-  private dialog: MatDialog = inject(MatDialog);
+  private readonly dialog: MatDialog = inject(MatDialog);
 
-  public readonly DHII_PREFIX: StoragePrefixes = 'dhii';
+  private readonly DHII_PREFIX: StoragePrefixes = 'dhii';
+  private readonly currentSaveName$: BehaviorSubject<StorageSaveName | null> =
+    new BehaviorSubject<StorageSaveName | null>(null);
+  private readonly storageSubject$: BehaviorSubject<Storage> = new BehaviorSubject<Storage>(
+    localStorage
+  );
 
-  protected storageSubject$: BehaviorSubject<Storage> = new BehaviorSubject<Storage>(localStorage);
-  public DHII_CharacterKeys$ = this.storageSubject$.asObservable().pipe(
+  readonly DHII_CharacterKeys$ = this.storageSubject$.asObservable().pipe(
     map(storage =>
       Object.keys(storage)
         .filter(key => key.includes(this.DHII_PREFIX))
@@ -28,10 +32,10 @@ export class LocalStorageService {
     )
   );
 
-  private readonly currentSaveName$: BehaviorSubject<StorageSaveName | null> =
-    new BehaviorSubject<StorageSaveName | null>(null);
-
-  public saveCharacterToLocalStorage<T extends object>(character: T, prefix: StoragePrefixes): Observable<string> {
+  public saveCharacterToLocalStorage<T extends object>(
+    character: T,
+    prefix: StoragePrefixes
+  ): Observable<string> {
     return this.dialog
       .open<SaveDialogComponent, null, string>(SaveDialogComponent)
       .afterClosed()
@@ -98,7 +102,7 @@ export class LocalStorageService {
     return this.loadCharacterFromLocalStorage<T>(name, prefix);
   }
 
-  private setItem(obj: { key: StorageSaveName; value: object }) {
+  private setItem(obj: { key: StorageSaveName; value: object }): void {
     localStorage.setItem(obj.key, JSONstringify(obj.value));
     this.storageSubject$.next(localStorage);
   }
@@ -118,7 +122,7 @@ export class LocalStorageService {
     return parsedItem as T;
   }
 
-  private removeItem(key: StorageSaveName) {
+  private removeItem(key: StorageSaveName): void {
     localStorage.removeItem(key);
     this.storageSubject$.next(localStorage);
   }
