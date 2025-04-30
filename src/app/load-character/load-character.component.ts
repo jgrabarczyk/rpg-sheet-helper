@@ -7,12 +7,11 @@ import { MatButtonModule } from '@angular/material/button';
 import { CommonModule } from '@angular/common';
 
 @Component({
-  selector: 'app-load-character',
-  standalone: true,
-  imports: [RouterLink, MatCardModule, MatListModule, MatButtonModule, CommonModule],
-  templateUrl: './load-character.component.html',
-  styleUrl: './load-character.component.scss',
-  changeDetection: ChangeDetectionStrategy.OnPush
+    selector: 'app-load-character',
+    imports: [RouterLink, MatCardModule, MatListModule, MatButtonModule, CommonModule],
+    templateUrl: './load-character.component.html',
+    styleUrl: './load-character.component.scss',
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class LoadCharacterComponent {
   private sheetService = inject(DHII_SheetService);

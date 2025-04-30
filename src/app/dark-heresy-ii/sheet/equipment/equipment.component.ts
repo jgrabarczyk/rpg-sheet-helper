@@ -40,12 +40,11 @@ const WEAPON_HEADERS: KeyValue<keyof WeaponBase, string>[] = [
   { key: 'traits', value: 'Triats' }
 ];
 @Component({
-  selector: 'app-equipment',
-  standalone: true,
-  imports: [MatCardModule, MatButtonModule, CommonModule, BackpackComponent],
-  templateUrl: './equipment.component.html',
-  styleUrl: './equipment.component.scss',
-  changeDetection: ChangeDetectionStrategy.OnPush
+    selector: 'app-equipment',
+    imports: [MatCardModule, MatButtonModule, CommonModule, BackpackComponent],
+    templateUrl: './equipment.component.html',
+    styleUrl: './equipment.component.scss',
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class EquipmentComponent {
   private dialog: MatDialog = inject(MatDialog);

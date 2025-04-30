@@ -14,19 +14,18 @@ import { TwoColumnStepComponent } from '@dhii/stepper-partials/two-column-step/t
 import { mapStringArrayToSelectOptionArray } from '@util/map-string-to-select-option';
 
 @Component({
-  selector: 'app-skill-step',
-  standalone: true,
-  imports: [
-    MatButtonModule,
-    MatSelectModule,
-    MatCardModule,
-    MatListModule,
-    ReactiveFormsModule,
-    TwoColumnStepComponent,
-    DynamicListComponent
-  ],
-  templateUrl: './skill-step.component.html',
-  styleUrl: './skill-step.component.scss'
+    selector: 'app-skill-step',
+    imports: [
+        MatButtonModule,
+        MatSelectModule,
+        MatCardModule,
+        MatListModule,
+        ReactiveFormsModule,
+        TwoColumnStepComponent,
+        DynamicListComponent
+    ],
+    templateUrl: './skill-step.component.html',
+    styleUrl: './skill-step.component.scss'
 })
 export class SkillStepComponent {
   @Input() set skills(t: DHII_SkillName[]) {

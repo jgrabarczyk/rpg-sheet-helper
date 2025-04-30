@@ -8,11 +8,10 @@ import { TwoColumnStepComponent } from '@dhii/stepper-partials/two-column-step/t
 import { DHII_Attributes, DHII_AttributeName } from '@dhii/types/dhii-attribute';
 
 @Component({
-  selector: 'app-attribute-step',
-  standalone: true,
-  imports: [AttributesGroupComponent, TwoColumnStepComponent, MatButtonModule, MatCardModule],
-  templateUrl: './attribute-step.component.html',
-  styleUrl: './attribute-step.component.scss'
+    selector: 'app-attribute-step',
+    imports: [AttributesGroupComponent, TwoColumnStepComponent, MatButtonModule, MatCardModule],
+    templateUrl: './attribute-step.component.html',
+    styleUrl: './attribute-step.component.scss'
 })
 export class AttributeStepComponent {
   @Input() attributes!: DHII_Attributes;

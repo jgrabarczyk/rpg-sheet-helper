@@ -5,11 +5,10 @@ import { TwoColumnStepComponent } from '@dhii/stepper-partials/two-column-step/t
 import { DHII_Divination } from '@dhii/types/roll-tables/dhii-divination';
 
 @Component({
-  selector: 'app-divination-step',
-  standalone: true,
-  imports: [TwoColumnStepComponent, MatCardModule],
-  templateUrl: './divination-step.component.html',
-  styleUrl: './divination-step.component.scss'
+    selector: 'app-divination-step',
+    imports: [TwoColumnStepComponent, MatCardModule],
+    templateUrl: './divination-step.component.html',
+    styleUrl: './divination-step.component.scss'
 })
 export class DivinationStepComponent {
   @Input() divination?: DHII_Divination;

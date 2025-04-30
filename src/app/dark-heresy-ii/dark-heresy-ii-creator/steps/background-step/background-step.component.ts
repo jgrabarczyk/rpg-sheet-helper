@@ -8,15 +8,14 @@ import { DHII_Backgrounds, DHII_BackgroundNames, DHII_Background } from '@dhii/t
 import { BackgroundCardComponent } from './background-card/background-card.component';
 
 @Component({
-  selector: 'app-background-step',
-  standalone: true,
-  imports: [
-    CommonModule,
-    BackgroundCardComponent,
-    CardListStepComponent
-],
-  templateUrl: './background-step.component.html',
-  styleUrl: './background-step.component.scss'
+    selector: 'app-background-step',
+    imports: [
+        CommonModule,
+        BackgroundCardComponent,
+        CardListStepComponent
+    ],
+    templateUrl: './background-step.component.html',
+    styleUrl: './background-step.component.scss'
 })
 export class BackgroundStepComponent {
   @Input() backgrounds: DHII_Backgrounds | null = null;

@@ -21,21 +21,20 @@ import { HeaderAccordionDataPipe } from './header-accordion-data/header-accordio
  *
  */
 @Component({
-  selector: 'app-sheet-header',
-  standalone: true,
-  imports: [
-    MatCardModule,
-    ReactiveFormsModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatSelectModule,
-    MatExpansionModule,
-    HeaderAccordionDataPipe,
-    MatButtonModule,
-    MatButtonToggleModule
-  ],
-  templateUrl: './sheet-header.component.html',
-  styleUrl: './sheet-header.component.scss'
+    selector: 'app-sheet-header',
+    imports: [
+        MatCardModule,
+        ReactiveFormsModule,
+        MatFormFieldModule,
+        MatInputModule,
+        MatSelectModule,
+        MatExpansionModule,
+        HeaderAccordionDataPipe,
+        MatButtonModule,
+        MatButtonToggleModule
+    ],
+    templateUrl: './sheet-header.component.html',
+    styleUrl: './sheet-header.component.scss'
 })
 export class SheetHeaderComponent {
   protected homeworlds: DHII_Homeworlds = HOMEWORLDS;

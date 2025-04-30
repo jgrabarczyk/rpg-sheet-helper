@@ -11,21 +11,20 @@ import { CommonModule } from '@angular/common';
 import { MatDialogModule } from '@angular/material/dialog';
 
 @Component({
-  selector: 'app-final-details-step',
-  standalone: true,
-  imports: [
-    TwoColumnStepComponent,
-    MatCardModule,
-    MatButtonModule,
-    MatFormFieldModule,
-    MatInputModule,
-    ReactiveFormsModule,
-    CommonModule,
-    MatDialogModule
-  ],
-  templateUrl: './final-details-step.component.html',
-  styleUrl: './final-details-step.component.scss',
-  changeDetection: ChangeDetectionStrategy.OnPush
+    selector: 'app-final-details-step',
+    imports: [
+        TwoColumnStepComponent,
+        MatCardModule,
+        MatButtonModule,
+        MatFormFieldModule,
+        MatInputModule,
+        ReactiveFormsModule,
+        CommonModule,
+        MatDialogModule
+    ],
+    templateUrl: './final-details-step.component.html',
+    styleUrl: './final-details-step.component.scss',
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class FinalDetailsStepComponent {
   @Input() details?: DHII_CharacterDetails;

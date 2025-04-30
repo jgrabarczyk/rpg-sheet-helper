@@ -12,20 +12,19 @@ import { DHII_ATTRIBUTE_NAMES } from '@dhii/types/dhii-attribute';
 import { TwoColumnStepComponent } from '@dhii/stepper-partials/two-column-step/two-column-step.component';
 
 @Component({
-  selector: 'app-aptitude-step',
-  standalone: true,
-  imports: [
-    CommonModule,
-    MatFormFieldModule,
-    MatSelectModule,
-    MatButtonModule,
-    MatListModule,
-    MatCardModule,
-    ReactiveFormsModule,
-    TwoColumnStepComponent
-  ],
-  templateUrl: './aptitude-step.component.html',
-  styleUrl: './aptitude-step.component.scss'
+    selector: 'app-aptitude-step',
+    imports: [
+        CommonModule,
+        MatFormFieldModule,
+        MatSelectModule,
+        MatButtonModule,
+        MatListModule,
+        MatCardModule,
+        ReactiveFormsModule,
+        TwoColumnStepComponent
+    ],
+    templateUrl: './aptitude-step.component.html',
+    styleUrl: './aptitude-step.component.scss'
 })
 export class AptitudeStepComponent {
   @Input() set aptitudes(aptitudes: DHII_Aptitude[]) {

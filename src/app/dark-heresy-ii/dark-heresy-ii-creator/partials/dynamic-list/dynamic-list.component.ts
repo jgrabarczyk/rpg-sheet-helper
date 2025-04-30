@@ -9,11 +9,10 @@ import { MatSelectModule } from '@angular/material/select';
 export type SelectOption = KeyValue<string, string>;
 
 @Component({
-  selector: 'app-dynamic-list',
-  standalone: true,
-  imports: [MatButtonModule, MatSelectModule, MatCardModule, MatListModule, ReactiveFormsModule],
-  templateUrl: './dynamic-list.component.html',
-  styleUrl: './dynamic-list.component.scss'
+    selector: 'app-dynamic-list',
+    imports: [MatButtonModule, MatSelectModule, MatCardModule, MatListModule, ReactiveFormsModule],
+    templateUrl: './dynamic-list.component.html',
+    styleUrl: './dynamic-list.component.scss'
 })
 export class DynamicListComponent {
   @Input() basedOn?: Map<string, unknown> = new Map();

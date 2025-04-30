@@ -4,11 +4,10 @@ import { MatCardModule } from '@angular/material/card';
 import { StepNavigationComponent } from '../step-navigation/step-navigation.component';
 
 @Component({
-  selector: 'app-two-column-step',
-  standalone: true,
-  imports: [CommonModule, MatCardModule, StepNavigationComponent],
-  templateUrl: './two-column-step.component.html',
-  styleUrl: './two-column-step.component.scss'
+    selector: 'app-two-column-step',
+    imports: [CommonModule, MatCardModule, StepNavigationComponent],
+    templateUrl: './two-column-step.component.html',
+    styleUrl: './two-column-step.component.scss'
 })
 export class TwoColumnStepComponent {
   @Input() valid: boolean = false;

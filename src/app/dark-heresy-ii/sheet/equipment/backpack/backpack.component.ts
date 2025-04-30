@@ -11,13 +11,12 @@ export type TableData<T> ={
 }
 
 @Component({
-  selector: 'app-backpack',
-  standalone: true,
-  imports: [MatCardModule, GridTemplateAreasDirective, GridAreaDirective, CommonModule],
-  templateUrl: './backpack.component.html',
-  styleUrl: './backpack.component.scss',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  providers:[]
+    selector: 'app-backpack',
+    imports: [MatCardModule, GridTemplateAreasDirective, GridAreaDirective, CommonModule],
+    templateUrl: './backpack.component.html',
+    styleUrl: './backpack.component.scss',
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    providers: []
 })
 export class BackpackComponent<T> {
   @Input() title?: string;

@@ -12,17 +12,16 @@ import { DHII_BackgroundEquipment } from '@dhii/types/dhii-background';
 import { CommonModule } from '@angular/common';
 
 @Component({
-  selector: 'app-equipment-step',
-  standalone: true,
-  imports: [
-    MatFormFieldModule,
-    MatSelectModule,
-    DynamicListComponent,
-    TwoColumnStepComponent,
-    CommonModule
-  ],
-  templateUrl: './equipment-step.component.html',
-  styleUrl: './equipment-step.component.scss'
+    selector: 'app-equipment-step',
+    imports: [
+        MatFormFieldModule,
+        MatSelectModule,
+        DynamicListComponent,
+        TwoColumnStepComponent,
+        CommonModule
+    ],
+    templateUrl: './equipment-step.component.html',
+    styleUrl: './equipment-step.component.scss'
 })
 export class EquipmentStepComponent {
   @Input() set equipment(eq: DHII_BackgroundEquipment[]) {
