@@ -12,18 +12,17 @@ import { assertAttributeName } from '@util/assert-attribute-name';
 import { AttributeComponent } from '../../sheet/attribute/attribute.component';
 
 @Component({
-  selector: 'app-attributes-group',
-  standalone: true,
-  imports: [
-    CommonModule,
-    AttributeComponent,
-    MatDividerModule,
-    MatListModule,
-    MatCardModule,
-    IsBonusAttributePipe
-  ],
-  templateUrl: './attributes-group.component.html',
-  styleUrl: './attributes-group.component.scss'
+    selector: 'app-attributes-group',
+    imports: [
+        CommonModule,
+        AttributeComponent,
+        MatDividerModule,
+        MatListModule,
+        MatCardModule,
+        IsBonusAttributePipe
+    ],
+    templateUrl: './attributes-group.component.html',
+    styleUrl: './attributes-group.component.scss'
 })
 export class AttributesGroupComponent {
   @Input({ required: true }) attributes!: DHII_Attributes;

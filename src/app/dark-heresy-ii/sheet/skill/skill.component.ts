@@ -15,26 +15,25 @@ import { FillPipe } from '@pipes/fill-pipe/fill.pipe';
 import { RollboxComponent } from "../rollbox/rollbox.component"; 
 
 @Component({
-  selector: 'app-skill',
-  standalone: true,
-  imports: [
-    FontAwesomeModule,
-    FillPipe,
-    ReactiveFormsModule,
-    MatInputModule,
-    MatButtonModule,
-    MatIconModule,
-    MatMenuModule,
-    RollboxComponent
-],
-  providers: [
-    {
-      provide: MAT_FORM_FIELD_DEFAULT_OPTIONS,
-      useValue: { subscriptSizing: 'dynamic' }
-    }
-  ],
-  templateUrl: './skill.component.html',
-  styleUrl: './skill.component.scss'
+    selector: 'app-skill',
+    imports: [
+        FontAwesomeModule,
+        FillPipe,
+        ReactiveFormsModule,
+        MatInputModule,
+        MatButtonModule,
+        MatIconModule,
+        MatMenuModule,
+        RollboxComponent
+    ],
+    providers: [
+        {
+            provide: MAT_FORM_FIELD_DEFAULT_OPTIONS,
+            useValue: { subscriptSizing: 'dynamic' }
+        }
+    ],
+    templateUrl: './skill.component.html',
+    styleUrl: './skill.component.scss'
 })
 export class SkillComponent {
   @Input() label?: string;

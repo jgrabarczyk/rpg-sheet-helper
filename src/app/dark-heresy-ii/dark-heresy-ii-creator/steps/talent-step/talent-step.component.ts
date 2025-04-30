@@ -15,20 +15,19 @@ import { DHII_TalentName } from '@dhii/types/dhii-talents';
 import { mapStringArrayToSelectOptionArray } from '@util/map-string-to-select-option';
 
 @Component({
-  selector: 'app-talent-step',
-  standalone: true,
-  imports: [
-    CommonModule,
-    MatButtonModule,
-    MatCardModule,
-    MatListModule,
-    MatSelectModule,
-    ReactiveFormsModule,
-    TwoColumnStepComponent,
-    DynamicListComponent
-  ],
-  templateUrl: './talent-step.component.html',
-  styleUrl: './talent-step.component.scss'
+    selector: 'app-talent-step',
+    imports: [
+        CommonModule,
+        MatButtonModule,
+        MatCardModule,
+        MatListModule,
+        MatSelectModule,
+        ReactiveFormsModule,
+        TwoColumnStepComponent,
+        DynamicListComponent
+    ],
+    templateUrl: './talent-step.component.html',
+    styleUrl: './talent-step.component.scss'
 })
 export class TalentStepComponent {
   @Input() set talents(t: DHII_TalentName[]) {

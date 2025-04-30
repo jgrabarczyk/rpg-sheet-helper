@@ -10,12 +10,11 @@ import {
 } from '@angular/material/dialog';
 
 @Component({
-  selector: 'app-confirm-dialog',
-  standalone: true,
-  imports: [MatButtonModule, MatDialogActions, MatDialogClose, MatDialogTitle, MatDialogContent],
-  templateUrl: './confirm-dialog.component.html',
-  styleUrl: './confirm-dialog.component.scss',
-  changeDetection: ChangeDetectionStrategy.OnPush
+    selector: 'app-confirm-dialog',
+    imports: [MatButtonModule, MatDialogActions, MatDialogClose, MatDialogTitle, MatDialogContent],
+    templateUrl: './confirm-dialog.component.html',
+    styleUrl: './confirm-dialog.component.scss',
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ConfirmDialogComponent {
   private dialogRef: MatDialogRef<ConfirmDialogComponent> = inject(

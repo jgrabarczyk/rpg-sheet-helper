@@ -29,27 +29,26 @@ import { FinalDetailsStepComponent } from './steps/final-details-step/final-deta
 import { DHII_CreatorService } from './dhii-creator.service';
 
 @Component({
-  selector: 'app-dark-heresy-ii-creator',
-  standalone: true,
-  imports: [
-    CommonModule,
-    MatStepperModule,
-    MatCardModule,
-    HomeworldStepComponent,
-    BackgroundStepComponent,
-    RoleStepComponent,
-    AttributeStepComponent,
-    AptitudeStepComponent,
-    SkillStepComponent,
-    EquipmentStepComponent,
-    DivinationStepComponent,
-    TalentStepComponent,
-    WoundsAndFateStepComponent,
-    RollLogerComponent,
-    FinalDetailsStepComponent
-  ],
-  templateUrl: './dark-heresy-ii-creator.component.html',
-  styleUrl: './dark-heresy-ii-creator.component.scss'
+    selector: 'app-dark-heresy-ii-creator',
+    imports: [
+        CommonModule,
+        MatStepperModule,
+        MatCardModule,
+        HomeworldStepComponent,
+        BackgroundStepComponent,
+        RoleStepComponent,
+        AttributeStepComponent,
+        AptitudeStepComponent,
+        SkillStepComponent,
+        EquipmentStepComponent,
+        DivinationStepComponent,
+        TalentStepComponent,
+        WoundsAndFateStepComponent,
+        RollLogerComponent,
+        FinalDetailsStepComponent
+    ],
+    templateUrl: './dark-heresy-ii-creator.component.html',
+    styleUrl: './dark-heresy-ii-creator.component.scss'
 })
 export class DarkHeresyIICreatorComponent implements OnInit {
   @ViewChild('stepper') stepper?: MatStepper;

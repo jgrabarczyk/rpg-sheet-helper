@@ -40,27 +40,26 @@ export type EqupimentTab =
   | ETab<'armours', Armour>;
 
 @Component({
-  selector: 'app-equipment-dialog',
-  standalone: true,
-  imports: [
-    MatTabsModule,
-    CommonModule,
-    MatFormFieldModule,
-    MatAutocompleteModule,
-    ReactiveFormsModule,
-    MatInputModule,
-    MatChipsModule,
-    MatIconModule,
-    MatButtonModule,
-    MatCheckboxModule,
-    MatDialogActions,
-    MatDialogClose,
-    MatDialogTitle,
-    MatDialogContent
-  ],
-  templateUrl: './equipment-dialog.component.html',
-  styleUrl: './equipment-dialog.component.scss',
-  changeDetection: ChangeDetectionStrategy.OnPush
+    selector: 'app-equipment-dialog',
+    imports: [
+        MatTabsModule,
+        CommonModule,
+        MatFormFieldModule,
+        MatAutocompleteModule,
+        ReactiveFormsModule,
+        MatInputModule,
+        MatChipsModule,
+        MatIconModule,
+        MatButtonModule,
+        MatCheckboxModule,
+        MatDialogActions,
+        MatDialogClose,
+        MatDialogTitle,
+        MatDialogContent
+    ],
+    templateUrl: './equipment-dialog.component.html',
+    styleUrl: './equipment-dialog.component.scss',
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class EquipmentDialogComponent implements OnInit {
   private dialogRef: MatDialogRef<EquipmentDialogComponent, DHII_Equipment | null> = inject(

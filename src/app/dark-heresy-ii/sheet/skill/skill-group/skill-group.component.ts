@@ -9,11 +9,10 @@ import { Roll } from '@appTypes/roll';
 import { SkillComponent } from '../skill.component';
 
 @Component({
-  selector: 'app-skill-group',
-  standalone: true,
-  imports: [MatDividerModule, MatListModule, MatCardModule, SkillComponent],
-  templateUrl: './skill-group.component.html',
-  styleUrl: './skill-group.component.scss'
+    selector: 'app-skill-group',
+    imports: [MatDividerModule, MatListModule, MatCardModule, SkillComponent],
+    templateUrl: './skill-group.component.html',
+    styleUrl: './skill-group.component.scss'
 })
 export class SkillGroupComponent {
   @Input() title?: string;

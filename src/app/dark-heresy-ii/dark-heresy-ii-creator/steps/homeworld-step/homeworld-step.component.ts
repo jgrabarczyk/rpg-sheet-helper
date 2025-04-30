@@ -8,15 +8,14 @@ import { DHII_Homeworlds, DHII_HomeworldNames, DHII_Homeworld } from '@dhii/type
 import { HomeworldCardComponent } from './homeworld-card/homeworld-card.component';
 
 @Component({
-  selector: 'app-homeworld-step',
-  standalone: true,
-  imports: [
-    CommonModule,
-    HomeworldCardComponent,
-    CardListStepComponent
-  ],
-  templateUrl: './homeworld-step.component.html',
-  styleUrl: './homeworld-step.component.scss'
+    selector: 'app-homeworld-step',
+    imports: [
+        CommonModule,
+        HomeworldCardComponent,
+        CardListStepComponent
+    ],
+    templateUrl: './homeworld-step.component.html',
+    styleUrl: './homeworld-step.component.scss'
 })
 export class HomeworldStepComponent {
   @Input() homeworlds: DHII_Homeworlds | null = null;

@@ -6,12 +6,11 @@ import { DHII_Talents } from '@dhii/types/dhii-talents';
 import { CommonModule } from '@angular/common';
 
 @Component({
-  selector: 'app-talents-group',
-  standalone: true,
-  imports: [MatDividerModule, MatListModule, MatCardModule, CommonModule],
-  templateUrl: './talents-group.component.html',
-  styleUrl: './talents-group.component.scss',
-  changeDetection: ChangeDetectionStrategy.OnPush
+    selector: 'app-talents-group',
+    imports: [MatDividerModule, MatListModule, MatCardModule, CommonModule],
+    templateUrl: './talents-group.component.html',
+    styleUrl: './talents-group.component.scss',
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class TalentsGroupComponent {
   @Input() talents!: DHII_Talents;

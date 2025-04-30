@@ -8,12 +8,11 @@ import { DHII_CharacterHomeworld, ResourcePool } from '@dhii/types/dark-heresy-i
 
 
 @Component({
-  selector: 'app-wounds-and-fate-step',
-  standalone: true,
-  imports: [TwoColumnStepComponent, MatCardModule, MatButtonModule, MatDividerModule],
-  templateUrl: './wounds-and-fate-step.component.html',
-  styleUrl: './wounds-and-fate-step.component.scss',
-  changeDetection: ChangeDetectionStrategy.OnPush
+    selector: 'app-wounds-and-fate-step',
+    imports: [TwoColumnStepComponent, MatCardModule, MatButtonModule, MatDividerModule],
+    templateUrl: './wounds-and-fate-step.component.html',
+    styleUrl: './wounds-and-fate-step.component.scss',
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class WoundsAndFateStepComponent {
   @Input({required: true}) homeworld!: DHII_CharacterHomeworld;
