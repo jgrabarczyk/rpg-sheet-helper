@@ -9,7 +9,6 @@
     "test": "ng test",
     "test:w": "ng test --code-coverage",
     "lint": "ng lint",
-
     "ci:build": "ng build --optimization=true --configuration production",
     "ci:clean": "rimraf ./dist",
     "ci:lint": "ng lint",
@@ -56,6 +55,7 @@
     "karma-coverage": "~2.2.0",
     "karma-jasmine": "~5.1.0",
     "karma-jasmine-html-reporter": "~2.1.0",
+    "prettier": "3.1",
     "puppeteer": "^24.7.2",
     "typescript": "~5.5.4"
   }
