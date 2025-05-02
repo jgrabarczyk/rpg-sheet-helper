@@ -12,7 +12,7 @@
 
     "ci:build": "ng build --optimization=true --configuration production",
     "ci:clean": "rimraf ./dist",
-    "ci:lint": "ng lint --quiet ",
+    "ci:lint": "ng lint  --configuration production",
     "ci:test": "ng test --no-watch --no-progress --browsers=ChromeHeadless --code-coverage"
   },
   "private": true,

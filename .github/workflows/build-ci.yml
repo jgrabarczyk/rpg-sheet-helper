@@ -24,7 +24,7 @@ jobs:
         run: npm ci
           
       - name: Run Linter 
-        run: ng lint
+        run: npm run ci:lint
 
       - name: Run Unit Tests
         run: npm run ci:test
