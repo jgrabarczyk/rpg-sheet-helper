@@ -8,6 +8,7 @@
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "test:w": "ng test --code-coverage",
+    "test:ci": "ng test --no-watch --browsers=Chrome",
     "lint": "ng lint",
     "lint:watch": "nodemon --exec \"npm run lint || exit 1\" --ext ts,html,scss"
   },
@@ -52,6 +53,7 @@
     "karma-coverage": "~2.2.0",
     "karma-jasmine": "~5.1.0",
     "karma-jasmine-html-reporter": "~2.1.0",
+    "puppeteer": "^24.7.2",
     "typescript": "~5.5.4"
   }
 }
