@@ -2,17 +2,17 @@
   <p card-content>Determine you divinations. It can provide additional perk for your character</p>
 
   <mat-card appearance="outlined" right-column class="creator-step-content">
-    @if(divination){
-    <div class="creator-card">
-      <div class="row">
-        <div class="name">Name</div>
-        <div class="value">{{ divination.name }}</div>
+    @if (divination) {
+      <div class="creator-card">
+        <div class="row">
+          <div class="name">Name</div>
+          <div class="value">{{ divination.name }}</div>
+        </div>
+        <div class="row">
+          <div class="name">Description</div>
+          <div class="value">{{ divination.description }}</div>
+        </div>
       </div>
-      <div class="row">
-        <div class="name">Description</div>
-        <div class="value">{{ divination.description }}</div>
-      </div>
-    </div>
     }
     <button mat-flat-button (click)="set()">roll 1d100</button>
   </mat-card>

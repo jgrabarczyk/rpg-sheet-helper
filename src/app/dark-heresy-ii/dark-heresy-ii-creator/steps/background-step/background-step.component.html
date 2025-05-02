@@ -4,13 +4,13 @@
   [valid]="!!selectedBackground"
 >
   <div class="creator-step-content">
-    @for(background of backgrounds; track background[0]){
-    <app-background-card
-      class="creator-card-wrapper"
-      [ngClass]="{ selected: background[0] === selectedBackground }"
-      [background]="background[1]"
-      (click)="select(background)"
-    />
+    @for (background of backgrounds; track background[0]) {
+      <app-background-card
+        class="creator-card-wrapper"
+        [ngClass]="{ selected: background[0] === selectedBackground }"
+        [background]="background[1]"
+        (click)="select(background)"
+      />
     }
   </div>
 </app-card-list-step>

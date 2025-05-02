@@ -1,34 +1,33 @@
 <mat-card appearance="outlined">
-    <mat-card-header>
-        <mat-card-title>Equipment</mat-card-title>
-        <mat-card-subtitle>All your stuff</mat-card-subtitle>
-    </mat-card-header>
+  <mat-card-header>
+    <mat-card-title>Equipment</mat-card-title>
+    <mat-card-subtitle>All your stuff</mat-card-subtitle>
+  </mat-card-header>
 
-    <mat-card-content class="eq-wrapper">
-
-@if(weapons.melee.data.length){
-    <app-backpack title="Melee Weapons" subtitle="Ork Smash" [table]="weapons.melee" />
-}
-@if(weapons.ranged.data.length){
-    <app-backpack title="Ranged Weapons" subtitle="Ork PEW PEW" [table]="weapons.ranged" />
-}
-@if(weapons.thrown.data.length){
-    <app-backpack title="Weapons Thrown" subtitle="Ork YEET" [table]="weapons.thrown" />
-}
-@if(protection.armours.data.length){
-    <app-backpack title="Armour" subtitle="Armours" [table]="protection.armours" />
-}
-@if(protection.forceFields.data.length){
-    <app-backpack title="Force Fields" subtitle="forceFields" [table]="protection.forceFields" />
-}
-@if(backpackTable.data.length){
-    <app-backpack title="Backpack" subtitle="Items in your inventory" [table]="backpackTable" />
-}
-</mat-card-content>
-<mat-card-actions align="end" class="eq-actions">
+  <mat-card-content class="eq-wrapper">
+    @if (weapons.melee.data.length) {
+      <app-backpack title="Melee Weapons" subtitle="Ork Smash" [table]="weapons.melee" />
+    }
+    @if (weapons.ranged.data.length) {
+      <app-backpack title="Ranged Weapons" subtitle="Ork PEW PEW" [table]="weapons.ranged" />
+    }
+    @if (weapons.thrown.data.length) {
+      <app-backpack title="Weapons Thrown" subtitle="Ork YEET" [table]="weapons.thrown" />
+    }
+    @if (protection.armours.data.length) {
+      <app-backpack title="Armour" subtitle="Armours" [table]="protection.armours" />
+    }
+    @if (protection.forceFields.data.length) {
+      <app-backpack title="Force Fields" subtitle="forceFields" [table]="protection.forceFields" />
+    }
+    @if (backpackTable.data.length) {
+      <app-backpack title="Backpack" subtitle="Items in your inventory" [table]="backpackTable" />
+    }
+  </mat-card-content>
+  <mat-card-actions align="end" class="eq-actions">
     <button name="addItems" mat-flat-button (click)="addItems()">Add Items</button>
-</mat-card-actions>
-<mat-card-footer class="eq-footer">
+  </mat-card-actions>
+  <mat-card-footer class="eq-footer">
     <!-- Money: 00 -->
-</mat-card-footer>
+  </mat-card-footer>
 </mat-card>

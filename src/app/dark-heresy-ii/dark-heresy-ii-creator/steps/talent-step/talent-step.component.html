@@ -1,13 +1,10 @@
 <app-two-column-step title="Determine Talents" [valid]="valid">
-  <p card-content>
-    Talents
-  </p>
+  <p card-content>Talents</p>
 
   <app-dynamic-list
     right-column
     [items]="talents"
     [optionalItems]="talentsToPick"
     (update)="save($event)"
-    
   />
 </app-two-column-step>

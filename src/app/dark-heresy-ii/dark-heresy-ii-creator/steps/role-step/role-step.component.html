@@ -4,13 +4,13 @@
   [valid]="!!selectedRole"
 >
   <div class="creator-step-content">
-    @for(role of roles; track role[0]){
-    <app-role-card
-      class="creator-card-wrapper"
-      [ngClass]="{ selected: role[0] === selectedRole }"
-      [role]="role[1]"
-      (click)="select(role)"
-    />
+    @for (role of roles; track role[0]) {
+      <app-role-card
+        class="creator-card-wrapper"
+        [ngClass]="{ selected: role[0] === selectedRole }"
+        [role]="role[1]"
+        (click)="select(role)"
+      />
     }
   </div>
 </app-card-list-step>

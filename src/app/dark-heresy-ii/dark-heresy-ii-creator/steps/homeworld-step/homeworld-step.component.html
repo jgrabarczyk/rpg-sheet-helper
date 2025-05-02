@@ -5,13 +5,13 @@
   [valid]="!!selectedHomeworld"
 >
   <div class="creator-step-content">
-    @for(homeworld of homeworlds; track homeworld[0]){
-    <app-homeworld-card
-      class="creator-card-wrapper"
-      [ngClass]="{ selected: homeworld[0] === selectedHomeworld }"
-      [homeworld]="homeworld[1]"
-      (click)="select(homeworld)"
-    />
+    @for (homeworld of homeworlds; track homeworld[0]) {
+      <app-homeworld-card
+        class="creator-card-wrapper"
+        [ngClass]="{ selected: homeworld[0] === selectedHomeworld }"
+        [homeworld]="homeworld[1]"
+        (click)="select(homeworld)"
+      />
     }
   </div>
 </app-card-list-step>

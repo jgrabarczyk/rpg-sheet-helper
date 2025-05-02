@@ -9,7 +9,9 @@
       <div class="name">Aptitude:</div>
       <div class="value">
         {{ role.aptitudes | spread }}
-        @if(role.pick.aptitudes){<ng-container *ngTemplateOutlet="pickAptitudes" />}
+        @if (role.pick.aptitudes) {
+          <ng-container *ngTemplateOutlet="pickAptitudes" />
+        }
       </div>
     </div>
 

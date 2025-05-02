@@ -13,9 +13,9 @@
     <div class="row rs-list-item">
       <div class="name">Skills</div>
       <div class="value">
-        @if(background.skills){
+        @if (background.skills) {
           {{ background.skills | spread }}
-          , 
+          ,
         }
         {{ background.pick?.skills | or }}
       </div>
@@ -24,9 +24,9 @@
     <div class="row rs-list-item">
       <div class="name">Talents</div>
       <div class="value">
-        @if(background.talents){
+        @if (background.talents) {
           {{ background.talents | spread }}
-          , 
+          ,
         }
         {{ background.pick?.talents | or }}
       </div>
@@ -34,9 +34,9 @@
     <div class="row rs-list-item">
       <div class="name">Equipment</div>
       <div class="value">
-        @if(background.equipment){
+        @if (background.equipment) {
           {{ background.equipment | spread }}
-          , 
+          ,
         }
         {{ background.pick?.equipment | or }}
       </div>

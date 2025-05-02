@@ -1,14 +1,16 @@
 <!-- @todo use "step" as grid class -->
-@if(step !== 'first') {
+@if (step !== 'first') {
   <button mat-stroked-button matStepperPrevious>Back</button>
 } @else {
   <!-- provide empty space for navigation grid -->
   <div></div>
-} @if(step !== 'last' ) {
-<button mat-flat-button matStepperNext [disabled]="!valid">Next</button>
-} @if(step === 'last') {
-<div>
-  <button mat-flat-button (click)="resetAll.emit()" >Reset all</button>
-  <button mat-flat-button (click)="save.emit()" [disabled]="!valid">Save character</button>
-</div>
+}
+@if (step !== 'last') {
+  <button mat-flat-button matStepperNext [disabled]="!valid">Next</button>
+}
+@if (step === 'last') {
+  <div>
+    <button mat-flat-button (click)="resetAll.emit()">Reset all</button>
+    <button mat-flat-button (click)="save.emit()" [disabled]="!valid">Save character</button>
+  </div>
 }
