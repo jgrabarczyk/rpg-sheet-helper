@@ -1,28 +1,27 @@
 :host {
-    display: grid;
-    grid-template-areas: 'label input lvl lvlBtn roll';
-    grid-template-columns: repeat(5, 1fr);
-    align-items: center;
-    padding: 5px;
-  }
-  
-  .label {
-    grid-area: label;
-  }
-  
-  .input {
-    grid-area: input;
-  }
-  
-  .lvl-wrapper {
-    grid-area: lvl;
-  }
-  
-  .lvl-buttons {
-    grid-area: lvlBtn;
-  }
-  
-  .roll {
-    grid-area: roll;
-  }
-  
+  display: grid;
+  grid-template-areas: 'label input lvl lvlBtn roll';
+  grid-template-columns: repeat(5, 1fr);
+  align-items: center;
+  padding: 5px;
+}
+
+.label {
+  grid-area: label;
+}
+
+.input {
+  grid-area: input;
+}
+
+.lvl-wrapper {
+  grid-area: lvl;
+}
+
+.lvl-buttons {
+  grid-area: lvlBtn;
+}
+
+.roll {
+  grid-area: roll;
+}

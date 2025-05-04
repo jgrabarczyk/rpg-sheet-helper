@@ -7,7 +7,7 @@ import {
   MatStepHarness,
   MatStepperHarness,
   MatStepperNextHarness,
-  MatStepperPreviousHarness
+  MatStepperPreviousHarness,
 } from '@angular/material/stepper/testing';
 import { MatCardHarness } from '@angular/material/card/testing';
 import { MatButtonHarness } from '@angular/material/button/testing';
@@ -49,7 +49,7 @@ describe('DarkHeresyIICreatorComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [DarkHeresyIICreatorComponent, NoopAnimationsModule]
+      imports: [DarkHeresyIICreatorComponent, NoopAnimationsModule],
     }).compileComponents();
 
     fixture = TestBed.createComponent(DarkHeresyIICreatorComponent);
@@ -69,18 +69,20 @@ describe('DarkHeresyIICreatorComponent', () => {
       equipmentStep,
       woundsAndFateStep,
       divinationStep,
-      finalStep
+      finalStep,
     ] = await stepper.getSteps();
 
     previousStep = await loader.getHarness(MatStepperPreviousHarness);
     nextStep = await loader.getHarness(MatStepperNextHarness);
 
-    rollLogger = await loader.getHarness(MatCardHarness.with({ selector: '[name=rollLogger]' }));
+    rollLogger = await loader.getHarness(
+      MatCardHarness.with({ selector: '[name=rollLogger]' })
+    );
   });
 
-  afterEach(()=>{
+  afterEach(() => {
     localStorage.clear();
-  })
+  });
 
   it('should create', () => {
     expect(component).toBeTruthy();
@@ -90,9 +92,8 @@ describe('DarkHeresyIICreatorComponent', () => {
     /*---------------------------------------------------------------------------------------
      * 1 step - Choose Homeworld
      *---------------------------------------------------------------------------------------*/
-    const homerworldCards: HomeworldCardHarness[] = await homeworldStep.getAllHarnesses(
-      HomeworldCardHarness
-    );
+    const homerworldCards: HomeworldCardHarness[] =
+      await homeworldStep.getAllHarnesses(HomeworldCardHarness);
     expect(homerworldCards.length).toBe(15);
     await homerworldCards[0].click();
     await nextStep.click();
@@ -103,9 +104,8 @@ describe('DarkHeresyIICreatorComponent', () => {
     /*---------------------------------------------------------------------------------------
      * 2 step - Choose Background
      *---------------------------------------------------------------------------------------*/
-    const backgroundCards: BackgroundCardHarness[] = await backgroundStep.getAllHarnesses(
-      BackgroundCardHarness
-    );
+    const backgroundCards: BackgroundCardHarness[] =
+      await backgroundStep.getAllHarnesses(BackgroundCardHarness);
     expect(backgroundCards.length).toBe(13);
     await backgroundCards[0].click();
     await nextStep.click();
@@ -114,7 +114,8 @@ describe('DarkHeresyIICreatorComponent', () => {
     /*---------------------------------------------------------------------------------------
      * 3 step - Choose Role
      *---------------------------------------------------------------------------------------*/
-    const roleStepCards: RoleCardHarness[] = await roleStep.getAllHarnesses(RoleCardHarness);
+    const roleStepCards: RoleCardHarness[] =
+      await roleStep.getAllHarnesses(RoleCardHarness);
     expect(roleStepCards.length).toBe(12);
     await roleStepCards[0].click();
     await nextStep.click();
@@ -123,25 +124,30 @@ describe('DarkHeresyIICreatorComponent', () => {
     /*---------------------------------------------------------------------------------------
      * 4 step - Choose Attributes
      *---------------------------------------------------------------------------------------*/
-    const [attributeDescription, attributeList]: MatCardHarness[] = await parallel(() => [
-      attributesStep.getHarness(
-        MatCardHarness.with({ selector: '[name="twoColumnDescriptionCard"]' })
-      ),
-      attributesStep.getHarness(MatCardHarness.with({ selector: '[name="attributeGroup"]' }))
-    ]);
+    const [attributeDescription, attributeList]: MatCardHarness[] =
+      await parallel(() => [
+        attributesStep.getHarness(
+          MatCardHarness.with({ selector: '[name="twoColumnDescriptionCard"]' })
+        ),
+        attributesStep.getHarness(
+          MatCardHarness.with({ selector: '[name="attributeGroup"]' })
+        ),
+      ]);
 
-    const generateAttributeValuesButton: MatButtonHarness = await attributeDescription.getHarness(
-      MatButtonHarness
-    );
+    const generateAttributeValuesButton: MatButtonHarness =
+      await attributeDescription.getHarness(MatButtonHarness);
     await generateAttributeValuesButton.click();
 
-    const attributeInputs: MatInputHarness[] = await attributeList.getAllHarnesses(MatInputHarness);
+    const attributeInputs: MatInputHarness[] =
+      await attributeList.getAllHarnesses(MatInputHarness);
     const attributeValues: string[] = await parallel(() =>
       attributeInputs.map(el => el.getValue())
     );
     // check if generated attribute values mach their rolled values
     rollLoggerItems = await rollLogger.getAllHarnesses(MatListItemHarness);
-    rollLoggerMessages = await parallel(() => rollLoggerItems.map(roll => roll.getSecondaryText()));
+    rollLoggerMessages = await parallel(() =>
+      rollLoggerItems.map(roll => roll.getSecondaryText())
+    );
 
     const attributeRollResults: number[] = rollLoggerMessages
       .filter(v => !!v)
@@ -153,12 +159,15 @@ describe('DarkHeresyIICreatorComponent', () => {
         .toBe(attributeRollResults[index] + 20);
     });
 
-    const rerollAttributeButton: MatButtonHarness = await attributeList.getHarness(
-      MatButtonHarness.with({ text: 'Reroll attribute' })
-    );
+    const rerollAttributeButton: MatButtonHarness =
+      await attributeList.getHarness(
+        MatButtonHarness.with({ text: 'Reroll attribute' })
+      );
     rerollAttributeButton.click();
     rollLoggerItems = await rollLogger.getAllHarnesses(MatListItemHarness);
-    expect(rollLoggerItems.length).withContext('after attribute generation and attribute reroll').toBe(11)
+    expect(rollLoggerItems.length)
+      .withContext('after attribute generation and attribute reroll')
+      .toBe(11);
 
     await nextStep.click();
     expect(await attributesStep.isCompleted()).toBeTrue();
@@ -166,23 +175,25 @@ describe('DarkHeresyIICreatorComponent', () => {
     /*---------------------------------------------------------------------------------------
      * 5 step - Choose Aptitudes
      *---------------------------------------------------------------------------------------*/
-    const [aptitudesDescription, aptitudesList]: MatCardHarness[] = await parallel(() => [
-      aptitudesStep.getHarness(
-        MatCardHarness.with({ selector: '[name="twoColumnDescriptionCard"]' })
-      ),
-      aptitudesStep.getHarness(MatCardHarness.with({ selector: '[right-column]' }))
-    ]);
+    const [aptitudesDescription, aptitudesList]: MatCardHarness[] =
+      await parallel(() => [
+        aptitudesStep.getHarness(
+          MatCardHarness.with({ selector: '[name="twoColumnDescriptionCard"]' })
+        ),
+        aptitudesStep.getHarness(
+          MatCardHarness.with({ selector: '[right-column]' })
+        ),
+      ]);
 
-    const saveAptitudesButton: MatButtonHarness = await aptitudesDescription.getHarness(
-      MatButtonHarness
-    );
+    const saveAptitudesButton: MatButtonHarness =
+      await aptitudesDescription.getHarness(MatButtonHarness);
     expect(await saveAptitudesButton.isDisabled()).toBeTrue();
 
-    const [fristAptitude, secondAptitude]: MatSelectHarness[] = await aptitudesList.getAllHarnesses(
-      MatSelectHarness
-    );
+    const [fristAptitude, secondAptitude]: MatSelectHarness[] =
+      await aptitudesList.getAllHarnesses(MatSelectHarness);
     await fristAptitude.open();
-    const firstAptitudeOptions: MatOptionHarness[] = await fristAptitude.getOptions();
+    const firstAptitudeOptions: MatOptionHarness[] =
+      await fristAptitude.getOptions();
     const fristAptitudeValues: string[] = await parallel(() =>
       firstAptitudeOptions.map(option => option.getText())
     );
@@ -190,7 +201,8 @@ describe('DarkHeresyIICreatorComponent', () => {
     await fristAptitude.clickOptions({ text: 'Knowledge' });
 
     await secondAptitude.open();
-    const secondAptitudeOptions: MatOptionHarness[] = await secondAptitude.getOptions();
+    const secondAptitudeOptions: MatOptionHarness[] =
+      await secondAptitude.getOptions();
     const secondAptitudeValues: string[] = await parallel(() =>
       secondAptitudeOptions.map(option => option.getText())
     );
@@ -208,12 +220,12 @@ describe('DarkHeresyIICreatorComponent', () => {
     const talentsList: MatCardHarness = await talentsStep.getHarness(
       MatCardHarness.with({ selector: '[right-column]' })
     );
-    const [firstTalent, secondTalent]: MatSelectHarness[] = await talentsList.getAllHarnesses(
-      MatSelectHarness
-    );
+    const [firstTalent, secondTalent]: MatSelectHarness[] =
+      await talentsList.getAllHarnesses(MatSelectHarness);
 
     await firstTalent.open();
-    const firstTalentOptions: MatOptionHarness[] = await firstTalent.getOptions();
+    const firstTalentOptions: MatOptionHarness[] =
+      await firstTalent.getOptions();
     const firstTalentValues: string[] = await parallel(() =>
       firstTalentOptions.map(option => option.getText())
     );
@@ -223,16 +235,20 @@ describe('DarkHeresyIICreatorComponent', () => {
     await firstTalent.clickOptions({ text: 'Weapon Training (Las)' });
 
     await secondTalent.open();
-    const secondTalentOptions: MatOptionHarness[] = await secondTalent.getOptions();
+    const secondTalentOptions: MatOptionHarness[] =
+      await secondTalent.getOptions();
     const secondTalentValues: string[] = await parallel(() =>
       secondTalentOptions.map(option => option.getText())
     );
     expect(secondTalentValues.join(',')).toBe('Jaded,Leap Up');
     await secondTalent.clickOptions({ text: 'Jaded' });
 
-    const saveTalentButton: MatButtonHarness = await talentsList.getHarness(MatButtonHarness);
+    const saveTalentButton: MatButtonHarness =
+      await talentsList.getHarness(MatButtonHarness);
     expect(await saveTalentButton.isDisabled())
-      .withContext('saveTalentButton should be enabled after choosing all talents')
+      .withContext(
+        'saveTalentButton should be enabled after choosing all talents'
+      )
       .toBeFalse();
 
     await saveTalentButton.click();
@@ -246,7 +262,8 @@ describe('DarkHeresyIICreatorComponent', () => {
       MatCardHarness.with({ selector: '[right-column]' })
     );
 
-    const skills: MatSelectHarness[] = await skillList.getAllHarnesses(MatSelectHarness);
+    const skills: MatSelectHarness[] =
+      await skillList.getAllHarnesses(MatSelectHarness);
 
     expect(skills.length).toBe(1);
 
@@ -258,9 +275,12 @@ describe('DarkHeresyIICreatorComponent', () => {
     expect(skillValues.join(',')).toBe('Commerce,Medicae');
     await skills[0].clickOptions({ text: 'Medicae' });
 
-    const saveSkillButton: MatButtonHarness = await skillList.getHarness(MatButtonHarness);
+    const saveSkillButton: MatButtonHarness =
+      await skillList.getHarness(MatButtonHarness);
     expect(await saveSkillButton.isDisabled())
-      .withContext('saveSkillButton should be enabled after choosing all skills')
+      .withContext(
+        'saveSkillButton should be enabled after choosing all skills'
+      )
       .toBeFalse();
 
     await saveSkillButton.click();
@@ -274,19 +294,25 @@ describe('DarkHeresyIICreatorComponent', () => {
       MatCardHarness.with({ selector: '[right-column]' })
     );
 
-    const equipment: MatSelectHarness[] = await equipmentList.getAllHarnesses(MatSelectHarness);
+    const equipment: MatSelectHarness[] =
+      await equipmentList.getAllHarnesses(MatSelectHarness);
 
     expect(equipment.length).toBe(1);
 
     await equipment[0].open();
     const eqOptions: MatOptionHarness[] = await equipment[0].getOptions();
-    const eqValues: string[] = await parallel(() => eqOptions.map(option => option.getText()));
+    const eqValues: string[] = await parallel(() =>
+      eqOptions.map(option => option.getText())
+    );
     expect(eqValues.join(',')).toBe('Laspistol,Stub Automatic');
     await equipment[0].clickOptions({ text: 'Laspistol' });
 
-    const saveEquButton: MatButtonHarness = await equipmentList.getHarness(MatButtonHarness);
+    const saveEquButton: MatButtonHarness =
+      await equipmentList.getHarness(MatButtonHarness);
     expect(await saveEquButton.isDisabled())
-      .withContext('saveEquButton should be enabled after choosing all equipment')
+      .withContext(
+        'saveEquButton should be enabled after choosing all equipment'
+      )
       .toBeFalse();
 
     await saveEquButton.click();
@@ -296,18 +322,20 @@ describe('DarkHeresyIICreatorComponent', () => {
     /*---------------------------------------------------------------------------------------
      * 9 step - Determine Wounds and Fate
      *---------------------------------------------------------------------------------------*/
-    const woundsAndFateCard: MatCardHarness = await woundsAndFateStep.getHarness(
-      MatCardHarness.with({ selector: '[right-column]' })
-    );
-    const [woundsButton, fateButton]: MatButtonHarness[] = await woundsAndFateCard.getAllHarnesses(
-      MatButtonHarness
-    );
+    const woundsAndFateCard: MatCardHarness =
+      await woundsAndFateStep.getHarness(
+        MatCardHarness.with({ selector: '[right-column]' })
+      );
+    const [woundsButton, fateButton]: MatButtonHarness[] =
+      await woundsAndFateCard.getAllHarnesses(MatButtonHarness);
 
     await woundsButton.click();
     await fateButton.click();
 
     rollLoggerItems = await rollLogger.getAllHarnesses(MatListItemHarness);
-    rollLoggerMessages = await parallel(() => rollLoggerItems.map(roll => roll.getSecondaryText()));
+    rollLoggerMessages = await parallel(() =>
+      rollLoggerItems.map(roll => roll.getSecondaryText())
+    );
 
     expect(rollLoggerMessages.length)
       .withContext('rolls logger should has 13 entries at this step')
@@ -321,13 +349,18 @@ describe('DarkHeresyIICreatorComponent', () => {
     const divinationCard: MatCardHarness = await divinationStep.getHarness(
       MatCardHarness.with({ selector: '[right-column]' })
     );
-    const buttons: MatButtonHarness[] = await divinationCard.getAllHarnesses(MatButtonHarness);
-    expect(buttons.length).withContext('divination card should has only one button').toBe(1);
+    const buttons: MatButtonHarness[] =
+      await divinationCard.getAllHarnesses(MatButtonHarness);
+    expect(buttons.length)
+      .withContext('divination card should has only one button')
+      .toBe(1);
 
     await buttons[0].click();
 
     rollLoggerItems = await rollLogger.getAllHarnesses(MatListItemHarness);
-    rollLoggerMessages = await parallel(() => rollLoggerItems.map(roll => roll.getSecondaryText()));
+    rollLoggerMessages = await parallel(() =>
+      rollLoggerItems.map(roll => roll.getSecondaryText())
+    );
     expect(rollLoggerMessages.length)
       .withContext(
         'After attribute initialization, and wound,and fate, and divination rolls logger should has 14 entries'
@@ -341,10 +374,10 @@ describe('DarkHeresyIICreatorComponent', () => {
       MatCardHarness.with({ selector: '[right-column]' })
     );
 
-    const saveDetailsButton: MatButtonHarness = await finalCard.getHarness(MatButtonHarness);
-    const [nameInput, ageInput]: MatInputHarness[] = await finalCard.getAllHarnesses(
-      MatInputHarness
-    );
+    const saveDetailsButton: MatButtonHarness =
+      await finalCard.getHarness(MatButtonHarness);
+    const [nameInput, ageInput]: MatInputHarness[] =
+      await finalCard.getAllHarnesses(MatInputHarness);
 
     await nameInput.setValue('Imperator');
     await ageInput.setValue('987');
@@ -356,7 +389,8 @@ describe('DarkHeresyIICreatorComponent', () => {
     );
     await saveCharacter.click();
 
-    const dialog: MatDialogHarness = await rootLoader.getHarness(MatDialogHarness);
+    const dialog: MatDialogHarness =
+      await rootLoader.getHarness(MatDialogHarness);
     const input: MatInputHarness = await dialog.getHarness(MatInputHarness);
     await input.setValue('Khorne');
     const dialogSaveButton: MatButtonHarness = await dialog.getHarness(
@@ -364,7 +398,8 @@ describe('DarkHeresyIICreatorComponent', () => {
     );
     await dialogSaveButton.click();
 
-    const savedCharacterStringified: string | null = localStorage.getItem('dhii+Khorne');
+    const savedCharacterStringified: string | null =
+      localStorage.getItem('dhii+Khorne');
     expect(savedCharacterStringified).toBeTruthy();
   });
 });

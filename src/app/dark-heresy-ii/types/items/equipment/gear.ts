@@ -9,8 +9,8 @@ export const GEAR: Map<string, GenericItem> = new Map([
       weightInKilos: 2,
       availability: Availability.ABUNDANT,
       notes:
-        'Allows 30 kg of extra weight but requires a full action to remove object. Incompatible with the Combat Vest.'
-    }
+        'Allows 30 kg of extra weight but requires a full action to remove object. Incompatible with the Combat Vest.',
+    },
   ],
   [
     'Chameleoline Cloak',
@@ -18,8 +18,8 @@ export const GEAR: Map<string, GenericItem> = new Map([
       name: 'Chameleoline Cloak',
       weightInKilos: 0.5,
       availability: Availability.RARE,
-      notes: 'Gains +20 to stealth tests.'
-    }
+      notes: 'Gains +20 to stealth tests.',
+    },
   ],
   [
     'Chrono',
@@ -27,8 +27,8 @@ export const GEAR: Map<string, GenericItem> = new Map([
       name: 'Chrono',
       weightInKilos: 0,
       availability: Availability.PLENTIFUL,
-      notes: 'Keeps time.'
-    }
+      notes: 'Keeps time.',
+    },
   ],
   [
     'Clothing',
@@ -36,8 +36,8 @@ export const GEAR: Map<string, GenericItem> = new Map([
       name: 'Clothing',
       weightInKilos: 2,
       availability: Availability.ABUNDANT,
-      notes: "Used to keep warm or disguise yourself. It's clothing."
-    }
+      notes: "Used to keep warm or disguise yourself. It's clothing.",
+    },
   ],
   [
     'Combat Vest',
@@ -46,8 +46,8 @@ export const GEAR: Map<string, GenericItem> = new Map([
       weightInKilos: 2,
       availability: Availability.SCARCE,
       notes:
-        'Holds 15 kg of items and can draw items in combat as Free Action. Incompatible with the Backpack.'
-    }
+        'Holds 15 kg of items and can draw items in combat as Free Action. Incompatible with the Backpack.',
+    },
   ],
   [
     'Concealed Holster',
@@ -56,8 +56,8 @@ export const GEAR: Map<string, GenericItem> = new Map([
       weightInKilos: 1,
       availability: Availability.AVERAGE,
       notes:
-        'Attempts to detect a concealed weapon suffers -20 penalty, but readying the weapon takes an extra Half Action.'
-    }
+        'Attempts to detect a concealed weapon suffers -20 penalty, but readying the weapon takes an extra Half Action.',
+    },
   ],
   [
     'Dead Space Earpiece',
@@ -65,8 +65,8 @@ export const GEAR: Map<string, GenericItem> = new Map([
       name: 'Dead Space Earpiece',
       weightInKilos: 0,
       availability: Availability.VERY_RARE,
-      notes: 'Grants +20 against Concussive tests'
-    }
+      notes: 'Grants +20 against Concussive tests',
+    },
   ],
   [
     'Explosive Collar',
@@ -75,8 +75,8 @@ export const GEAR: Map<string, GenericItem> = new Map([
       weightInKilos: 3,
       availability: Availability.SCARCE,
       notes:
-        'Range of 1 km, and if out of range for more than 5 minutes collar detonates and kills the wearer instantly. Removing requires a -20 Tech-Use. Explodes if the removal roll fails with 2 or more DoF.'
-    }
+        'Range of 1 km, and if out of range for more than 5 minutes collar detonates and kills the wearer instantly. Removing requires a -20 Tech-Use. Explodes if the removal roll fails with 2 or more DoF.',
+    },
   ],
   [
     'Filtration Plugs',
@@ -84,8 +84,8 @@ export const GEAR: Map<string, GenericItem> = new Map([
       name: 'Filtration Plugs',
       weightInKilos: 0,
       availability: Availability.COMMON,
-      notes: 'Nose plugs. Grant +20 against gas.'
-    }
+      notes: 'Nose plugs. Grant +20 against gas.',
+    },
   ],
   [
     'Photo-Visors/Contacts',
@@ -93,8 +93,8 @@ export const GEAR: Map<string, GenericItem> = new Map([
       name: 'Photo-Visors/Contacts',
       weightInKilos: 0.5,
       availability: Availability.SCARCE,
-      notes: 'Grants Dark-Sight trait.'
-    }
+      notes: 'Grants Dark-Sight trait.',
+    },
   ],
   [
     'Preysense Goggles',
@@ -102,8 +102,8 @@ export const GEAR: Map<string, GenericItem> = new Map([
       name: 'Preysense Goggles',
       weightInKilos: 0.5,
       availability: Availability.VERY_RARE,
-      notes: 'Grants +20 to vision in darkness.'
-    }
+      notes: 'Grants +20 to vision in darkness.',
+    },
   ],
   [
     'Rebreather',
@@ -112,8 +112,8 @@ export const GEAR: Map<string, GenericItem> = new Map([
       weightInKilos: 1,
       availability: Availability.SCARCE,
       notes:
-        'Immune to toxic atmospheres, even allowing water-breathing. Last for 1 hour, takes Full Action to replace.'
-    }
+        'Immune to toxic atmospheres, even allowing water-breathing. Last for 1 hour, takes Full Action to replace.',
+    },
   ],
   [
     'Recoil Glove',
@@ -121,8 +121,8 @@ export const GEAR: Map<string, GenericItem> = new Map([
       name: 'Recoil Glove',
       weightInKilos: 0.5,
       availability: Availability.RARE,
-      notes: 'Can fire weapons one-handed without -20 penalty.'
-    }
+      notes: 'Can fire weapons one-handed without -20 penalty.',
+    },
   ],
   [
     'Respirator/Gas Mask',
@@ -130,8 +130,8 @@ export const GEAR: Map<string, GenericItem> = new Map([
       name: 'Respirator/Gas Mask',
       weightInKilos: 0.5,
       availability: Availability.AVERAGE,
-      notes: 'Grants +30 to resist effects of gas and can re-roll if failed.'
-    }
+      notes: 'Grants +30 to resist effects of gas and can re-roll if failed.',
+    },
   ],
   [
     'Survival Suit',
@@ -139,8 +139,8 @@ export const GEAR: Map<string, GenericItem> = new Map([
       name: 'Survival Suit',
       weightInKilos: 0,
       availability: Availability.AVERAGE,
-      notes: 'Grants +20 to resist extreme environments.'
-    }
+      notes: 'Grants +20 to resist extreme environments.',
+    },
   ],
   [
     'Synskin',
@@ -149,8 +149,8 @@ export const GEAR: Map<string, GenericItem> = new Map([
       weightInKilos: 2,
       availability: Availability.VERY_RARE,
       notes:
-        'Grants 2 Armor to all locations not already armoured and +10 to Stealth tests. Also immune to preysense goggles and Dark-sight trait.'
-    }
+        'Grants 2 Armor to all locations not already armoured and +10 to Stealth tests. Also immune to preysense goggles and Dark-sight trait.',
+    },
   ],
   [
     'Void Suit',
@@ -158,7 +158,8 @@ export const GEAR: Map<string, GenericItem> = new Map([
       name: 'Void Suit',
       weightInKilos: 8,
       availability: Availability.SCARCE,
-      notes: 'Enclosed suit for space. 12 hours of air and imposes a -10 to Agility tests'
-    }
-  ]
+      notes:
+        'Enclosed suit for space. 12 hours of air and imposes a -10 to Agility tests',
+    },
+  ],
 ]);

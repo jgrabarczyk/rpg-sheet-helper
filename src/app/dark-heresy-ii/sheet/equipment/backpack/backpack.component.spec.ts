@@ -7,7 +7,7 @@ interface TestType {
 
 const tableData: TableData<TestType> = {
   data: [{ wierdKey: 'a' }, { wierdKey: 'b' }],
-  headers: [{ key: 'wierdKey', value: 'headerText' }]
+  headers: [{ key: 'wierdKey', value: 'headerText' }],
 };
 
 describe('BackpackComponent', () => {
@@ -16,7 +16,7 @@ describe('BackpackComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [BackpackComponent<TestType>]
+      imports: [BackpackComponent<TestType>],
     }).compileComponents();
 
     fixture = TestBed.createComponent(BackpackComponent<TestType>);

@@ -9,7 +9,7 @@ export interface SheetHeaderAccordionData {
 
 @Pipe({
   name: 'headerAccordionData',
-  standalone: true
+  standalone: true,
 })
 export class HeaderAccordionDataPipe implements PipeTransform {
   public transform(character: DHII_Character): SheetHeaderAccordionData[] {
@@ -17,37 +17,37 @@ export class HeaderAccordionDataPipe implements PipeTransform {
       {
         title: 'Character Name',
         disabled: true,
-        description: character.details?.characterName
+        description: character.details?.characterName,
       },
       {
         title: 'Character Age',
         disabled: true,
-        description: character.details?.age
+        description: character.details?.age,
       },
       {
         title: 'Home World',
         disabled: false,
         description: character.homeworld?.value.name,
-        content: character.homeworld?.value.bonus
+        content: character.homeworld?.value.bonus,
       },
       {
         title: 'Background',
         disabled: false,
         description: character.background?.value.name,
-        content: character.background?.value.bonus
+        content: character.background?.value.bonus,
       },
       {
         title: 'Role',
         disabled: false,
         description: character.role?.value.name,
-        content: character.role?.value.bonus
+        content: character.role?.value.bonus,
       },
       {
         title: 'Divination',
         disabled: false,
         description: character.divination?.name,
-        content: character.divination?.description
-      }
+        content: character.divination?.description,
+      },
     ];
   }
 }

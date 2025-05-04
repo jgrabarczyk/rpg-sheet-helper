@@ -3,7 +3,7 @@ import { DHII_BackgroundEquipment } from '@dhii/types/dhii-background';
 
 @Pipe({
   name: 'spread',
-  standalone: true
+  standalone: true,
 })
 export class SpreadPipe implements PipeTransform {
   /**
@@ -12,11 +12,16 @@ export class SpreadPipe implements PipeTransform {
    * @param separator string used as a Array.join() argument
    * @returns string
    */
-  public transform(value?: string[] | DHII_BackgroundEquipment[], separator: string = ', '): string {
+  public transform(
+    value?: string[] | DHII_BackgroundEquipment[],
+    separator: string = ', '
+  ): string {
     if (!value || value.length === 0) {
       return '';
     }
 
-    return value.map(el => (typeof el === 'object' ? el.value : el)).join(separator);
+    return value
+      .map(el => (typeof el === 'object' ? el.value : el))
+      .join(separator);
   }
 }

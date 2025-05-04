@@ -23,13 +23,15 @@
     "noUnusedLocals": true,
     "baseUrl": "./src/app",
     "paths": {
-      //dark heresy paths 
+      //dark heresy paths
       "@dhii/partials/*": ["dark-heresy-ii/partials/*"],
       "@dhii/pipes/*": ["dark-heresy-ii/pipes/*"],
       "@dhii/types/*": ["dark-heresy-ii/types/*"],
       "@dhii/util/*": ["dark-heresy-ii/utility/*"],
       "@dhii/steps/*": ["dark-heresy-ii/dark-heresy-ii-creator/steps/*"],
-      "@dhii/stepper-partials/*": ["dark-heresy-ii/dark-heresy-ii-creator/partials/*"],
+      "@dhii/stepper-partials/*": [
+        "dark-heresy-ii/dark-heresy-ii-creator/partials/*"
+      ],
 
       // global paths
       "@appTypes/*": ["types/*"],

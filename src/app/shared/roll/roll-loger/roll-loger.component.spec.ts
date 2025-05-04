@@ -8,9 +8,8 @@ describe('RollLogerComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [RollLogerComponent]
-    })
-    .compileComponents();
+      imports: [RollLogerComponent],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(RollLogerComponent);
     component = fixture.componentInstance;

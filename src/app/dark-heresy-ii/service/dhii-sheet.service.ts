@@ -6,7 +6,7 @@ import {
   calculateSkillValue,
   DHII_Aptitude,
   DHII_Character,
-  INITIAL_CHARACTER
+  INITIAL_CHARACTER,
 } from '@dhii/types/dark-heresy-ii';
 import { DHII_Attributes, DHII_Attribute } from '@dhii/types/dhii-attribute';
 import { DHII_Skill, DHII_SkillName } from '@dhii/types/dhii-skill';
@@ -15,7 +15,7 @@ import { DHII_Equipment } from '@dhii/types/items/generic-item';
 import { LocalStorageService } from 'services/localstorage.service';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class DHII_SheetService {
   private readonly storageService = inject(LocalStorageService);
@@ -33,9 +33,8 @@ export class DHII_SheetService {
     .asObservable()
     .pipe(map(character => character.attributes));
 
-  readonly skills$: Observable<Map<DHII_SkillName, DHII_Skill>> = this.character$.pipe(
-    map(character => character.skills)
-  );
+  readonly skills$: Observable<Map<DHII_SkillName, DHII_Skill>> =
+    this.character$.pipe(map(character => character.skills));
 
   readonly aptitudes$: Observable<DHII_Aptitude[]> = this.character$.pipe(
     map(character => character.aptitudes)
@@ -54,18 +53,21 @@ export class DHII_SheetService {
   public saveCharacterToLocalStorage(): void {
     this.storageService
       .saveCharacterToLocalStorage(this.getCharacter(), 'dhii')
-      .subscribe(saveName => this.router.navigate(['/sheet', 'dhii', saveName]));
+      .subscribe(saveName =>
+        this.router.navigate(['/sheet', 'dhii', saveName])
+      );
   }
 
   public loadCurrentCharacter(): void {
     this.storageService.loadCurrentCharacter();
   }
 
-  public loadCharacterFromLocalStorage(item: string, skipRedirect: boolean = false): void {
-    const loadedCharacter: DHII_Character = this.storageService.loadCharacterFromLocalStorage(
-      item,
-      'dhii'
-    );
+  public loadCharacterFromLocalStorage(
+    item: string,
+    skipRedirect: boolean = false
+  ): void {
+    const loadedCharacter: DHII_Character =
+      this.storageService.loadCharacterFromLocalStorage(item, 'dhii');
 
     this.updateCharacter(loadedCharacter);
 
@@ -77,7 +79,9 @@ export class DHII_SheetService {
   }
 
   public deleteCharacterFromLocalStorage(item: string): void {
-    this.storageService.deleteCharacterFromLocalStorage(item, 'dhii').subscribe();
+    this.storageService
+      .deleteCharacterFromLocalStorage(item, 'dhii')
+      .subscribe();
   }
 
   public deleteCurrentCharacter(): void {
@@ -88,16 +92,17 @@ export class DHII_SheetService {
 
   public addEquipment(equipment: DHII_Equipment): void {
     const character: DHII_Character = this.getCharacter();
-    const currentEquipment: DHII_Equipment | undefined = character.equipment ?? {
-      armours: [],
-      backpack: [],
-      weapons: []
-    };
+    const currentEquipment: DHII_Equipment | undefined =
+      character.equipment ?? {
+        armours: [],
+        backpack: [],
+        weapons: [],
+      };
 
     character.equipment = {
       armours: [...currentEquipment.armours, ...equipment.armours],
       weapons: [...currentEquipment.weapons, ...equipment.weapons],
-      backpack: [...currentEquipment.backpack, ...equipment.backpack]
+      backpack: [...currentEquipment.backpack, ...equipment.backpack],
     };
 
     this.updateCharacter(character);
@@ -105,7 +110,9 @@ export class DHII_SheetService {
 
   public updateAttribute(changedAttribute: DHII_Attribute): void {
     const character: DHII_Character = this.getCharacter();
-    const attribute: DHII_Attribute | undefined = character.attributes.get(changedAttribute.name);
+    const attribute: DHII_Attribute | undefined = character.attributes.get(
+      changedAttribute.name
+    );
 
     if (!attribute) {
       throw Error('No attribute found with name ' + changedAttribute.name);
@@ -113,10 +120,13 @@ export class DHII_SheetService {
 
     attribute.value = this.calculateAttributeValue({
       current: attribute,
-      updated: changedAttribute
+      updated: changedAttribute,
     });
 
-    if (attribute.name !== 'Influence' && changedAttribute.name !== 'Influence') {
+    if (
+      attribute.name !== 'Influence' &&
+      changedAttribute.name !== 'Influence'
+    ) {
       attribute.lvl = changedAttribute.lvl;
     }
 
@@ -126,9 +136,14 @@ export class DHII_SheetService {
 
   public updateSkill(changedSkill: DHII_Skill): void {
     const character: DHII_Character = this.getCharacter();
-    const attribute: DHII_Attribute = character.attributes.get(changedSkill.basedOn)!;
+    const attribute: DHII_Attribute = character.attributes.get(
+      changedSkill.basedOn
+    )!;
 
-    character.skills.get(changedSkill.name)!.value = calculateSkillValue(changedSkill, attribute);
+    character.skills.get(changedSkill.name)!.value = calculateSkillValue(
+      changedSkill,
+      attribute
+    );
 
     this.updateCharacter(character);
   }
@@ -159,7 +174,8 @@ export class DHII_SheetService {
     updated: DHII_Attribute;
     current: DHII_Attribute;
   }): number {
-    return attribute.updated.name === 'Influence' || attribute.current.name === 'Influence'
+    return attribute.updated.name === 'Influence' ||
+      attribute.current.name === 'Influence'
       ? attribute.updated.value
       : attribute.updated.value +
           (attribute.updated.lvl.current - attribute.current.lvl.current) * 5;

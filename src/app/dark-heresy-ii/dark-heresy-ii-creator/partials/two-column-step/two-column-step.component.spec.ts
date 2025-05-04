@@ -10,9 +10,8 @@ describe('TwoColumnStepComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [TwoColumnStepComponent],
-      providers: [{ provide: CdkStepper, useValue: {} }]
-    })
-    .compileComponents();
+      providers: [{ provide: CdkStepper, useValue: {} }],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(TwoColumnStepComponent);
     component = fixture.componentInstance;

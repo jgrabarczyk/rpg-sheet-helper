@@ -1,8 +1,8 @@
-name: "Update Angular Action"
+name: 'Update Angular Action'
 on: # when the action should run. Can also be a CRON or in response to external events. see https://git.io/JeBz1
-  schedule: 
+  schedule:
     - cron: '00 3 * * 0' # run cron on 3:00 every sunday
-    
+
 jobs:
   ngxUptodate:
     runs-on: ubuntu-latest

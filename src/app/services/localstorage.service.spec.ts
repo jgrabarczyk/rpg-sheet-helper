@@ -5,14 +5,14 @@ import { MatDialog } from '@angular/material/dialog';
 import {
   dialogOpen,
   dialogOpenReturnMultipleValues,
-  DialogOpenSpy
+  DialogOpenSpy,
 } from '../../tests/mocks/dialog-ref';
 type MockData = { character: string };
 
 const openSpy: DialogOpenSpy = dialogOpen('testName');
 const mockData: MockData = { character: 'character' };
 const anotherMockData: MockData = {
-  character: 'otherCharacter'
+  character: 'otherCharacter',
 };
 
 describe('LocalstorageService', () => {
@@ -36,9 +36,9 @@ describe('LocalstorageService', () => {
       providers: [
         {
           provide: MatDialog,
-          useValue: openSpy
-        }
-      ]
+          useValue: openSpy,
+        },
+      ],
     });
   });
 
@@ -46,11 +46,18 @@ describe('LocalstorageService', () => {
     localStorage.clear();
   });
   describe('#saveCharacterToLocalStorage', () => {
-    const saveNames: string[] = ['Zorro', 'Andrzej', 'Vulkan', 'Angron', 'Magnus', 'Alpharius'];
+    const saveNames: string[] = [
+      'Zorro',
+      'Andrzej',
+      'Vulkan',
+      'Angron',
+      'Magnus',
+      'Alpharius',
+    ];
 
     beforeEach(() => {
       TestBed.overrideProvider(MatDialog, {
-        useValue: dialogOpenReturnMultipleValues(saveNames)
+        useValue: dialogOpenReturnMultipleValues(saveNames),
       });
       service = TestBed.inject(LocalStorageService);
     });
@@ -70,7 +77,7 @@ describe('LocalstorageService', () => {
 
     beforeEach(() => {
       TestBed.overrideProvider(MatDialog, {
-        useValue: dialogOpenReturnMultipleValues(saveNames)
+        useValue: dialogOpenReturnMultipleValues(saveNames),
       });
 
       service = TestBed.inject(LocalStorageService);
@@ -85,7 +92,9 @@ describe('LocalstorageService', () => {
 
     const throwMsg: string = 'There is no currentSave to load';
     it(`should throw "${throwMsg}" while loading from empty value`, () => {
-      expect(() => service.loadCurrentCharacter<MockData>()).toThrowError(throwMsg);
+      expect(() => service.loadCurrentCharacter<MockData>()).toThrowError(
+        throwMsg
+      );
     });
   });
 
@@ -95,8 +104,8 @@ describe('LocalstorageService', () => {
       TestBed.overrideProvider(MatDialog, {
         useValue: dialogOpenReturnMultipleValues([
           ...saveNames,
-          true // deleteCurrentCharacter response
-        ])
+          true, // deleteCurrentCharacter response
+        ]),
       });
 
       service = TestBed.inject(LocalStorageService);
@@ -108,9 +117,9 @@ describe('LocalstorageService', () => {
         expect(isDeleted).toBeTrue();
       });
 
-      expect(() => service.loadCharacterFromLocalStorage('Angron', 'dhii')).toThrowError(
-        `There is no key dhii+Angron in localStorage`
-      );
+      expect(() =>
+        service.loadCharacterFromLocalStorage('Angron', 'dhii')
+      ).toThrowError(`There is no key dhii+Angron in localStorage`);
       done();
     });
 
@@ -138,24 +147,26 @@ describe('LocalstorageService', () => {
 
     beforeEach(() => {
       TestBed.overrideProvider(MatDialog, {
-        useValue: dialogOpenReturnMultipleValues([...saveNames, true])
+        useValue: dialogOpenReturnMultipleValues([...saveNames, true]),
       });
 
       service = TestBed.inject(LocalStorageService);
     });
 
     it(`should throw "${throwMsg}" while trying to load from empty value`, () => {
-      expect(() => service.loadCharacterFromLocalStorage(nameToTestAgainst, 'dhii')).toThrowError(
-        throwMsg
-      );
+      expect(() =>
+        service.loadCharacterFromLocalStorage(nameToTestAgainst, 'dhii')
+      ).toThrowError(throwMsg);
     });
     it(`should throw "${throwMsg}" while trying to load from deleted record`, done => {
       saveBulk(saveNames);
-      service.deleteCharacterFromLocalStorage(nameToTestAgainst, 'dhii').subscribe(() => {
-        expect(() => service.loadCharacterFromLocalStorage(nameToTestAgainst, 'dhii')).toThrowError(
-          throwMsg
-        );
-      });
+      service
+        .deleteCharacterFromLocalStorage(nameToTestAgainst, 'dhii')
+        .subscribe(() => {
+          expect(() =>
+            service.loadCharacterFromLocalStorage(nameToTestAgainst, 'dhii')
+          ).toThrowError(throwMsg);
+        });
       done();
     });
   });

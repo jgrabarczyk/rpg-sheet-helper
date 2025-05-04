@@ -3,7 +3,7 @@ import { RateOfFire } from '@dhii/types/items/weapon/weapon';
 
 @Pipe({
   name: 'rateOfFire',
-  standalone: true
+  standalone: true,
 })
 export class RateOfFirePipe implements PipeTransform {
   public transform(value: RateOfFire): string {

@@ -4,7 +4,7 @@ import { RateOfFirePipe } from './rate-of-fire.pipe';
 describe('RateOfFirePipe', () => {
   it('parse single', () => {
     const rof: RateOfFire = {
-      single: true
+      single: true,
     };
     const pipe: RateOfFirePipe = new RateOfFirePipe();
     const transformed: string = pipe.transform(rof);
@@ -13,7 +13,7 @@ describe('RateOfFirePipe', () => {
   it('parse single and semi', () => {
     const rof: RateOfFire = {
       single: true,
-      semi: 2
+      semi: 2,
     };
     const pipe: RateOfFirePipe = new RateOfFirePipe();
     const transformed: string = pipe.transform(rof);
@@ -23,7 +23,7 @@ describe('RateOfFirePipe', () => {
     const rof: RateOfFire = {
       single: true,
       semi: 3,
-      full: 8
+      full: 8,
     };
     const pipe: RateOfFirePipe = new RateOfFirePipe();
     const transformed: string = pipe.transform(rof);
@@ -32,7 +32,7 @@ describe('RateOfFirePipe', () => {
   it('parse only full', () => {
     const rof: RateOfFire = {
       single: false,
-      full: 8
+      full: 8,
     };
     const pipe: RateOfFirePipe = new RateOfFirePipe();
     const transformed: string = pipe.transform(rof);
@@ -41,7 +41,7 @@ describe('RateOfFirePipe', () => {
   it('parse only semy', () => {
     const rof: RateOfFire = {
       single: false,
-      semi: 4
+      semi: 4,
     };
     const pipe: RateOfFirePipe = new RateOfFirePipe();
     const transformed: string = pipe.transform(rof);
@@ -51,7 +51,7 @@ describe('RateOfFirePipe', () => {
     const rof: RateOfFire = {
       single: false,
       semi: 3,
-      full: 8
+      full: 8,
     };
     const pipe: RateOfFirePipe = new RateOfFirePipe();
     const transformed: string = pipe.transform(rof);

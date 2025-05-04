@@ -8,10 +8,9 @@ describe('SkillGroupComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [SkillGroupComponent]
-    })
-    .compileComponents();
-    
+      imports: [SkillGroupComponent],
+    }).compileComponents();
+
     fixture = TestBed.createComponent(SkillGroupComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

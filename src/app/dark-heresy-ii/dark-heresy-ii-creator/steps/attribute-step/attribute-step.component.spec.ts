@@ -10,9 +10,8 @@ describe('AttributeStepComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [AttributeStepComponent],
-      providers: [{provide: CdkStepper, useValue: {}  }]
-    })
-    .compileComponents();
+      providers: [{ provide: CdkStepper, useValue: {} }],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(AttributeStepComponent);
     component = fixture.componentInstance;

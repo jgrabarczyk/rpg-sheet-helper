@@ -5,7 +5,7 @@ import {
   DHII_Attribute,
   DHII_AttributeName,
   DHII_ATTRIBUTES,
-  DHII_Attributes
+  DHII_Attributes,
 } from './dhii-attribute';
 import { DHII_Role, DHII_RoleNames } from './dhii-role';
 import { DHII_Talent, DHII_TalentName } from './dhii-talents';
@@ -29,9 +29,15 @@ export type DHII_CharacterDetails = {
   characterName: string;
   age: number;
 };
-export type DHII_CharacterHomeworld = { key: DHII_HomeworldNames; value: DHII_Homeworld };
+export type DHII_CharacterHomeworld = {
+  key: DHII_HomeworldNames;
+  value: DHII_Homeworld;
+};
 export type DHII_CharacterRole = { key: DHII_RoleNames; value: DHII_Role };
-export type DHII_CharacterBackground = { key: DHII_BackgroundNames; value: DHII_Background };
+export type DHII_CharacterBackground = {
+  key: DHII_BackgroundNames;
+  value: DHII_Background;
+};
 export interface ResourcePool {
   max: number;
   current: number;
@@ -59,22 +65,31 @@ export type DHII_Character = {
 };
 
 const ATTRIBUTES: DHII_Attributes = structuredClone(DHII_ATTRIBUTES);
-const SKILLS: Map<DHII_SkillName<string>, DHII_Skill> = structuredClone(DHII_SKILLS);
+const SKILLS: Map<DHII_SkillName<string>, DHII_Skill> = structuredClone(
+  DHII_SKILLS
+);
 
-function initializeSkills(name: DHII_SkillName, skill: DHII_Skill): [DHII_SkillName, DHII_Skill] {
+function initializeSkills(
+  name: DHII_SkillName,
+  skill: DHII_Skill
+): [DHII_SkillName, DHII_Skill] {
   const attribute: DHII_Attribute = ATTRIBUTES.get(skill.basedOn)!;
 
   return [
     name,
     {
       ...skill,
-      value: calculateSkillValue(skill, attribute)
-    }
+      value: calculateSkillValue(skill, attribute),
+    },
   ];
 }
 
-export function calculateSkillValue(skill: DHII_Skill, attribute: DHII_Attribute): number {
-  const modifier: number = skill.lvl.current === 0 ? -20 : skill.lvl.current * 10 - 10;
+export function calculateSkillValue(
+  skill: DHII_Skill,
+  attribute: DHII_Attribute
+): number {
+  const modifier: number =
+    skill.lvl.current === 0 ? -20 : skill.lvl.current * 10 - 10;
   return attribute.value + modifier;
 }
 
@@ -85,6 +100,8 @@ export const INITIAL_CHARACTER: DHII_Character = {
   fate: { max: 0, current: 0 },
   wounds: { max: 0, current: 0 },
   attributes: ATTRIBUTES,
-  skills: new Map(Array.from(SKILLS, ([name, skill]) => initializeSkills(name, skill))),
-  aptitudes: ['General']
+  skills: new Map(
+    Array.from(SKILLS, ([name, skill]) => initializeSkills(name, skill))
+  ),
+  aptitudes: ['General'],
 };

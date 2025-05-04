@@ -5,24 +5,28 @@ import { MatListModule } from '@angular/material/list';
 import { MatCardModule } from '@angular/material/card';
 
 import { Roll } from '@appTypes/roll';
-import { DHII_Attribute, DHII_AttributeName, DHII_Attributes } from '@dhii/types/dhii-attribute';
+import {
+  DHII_Attribute,
+  DHII_AttributeName,
+  DHII_Attributes,
+} from '@dhii/types/dhii-attribute';
 import { IsBonusAttributePipe } from '@dhii/pipes/is-bonus-attribute/is-bonus-attribute.pipe';
 import { assertAttributeName } from '@util/assert-attribute-name';
 
 import { AttributeComponent } from '../../sheet/attribute/attribute.component';
 
 @Component({
-    selector: 'app-attributes-group',
-    imports: [
-        CommonModule,
-        AttributeComponent,
-        MatDividerModule,
-        MatListModule,
-        MatCardModule,
-        IsBonusAttributePipe
-    ],
-    templateUrl: './attributes-group.component.html',
-    styleUrl: './attributes-group.component.scss'
+  selector: 'app-attributes-group',
+  imports: [
+    CommonModule,
+    AttributeComponent,
+    MatDividerModule,
+    MatListModule,
+    MatCardModule,
+    IsBonusAttributePipe,
+  ],
+  templateUrl: './attributes-group.component.html',
+  styleUrl: './attributes-group.component.scss',
 })
 export class AttributesGroupComponent {
   @Input({ required: true }) attributes!: DHII_Attributes;
@@ -46,7 +50,9 @@ export class AttributesGroupComponent {
   }
 
   protected increase(name: DHII_AttributeName): void {
-    const attribute: DHII_Attribute = structuredClone(this.attributes.get(name)!);
+    const attribute: DHII_Attribute = structuredClone(
+      this.attributes.get(name)!
+    );
     assertAttributeName(attribute.name);
 
     if (attribute.lvl.current >= attribute.lvl.max) {
@@ -59,7 +65,9 @@ export class AttributesGroupComponent {
   }
 
   protected decrease(name: DHII_AttributeName): void {
-    const attribute: DHII_Attribute = structuredClone(this.attributes.get(name)!);
+    const attribute: DHII_Attribute = structuredClone(
+      this.attributes.get(name)!
+    );
     assertAttributeName(attribute.name);
 
     if (attribute.lvl.current <= 0) {

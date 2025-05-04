@@ -3,7 +3,6 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "concurrently \" npm run lint:watch\" \"ng serve\"",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
@@ -12,7 +11,9 @@
     "ci:build": "ng build --optimization=true --configuration production",
     "ci:clean": "rimraf ./dist",
     "ci:lint": "ng lint",
-    "ci:test": "ng test --no-watch --no-progress --browsers=ChromeHeadless --code-coverage"
+    "ci:test": "ng test --no-watch --no-progress --browsers=ChromeHeadless --code-coverage",
+    "lint-staged": "lint-staged",
+    "prepare": "husky"
   },
   "private": true,
   "dependencies": {
@@ -49,13 +50,15 @@
     "@typescript-eslint/parser": "7.11.0",
     "eslint": "^8.57.0",
     "globals": "^15.9.0",
+    "husky": "^9.1.7",
     "jasmine-core": "~5.1.0",
     "karma": "~6.4.0",
     "karma-chrome-launcher": "~3.2.0",
     "karma-coverage": "~2.2.0",
     "karma-jasmine": "~5.1.0",
     "karma-jasmine-html-reporter": "~2.1.0",
-    "prettier": "3.1",
+    "lint-staged": "^15.5.1",
+    "prettier": "^3.5.3",
     "puppeteer": "^24.7.2",
     "typescript": "~5.5.4"
   }

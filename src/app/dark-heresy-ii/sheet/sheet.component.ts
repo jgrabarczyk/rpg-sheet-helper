@@ -18,22 +18,22 @@ import { SheetHeaderComponent } from './sheet-header/sheet-header.component';
 import { SkillGroupComponent } from './skill/skill-group/skill-group.component';
 import { TalentsGroupComponent } from './talents-group/talents-group.component';
 import { DHII_Equipment } from '@dhii/types/items/generic-item';
-import { RollLogerComponent } from "../../shared/roll/roll-loger/roll-loger.component";
+import { RollLogerComponent } from '../../shared/roll/roll-loger/roll-loger.component';
 
 @Component({
-    selector: 'app-sheet',
-    imports: [
-        AttributesGroupComponent,
-        CommonModule,
-        SkillGroupComponent,
-        AptitudesGroupComponent,
-        SheetHeaderComponent,
-        TalentsGroupComponent,
-        EquipmentComponent,
-        RollLogerComponent
-    ],
-    templateUrl: './sheet.component.html',
-    styleUrl: './sheet.component.scss'
+  selector: 'app-sheet',
+  imports: [
+    AttributesGroupComponent,
+    CommonModule,
+    SkillGroupComponent,
+    AptitudesGroupComponent,
+    SheetHeaderComponent,
+    TalentsGroupComponent,
+    EquipmentComponent,
+    RollLogerComponent,
+  ],
+  templateUrl: './sheet.component.html',
+  styleUrl: './sheet.component.scss',
 })
 export class SheetComponent implements OnInit {
   private sheetService = inject(DHII_SheetService);

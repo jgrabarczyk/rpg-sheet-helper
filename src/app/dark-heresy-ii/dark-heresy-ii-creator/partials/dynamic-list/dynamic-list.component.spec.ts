@@ -10,9 +10,8 @@ describe('DynamicListComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [DynamicListComponent],
-      providers: [{ provide: CdkStepper, useValue: {} }]
-    })
-    .compileComponents();
+      providers: [{ provide: CdkStepper, useValue: {} }],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(DynamicListComponent);
     component = fixture.componentInstance;

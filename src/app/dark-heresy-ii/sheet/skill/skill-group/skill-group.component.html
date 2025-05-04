@@ -6,23 +6,23 @@
 
   <mat-card-content>
     <mat-list role="list">
-      @for(s of skills; track s[0]; let i = $index){
+      @for (s of skills; track s[0]; let i = $index) {
         @let name = s[0];
         @let skill = s[1];
-      <mat-list-item>
-        <app-skill
-          [value]="skill.value"
-          [label]="skill.name"
-          [currentLevel]="skill.lvl.current"
-          [maxLevel]="skill.lvl.max"
-          [min]="skill.lvl.current * step"
-          [editable]="editable"
-          (decrease)="decrease(name)"
-          (increase)="increase(name)"
-          (roll)="rollDice(name, $event)"
-        />
-      </mat-list-item>
-      <mat-divider></mat-divider>
+        <mat-list-item>
+          <app-skill
+            [value]="skill.value"
+            [label]="skill.name"
+            [currentLevel]="skill.lvl.current"
+            [maxLevel]="skill.lvl.max"
+            [min]="skill.lvl.current * step"
+            [editable]="editable"
+            (decrease)="decrease(name)"
+            (increase)="increase(name)"
+            (roll)="rollDice(name, $event)"
+          />
+        </mat-list-item>
+        <mat-divider></mat-divider>
       }
     </mat-list>
   </mat-card-content>

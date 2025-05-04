@@ -4,7 +4,7 @@ import { JSONparse, JSONstringify } from '@util/json-mappers';
 import { assertUnreachable } from '@util/assert-unreachable';
 import {
   mapStringArrayToSelectOptionArray,
-  mapStringToSelectOption
+  mapStringToSelectOption,
 } from '@util/map-string-to-select-option';
 import { assertAttributeName } from './assert-attribute-name';
 
@@ -52,7 +52,9 @@ describe('Utility Unit tests', () => {
       it('Should correclty convert array of strings ', () => {
         const s: string = 'some string';
         const arr: string[] = [s];
-        expect(mapStringArrayToSelectOptionArray(arr)).toEqual([{ key: s, value: s }]);
+        expect(mapStringArrayToSelectOptionArray(arr)).toEqual([
+          { key: s, value: s },
+        ]);
       });
     });
   });

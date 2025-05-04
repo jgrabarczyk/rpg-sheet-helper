@@ -40,7 +40,10 @@ export interface DHII_Homeworld {
 
 export type DHII_Homeworlds = Map<DHII_HomeworldNames, DHII_Homeworld>;
 
-export const HOMEWORLDS: DHII_Homeworlds = new Map<DHII_HomeworldNames, DHII_Homeworld>([
+export const HOMEWORLDS: DHII_Homeworlds = new Map<
+  DHII_HomeworldNames,
+  DHII_Homeworld
+>([
   [
     'feral',
     {
@@ -48,14 +51,14 @@ export const HOMEWORLDS: DHII_Homeworlds = new Map<DHII_HomeworldNames, DHII_Hom
       aptitude: 'Toughness',
       attributes: {
         bonus: ['Strength', 'Toughness'],
-        penality: 'Influence'
+        penality: 'Influence',
       },
       blessingThreshold: 3,
       bonus:
         "The Old Ways: A Feral World character's Low-Tech weapons lose any present Primitive Qualities and gain the Proven (3) Quality.",
       fate: 2,
-      wounds: 9
-    }
+      wounds: 9,
+    },
   ],
   [
     'forge',
@@ -64,15 +67,15 @@ export const HOMEWORLDS: DHII_Homeworlds = new Map<DHII_HomeworldNames, DHII_Hom
       aptitude: 'Intelligence',
       attributes: {
         bonus: ['Intelligence', 'Toughness'],
-        penality: 'Fellowship'
+        penality: 'Fellowship',
       },
       fate: 3,
       blessingThreshold: 8,
       wounds: 8,
       bonus:
         "Omnissiah's Chosen: A Forge World character gains the Technical Knock or Weapon-Tech Talent. ",
-      pick: { talents: [['Technical Knock', 'Weapon-Tech']] }
-    }
+      pick: { talents: [['Technical Knock', 'Weapon-Tech']] },
+    },
   ],
   [
     'highborn',
@@ -81,14 +84,14 @@ export const HOMEWORLDS: DHII_Homeworlds = new Map<DHII_HomeworldNames, DHII_Hom
       aptitude: 'Fellowship',
       attributes: {
         bonus: ['Fellowship', 'Influence'],
-        penality: 'Toughness'
+        penality: 'Toughness',
       },
       blessingThreshold: 10,
       fate: 4,
       bonus:
         'Breeding Counts: A Highborn character reduces Influence losses by 1, to a minimum loss of 1. ',
-      wounds: 9
-    }
+      wounds: 9,
+    },
   ],
   [
     'hive',
@@ -97,14 +100,14 @@ export const HOMEWORLDS: DHII_Homeworlds = new Map<DHII_HomeworldNames, DHII_Hom
       aptitude: 'Perception',
       attributes: {
         bonus: ['Agility', 'Perception'],
-        penality: 'Willpower'
+        penality: 'Willpower',
       },
       blessingThreshold: 6,
       fate: 2,
       bonus:
         'Teeming Masses in Metal Mountains: A Hive World character moves through crowds as if they were open terrain and gains a +20 bonus to Navigate (Surface) Tests in closed spaces. ',
-      wounds: 8
-    }
+      wounds: 8,
+    },
   ],
   [
     'shrine',
@@ -113,21 +116,21 @@ export const HOMEWORLDS: DHII_Homeworlds = new Map<DHII_HomeworldNames, DHII_Hom
       aptitude: 'Willpower',
       attributes: {
         bonus: ['Fellowship', 'Willpower'],
-        penality: 'Perception'
+        penality: 'Perception',
       },
       blessingThreshold: 6,
       fate: 3,
       bonus:
         "Faith in the Creed: When spending a Fate Point, a Shrine World character's number of Fate Points are not reduced on a 1d10 result of 1.",
-      wounds: 8
-    }
+      wounds: 8,
+    },
   ],
   [
     'voidborn',
     {
       attributes: {
         bonus: ['Intelligence', 'Willpower'],
-        penality: 'Strength'
+        penality: 'Strength',
       },
       fate: 3,
       blessingThreshold: 5,
@@ -136,15 +139,15 @@ export const HOMEWORLDS: DHII_Homeworlds = new Map<DHII_HomeworldNames, DHII_Hom
         'Child of the Dark: A voidborn character starts with the Strong Minded talent, and gains a +30 bonus to tests for moving in zero-gravity',
       aptitude: 'Intelligence',
       talents: ['Strong Minded'],
-      name: 'Voidborn'
-    }
+      name: 'Voidborn',
+    },
   ],
   [
     'agri-world',
     {
       attributes: {
         bonus: ['Fellowship', 'Strength'],
-        penality: 'Agility'
+        penality: 'Agility',
       },
       fate: 2,
       blessingThreshold: 7,
@@ -153,14 +156,14 @@ export const HOMEWORLDS: DHII_Homeworlds = new Map<DHII_HomeworldNames, DHII_Hom
         'Strength from the Land: An agri-world character starts with the Brutal Charge (2) Trait',
       aptitude: 'Strength',
       name: 'Agri-World',
-    }
+    },
   ],
   [
     'feudal',
     {
       attributes: {
         bonus: ['Perception', 'Weapon Skill'],
-        penality: 'Intelligence'
+        penality: 'Intelligence',
       },
       fate: 3,
       blessingThreshold: 6,
@@ -169,14 +172,14 @@ export const HOMEWORLDS: DHII_Homeworlds = new Map<DHII_HomeworldNames, DHII_Hom
         'At Home in Armour: A feudal world character ignores the maximum Agility value imposed by any armour he is wearing',
       aptitude: 'Weapon Skill',
       name: 'Feudal World',
-    }
+    },
   ],
   [
     'frontier',
     {
       attributes: {
         bonus: ['Ballistic Skill', 'Perception'],
-        penality: 'Fellowship'
+        penality: 'Fellowship',
       },
       fate: 3,
       blessingThreshold: 7,
@@ -185,14 +188,14 @@ export const HOMEWORLDS: DHII_Homeworlds = new Map<DHII_HomeworldNames, DHII_Hom
         'Rely on None but Yourself: A frontier world character gains a +20 bonus to Tech-Use tests when applying a personal weapon modification, and a +10 bonus when repairing damaged items',
       aptitude: 'Ballistic Skill',
       name: 'Frontier World',
-    }
+    },
   ],
   [
     'death',
     {
       attributes: {
         bonus: ['Agility', 'Perception'],
-        penality: 'Fellowship'
+        penality: 'Fellowship',
       },
       fate: 2,
       blessingThreshold: 5,
@@ -201,14 +204,14 @@ export const HOMEWORLDS: DHII_Homeworlds = new Map<DHII_HomeworldNames, DHII_Hom
         "Survivor's Paranoia: While a death world character is Surprised, non-Surprised attackers do not gain the normal +30 bonus to their Weapon and Ballistic Skill tests when targeting this character",
       aptitude: 'Fieldcraft',
       name: 'Death World',
-    }
+    },
   ],
   [
     'garden',
     {
       attributes: {
         bonus: ['Fellowship', 'Agility'],
-        penality: 'Toughness'
+        penality: 'Toughness',
       },
       fate: 2,
       blessingThreshold: 4,
@@ -217,14 +220,14 @@ export const HOMEWORLDS: DHII_Homeworlds = new Map<DHII_HomeworldNames, DHII_Hom
         'Serenity of the Green: A garden world character halves the duration (rounding up) of any result from Shock or Mental Traumas, and can remove Insanity Points for 50xp per point, rather than the normal 100xp',
       aptitude: 'Social',
       name: 'Garden World',
-    }
+    },
   ],
   [
     'research',
     {
       attributes: {
         bonus: ['Intelligence', 'Perception'],
-        penality: 'Fellowship'
+        penality: 'Fellowship',
       },
       fate: 2,
       blessingThreshold: 4,
@@ -233,14 +236,14 @@ export const HOMEWORLDS: DHII_Homeworlds = new Map<DHII_HomeworldNames, DHII_Hom
         'Pursuit of Data: Whenever a research station character reaches Rank 2 (Trained) in a Scholastic Lore skill, he also gains Rank 1 (Known) in one related or identical Forbidden Lore skill specialisation of their choice. The GM is the final arbiter of whether the two specialisations are related.',
       aptitude: 'Knowledge',
       name: 'Research Station',
-    }
+    },
   ],
   [
     'daemon',
     {
       attributes: {
         bonus: ['Willpower', 'Perception'],
-        penality: 'Fellowship'
+        penality: 'Fellowship',
       },
       fate: 3,
       blessingThreshold: 4,
@@ -250,14 +253,14 @@ export const HOMEWORLDS: DHII_Homeworlds = new Map<DHII_HomeworldNames, DHII_Hom
       aptitude: 'Willpower',
       skills: ['Psyniscience'],
       name: 'Daemon World',
-    }
+    },
   ],
   [
     'penal',
     {
       attributes: {
         bonus: ['Toughness', 'Perception'],
-        penality: 'Influence'
+        penality: 'Influence',
       },
       fate: 3,
       blessingThreshold: 8,
@@ -266,15 +269,15 @@ export const HOMEWORLDS: DHII_Homeworlds = new Map<DHII_HomeworldNames, DHII_Hom
         'Finger on the Pulse: One survives a penal colony by instinctively knowing who is in charge and who is a threat. A penal colony character begins with one rank in Common Lore (Underworld) and Scrutiny skills, and starts with the Peer (Criminal Cartels) talent.',
       talents: ['Peer (Criminal Cartels)'],
       aptitude: 'Toughness',
-      name: 'Penal Colony'
-    }
+      name: 'Penal Colony',
+    },
   ],
   [
     'quarantine',
     {
       attributes: {
         bonus: ['Ballistic Skill', 'Intelligence'],
-        penality: 'Strength'
+        penality: 'Strength',
       },
       fate: 3,
       blessingThreshold: 9,
@@ -283,6 +286,6 @@ export const HOMEWORLDS: DHII_Homeworlds = new Map<DHII_HomeworldNames, DHII_Hom
         "Secretive by Nature: Those who manage to leave a quarantine world learn how to keep secrets. Wheneve the warband's Subtlety would decrease, it decreases by 2 less (to a minimum of 1)",
       aptitude: 'Fieldcraft',
       name: 'Quarantine World',
-    }
-  ]
+    },
+  ],
 ]);

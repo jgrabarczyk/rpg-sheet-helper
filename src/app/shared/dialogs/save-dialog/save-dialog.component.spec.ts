@@ -9,16 +9,19 @@ import { MatInputHarness } from '@angular/material/input/testing';
 
 import { MatButtonHarness } from '@angular/material/button/testing';
 import { getButtonHarnessWithSelector } from '../../../../tests/harness-selector-helpers';
-import { DialogCloseSpy, dialogClose } from '../../../../tests/mocks/dialog-ref';
+import {
+  DialogCloseSpy,
+  dialogClose,
+} from '../../../../tests/mocks/dialog-ref';
 
 describe('SaveDialogComponent', () => {
   let fixture: ComponentFixture<SaveDialogComponent>;
   let loader: HarnessLoader;
-const dialogRefMock: DialogCloseSpy = dialogClose();
+  const dialogRefMock: DialogCloseSpy = dialogClose();
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [SaveDialogComponent, NoopAnimationsModule],
-      providers: [{ provide: MatDialogRef, useValue: dialogRefMock }]
+      providers: [{ provide: MatDialogRef, useValue: dialogRefMock }],
     }).compileComponents();
 
     fixture = TestBed.createComponent(SaveDialogComponent);
@@ -27,9 +30,13 @@ const dialogRefMock: DialogCloseSpy = dialogClose();
 
   it('should correclty save data', async () => {
     const inputValue: string = 'custom save';
-    const saveNameInput: MatInputHarness = await loader.getHarness(MatInputHarness);
+    const saveNameInput: MatInputHarness =
+      await loader.getHarness(MatInputHarness);
     await saveNameInput.setValue(inputValue);
-    const saveButton: MatButtonHarness = await getButtonHarnessWithSelector(loader, 'save');
+    const saveButton: MatButtonHarness = await getButtonHarnessWithSelector(
+      loader,
+      'save'
+    );
     await saveButton.click();
     expect(dialogRefMock.close).toHaveBeenCalledWith(inputValue);
   });

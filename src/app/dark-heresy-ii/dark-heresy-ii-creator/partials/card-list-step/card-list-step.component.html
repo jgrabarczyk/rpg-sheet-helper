@@ -1,4 +1,7 @@
-<mat-card class="step-header" [appearance]="'outlined'">
+<mat-card
+  class="step-header"
+  [appearance]="'outlined'"
+>
   <h2>{{ title }}</h2>
   <h3>{{ subtitle }}</h3>
 </mat-card>
@@ -10,5 +13,8 @@
 <ng-container *ngTemplateOutlet="navigation"></ng-container>
 
 <ng-template #navigation>
-  <app-step-navigation [valid]="valid" [step]="step" />
+  <app-step-navigation
+    [valid]="valid"
+    [step]="step"
+  />
 </ng-template>

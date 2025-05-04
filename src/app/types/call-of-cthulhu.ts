@@ -1,4 +1,4 @@
-import { Characteristic } from "./characteristic";
+import { Characteristic } from './characteristic';
 
 export type COC_AttributeNames =
   | 'Strength'
@@ -10,4 +10,4 @@ export type COC_AttributeNames =
   | 'Intelligence'
   | 'Education';
 
-  export type COC_Characteristic = Characteristic<COC_AttributeNames>
+export type COC_Characteristic = Characteristic<COC_AttributeNames>;

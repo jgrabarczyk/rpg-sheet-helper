@@ -14,7 +14,10 @@ export function pickRollableItem<T = string>(
   return map.get(key)!;
 }
 
-function findRollRange<T>(diceResult: number, map: RollableItemsMap<T>): RollRange {
+function findRollRange<T>(
+  diceResult: number,
+  map: RollableItemsMap<T>
+): RollRange {
   const range: RollRange | undefined = Array.from(map.keys()).find(range => {
     const [min, max] = range.split('-');
     return diceResult >= Number(min) && diceResult <= Number(max);

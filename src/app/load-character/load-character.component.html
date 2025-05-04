@@ -4,29 +4,52 @@
   <mat-card appearance="outlined">
     <mat-card-header>
       <mat-card-title>Load Character</mat-card-title>
-      @if(saves?.length){
-        <mat-card-subtitle>Choose saved character from list below </mat-card-subtitle>
+      @if (saves?.length) {
+        <mat-card-subtitle
+          >Choose saved character from list below
+        </mat-card-subtitle>
       }
     </mat-card-header>
 
     <mat-card-content>
       <mat-list role="list">
-        @if(saves?.length){
-          @for(item of saves; track item) {
-            <mat-list-item role="listitem" class="rs-list-item rs-list-item--hover">
+        @if (saves?.length) {
+          @for (item of saves; track item) {
+            <mat-list-item
+              role="listitem"
+              class="rs-list-item rs-list-item--hover"
+            >
               <div class="item">
                 <span class="name">{{ item }}</span>
-                <button name="loadCharacter" class="load" mat-flat-button  (click)="loadCharacter(item)">Load</button>
-                <button name="deleteCharacter" class="delete" mat-stroked-button (click)="deleteCharacter(item)">Delete</button>
+                <button
+                  name="loadCharacter"
+                  class="load"
+                  mat-flat-button
+                  (click)="loadCharacter(item)"
+                >
+                  Load
+                </button>
+                <button
+                  name="deleteCharacter"
+                  class="delete"
+                  mat-stroked-button
+                  (click)="deleteCharacter(item)"
+                >
+                  Delete
+                </button>
               </div>
             </mat-list-item>
           }
         } @else {
-          <p>It seems you have no character save yet.  </p>
+          <p>It seems you have no character save yet.</p>
           <p>
-            <a mat-flat-button routerLink="/creator"> Create character</a>
+            <a
+              mat-flat-button
+              routerLink="/creator"
+            >
+              Create character</a
+            >
           </p>
-          
         }
       </mat-list>
     </mat-card-content>

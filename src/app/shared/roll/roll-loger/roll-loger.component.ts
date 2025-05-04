@@ -7,13 +7,14 @@ import { MatCardModule } from '@angular/material/card';
 import { MatListModule } from '@angular/material/list';
 
 @Component({
-    selector: 'app-roll-loger',
-    imports: [CommonModule, MatDividerModule, MatCardModule, MatListModule],
-    templateUrl: './roll-loger.component.html',
-    styleUrl: './roll-loger.component.scss',
-    changeDetection: ChangeDetectionStrategy.OnPush
+  selector: 'app-roll-loger',
+  imports: [CommonModule, MatDividerModule, MatCardModule, MatListModule],
+  templateUrl: './roll-loger.component.html',
+  styleUrl: './roll-loger.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class RollLogerComponent {
-  private rollService: RollService = inject(RollService)
-  protected loggerStack$: Observable<LoggerItem[]> = this.rollService.loggerStack$
+  private rollService: RollService = inject(RollService);
+  protected loggerStack$: Observable<LoggerItem[]> =
+    this.rollService.loggerStack$;
 }

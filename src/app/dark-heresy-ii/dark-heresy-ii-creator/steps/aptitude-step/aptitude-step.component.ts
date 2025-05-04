@@ -2,7 +2,12 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
 import { MatListModule } from '@angular/material/list';
-import { FormArray, FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
+import {
+  FormArray,
+  FormControl,
+  ReactiveFormsModule,
+  Validators,
+} from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { CommonModule } from '@angular/common';
@@ -12,19 +17,19 @@ import { DHII_ATTRIBUTE_NAMES } from '@dhii/types/dhii-attribute';
 import { TwoColumnStepComponent } from '@dhii/stepper-partials/two-column-step/two-column-step.component';
 
 @Component({
-    selector: 'app-aptitude-step',
-    imports: [
-        CommonModule,
-        MatFormFieldModule,
-        MatSelectModule,
-        MatButtonModule,
-        MatListModule,
-        MatCardModule,
-        ReactiveFormsModule,
-        TwoColumnStepComponent
-    ],
-    templateUrl: './aptitude-step.component.html',
-    styleUrl: './aptitude-step.component.scss'
+  selector: 'app-aptitude-step',
+  imports: [
+    CommonModule,
+    MatFormFieldModule,
+    MatSelectModule,
+    MatButtonModule,
+    MatListModule,
+    MatCardModule,
+    ReactiveFormsModule,
+    TwoColumnStepComponent,
+  ],
+  templateUrl: './aptitude-step.component.html',
+  styleUrl: './aptitude-step.component.scss',
 })
 export class AptitudeStepComponent {
   @Input() set aptitudes(aptitudes: DHII_Aptitude[]) {
@@ -55,7 +60,9 @@ export class AptitudeStepComponent {
     });
   }
 
-  @Output() updateAptitudes: EventEmitter<DHII_Aptitude[]> = new EventEmitter<DHII_Aptitude[]>();
+  @Output() updateAptitudes: EventEmitter<DHII_Aptitude[]> = new EventEmitter<
+    DHII_Aptitude[]
+  >();
 
   protected defaultOptions = DHII_ATTRIBUTE_NAMES;
   protected uniqueAptitudes: DHII_Aptitude[] = [];
@@ -69,7 +76,7 @@ export class AptitudeStepComponent {
     this.updateAptitudes.emit([
       ...this.formChooseFrom.value,
       ...this.formDuplicates.value,
-      ...this.uniqueAptitudes
+      ...this.uniqueAptitudes,
     ]);
     this.valid = true;
   }

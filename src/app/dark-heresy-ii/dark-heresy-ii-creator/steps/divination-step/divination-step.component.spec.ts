@@ -10,9 +10,8 @@ describe('DivinationStepComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [DivinationStepComponent],
-      providers: [{ provide: CdkStepper, useValue: {} }]
-    })
-    .compileComponents();
+      providers: [{ provide: CdkStepper, useValue: {} }],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(DivinationStepComponent);
     component = fixture.componentInstance;

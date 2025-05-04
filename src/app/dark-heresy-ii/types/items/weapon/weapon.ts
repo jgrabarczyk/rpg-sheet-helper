@@ -3,7 +3,12 @@ import { WeaponTraitKey } from './weapon-trait';
 import { WeaponSpecialisation } from '@dhii/types/dhii-talents';
 import { GenericItem } from '../generic-item';
 
-export type DamageType = 'Impact' | 'Energy' | 'Rending' | 'Explosive' | 'Special';
+export type DamageType =
+  | 'Impact'
+  | 'Energy'
+  | 'Rending'
+  | 'Explosive'
+  | 'Special';
 
 /**
  * Make sure there is at least one option avalible if single = true
@@ -38,14 +43,21 @@ export type WeaponClassKey =
   | 'Melee/Thrown'
   | 'Charge';
 
-export type XenosType = 'Eldar' | 'Ork' | 'Necron' | 'Kroot' | 'Lost Races'
-export type ExoticType = 'Graviton'
+export type XenosType = 'Eldar' | 'Ork' | 'Necron' | 'Kroot' | 'Lost Races';
+export type ExoticType = 'Graviton';
 
-export type WeaponClassExoticFamily = 'Exotic' | `Exotic (${ExoticType})` | `Xenos (${XenosType})` | 'Varies'
+export type WeaponClassExoticFamily =
+  | 'Exotic'
+  | `Exotic (${ExoticType})`
+  | `Xenos (${XenosType})`
+  | 'Varies';
 
-export type WeaponClass = WeaponClassKey ;
-export type WeaponFamilyExtras = 'Grenade' | 'Force' | 'Explosives'| 'Missile'; // this do not require any specialisation to use. Psy weapon gain bonuses when wielded by psionic
-export type WeaponFamily = WeaponSpecialisation | WeaponFamilyExtras | WeaponClassExoticFamily;
+export type WeaponClass = WeaponClassKey;
+export type WeaponFamilyExtras = 'Grenade' | 'Force' | 'Explosives' | 'Missile'; // this do not require any specialisation to use. Psy weapon gain bonuses when wielded by psionic
+export type WeaponFamily =
+  | WeaponSpecialisation
+  | WeaponFamilyExtras
+  | WeaponClassExoticFamily;
 
 export interface WeaponBase extends GenericItem {
   family: WeaponFamily;
@@ -59,7 +71,7 @@ export interface WeaponBase extends GenericItem {
 export enum WeaponJam {
   UNRELIABLE = 91,
   STANDARD = 96,
-  RELIABLE = 100
+  RELIABLE = 100,
 }
 
 export interface WeaponRanged extends WeaponBase {
@@ -71,10 +83,13 @@ export interface WeaponRanged extends WeaponBase {
   clipSize: number;
   reloadInActions: number; // "Full"= 2, "Half" = 1, "2 Full" = 4 etc
 }
-export type WeapnRangeReadOnly = Omit<WeaponRanged, 'rateOfFire' | 'reloadInActions'> & {
+export type WeapnRangeReadOnly = Omit<
+  WeaponRanged,
+  'rateOfFire' | 'reloadInActions'
+> & {
   rateOfFire: string;
   reloadInActions: string;
-}
+};
 export interface WeaponThrown extends WeaponBase {
   class: 'Thrown' | 'Melee/Thrown' | 'Grenade';
   isRanged: true;

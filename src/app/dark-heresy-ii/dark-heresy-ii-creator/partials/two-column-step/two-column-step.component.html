@@ -1,4 +1,7 @@
-<mat-card class="step-header" [appearance]="'outlined'">
+<mat-card
+  class="step-header"
+  [appearance]="'outlined'"
+>
   <h2>{{ title }}</h2>
   <h3>{{ subtitle }}</h3>
 </mat-card>
@@ -6,7 +9,11 @@
 <ng-container *ngTemplateOutlet="navigation"></ng-container>
 
 <div class="content">
-  <mat-card name="twoColumnDescriptionCard" class="description-card" appearance="outlined">
+  <mat-card
+    name="twoColumnDescriptionCard"
+    class="description-card"
+    appearance="outlined"
+  >
     <mat-card-content>
       <ng-content select="[card-content]"></ng-content>
     </mat-card-content>

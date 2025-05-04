@@ -10,7 +10,7 @@ describe('CardListStepComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [CardListStepComponent],
-      providers: [{ provide: CdkStepper, useValue: {} }]
+      providers: [{ provide: CdkStepper, useValue: {} }],
     }).compileComponents();
 
     fixture = TestBed.createComponent(CardListStepComponent);

@@ -15,64 +15,64 @@ describe('HeaderAccordionDataPipe', () => {
     const character: DHII_Character = INITIAL_CHARACTER;
     character.details = {
       age: 13,
-      characterName: 'tester'
+      characterName: 'tester',
     };
     character.homeworld = {
       key: 'daemon',
-      value: HOMEWORLDS.get('daemon')!
+      value: HOMEWORLDS.get('daemon')!,
     };
     character.background = {
       key: 'admech',
-      value: BACKGROUNDS.get('admech')!
+      value: BACKGROUNDS.get('admech')!,
     };
     character.background = {
       key: 'admech',
-      value: BACKGROUNDS.get('admech')!
+      value: BACKGROUNDS.get('admech')!,
     };
     character.role = {
       key: 'ace',
-      value: ROLES.get('ace')!
+      value: ROLES.get('ace')!,
     };
     character.divination = {
       name: 'divination name',
-      description: 'divination description'
+      description: 'divination description',
     };
-    
+
     expect(pipe.transform(character)).toEqual([
       {
         title: 'Character Name',
         disabled: true,
-        description: character.details?.characterName
+        description: character.details?.characterName,
       },
       {
         title: 'Character Age',
         disabled: true,
-        description: character.details?.age
+        description: character.details?.age,
       },
       {
         title: 'Home World',
         disabled: false,
         description: character.homeworld?.value.name,
-        content: character.homeworld?.value.bonus
+        content: character.homeworld?.value.bonus,
       },
       {
         title: 'Background',
         disabled: false,
         description: character.background?.value.name,
-        content: character.background?.value.bonus
+        content: character.background?.value.bonus,
       },
       {
         title: 'Role',
         disabled: false,
         description: character.role?.value.name,
-        content: character.role?.value.bonus
+        content: character.role?.value.bonus,
       },
       {
         title: 'Divination',
         disabled: false,
         description: character.divination?.name,
-        content: character.divination?.description
-      }
+        content: character.divination?.description,
+      },
     ]);
   });
 });

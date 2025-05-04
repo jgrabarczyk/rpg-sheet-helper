@@ -25,18 +25,21 @@ export type LoggerDiceRoll =
     };
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class RollService {
   private loggerStackSubject$ = new BehaviorSubject<LoggerItem[]>([]);
-  
-  loggerStack$: Observable<LoggerItem[]> = this.loggerStackSubject$.asObservable();
-  
+
+  loggerStack$: Observable<LoggerItem[]> =
+    this.loggerStackSubject$.asObservable();
+
   private idTracker: number = 0;
-  
+
   // @todo change roll implementation to not to require manually adding dice fot bonus/penality
   public rollDices(loggerRoll: LoggerDiceRoll): number {
-    const [diceQuantity, diceFaces] = loggerRoll.roll.split('d').map(el => Number(el));
+    const [diceQuantity, diceFaces] = loggerRoll.roll
+      .split('d')
+      .map(el => Number(el));
 
     if (diceQuantity === 0 || diceFaces === 0) {
       return 0;
@@ -60,7 +63,7 @@ export class RollService {
       const title: string = loggerRoll.title;
       this.addToStack({
         message,
-        title
+        title,
       });
     }
     return final;
@@ -70,7 +73,7 @@ export class RollService {
     const testValue: number = this.rollDices({
       roll: '1d100',
       type: 'skipLog',
-      title: roll.name
+      title: roll.name,
     });
 
     const difficultyTier: number =
@@ -79,14 +82,14 @@ export class RollService {
     const message: string = this.composeTestRollMessage({
       roll,
       testValue,
-      difficultyTier
+      difficultyTier,
     });
 
     const title: string = 'Roll Test for: ' + roll.name;
 
     this.addToStack({
       message,
-      title
+      title,
     });
   }
 

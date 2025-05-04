@@ -10,9 +10,8 @@ describe('EquipmentStepComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [EquipmentStepComponent],
-      providers: [{ provide: CdkStepper, useValue: {} }]
-    })
-    .compileComponents();
+      providers: [{ provide: CdkStepper, useValue: {} }],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(EquipmentStepComponent);
     component = fixture.componentInstance;

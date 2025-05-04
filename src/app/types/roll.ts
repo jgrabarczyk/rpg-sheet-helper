@@ -6,4 +6,7 @@ export interface Roll {
 /**
  * @?? shall i allow modifiers in this type or keep it separate
  */
-export type DiceRoll = `${number}d${number}` | `${number}d${number}+${number}` | `${number}d${number}-${number}`;
+export type DiceRoll =
+  | `${number}d${number}`
+  | `${number}d${number}+${number}`
+  | `${number}d${number}-${number}`;

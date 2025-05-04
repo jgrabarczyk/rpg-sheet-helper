@@ -9,8 +9,8 @@ export const TOOLS: Map<string, GenericItem> = new Map([
       weightInKilos: 0.5,
       availability: Availability.SCARCE,
       notes:
-        'Grants +20 to awareness tests and counts as a Free Action once per turn. With Tech-Use can see through walls less than 50 cm, has a range of 50 meters.'
-    }
+        'Grants +20 to awareness tests and counts as a Free Action once per turn. With Tech-Use can see through walls less than 50 cm, has a range of 50 meters.',
+    },
   ],
   [
     'Auspex',
@@ -19,8 +19,8 @@ export const TOOLS: Map<string, GenericItem> = new Map([
       weightInKilos: 0.5,
       availability: Availability.SCARCE,
       notes:
-        'Grants +20 to awareness tests and counts as a Free Action once per turn. With Tech-Use can see through walls less than 50 cm, has a range of 50 meters.'
-    }
+        'Grants +20 to awareness tests and counts as a Free Action once per turn. With Tech-Use can see through walls less than 50 cm, has a range of 50 meters.',
+    },
   ],
   [
     'Auto Quill',
@@ -28,8 +28,8 @@ export const TOOLS: Map<string, GenericItem> = new Map([
       name: 'Auto Quill',
       weightInKilos: 0,
       availability: Availability.SCARCE,
-      notes: 'Grants +10 to recording data'
-    }
+      notes: 'Grants +10 to recording data',
+    },
   ],
   [
     'Clip/Drop Harness',
@@ -37,8 +37,8 @@ export const TOOLS: Map<string, GenericItem> = new Map([
       name: 'Clip/Drop Harness',
       weightInKilos: 2,
       availability: Availability.COMMON,
-      notes: 'Grants +30 to Climb tests and cannot fall if failed'
-    }
+      notes: 'Grants +30 to Climb tests and cannot fall if failed',
+    },
   ],
   [
     'Combi-tool',
@@ -46,8 +46,8 @@ export const TOOLS: Map<string, GenericItem> = new Map([
       name: 'Combi-tool',
       weightInKilos: 1,
       availability: Availability.RARE,
-      notes: 'Grants +10 to Tech-Use'
-    }
+      notes: 'Grants +10 to Tech-Use',
+    },
   ],
   [
     'Comm Leech',
@@ -55,8 +55,9 @@ export const TOOLS: Map<string, GenericItem> = new Map([
       name: 'Comm Leech',
       weightInKilos: 1,
       availability: Availability.VERY_RARE,
-      notes: 'Can hack a transmission with Tech-Use. Usable for minutes equal to Degrees of Success'
-    }
+      notes:
+        'Can hack a transmission with Tech-Use. Usable for minutes equal to Degrees of Success',
+    },
   ],
   [
     'Dataslate',
@@ -64,8 +65,8 @@ export const TOOLS: Map<string, GenericItem> = new Map([
       name: 'Dataslate',
       weightInKilos: 0.5,
       availability: Availability.COMMON,
-      notes: "Used for data storage and communication - it's a tablet"
-    }
+      notes: "Used for data storage and communication - it's a tablet",
+    },
   ],
   [
     'Demolition Kit',
@@ -74,8 +75,8 @@ export const TOOLS: Map<string, GenericItem> = new Map([
       weightInKilos: 4,
       availability: Availability.VERY_RARE,
       notes:
-        'Allows for setup of demo devices. Contains: Five demolition charges (count as Krak Grenades), 100 meter det-cord (burns at 10 sec per meter), and pressure detonator.'
-    }
+        'Allows for setup of demo devices. Contains: Five demolition charges (count as Krak Grenades), 100 meter det-cord (burns at 10 sec per meter), and pressure detonator.',
+    },
   ],
   [
     'Diagnostor',
@@ -83,8 +84,9 @@ export const TOOLS: Map<string, GenericItem> = new Map([
       name: 'Diagnostor',
       weightInKilos: 4,
       availability: Availability.RARE,
-      notes: 'Grants +20 to Medicae or Perception to determine proper treatment'
-    }
+      notes:
+        'Grants +20 to Medicae or Perception to determine proper treatment',
+    },
   ],
   [
     'Disguise Kit',
@@ -92,8 +94,8 @@ export const TOOLS: Map<string, GenericItem> = new Map([
       name: 'Disguise Kit',
       weightInKilos: 2,
       availability: Availability.VERY_RARE,
-      notes: 'Make you look like someone else. +10 to deceive tests'
-    }
+      notes: 'Make you look like someone else. +10 to deceive tests',
+    },
   ],
   [
     'Excruciator Kit',
@@ -101,8 +103,8 @@ export const TOOLS: Map<string, GenericItem> = new Map([
       name: 'Excruciator Kit',
       weightInKilos: 2,
       availability: Availability.VERY_RARE,
-      notes: 'Grants +20 to Interrogation tests.'
-    }
+      notes: 'Grants +20 to Interrogation tests.',
+    },
   ],
   [
     'Field Suture',
@@ -110,8 +112,8 @@ export const TOOLS: Map<string, GenericItem> = new Map([
       name: 'Field Suture',
       weightInKilos: 0.5,
       availability: Availability.AVERAGE,
-      notes: 'Provides +30 to Medicae tests to stop Blood Loss'
-    }
+      notes: 'Provides +30 to Medicae tests to stop Blood Loss',
+    },
   ],
   [
     'Glow-globe/stab light',
@@ -120,8 +122,8 @@ export const TOOLS: Map<string, GenericItem> = new Map([
       weightInKilos: 0.5,
       availability: Availability.ABUNDANT,
       notes:
-        'Glow-globe projects light in a 12m radius - stab-light projects a narrow beam 24m. Lasts 5 hours'
-    }
+        'Glow-globe projects light in a 12m radius - stab-light projects a narrow beam 24m. Lasts 5 hours',
+    },
   ],
   [
     'Grapnel and Line',
@@ -129,8 +131,9 @@ export const TOOLS: Map<string, GenericItem> = new Map([
       name: 'Grapnel and Line',
       weightInKilos: 2,
       availability: Availability.COMMON,
-      notes: 'A Clip-harness and Gas powered pistol to shoot a hook and line 100 m away.'
-    }
+      notes:
+        'A Clip-harness and Gas powered pistol to shoot a hook and line 100 m away.',
+    },
   ],
   [
     'Grav Chute',
@@ -139,8 +142,8 @@ export const TOOLS: Map<string, GenericItem> = new Map([
       weightInKilos: 15,
       availability: Availability.RARE,
       notes:
-        'Pass a Challenging (+0) Agility or Routine (+20) Operate (Aeronautica) test for safe landing. Otherwise, takes fall damage as if falling 2m per DoF.'
-    }
+        'Pass a Challenging (+0) Agility or Routine (+20) Operate (Aeronautica) test for safe landing. Otherwise, takes fall damage as if falling 2m per DoF.',
+    },
   ],
   [
     'Hand-Held Targeter',
@@ -148,8 +151,9 @@ export const TOOLS: Map<string, GenericItem> = new Map([
       name: 'Hand-Held Targeter',
       weightInKilos: 0.5,
       availability: Availability.SCARCE,
-      notes: 'Grants +20 to next Ballistic Skill check when using weapons with Indirect quality.'
-    }
+      notes:
+        'Grants +20 to next Ballistic Skill check when using weapons with Indirect quality.',
+    },
   ],
   [
     'Inhaler/Injector',
@@ -157,8 +161,8 @@ export const TOOLS: Map<string, GenericItem> = new Map([
       name: 'Inhaler/Injector',
       weightInKilos: 0.5,
       availability: Availability.COMMON,
-      notes: 'Holds drugs that can be administered as a Half Action.'
-    }
+      notes: 'Holds drugs that can be administered as a Half Action.',
+    },
   ],
   [
     'Lascutter',
@@ -166,8 +170,9 @@ export const TOOLS: Map<string, GenericItem> = new Map([
       name: 'Lascutter',
       weightInKilos: 4,
       availability: Availability.AVERAGE,
-      notes: 'Cuts or welds 10 cm of metal and counts as a Heavy weapon on targets within 2 meters.'
-    }
+      notes:
+        'Cuts or welds 10 cm of metal and counts as a Heavy weapon on targets within 2 meters.',
+    },
   ],
   [
     'Laud Hailer',
@@ -175,8 +180,8 @@ export const TOOLS: Map<string, GenericItem> = new Map([
       name: 'Laud Hailer',
       weightInKilos: 4,
       availability: Availability.SCARCE,
-      notes: 'Amplifies normal speech levels to those audible through crowds'
-    }
+      notes: 'Amplifies normal speech levels to those audible through crowds',
+    },
   ],
   [
     'Magboots',
@@ -184,8 +189,8 @@ export const TOOLS: Map<string, GenericItem> = new Map([
       name: 'Magboots',
       weightInKilos: 2,
       availability: Availability.RARE,
-      notes: 'Reduces Agility bonus by 2 but allows grip to metallic surfaces.'
-    }
+      notes: 'Reduces Agility bonus by 2 but allows grip to metallic surfaces.',
+    },
   ],
   [
     'Magnoculars',
@@ -193,8 +198,8 @@ export const TOOLS: Map<string, GenericItem> = new Map([
       name: 'Magnoculars',
       weightInKilos: 0.5,
       availability: Availability.AVERAGE,
-      notes: 'Binoculars'
-    }
+      notes: 'Binoculars',
+    },
   ],
   [
     'Manacles',
@@ -202,8 +207,8 @@ export const TOOLS: Map<string, GenericItem> = new Map([
       name: 'Manacles',
       weightInKilos: 1,
       availability: Availability.PLENTIFUL,
-      notes: 'Handcuffs'
-    }
+      notes: 'Handcuffs',
+    },
   ],
   [
     'Medi-kit',
@@ -211,8 +216,8 @@ export const TOOLS: Map<string, GenericItem> = new Map([
       name: 'Medi-kit',
       weightInKilos: 2,
       availability: Availability.COMMON,
-      notes: 'Grants +10 bonus to Medicae tests.'
-    }
+      notes: 'Grants +10 bonus to Medicae tests.',
+    },
   ],
   [
     'Micro-bead',
@@ -220,8 +225,8 @@ export const TOOLS: Map<string, GenericItem> = new Map([
       name: 'Micro-bead',
       weightInKilos: 0,
       availability: Availability.AVERAGE,
-      notes: 'Can talk to others up to 1 km away'
-    }
+      notes: 'Can talk to others up to 1 km away',
+    },
   ],
   [
     'Monotask Servo-Skull',
@@ -230,8 +235,8 @@ export const TOOLS: Map<string, GenericItem> = new Map([
       weightInKilos: 2,
       availability: Availability.RARE,
       notes:
-        'Floating skull with one function: Auger (Auspex), Illumination, Laud Hailer, Medicae (Medi-kit), Utility (Combi-tool)'
-    }
+        'Floating skull with one function: Auger (Auspex), Illumination, Laud Hailer, Medicae (Medi-kit), Utility (Combi-tool)',
+    },
   ],
   [
     'Multi Compass',
@@ -239,8 +244,8 @@ export const TOOLS: Map<string, GenericItem> = new Map([
       name: 'Multi Compass',
       weightInKilos: 4,
       availability: Availability.NEAR_UNIQUE,
-      notes: 'Grants +20 to all Survival and Navigation (Surface) tests'
-    }
+      notes: 'Grants +20 to all Survival and Navigation (Surface) tests',
+    },
   ],
   [
     'Multikey',
@@ -248,8 +253,8 @@ export const TOOLS: Map<string, GenericItem> = new Map([
       name: 'Multikey',
       weightInKilos: 0,
       availability: Availability.SCARCE,
-      notes: 'Grants +30 to Security test when opening locks'
-    }
+      notes: 'Grants +30 to Security test when opening locks',
+    },
   ],
   [
     'Null Rod',
@@ -258,8 +263,8 @@ export const TOOLS: Map<string, GenericItem> = new Map([
       weightInKilos: 1,
       availability: Availability.NEAR_UNIQUE,
       notes:
-        "Dampens psykers' powers in 2d10m radius. Psykers take -30 to Focus Power tests. User gains +30 to resist direct psychic powers."
-    }
+        "Dampens psykers' powers in 2d10m radius. Psykers take -30 to Focus Power tests. User gains +30 to resist direct psychic powers.",
+    },
   ],
   [
     'Pict Recorder',
@@ -267,8 +272,8 @@ export const TOOLS: Map<string, GenericItem> = new Map([
       name: 'Pict Recorder',
       weightInKilos: 1,
       availability: Availability.AVERAGE,
-      notes: 'Camcorder'
-    }
+      notes: 'Camcorder',
+    },
   ],
   [
     'Psy Focus',
@@ -276,8 +281,8 @@ export const TOOLS: Map<string, GenericItem> = new Map([
       name: 'Psy Focus',
       weightInKilos: 0,
       availability: Availability.AVERAGE,
-      notes: 'Grants +10 to Focus Power Tests'
-    }
+      notes: 'Grants +10 to Focus Power Tests',
+    },
   ],
   [
     'Regicide Set',
@@ -286,8 +291,8 @@ export const TOOLS: Map<string, GenericItem> = new Map([
       weightInKilos: 1,
       availability: Availability.PLENTIFUL,
       notes:
-        'Chess in the future, takes 1d5 hours. Grants +10 to Fellowship with opponent the following day'
-    }
+        'Chess in the future, takes 1d5 hours. Grants +10 to Fellowship with opponent the following day',
+    },
   ],
   [
     'Screamer',
@@ -295,8 +300,9 @@ export const TOOLS: Map<string, GenericItem> = new Map([
       name: 'Screamer',
       weightInKilos: 2,
       availability: Availability.SCARCE,
-      notes: 'Activated with Tech-Use. Perception 75 to detect movement and sound alarm'
-    }
+      notes:
+        'Activated with Tech-Use. Perception 75 to detect movement and sound alarm',
+    },
   ],
   [
     'Signal Jammer',
@@ -304,8 +310,8 @@ export const TOOLS: Map<string, GenericItem> = new Map([
       name: 'Signal Jammer',
       weightInKilos: 2,
       availability: Availability.RARE,
-      notes: 'Jams other transmissions within 1 km'
-    }
+      notes: 'Jams other transmissions within 1 km',
+    },
   ],
   [
     'Stasis Cage',
@@ -314,8 +320,8 @@ export const TOOLS: Map<string, GenericItem> = new Map([
       weightInKilos: 6,
       availability: Availability.EXTREMELY_RARE,
       notes:
-        'Holds objects with Size ≤ 7 (not incorporeal) for 5h. Contents cannot act or be acted upon while inside.'
-    }
+        'Holds objects with Size ≤ 7 (not incorporeal) for 5h. Contents cannot act or be acted upon while inside.',
+    },
   ],
   [
     'Static Generator',
@@ -323,8 +329,8 @@ export const TOOLS: Map<string, GenericItem> = new Map([
       name: 'Static Generator',
       weightInKilos: 3,
       availability: Availability.VERY_RARE,
-      notes: 'Broadcasts static to all comms within 30 meters'
-    }
+      notes: 'Broadcasts static to all comms within 30 meters',
+    },
   ],
   [
     'Stummer',
@@ -332,8 +338,9 @@ export const TOOLS: Map<string, GenericItem> = new Map([
       name: 'Stummer',
       weightInKilos: 2,
       availability: Availability.AVERAGE,
-      notes: 'Dampens sound and grants +30 to Stealth. Lasts 20 minutes before recharge'
-    }
+      notes:
+        'Dampens sound and grants +30 to Stealth. Lasts 20 minutes before recharge',
+    },
   ],
   [
     'Vox-caster',
@@ -341,8 +348,8 @@ export const TOOLS: Map<string, GenericItem> = new Map([
       name: 'Vox-caster',
       weightInKilos: 4,
       availability: Availability.SCARCE,
-      notes: 'Allows communication up to 100 km'
-    }
+      notes: 'Allows communication up to 100 km',
+    },
   ],
   [
     'Writing Kit',
@@ -350,7 +357,7 @@ export const TOOLS: Map<string, GenericItem> = new Map([
       name: 'Writing Kit',
       weightInKilos: 2,
       availability: Availability.PLENTIFUL,
-      notes: 'Pen and paper'
-    }
-  ]
+      notes: 'Pen and paper',
+    },
+  ],
 ]);

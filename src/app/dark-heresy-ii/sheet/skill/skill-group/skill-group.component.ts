@@ -3,16 +3,21 @@ import { MatDividerModule } from '@angular/material/divider';
 import { MatListModule } from '@angular/material/list';
 import { MatCardModule } from '@angular/material/card';
 
-import { DHII_Skill, DHII_SkillLevel, DHII_SkillName, DHII_Skills } from '@dhii/types/dhii-skill';
+import {
+  DHII_Skill,
+  DHII_SkillLevel,
+  DHII_SkillName,
+  DHII_Skills,
+} from '@dhii/types/dhii-skill';
 import { Roll } from '@appTypes/roll';
 
 import { SkillComponent } from '../skill.component';
 
 @Component({
-    selector: 'app-skill-group',
-    imports: [MatDividerModule, MatListModule, MatCardModule, SkillComponent],
-    templateUrl: './skill-group.component.html',
-    styleUrl: './skill-group.component.scss'
+  selector: 'app-skill-group',
+  imports: [MatDividerModule, MatListModule, MatCardModule, SkillComponent],
+  templateUrl: './skill-group.component.html',
+  styleUrl: './skill-group.component.scss',
 })
 export class SkillGroupComponent {
   @Input() title?: string;

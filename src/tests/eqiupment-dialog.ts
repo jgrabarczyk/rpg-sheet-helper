@@ -11,7 +11,7 @@ export const EQ_DIALOG_CLOSE_DATA: DHII_Equipment = {
       rangeInMeters: 100,
       rateOfFire: {
         single: true,
-        semi: 3
+        semi: 3,
       },
       damage: '1d10+3',
       damageType: 'Energy',
@@ -23,7 +23,7 @@ export const EQ_DIALOG_CLOSE_DATA: DHII_Equipment = {
       weightInKilos: 4,
       availability: 10,
       notes:
-        'Las Weapon Variable Setting: Overcharge: +1 Dam, 2 ammo. Overload: +2 Dam and Pen but uses 4 ammo, loses Reliable, and gains Unreliable'
+        'Las Weapon Variable Setting: Overcharge: +1 Dam, 2 ammo. Overload: +2 Dam and Pen but uses 4 ammo, loses Reliable, and gains Unreliable',
     },
     {
       name: 'Hot-shot Lasgun',
@@ -34,7 +34,7 @@ export const EQ_DIALOG_CLOSE_DATA: DHII_Equipment = {
       weaponJamOn: 96,
       rateOfFire: {
         single: true,
-        semi: 3
+        semi: 3,
       },
       damage: '1d10+4',
       damageType: 'Energy',
@@ -43,7 +43,7 @@ export const EQ_DIALOG_CLOSE_DATA: DHII_Equipment = {
       reloadInActions: 4,
       weightInKilos: 6,
       availability: -20,
-      notes: 'Do not benefit from the Las Weapon Variable Setting rules.'
-    }
-  ]
+      notes: 'Do not benefit from the Las Weapon Variable Setting rules.',
+    },
+  ],
 };

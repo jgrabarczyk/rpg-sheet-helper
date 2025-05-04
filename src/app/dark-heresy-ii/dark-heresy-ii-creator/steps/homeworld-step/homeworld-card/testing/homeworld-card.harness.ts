@@ -1,4 +1,7 @@
-import { ContentContainerComponentHarness, TestElement } from '@angular/cdk/testing';
+import {
+  ContentContainerComponentHarness,
+  TestElement,
+} from '@angular/cdk/testing';
 import { MatCardHarness } from '@angular/material/card/testing';
 
 export class HomeworldCardHarness extends ContentContainerComponentHarness {
@@ -10,7 +13,7 @@ export class HomeworldCardHarness extends ContentContainerComponentHarness {
   }
 
   public async getTitleText(): Promise<string> {
-    const card: MatCardHarness = await this.getHarness(MatCardHarness)
+    const card: MatCardHarness = await this.getHarness(MatCardHarness);
     return card.getTitleText();
   }
 }

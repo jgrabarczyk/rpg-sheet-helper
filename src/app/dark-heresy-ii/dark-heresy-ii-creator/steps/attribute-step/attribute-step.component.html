@@ -6,21 +6,31 @@
   <ng-container card-content>
     <p>Basic attribute - determined by rolling 2d10 + 20</p>
     <p>
-      <span class="bonus">Bonus attributes</span> - determined by rolling 3d10 and discarding the
-      lowest roll then adding 20.<br />
-      Due to your character's <i>Homeworld</i> this attributes are more developed.
+      <span class="bonus">Bonus attributes</span> - determined by rolling 3d10
+      and discarding the lowest roll then adding 20.<br />
+      Due to your character's <i>Homeworld</i> this attributes are more
+      developed.
     </p>
     <p>
-      <span class="penality">Penality attribute</span> - determined by rolling 3d10 and discarding
-      the highest roll then adding 20.<br />
-      Due to your character's <i>Homeworld</i> this attributes are less developed.
+      <span class="penality">Penality attribute</span> - determined by rolling
+      3d10 and discarding the highest roll then adding 20.<br />
+      Due to your character's <i>Homeworld</i> this attributes are less
+      developed.
     </p>
     <p>Lowest roll possible 22</p>
     <p>Highest roll possible 40</p>
   </ng-container>
 
-  <div class="roll" card-actions>
-    <button mat-flat-button (click)="roll()">Generate All</button>
+  <div
+    class="roll"
+    card-actions
+  >
+    <button
+      mat-flat-button
+      (click)="roll()"
+    >
+      Generate All
+    </button>
   </div>
 
   <app-attributes-group

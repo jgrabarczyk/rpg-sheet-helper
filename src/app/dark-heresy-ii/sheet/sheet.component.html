@@ -1,41 +1,53 @@
+@let char$ = character$ | async;
+<div class="wrapper">
+  @if (char$) {
+    <app-sheet-header
+      [editable]="editable"
+      [character]="char$"
+      (saveCharacter)="saveCharacter()"
+      (deleteCharacter)="deleteCharacter()"
+    />
+  }
 
-@let char$ = character$ | async; 
-  <div class="wrapper">
-    @if(char$){
-      <app-sheet-header [editable]="editable"  [character]="char$" (saveCharacter)="saveCharacter()" (deleteCharacter)="deleteCharacter()"/>
-    } 
+  @let attributes$ = char$?.attributes;
+  @if (attributes$) {
+    <app-attributes-group
+      title="Attributes"
+      subtitle="Basic attributes of your character"
+      [editable]="editable"
+      [attributes]="attributes$"
+      (updatedAttribute)="updateAttribute($event)"
+      (roll)="rollDice($event)"
+    />
+  }
 
-    @let attributes$ = char$?.attributes;
-    @if(attributes$) {
-      <app-attributes-group
-        title="Attributes"
-        subtitle="Basic attributes of your character"
-        [editable]="editable"
-        [attributes]="attributes$"
-        (updatedAttribute)="updateAttribute($event)"
-        (roll)="rollDice($event)"
-      />
-    } 
+  @let skills$ = char$?.skills;
+  @if (skills$) {
+    <app-skill-group
+      title="Skills"
+      subtitle="Basic skills of your character"
+      [editable]="editable"
+      [skills]="skills$"
+      (updateSkill)="updateSkill($event)"
+      (roll)="rollDice($event)"
+    />
+  }
 
-    @let skills$ = char$?.skills;
-    @if(skills$) {
-      <app-skill-group
-        title="Skills"
-        subtitle="Basic skills of your character"
-        [editable]="editable"
-        [skills]="skills$"
-        (updateSkill)="updateSkill($event)"
-        (roll)="rollDice($event)"
-      />
-    } 
+  <app-aptitudes-group [aptitudes]="char$?.aptitudes ?? []" />
 
-    <app-aptitudes-group [aptitudes]="char$?.aptitudes ?? []" /> 
+  @let talents = char$?.tallents;
+  @if (talents) {
+    <app-talents-group
+      title="Talents"
+      subtitle="and special abilities"
+      [talents]="talents"
+    />
+  }
 
-    @let talents = char$?.tallents;
-    @if(talents){
-      <app-talents-group title="Talents" subtitle="and special abilities"  [talents]="talents"/>
-    } 
-
-    <app-equipment [equipment]="char$?.equipment" [strength]="char$?.attributes?.get('Strength')?.value" (addEquipment)="addEquipment($event)"/>
-    <app-roll-loger></app-roll-loger>
-  </div>
+  <app-equipment
+    [equipment]="char$?.equipment"
+    [strength]="char$?.attributes?.get('Strength')?.value"
+    (addEquipment)="addEquipment($event)"
+  />
+  <app-roll-loger></app-roll-loger>
+</div>

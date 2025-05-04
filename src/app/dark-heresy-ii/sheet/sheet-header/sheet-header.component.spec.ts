@@ -9,11 +9,14 @@ import { MatSelectHarness } from '@angular/material/select/testing';
 import { DHII_Character } from '@dhii/types/dark-heresy-ii';
 
 import { SheetHeaderComponent } from './sheet-header.component';
-import { MatAccordionHarness, MatExpansionPanelHarness } from '@angular/material/expansion/testing';
+import {
+  MatAccordionHarness,
+  MatExpansionPanelHarness,
+} from '@angular/material/expansion/testing';
 import { MatButtonHarness } from '@angular/material/button/testing';
 import {
   HeaderAccordionDataPipe,
-  SheetHeaderAccordionData
+  SheetHeaderAccordionData,
 } from './header-accordion-data/header-accordion-data.pipe';
 import { INITIAL_CHARACTER_FOR_TESTS } from '../../../../tests/character-data';
 import { getButtonHarnessWithSelector } from '../../../../tests/harness-selector-helpers';
@@ -27,7 +30,7 @@ describe('SheetHeaderComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [SheetHeaderComponent, NoopAnimationsModule]
+      imports: [SheetHeaderComponent, NoopAnimationsModule],
     }).compileComponents();
 
     fixture = TestBed.createComponent(SheetHeaderComponent);
@@ -46,19 +49,19 @@ describe('SheetHeaderComponent', () => {
       const inputConfig = [
         {
           name: 'characterName',
-          expectedValue: 'Andrzej'
+          expectedValue: 'Andrzej',
         },
 
         {
           name: 'age',
-          expectedValue: '78'
-        }
+          expectedValue: '78',
+        },
       ];
       // eslint-disable-next-line @typescript-eslint/typedef
       const selectConfig = [
         { name: 'homeworld', expectedValue: 'Agri-World' },
         { name: 'background', expectedValue: 'Adeptus Mechanicus' },
-        { name: 'role', expectedValue: 'Warrior' }
+        { name: 'role', expectedValue: 'Warrior' },
       ];
 
       inputConfig.forEach(config => {

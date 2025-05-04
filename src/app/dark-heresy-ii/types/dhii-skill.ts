@@ -81,7 +81,10 @@ export type DHII_SkillName<Base extends string = string> =
 const DHII_MAX_SKILL_LEVEL: 4 = 4 as const;
 export type DHII_SkillLevel = Level<typeof DHII_MAX_SKILL_LEVEL>;
 
-export type DHII_Skill = Omit<Skill<DHII_AttributeName, DHII_SkillName>, 'lvl'> & {
+export type DHII_Skill = Omit<
+  Skill<DHII_AttributeName, DHII_SkillName>,
+  'lvl'
+> & {
   aptitudes: [DHII_Aptitude, DHII_Aptitude];
   lvl: DHII_SkillLevel;
   value: number;
@@ -93,39 +96,39 @@ export const DHII_SKILLS: Map<DHII_SkillName, DHII_Skill> = new Map([
     {
       lvl: {
         current: 0,
-        max: DHII_MAX_SKILL_LEVEL
+        max: DHII_MAX_SKILL_LEVEL,
       },
       value: 0,
       name: 'Acrobatics',
       basedOn: 'Agility',
-      aptitudes: ['Agility', 'General']
-    }
+      aptitudes: ['Agility', 'General'],
+    },
   ],
   [
     'Athletics',
     {
       lvl: {
         current: 0,
-        max: DHII_MAX_SKILL_LEVEL
+        max: DHII_MAX_SKILL_LEVEL,
       },
       value: 0,
       name: 'Athletics',
       basedOn: 'Strength',
-      aptitudes: ['Strength', 'General']
-    }
+      aptitudes: ['Strength', 'General'],
+    },
   ],
   [
     'Awareness',
     {
       lvl: {
         current: 0,
-        max: DHII_MAX_SKILL_LEVEL
+        max: DHII_MAX_SKILL_LEVEL,
       },
       value: 0,
       name: 'Awareness',
       basedOn: 'Perception',
-      aptitudes: ['Perception', 'Fieldcraft']
-    }
+      aptitudes: ['Perception', 'Fieldcraft'],
+    },
   ],
 
   [
@@ -133,182 +136,182 @@ export const DHII_SKILLS: Map<DHII_SkillName, DHII_Skill> = new Map([
     {
       lvl: {
         current: 0,
-        max: DHII_MAX_SKILL_LEVEL
+        max: DHII_MAX_SKILL_LEVEL,
       },
       value: 0,
       name: 'Charm',
       basedOn: 'Fellowship',
-      aptitudes: ['Fellowship', 'Social']
-    }
+      aptitudes: ['Fellowship', 'Social'],
+    },
   ],
   [
     'Command',
     {
       lvl: {
         current: 0,
-        max: DHII_MAX_SKILL_LEVEL
+        max: DHII_MAX_SKILL_LEVEL,
       },
       value: 0,
       name: 'Command',
       basedOn: 'Fellowship',
-      aptitudes: ['Fellowship', 'Leadership']
-    }
+      aptitudes: ['Fellowship', 'Leadership'],
+    },
   ],
   [
     'Commerce',
     {
       lvl: {
         current: 0,
-        max: DHII_MAX_SKILL_LEVEL
+        max: DHII_MAX_SKILL_LEVEL,
       },
       value: 0,
       name: 'Commerce',
       basedOn: 'Intelligence',
-      aptitudes: ['Intelligence', 'Knowledge']
-    }
+      aptitudes: ['Intelligence', 'Knowledge'],
+    },
   ],
   [
     'Common Lore (Adeptus Administratum)',
     {
       lvl: {
         current: 0,
-        max: DHII_MAX_SKILL_LEVEL
+        max: DHII_MAX_SKILL_LEVEL,
       },
       value: 0,
       name: 'Common Lore (Adeptus Astra Telepathica)',
       basedOn: 'Intelligence',
-      aptitudes: ['Intelligence', 'General']
-    }
+      aptitudes: ['Intelligence', 'General'],
+    },
   ],
   [
     'Common Lore (Adeptus Astra Telepathica)',
     {
       lvl: {
         current: 0,
-        max: DHII_MAX_SKILL_LEVEL
+        max: DHII_MAX_SKILL_LEVEL,
       },
       value: 0,
       name: 'Common Lore (Adeptus Astra Telepathica)',
       basedOn: 'Intelligence',
-      aptitudes: ['Intelligence', 'General']
-    }
+      aptitudes: ['Intelligence', 'General'],
+    },
   ],
   [
     'Common Lore (Adeptus Arbites)',
     {
       lvl: {
         current: 0,
-        max: DHII_MAX_SKILL_LEVEL
+        max: DHII_MAX_SKILL_LEVEL,
       },
       value: 0,
       name: 'Common Lore (Adeptus Arbites)',
       basedOn: 'Intelligence',
-      aptitudes: ['Intelligence', 'General']
-    }
+      aptitudes: ['Intelligence', 'General'],
+    },
   ],
   [
     'Common Lore (Machine Cult)',
     {
       lvl: {
         current: 0,
-        max: DHII_MAX_SKILL_LEVEL
+        max: DHII_MAX_SKILL_LEVEL,
       },
       value: 0,
       name: 'Common Lore (Machine Cult)',
       basedOn: 'Intelligence',
-      aptitudes: ['Intelligence', 'General']
-    }
+      aptitudes: ['Intelligence', 'General'],
+    },
   ],
   [
     'Common Lore (Imperial Creed)',
     {
       lvl: {
         current: 0,
-        max: DHII_MAX_SKILL_LEVEL
+        max: DHII_MAX_SKILL_LEVEL,
       },
       value: 0,
       name: 'Common Lore (Imperial Creed)',
       basedOn: 'Intelligence',
-      aptitudes: ['Intelligence', 'General']
-    }
+      aptitudes: ['Intelligence', 'General'],
+    },
   ],
   [
     'Common Lore (Imperial Guard)',
     {
       lvl: {
         current: 0,
-        max: DHII_MAX_SKILL_LEVEL
+        max: DHII_MAX_SKILL_LEVEL,
       },
       value: 0,
       name: 'Common Lore (Imperial Guard)',
       basedOn: 'Intelligence',
-      aptitudes: ['Intelligence', 'General']
-    }
+      aptitudes: ['Intelligence', 'General'],
+    },
   ],
   [
     'Common Lore (Imperium)',
     {
       lvl: {
         current: 0,
-        max: DHII_MAX_SKILL_LEVEL
+        max: DHII_MAX_SKILL_LEVEL,
       },
       value: 0,
       name: 'Common Lore (Imperium)',
       basedOn: 'Intelligence',
-      aptitudes: ['Intelligence', 'General']
-    }
+      aptitudes: ['Intelligence', 'General'],
+    },
   ],
   [
     'Common Lore (Underworld)',
     {
       lvl: {
         current: 0,
-        max: DHII_MAX_SKILL_LEVEL
+        max: DHII_MAX_SKILL_LEVEL,
       },
       value: 0,
       name: 'Common Lore (Underworld)',
       basedOn: 'Intelligence',
-      aptitudes: ['Intelligence', 'General']
-    }
+      aptitudes: ['Intelligence', 'General'],
+    },
   ],
   [
     'Common Lore (Tech)',
     {
       lvl: {
         current: 0,
-        max: DHII_MAX_SKILL_LEVEL
+        max: DHII_MAX_SKILL_LEVEL,
       },
       value: 0,
       name: 'Common Lore (Tech)',
       basedOn: 'Intelligence',
-      aptitudes: ['Intelligence', 'General']
-    }
+      aptitudes: ['Intelligence', 'General'],
+    },
   ],
   [
     'Common Lore (War)',
     {
       lvl: {
         current: 0,
-        max: DHII_MAX_SKILL_LEVEL
+        max: DHII_MAX_SKILL_LEVEL,
       },
       value: 0,
       name: 'Common Lore (War)',
       basedOn: 'Intelligence',
-      aptitudes: ['Intelligence', 'General']
-    }
+      aptitudes: ['Intelligence', 'General'],
+    },
   ],
   [
     'Deceive',
     {
       lvl: {
         current: 0,
-        max: DHII_MAX_SKILL_LEVEL
+        max: DHII_MAX_SKILL_LEVEL,
       },
       value: 0,
       name: 'Deceive',
       basedOn: 'Fellowship',
-      aptitudes: ['Fellowship', 'Social']
-    }
+      aptitudes: ['Fellowship', 'Social'],
+    },
   ],
 
   [
@@ -316,273 +319,273 @@ export const DHII_SKILLS: Map<DHII_SkillName, DHII_Skill> = new Map([
     {
       lvl: {
         current: 0,
-        max: DHII_MAX_SKILL_LEVEL
+        max: DHII_MAX_SKILL_LEVEL,
       },
       value: 0,
       name: 'Dodge',
       basedOn: 'Agility',
-      aptitudes: ['Agility', 'Defence']
-    }
+      aptitudes: ['Agility', 'Defence'],
+    },
   ],
   [
     'Forbidden Lore (The Black Library)',
     {
       lvl: {
         current: 0,
-        max: DHII_MAX_SKILL_LEVEL
+        max: DHII_MAX_SKILL_LEVEL,
       },
       value: 0,
       name: 'Forbidden Lore (The Black Library)',
       basedOn: 'Intelligence',
-      aptitudes: ['Intelligence', 'Knowledge']
-    }
+      aptitudes: ['Intelligence', 'Knowledge'],
+    },
   ],
   [
     'Forbidden Lore (Cults)',
     {
       lvl: {
         current: 0,
-        max: DHII_MAX_SKILL_LEVEL
+        max: DHII_MAX_SKILL_LEVEL,
       },
       value: 0,
       name: 'Forbidden Lore (Cults)',
       basedOn: 'Intelligence',
-      aptitudes: ['Intelligence', 'Knowledge']
-    }
+      aptitudes: ['Intelligence', 'Knowledge'],
+    },
   ],
   [
     'Forbidden Lore (Daemonology)',
     {
       lvl: {
         current: 0,
-        max: DHII_MAX_SKILL_LEVEL
+        max: DHII_MAX_SKILL_LEVEL,
       },
       value: 0,
       name: 'Forbidden Lore (Daemonology)',
       basedOn: 'Intelligence',
-      aptitudes: ['Intelligence', 'Knowledge']
-    }
+      aptitudes: ['Intelligence', 'Knowledge'],
+    },
   ],
   [
     'Forbidden Lore (Heresy)',
     {
       lvl: {
         current: 0,
-        max: DHII_MAX_SKILL_LEVEL
+        max: DHII_MAX_SKILL_LEVEL,
       },
       value: 0,
       name: 'Forbidden Lore (Heresy)',
       basedOn: 'Intelligence',
-      aptitudes: ['Intelligence', 'Knowledge']
-    }
+      aptitudes: ['Intelligence', 'Knowledge'],
+    },
   ],
   [
     'Forbidden Lore (Inquisition)',
     {
       lvl: {
         current: 0,
-        max: DHII_MAX_SKILL_LEVEL
+        max: DHII_MAX_SKILL_LEVEL,
       },
       value: 0,
       name: 'Forbidden Lore (Inquisition)',
       basedOn: 'Intelligence',
-      aptitudes: ['Intelligence', 'Knowledge']
-    }
+      aptitudes: ['Intelligence', 'Knowledge'],
+    },
   ],
   [
     'Forbidden Lore (Archeotech)',
     {
       lvl: {
         current: 0,
-        max: DHII_MAX_SKILL_LEVEL
+        max: DHII_MAX_SKILL_LEVEL,
       },
       value: 0,
       name: 'Forbidden Lore (Archeotech)',
       basedOn: 'Intelligence',
-      aptitudes: ['Intelligence', 'Knowledge']
-    }
+      aptitudes: ['Intelligence', 'Knowledge'],
+    },
   ],
   [
     'Forbidden Lore (Mutants)',
     {
       lvl: {
         current: 0,
-        max: DHII_MAX_SKILL_LEVEL
+        max: DHII_MAX_SKILL_LEVEL,
       },
       value: 0,
       name: 'Forbidden Lore (Mutants)',
       basedOn: 'Intelligence',
-      aptitudes: ['Intelligence', 'Knowledge']
-    }
+      aptitudes: ['Intelligence', 'Knowledge'],
+    },
   ],
   [
     'Forbidden Lore (Ordos)',
     {
       lvl: {
         current: 0,
-        max: DHII_MAX_SKILL_LEVEL
+        max: DHII_MAX_SKILL_LEVEL,
       },
       value: 0,
       name: 'Forbidden Lore (Ordos)',
       basedOn: 'Intelligence',
-      aptitudes: ['Intelligence', 'Knowledge']
-    }
+      aptitudes: ['Intelligence', 'Knowledge'],
+    },
   ],
   [
     'Forbidden Lore (Adeptus Mechanicus)',
     {
       lvl: {
         current: 0,
-        max: DHII_MAX_SKILL_LEVEL
+        max: DHII_MAX_SKILL_LEVEL,
       },
       value: 0,
       name: 'Forbidden Lore (Adeptus Mechanicus)',
       basedOn: 'Intelligence',
-      aptitudes: ['Intelligence', 'Knowledge']
-    }
+      aptitudes: ['Intelligence', 'Knowledge'],
+    },
   ],
   [
     'Forbidden Lore (Psykers)',
     {
       lvl: {
         current: 0,
-        max: DHII_MAX_SKILL_LEVEL
+        max: DHII_MAX_SKILL_LEVEL,
       },
       value: 0,
       name: 'Forbidden Lore (Psykers)',
       basedOn: 'Intelligence',
-      aptitudes: ['Intelligence', 'Knowledge']
-    }
+      aptitudes: ['Intelligence', 'Knowledge'],
+    },
   ],
   [
     'Forbidden Lore (Warp)',
     {
       lvl: {
         current: 0,
-        max: DHII_MAX_SKILL_LEVEL
+        max: DHII_MAX_SKILL_LEVEL,
       },
       value: 0,
       name: 'Forbidden Lore (Warp)',
       basedOn: 'Intelligence',
-      aptitudes: ['Intelligence', 'Knowledge']
-    }
+      aptitudes: ['Intelligence', 'Knowledge'],
+    },
   ],
   [
     'Forbidden Lore (Xenos)',
     {
       lvl: {
         current: 0,
-        max: DHII_MAX_SKILL_LEVEL
+        max: DHII_MAX_SKILL_LEVEL,
       },
       value: 0,
       name: 'Forbidden Lore (Xenos)',
       basedOn: 'Intelligence',
-      aptitudes: ['Intelligence', 'Knowledge']
-    }
+      aptitudes: ['Intelligence', 'Knowledge'],
+    },
   ],
   [
     'Inquiry',
     {
       lvl: {
         current: 0,
-        max: DHII_MAX_SKILL_LEVEL
+        max: DHII_MAX_SKILL_LEVEL,
       },
       value: 0,
       name: 'Inquiry',
       basedOn: 'Fellowship',
-      aptitudes: ['Fellowship', 'Social']
-    }
+      aptitudes: ['Fellowship', 'Social'],
+    },
   ],
   [
     'Interrogation',
     {
       lvl: {
         current: 0,
-        max: DHII_MAX_SKILL_LEVEL
+        max: DHII_MAX_SKILL_LEVEL,
       },
       value: 0,
       name: 'Interrogation',
       basedOn: 'Willpower',
-      aptitudes: ['Willpower', 'Social']
-    }
+      aptitudes: ['Willpower', 'Social'],
+    },
   ],
   [
     'Intimidate',
     {
       lvl: {
         current: 0,
-        max: DHII_MAX_SKILL_LEVEL
+        max: DHII_MAX_SKILL_LEVEL,
       },
       value: 0,
       name: 'Intimidate',
       basedOn: 'Strength',
-      aptitudes: ['Strength', 'Social']
-    }
+      aptitudes: ['Strength', 'Social'],
+    },
   ],
   [
     'Linguistics',
     {
       lvl: {
         current: 0,
-        max: DHII_MAX_SKILL_LEVEL
+        max: DHII_MAX_SKILL_LEVEL,
       },
       value: 0,
       name: 'Linguistics',
       basedOn: 'Intelligence',
-      aptitudes: ['Intelligence', 'General']
-    }
+      aptitudes: ['Intelligence', 'General'],
+    },
   ],
   [
     'Linguistics (High Gothic)',
     {
       lvl: {
         current: 0,
-        max: DHII_MAX_SKILL_LEVEL
+        max: DHII_MAX_SKILL_LEVEL,
       },
       value: 0,
       name: 'Linguistics',
       basedOn: 'Intelligence',
-      aptitudes: ['Intelligence', 'General']
-    }
+      aptitudes: ['Intelligence', 'General'],
+    },
   ],
   [
     'Logic',
     {
       lvl: {
         current: 0,
-        max: DHII_MAX_SKILL_LEVEL
+        max: DHII_MAX_SKILL_LEVEL,
       },
       value: 0,
       name: 'Logic',
       basedOn: 'Intelligence',
-      aptitudes: ['Intelligence', 'Knowledge']
-    }
+      aptitudes: ['Intelligence', 'Knowledge'],
+    },
   ],
   [
     'Medicae',
     {
       lvl: {
         current: 0,
-        max: DHII_MAX_SKILL_LEVEL
+        max: DHII_MAX_SKILL_LEVEL,
       },
       value: 0,
       name: 'Medicae',
       basedOn: 'Intelligence',
-      aptitudes: ['Intelligence', 'Fieldcraft']
-    }
+      aptitudes: ['Intelligence', 'Fieldcraft'],
+    },
   ],
   [
     'Navigate',
     {
       lvl: {
         current: 0,
-        max: DHII_MAX_SKILL_LEVEL
+        max: DHII_MAX_SKILL_LEVEL,
       },
       value: 0,
       name: 'Navigate',
       basedOn: 'Intelligence',
-      aptitudes: ['Intelligence', 'Fieldcraft']
-    }
+      aptitudes: ['Intelligence', 'Fieldcraft'],
+    },
   ],
 
   [
@@ -590,91 +593,91 @@ export const DHII_SKILLS: Map<DHII_SkillName, DHII_Skill> = new Map([
     {
       lvl: {
         current: 0,
-        max: DHII_MAX_SKILL_LEVEL
+        max: DHII_MAX_SKILL_LEVEL,
       },
       value: 0,
       name: 'Operate',
       basedOn: 'Agility',
-      aptitudes: ['Agility', 'Fieldcraft']
-    }
+      aptitudes: ['Agility', 'Fieldcraft'],
+    },
   ],
   [
     'Parry',
     {
       lvl: {
         current: 0,
-        max: DHII_MAX_SKILL_LEVEL
+        max: DHII_MAX_SKILL_LEVEL,
       },
       value: 0,
       name: 'Parry',
       basedOn: 'Weapon Skill',
-      aptitudes: ['Weapon Skill', 'Defence']
-    }
+      aptitudes: ['Weapon Skill', 'Defence'],
+    },
   ],
   [
     'Psyniscience',
     {
       lvl: {
         current: 0,
-        max: DHII_MAX_SKILL_LEVEL
+        max: DHII_MAX_SKILL_LEVEL,
       },
       value: 0,
       name: 'Psyniscience',
       basedOn: 'Perception',
-      aptitudes: ['Perception', 'Psyker']
-    }
+      aptitudes: ['Perception', 'Psyker'],
+    },
   ],
   [
     'Scholastic Lore',
     {
       lvl: {
         current: 0,
-        max: DHII_MAX_SKILL_LEVEL
+        max: DHII_MAX_SKILL_LEVEL,
       },
       value: 0,
       name: 'Scholastic Lore',
       basedOn: 'Intelligence',
-      aptitudes: ['Intelligence', 'Knowledge']
-    }
+      aptitudes: ['Intelligence', 'Knowledge'],
+    },
   ],
   [
     'Scrutiny',
     {
       lvl: {
         current: 0,
-        max: DHII_MAX_SKILL_LEVEL
+        max: DHII_MAX_SKILL_LEVEL,
       },
       value: 0,
       name: 'Scrutiny',
       basedOn: 'Perception',
-      aptitudes: ['Perception', 'General']
-    }
+      aptitudes: ['Perception', 'General'],
+    },
   ],
   [
     'Security',
     {
       lvl: {
         current: 0,
-        max: DHII_MAX_SKILL_LEVEL
+        max: DHII_MAX_SKILL_LEVEL,
       },
       value: 0,
       name: 'Security',
       basedOn: 'Intelligence',
-      aptitudes: ['Intelligence', 'Tech']
-    }
+      aptitudes: ['Intelligence', 'Tech'],
+    },
   ],
   [
     'Sleight of Hand',
     {
       lvl: {
         current: 0,
-        max: DHII_MAX_SKILL_LEVEL
+        max: DHII_MAX_SKILL_LEVEL,
       },
       value: 0,
       name: 'Sleight of Hand',
       basedOn: 'Agility',
-      aptitudes: ['Agility', 'Knowledge']
-    }
+      aptitudes: ['Agility', 'Knowledge'],
+    },
   ],
 
   [
@@ -682,51 +685,51 @@ export const DHII_SKILLS: Map<DHII_SkillName, DHII_Skill> = new Map([
     {
       lvl: {
         current: 0,
-        max: DHII_MAX_SKILL_LEVEL
+        max: DHII_MAX_SKILL_LEVEL,
       },
       value: 0,
       name: 'Stealth',
       basedOn: 'Agility',
-      aptitudes: ['Agility', 'Fieldcraft']
-    }
+      aptitudes: ['Agility', 'Fieldcraft'],
+    },
   ],
   [
     'Survival',
     {
       lvl: {
         current: 0,
-        max: DHII_MAX_SKILL_LEVEL
+        max: DHII_MAX_SKILL_LEVEL,
       },
       value: 0,
       name: 'Survival',
       basedOn: 'Perception',
-      aptitudes: ['Perception', 'Fieldcraft']
-    }
+      aptitudes: ['Perception', 'Fieldcraft'],
+    },
   ],
   [
     'Tech-Use',
     {
       lvl: {
         current: 0,
-        max: DHII_MAX_SKILL_LEVEL
+        max: DHII_MAX_SKILL_LEVEL,
       },
       value: 0,
       name: 'Tech-Use',
       basedOn: 'Intelligence',
-      aptitudes: ['Intelligence', 'Tech']
-    }
+      aptitudes: ['Intelligence', 'Tech'],
+    },
   ],
   [
     'Trade',
     {
       lvl: {
         current: 0,
-        max: DHII_MAX_SKILL_LEVEL
+        max: DHII_MAX_SKILL_LEVEL,
       },
       value: 0,
       name: 'Trade',
       basedOn: 'Intelligence',
-      aptitudes: ['Intelligence', 'General']
-    }
-  ]
+      aptitudes: ['Intelligence', 'General'],
+    },
+  ],
 ]);

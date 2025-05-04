@@ -1,20 +1,26 @@
-<app-two-column-step title="Determin Aptitudes" [valid]="valid">
+<app-two-column-step
+  title="Determin Aptitudes"
+  [valid]="valid"
+>
   <p card-content>
-    The people serving as Inquisitors to defend humanity represent a wide range of planets,
-    organizations, and points of view. For this reason, each Acolyte finds it easier to acquire
-    specific skills, while others - intuitively understood by others - may come to him with
-    difficulty. In Dark Heresy, such tendencies acquired during character creation are called
-    aptitudes. They designate areas of tasks and skills in which the hero feels confident and which
-    he can develop more easily than others. The development of traits, skills and abilities is based
-    on relationships of aptitudes. Most of the above have two aptitudes, although some exotic
-    abilities may have only one. Developments corresponding to the character's aptitudes are easier
-    to obtain - purchasing them costs fewer Experience Points. If a hero has one predisposition
-    corresponding to the development, he or she receives a small discount on it. This discount will
-    be greater if the hero has both relevant aptitudes. Players can buy developments for which they
-    do not have the predisposition, but they will usually be very expensive. Please note that a
-    predisposition cannot be assigned more than once. If, during character creation, the Acolyte
-    again acquires the same predisposition from another source, he selects and gains any of the
-    trait-based aptitudes instead.
+    The people serving as Inquisitors to defend humanity represent a wide range
+    of planets, organizations, and points of view. For this reason, each Acolyte
+    finds it easier to acquire specific skills, while others - intuitively
+    understood by others - may come to him with difficulty. In Dark Heresy, such
+    tendencies acquired during character creation are called aptitudes. They
+    designate areas of tasks and skills in which the hero feels confident and
+    which he can develop more easily than others. The development of traits,
+    skills and abilities is based on relationships of aptitudes. Most of the
+    above have two aptitudes, although some exotic abilities may have only one.
+    Developments corresponding to the character's aptitudes are easier to obtain
+    - purchasing them costs fewer Experience Points. If a hero has one
+    predisposition corresponding to the development, he or she receives a small
+    discount on it. This discount will be greater if the hero has both relevant
+    aptitudes. Players can buy developments for which they do not have the
+    predisposition, but they will usually be very expensive. Please note that a
+    predisposition cannot be assigned more than once. If, during character
+    creation, the Acolyte again acquires the same predisposition from another
+    source, he selects and gains any of the trait-based aptitudes instead.
   </p>
 
   <button
@@ -26,7 +32,10 @@
     Save
   </button>
 
-  <mat-card appearance="outlined" right-column>
+  <mat-card
+    appearance="outlined"
+    right-column
+  >
     <mat-card-content>
       <mat-list class="aptitudes">
         @if (uniqueAptitudes) {
@@ -36,12 +45,19 @@
         }
 
         @if (aptitudesToChoose) {
-          @for (options of aptitudesToChoose; track options; let index = $index) {
+          @for (
+            options of aptitudesToChoose;
+            track options;
+            let index = $index
+          ) {
             <mat-list-item>
               <mat-form-field>
                 <mat-select [formControl]="formChooseFrom.at(index)">
                   @for (option of options; track option) {
-                    <mat-option [value]="option" [disabled]="uniqueAptitudes.includes(option)">
+                    <mat-option
+                      [value]="option"
+                      [disabled]="uniqueAptitudes.includes(option)"
+                    >
                       {{ option }}
                     </mat-option>
                   }
@@ -57,7 +73,10 @@
               <mat-form-field>
                 <mat-select [formControl]="formDuplicates.at(index)">
                   @for (option of defaultOptions; track option) {
-                    <mat-option [value]="option" [disabled]="uniqueAptitudes.includes(option)">
+                    <mat-option
+                      [value]="option"
+                      [disabled]="uniqueAptitudes.includes(option)"
+                    >
                       {{ option }}
                     </mat-option>
                   }
