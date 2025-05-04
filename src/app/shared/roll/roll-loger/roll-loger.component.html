@@ -1,4 +1,8 @@
-<mat-card name="rollLogger" appearance="outlined" class="logger-wrapper">
+<mat-card
+  name="rollLogger"
+  appearance="outlined"
+  class="logger-wrapper"
+>
   <mat-card-header>
     <mat-card-title> Dice roll history </mat-card-title>
   </mat-card-header>
@@ -6,8 +10,14 @@
     <mat-list>
       @for (item of loggerStack$ | async; track item.id) {
         <mat-list-item class="item">
-          <div matListItemTitle [innerHTML]="item.title"></div>
-          <div matListItemLine [innerHTML]="item.message"></div>
+          <div
+            matListItemTitle
+            [innerHTML]="item.title"
+          ></div>
+          <div
+            matListItemLine
+            [innerHTML]="item.message"
+          ></div>
         </mat-list-item>
       }
     </mat-list>

@@ -1,4 +1,7 @@
-<mat-card appearance="outlined" right-column>
+<mat-card
+  appearance="outlined"
+  right-column
+>
   <mat-card-content>
     <mat-list>
       @if (items) {
@@ -25,6 +28,13 @@
     </mat-list>
   </mat-card-content>
   <mat-card-actions>
-    <button card-actions mat-flat-button (click)="save()" [disabled]="form.invalid">Save</button>
+    <button
+      card-actions
+      mat-flat-button
+      (click)="save()"
+      [disabled]="form.invalid"
+    >
+      Save
+    </button>
   </mat-card-actions>
 </mat-card>

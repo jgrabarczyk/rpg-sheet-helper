@@ -9,9 +9,8 @@ describe('HomeworldCardComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [HomeworldCardComponent]
-    })
-    .compileComponents();
+      imports: [HomeworldCardComponent],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(HomeworldCardComponent);
     component = fixture.componentInstance;

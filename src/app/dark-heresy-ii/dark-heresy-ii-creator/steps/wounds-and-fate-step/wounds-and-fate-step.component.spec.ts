@@ -11,12 +11,15 @@ describe('WoundsAndFateStepComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [WoundsAndFateStepComponent],
-      providers: [{ provide: CdkStepper, useValue: {} }]
+      providers: [{ provide: CdkStepper, useValue: {} }],
     }).compileComponents();
 
     fixture = TestBed.createComponent(WoundsAndFateStepComponent);
     component = fixture.componentInstance;
-    component.homeworld = { key: 'highborn', value: HOMEWORLDS.get('highborn')! };
+    component.homeworld = {
+      key: 'highborn',
+      value: HOMEWORLDS.get('highborn')!,
+    };
     fixture.detectChanges();
   });
 

@@ -19,12 +19,14 @@ describe('RoleCardComponent', () => {
     fixture.detectChanges();
     compiled = fixture.nativeElement as HTMLElement;
 
-    [aptitudes, talents] = Array.from(compiled.querySelectorAll<HTMLElement>('.row.rs-list-item'));
+    [aptitudes, talents] = Array.from(
+      compiled.querySelectorAll<HTMLElement>('.row.rs-list-item')
+    );
   }
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [RoleCardComponent]
+      imports: [RoleCardComponent],
     }).compileComponents();
 
     fixture = TestBed.createComponent(RoleCardComponent);
@@ -39,11 +41,15 @@ describe('RoleCardComponent', () => {
     });
 
     it('should correctly render aptitudes', async () => {
-      const aptitudesTxt: string | null = aptitudes.getElementsByClassName('value')[0].textContent;
-      expect(aptitudesTxt?.trim()).toEqual('Agility, Finesse, Perception, Tech, Willpower');
+      const aptitudesTxt: string | null =
+        aptitudes.getElementsByClassName('value')[0].textContent;
+      expect(aptitudesTxt?.trim()).toEqual(
+        'Agility, Finesse, Perception, Tech, Willpower'
+      );
     });
     it('should correctly render talents', async () => {
-      const talentsTxt: string | null = talents.getElementsByClassName('value')[0].textContent;
+      const talentsTxt: string | null =
+        talents.getElementsByClassName('value')[0].textContent;
       expect(talentsTxt).toEqual('Hard Target or Hotshot Pilot');
     });
   });
@@ -56,11 +62,15 @@ describe('RoleCardComponent', () => {
     });
 
     it('should correctly render aptitudes', async () => {
-      const aptitudesTxt: string | null = aptitudes.getElementsByClassName('value')[0].textContent;
-      expect(aptitudesTxt?.trim()).toEqual('Agility, Fieldcraft, Intelligence, Offence, Toughness');
+      const aptitudesTxt: string | null =
+        aptitudes.getElementsByClassName('value')[0].textContent;
+      expect(aptitudesTxt?.trim()).toEqual(
+        'Agility, Fieldcraft, Intelligence, Offence, Toughness'
+      );
     });
     it('should correctly render talents', async () => {
-      const talentsTxt: string | null = talents.getElementsByClassName('value')[0].textContent;
+      const talentsTxt: string | null =
+        talents.getElementsByClassName('value')[0].textContent;
       expect(talentsTxt).toEqual('Die Hard or Flagellant');
     });
   });

@@ -7,11 +7,17 @@ import { MatButtonModule } from '@angular/material/button';
 import { CommonModule } from '@angular/common';
 
 @Component({
-    selector: 'app-load-character',
-    imports: [RouterLink, MatCardModule, MatListModule, MatButtonModule, CommonModule],
-    templateUrl: './load-character.component.html',
-    styleUrl: './load-character.component.scss',
-    changeDetection: ChangeDetectionStrategy.OnPush
+  selector: 'app-load-character',
+  imports: [
+    RouterLink,
+    MatCardModule,
+    MatListModule,
+    MatButtonModule,
+    CommonModule,
+  ],
+  templateUrl: './load-character.component.html',
+  styleUrl: './load-character.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class LoadCharacterComponent {
   private sheetService = inject(DHII_SheetService);
@@ -19,7 +25,7 @@ export class LoadCharacterComponent {
   protected saveNames$ = this.sheetService.dhiiLocalStorageSaveNames$;
 
   protected loadCharacter(item: string): void {
-    this.sheetService.loadCharacterFromLocalStorage(item)
+    this.sheetService.loadCharacterFromLocalStorage(item);
   }
 
   protected deleteCharacter(item: string): void {

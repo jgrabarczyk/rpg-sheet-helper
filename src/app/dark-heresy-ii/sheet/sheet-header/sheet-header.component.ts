@@ -21,20 +21,20 @@ import { HeaderAccordionDataPipe } from './header-accordion-data/header-accordio
  *
  */
 @Component({
-    selector: 'app-sheet-header',
-    imports: [
-        MatCardModule,
-        ReactiveFormsModule,
-        MatFormFieldModule,
-        MatInputModule,
-        MatSelectModule,
-        MatExpansionModule,
-        HeaderAccordionDataPipe,
-        MatButtonModule,
-        MatButtonToggleModule
-    ],
-    templateUrl: './sheet-header.component.html',
-    styleUrl: './sheet-header.component.scss'
+  selector: 'app-sheet-header',
+  imports: [
+    MatCardModule,
+    ReactiveFormsModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatSelectModule,
+    MatExpansionModule,
+    HeaderAccordionDataPipe,
+    MatButtonModule,
+    MatButtonToggleModule,
+  ],
+  templateUrl: './sheet-header.component.html',
+  styleUrl: './sheet-header.component.scss',
 })
 export class SheetHeaderComponent {
   protected homeworlds: DHII_Homeworlds = HOMEWORLDS;
@@ -68,32 +68,34 @@ export class SheetHeaderComponent {
 
   @Output() saveCharacter = new EventEmitter();
   @Output() deleteCharacter = new EventEmitter();
-  
+
   protected form: FormGroup = new FormGroup({
     characterName: new FormControl({
       value: '',
-      disabled: true
+      disabled: true,
     }),
     age: new FormControl({
       value: '',
-      disabled: true
+      disabled: true,
     }),
     homeworld: new FormControl({
       value: '',
-      disabled: true
+      disabled: true,
     }),
     background: new FormControl({
       value: '',
-      disabled: true
+      disabled: true,
     }),
     role: new FormControl({
       value: '',
-      disabled: true
-    })
+      disabled: true,
+    }),
   });
 
   private updateForm(): void {
-    this.form.controls['characterName'].setValue(this.character_.details?.characterName);
+    this.form.controls['characterName'].setValue(
+      this.character_.details?.characterName
+    );
     this.form.controls['age'].setValue(this.character_.details?.age);
     this.form.controls['homeworld'].setValue(this.character_.homeworld?.key);
     this.form.controls['background'].setValue(this.character_.background?.key);

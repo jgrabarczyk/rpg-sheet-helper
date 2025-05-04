@@ -18,7 +18,7 @@ describe('Unit RollService', () => {
     it('should roll correct value for XdX', () => {
       const r: LoggerDiceRoll = {
         roll: '8d12',
-        type: 'skipLog'
+        type: 'skipLog',
       };
       expect(service.rollDices(r)).toBeGreaterThanOrEqual(8);
       expect(service.rollDices(r)).toBeLessThanOrEqual(8 * 12);
@@ -26,7 +26,7 @@ describe('Unit RollService', () => {
     it('should roll correct value for 1dX', () => {
       const r: LoggerDiceRoll = {
         roll: '1d12',
-        type: 'skipLog'
+        type: 'skipLog',
       };
       expect(service.rollDices(r)).toBeGreaterThanOrEqual(1);
       expect(service.rollDices(r)).toBeLessThanOrEqual(12);
@@ -34,14 +34,14 @@ describe('Unit RollService', () => {
     it('should roll 0 for 0dX', () => {
       const r: LoggerDiceRoll = {
         roll: '0d12',
-        type: 'skipLog'
+        type: 'skipLog',
       };
       expect(service.rollDices(r)).toBe(0);
     });
     it('should roll 0 for Xd0', () => {
       const r: LoggerDiceRoll = {
         roll: '12d0',
-        type: 'skipLog'
+        type: 'skipLog',
       };
       expect(service.rollDices(r)).toBe(0);
     });

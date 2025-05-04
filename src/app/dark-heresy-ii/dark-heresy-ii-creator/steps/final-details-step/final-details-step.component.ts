@@ -1,5 +1,16 @@
-import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
-import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  EventEmitter,
+  Input,
+  Output,
+} from '@angular/core';
+import {
+  FormControl,
+  FormGroup,
+  ReactiveFormsModule,
+  Validators,
+} from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -11,25 +22,26 @@ import { CommonModule } from '@angular/common';
 import { MatDialogModule } from '@angular/material/dialog';
 
 @Component({
-    selector: 'app-final-details-step',
-    imports: [
-        TwoColumnStepComponent,
-        MatCardModule,
-        MatButtonModule,
-        MatFormFieldModule,
-        MatInputModule,
-        ReactiveFormsModule,
-        CommonModule,
-        MatDialogModule
-    ],
-    templateUrl: './final-details-step.component.html',
-    styleUrl: './final-details-step.component.scss',
-    changeDetection: ChangeDetectionStrategy.OnPush
+  selector: 'app-final-details-step',
+  imports: [
+    TwoColumnStepComponent,
+    MatCardModule,
+    MatButtonModule,
+    MatFormFieldModule,
+    MatInputModule,
+    ReactiveFormsModule,
+    CommonModule,
+    MatDialogModule,
+  ],
+  templateUrl: './final-details-step.component.html',
+  styleUrl: './final-details-step.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class FinalDetailsStepComponent {
   @Input() details?: DHII_CharacterDetails;
   @Output() resetAll: EventEmitter<void> = new EventEmitter();
-  @Output() setDetails: EventEmitter<DHII_CharacterDetails> = new EventEmitter();
+  @Output() setDetails: EventEmitter<DHII_CharacterDetails> =
+    new EventEmitter();
   @Output() save: EventEmitter<void> = new EventEmitter();
 
   protected form: FormGroup = new FormGroup({
@@ -43,9 +55,9 @@ export class FinalDetailsStepComponent {
         Validators.required,
         Validators.min(10),
         Validators.max(999),
-        Validators.pattern('^[0-9]*$')
+        Validators.pattern('^[0-9]*$'),
       ])
-    )
+    ),
   });
 
   protected saveCharacterDetails(): void {

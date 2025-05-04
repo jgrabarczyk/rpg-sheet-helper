@@ -9,9 +9,8 @@ describe('BackgroundCardComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [BackgroundCardComponent]
-    })
-    .compileComponents();
+      imports: [BackgroundCardComponent],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(BackgroundCardComponent);
     component = fixture.componentInstance;

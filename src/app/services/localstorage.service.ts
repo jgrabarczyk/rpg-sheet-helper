@@ -11,7 +11,7 @@ export type StorageSaveName = `${StoragePrefixes}+${string}`;
 export type SaveNameConfig = { name: string; prefix: StoragePrefixes };
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class LocalStorageService {
   private readonly dialog: MatDialog = inject(MatDialog);
@@ -19,9 +19,8 @@ export class LocalStorageService {
   private readonly DHII_PREFIX: StoragePrefixes = 'dhii';
   private readonly currentSaveName$: BehaviorSubject<StorageSaveName | null> =
     new BehaviorSubject<StorageSaveName | null>(null);
-  private readonly storageSubject$: BehaviorSubject<Storage> = new BehaviorSubject<Storage>(
-    localStorage
-  );
+  private readonly storageSubject$: BehaviorSubject<Storage> =
+    new BehaviorSubject<Storage>(localStorage);
 
   readonly DHII_CharacterKeys$ = this.storageSubject$.asObservable().pipe(
     map(storage =>
@@ -42,32 +41,41 @@ export class LocalStorageService {
       .pipe(
         filter(Boolean),
         map(name => {
-          const currentSaveName: StorageSaveName = this.toSaveName({ name, prefix });
+          const currentSaveName: StorageSaveName = this.toSaveName({
+            name,
+            prefix,
+          });
           this.currentSaveName$.next(currentSaveName);
           this.setItem({
             key: currentSaveName,
-            value: character
+            value: character,
           });
           return name;
         })
       );
   }
 
-  public loadCharacterFromLocalStorage<T>(name: string, prefix: StoragePrefixes): T {
+  public loadCharacterFromLocalStorage<T>(
+    name: string,
+    prefix: StoragePrefixes
+  ): T {
     const currentSaveName: StorageSaveName = this.toSaveName({ name, prefix });
     const character: T = this.getItem<T>(currentSaveName);
     this.currentSaveName$.next(currentSaveName);
     return character;
   }
 
-  public deleteCharacterFromLocalStorage(name: string, prefix: StoragePrefixes): Observable<true> {
+  public deleteCharacterFromLocalStorage(
+    name: string,
+    prefix: StoragePrefixes
+  ): Observable<true> {
     const saveName: StorageSaveName = this.toSaveName({ name, prefix });
     return this.dialog
       .open(ConfirmDialogComponent, {
         data: {
           text: 'Are you sure you want to delete the save "' + name + '"',
-          title: 'Confirm deletion'
-        }
+          title: 'Confirm deletion',
+        },
       })
       .afterClosed()
       .pipe(

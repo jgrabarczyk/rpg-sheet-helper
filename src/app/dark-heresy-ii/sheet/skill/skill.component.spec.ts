@@ -9,10 +9,9 @@ describe('SkillComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [SkillComponent, NoopAnimationsModule]
-    })
-    .compileComponents();
-    
+      imports: [SkillComponent, NoopAnimationsModule],
+    }).compileComponents();
+
     fixture = TestBed.createComponent(SkillComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

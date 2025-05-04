@@ -38,7 +38,10 @@ export const JSONparse: (t: string) => object = (text: string) =>
  * (there are some tests).
  */
 
-function jsonMapSetReplacer(_: unknown, value_: Iterable<unknown> | ArrayLike<unknown>): Iterable<unknown> | ArrayLike<unknown> {
+function jsonMapSetReplacer(
+  _: unknown,
+  value_: Iterable<unknown> | ArrayLike<unknown>
+): Iterable<unknown> | ArrayLike<unknown> {
   if (typeof value_ === 'object') {
     if (value_ instanceof Map) {
       value_ = Array.from(value_);
@@ -64,7 +67,10 @@ function jsonMapSetReplacer(_: unknown, value_: Iterable<unknown> | ArrayLike<un
  * Must be used to deserialize JSON data serialized using #jsonMapSetReplacer.
  */
 
-function jsonMapSetReviver(_: unknown, value_: Iterable<unknown> | null | undefined):  Iterable<unknown> | null | undefined {
+function jsonMapSetReviver(
+  _: unknown,
+  value_: Iterable<unknown> | null | undefined
+): Iterable<unknown> | null | undefined {
   if (Array.isArray(value_) && value_.length > 0) {
     let isMap: boolean | undefined, isSet: boolean | undefined;
     if (

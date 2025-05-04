@@ -1,4 +1,7 @@
-import { ContentContainerComponentHarness, TestElement } from '@angular/cdk/testing';
+import {
+  ContentContainerComponentHarness,
+  TestElement,
+} from '@angular/cdk/testing';
 import { MatCardHarness } from '@angular/material/card/testing';
 
 export class BackgroundCardHarness extends ContentContainerComponentHarness {

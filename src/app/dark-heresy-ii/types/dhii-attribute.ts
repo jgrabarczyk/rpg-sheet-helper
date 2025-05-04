@@ -25,7 +25,7 @@ export const DHII_ATTRIBUTE_NAMES: DHII_AttributeName[] = [
   'Perception',
   'Willpower',
   'Fellowship',
-  'Influence'
+  'Influence',
 ];
 
 const DHII_MAX_ATTRIBUTE_LEVEL: 5 = 5 as const;
@@ -45,202 +45,202 @@ export const DHII_ATTRIBUTES: DHII_Attributes = new Map([
     {
       lvl: {
         current: 0,
-        max: DHII_MAX_ATTRIBUTE_LEVEL
+        max: DHII_MAX_ATTRIBUTE_LEVEL,
       },
       name: 'Weapon Skill',
       value: 0,
-      aptitudes: ['Weapon Skill', 'Offence']
-    }
+      aptitudes: ['Weapon Skill', 'Offence'],
+    },
   ],
   [
     'Ballistic Skill',
     {
       lvl: {
         current: 0,
-        max: DHII_MAX_ATTRIBUTE_LEVEL
+        max: DHII_MAX_ATTRIBUTE_LEVEL,
       },
       name: 'Ballistic Skill',
       value: 0,
-      aptitudes: ['Ballistic Skill', 'Finesse']
-    }
+      aptitudes: ['Ballistic Skill', 'Finesse'],
+    },
   ],
   [
     'Strength',
     {
       lvl: {
         current: 0,
-        max: DHII_MAX_ATTRIBUTE_LEVEL
+        max: DHII_MAX_ATTRIBUTE_LEVEL,
       },
       name: 'Strength',
       value: 0,
-      aptitudes: ['Strength', 'Offence']
-    }
+      aptitudes: ['Strength', 'Offence'],
+    },
   ],
   [
     'Toughness',
     {
       lvl: {
         current: 0,
-        max: DHII_MAX_ATTRIBUTE_LEVEL
+        max: DHII_MAX_ATTRIBUTE_LEVEL,
       },
       name: 'Toughness',
       value: 0,
-      aptitudes: ['Toughness', 'Defence']
-    }
+      aptitudes: ['Toughness', 'Defence'],
+    },
   ],
   [
     'Agility',
     {
       lvl: {
         current: 0,
-        max: DHII_MAX_ATTRIBUTE_LEVEL
+        max: DHII_MAX_ATTRIBUTE_LEVEL,
       },
       name: 'Agility',
       value: 0,
-      aptitudes: ['Agility', 'Finesse']
-    }
+      aptitudes: ['Agility', 'Finesse'],
+    },
   ],
   [
     'Intelligence',
     {
       lvl: {
         current: 0,
-        max: DHII_MAX_ATTRIBUTE_LEVEL
+        max: DHII_MAX_ATTRIBUTE_LEVEL,
       },
       name: 'Intelligence',
       value: 0,
-      aptitudes: ['Intelligence', 'Knowledge']
-    }
+      aptitudes: ['Intelligence', 'Knowledge'],
+    },
   ],
   [
     'Perception',
     {
       lvl: {
         current: 0,
-        max: DHII_MAX_ATTRIBUTE_LEVEL
+        max: DHII_MAX_ATTRIBUTE_LEVEL,
       },
       name: 'Perception',
       value: 0,
-      aptitudes: ['Perception', 'Fieldcraft']
-    }
+      aptitudes: ['Perception', 'Fieldcraft'],
+    },
   ],
   [
     'Willpower',
     {
       lvl: {
         current: 0,
-        max: DHII_MAX_ATTRIBUTE_LEVEL
+        max: DHII_MAX_ATTRIBUTE_LEVEL,
       },
       name: 'Willpower',
       value: 0,
-      aptitudes: ['Willpower', 'Psyker']
-    }
+      aptitudes: ['Willpower', 'Psyker'],
+    },
   ],
   [
     'Fellowship',
     {
       lvl: {
         current: 0,
-        max: DHII_MAX_ATTRIBUTE_LEVEL
+        max: DHII_MAX_ATTRIBUTE_LEVEL,
       },
       name: 'Fellowship',
       value: 0,
-      aptitudes: ['Fellowship', 'Social']
-    }
+      aptitudes: ['Fellowship', 'Social'],
+    },
   ],
   [
     'Influence',
     {
       name: 'Influence',
-      value: 0
-    }
-  ]
+      value: 0,
+    },
+  ],
 ]);
 
 export const DHII_ATTRIBUTE_LIST: DHII_Attribute[] = [
   {
     lvl: {
       current: 0,
-      max: DHII_MAX_ATTRIBUTE_LEVEL
+      max: DHII_MAX_ATTRIBUTE_LEVEL,
     },
     name: 'Weapon Skill',
     value: 0,
-    aptitudes: ['Weapon Skill', 'Offence']
+    aptitudes: ['Weapon Skill', 'Offence'],
   },
   {
     lvl: {
       current: 0,
-      max: DHII_MAX_ATTRIBUTE_LEVEL
+      max: DHII_MAX_ATTRIBUTE_LEVEL,
     },
     name: 'Ballistic Skill',
     value: 0,
-    aptitudes: ['Ballistic Skill', 'Finesse']
+    aptitudes: ['Ballistic Skill', 'Finesse'],
   },
   {
     lvl: {
       current: 0,
-      max: DHII_MAX_ATTRIBUTE_LEVEL
+      max: DHII_MAX_ATTRIBUTE_LEVEL,
     },
     name: 'Strength',
     value: 0,
-    aptitudes: ['Strength', 'Offence']
+    aptitudes: ['Strength', 'Offence'],
   },
   {
     lvl: {
       current: 0,
-      max: DHII_MAX_ATTRIBUTE_LEVEL
+      max: DHII_MAX_ATTRIBUTE_LEVEL,
     },
     name: 'Toughness',
     value: 0,
-    aptitudes: ['Toughness', 'Defence']
+    aptitudes: ['Toughness', 'Defence'],
   },
   {
     lvl: {
       current: 0,
-      max: DHII_MAX_ATTRIBUTE_LEVEL
+      max: DHII_MAX_ATTRIBUTE_LEVEL,
     },
     name: 'Agility',
     value: 0,
-    aptitudes: ['Agility', 'Finesse']
+    aptitudes: ['Agility', 'Finesse'],
   },
   {
     lvl: {
       current: 0,
-      max: DHII_MAX_ATTRIBUTE_LEVEL
+      max: DHII_MAX_ATTRIBUTE_LEVEL,
     },
     name: 'Intelligence',
     value: 0,
-    aptitudes: ['Intelligence', 'Knowledge']
+    aptitudes: ['Intelligence', 'Knowledge'],
   },
   {
     lvl: {
       current: 0,
-      max: DHII_MAX_ATTRIBUTE_LEVEL
+      max: DHII_MAX_ATTRIBUTE_LEVEL,
     },
     name: 'Perception',
     value: 0,
-    aptitudes: ['Perception', 'Fieldcraft']
+    aptitudes: ['Perception', 'Fieldcraft'],
   },
   {
     lvl: {
       current: 0,
-      max: DHII_MAX_ATTRIBUTE_LEVEL
+      max: DHII_MAX_ATTRIBUTE_LEVEL,
     },
     name: 'Willpower',
     value: 0,
-    aptitudes: ['Willpower', 'Psyker']
+    aptitudes: ['Willpower', 'Psyker'],
   },
   {
     lvl: {
       current: 0,
-      max: DHII_MAX_ATTRIBUTE_LEVEL
+      max: DHII_MAX_ATTRIBUTE_LEVEL,
     },
     name: 'Fellowship',
     value: 0,
-    aptitudes: ['Fellowship', 'Social']
+    aptitudes: ['Fellowship', 'Social'],
   },
   {
     name: 'Influence',
-    value: 0
-  }
+    value: 0,
+  },
 ];

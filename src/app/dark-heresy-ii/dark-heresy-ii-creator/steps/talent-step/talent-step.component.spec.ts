@@ -10,7 +10,7 @@ describe('TelentStepComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [TalentStepComponent],
-      providers: [{ provide: CdkStepper, useValue: {} }]
+      providers: [{ provide: CdkStepper, useValue: {} }],
     }).compileComponents();
 
     fixture = TestBed.createComponent(TalentStepComponent);

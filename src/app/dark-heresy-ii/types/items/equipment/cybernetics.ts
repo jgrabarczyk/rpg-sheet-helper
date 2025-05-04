@@ -8,8 +8,9 @@ export const CYBERNETICS: Map<string, GenericItem> = new Map([
       name: 'Augur Array',
       weightInKilos: 0,
       availability: Availability.RARE,
-      notes: 'Identically to a auspex and requires concentration and a Half Action.'
-    }
+      notes:
+        'Identically to a auspex and requires concentration and a Half Action.',
+    },
   ],
   [
     'Autosanguine',
@@ -17,8 +18,8 @@ export const CYBERNETICS: Map<string, GenericItem> = new Map([
       name: 'Autosanguine',
       weightInKilos: 0,
       availability: Availability.VERY_RARE,
-      notes: 'Repairs minor injuries and heals 2 damage per day.'
-    }
+      notes: 'Repairs minor injuries and heals 2 damage per day.',
+    },
   ],
   [
     'Baleful Eye',
@@ -26,8 +27,8 @@ export const CYBERNETICS: Map<string, GenericItem> = new Map([
       name: 'Baleful Eye',
       weightInKilos: 0,
       availability: Availability.NEAR_UNIQUE,
-      notes: 'Hot-shot laspistol in the eye. Jam causes temporary blindness.'
-    }
+      notes: 'Hot-shot laspistol in the eye. Jam causes temporary blindness.',
+    },
   ],
   [
     'Bionic Arm',
@@ -35,8 +36,8 @@ export const CYBERNETICS: Map<string, GenericItem> = new Map([
       name: 'Bionic Arm',
       weightInKilos: 0,
       availability: Availability.SCARCE,
-      notes: 'Common mechanical arm. Craftsmanship determines bonuses.'
-    }
+      notes: 'Common mechanical arm. Craftsmanship determines bonuses.',
+    },
   ],
   [
     'Bionic Legs',
@@ -44,8 +45,8 @@ export const CYBERNETICS: Map<string, GenericItem> = new Map([
       name: 'Bionic Legs',
       weightInKilos: 0,
       availability: Availability.SCARCE,
-      notes: 'Common mechanical legs. Craftsmanship determines bonuses.'
-    }
+      notes: 'Common mechanical legs. Craftsmanship determines bonuses.',
+    },
   ],
   [
     'Bionic Respiratory System',
@@ -53,8 +54,8 @@ export const CYBERNETICS: Map<string, GenericItem> = new Map([
       name: 'Bionic Respiratory System',
       weightInKilos: 0,
       availability: Availability.RARE,
-      notes: '+20 to resist airborne toxins and gas.'
-    }
+      notes: '+20 to resist airborne toxins and gas.',
+    },
   ],
   [
     'Bionic Heart',
@@ -62,8 +63,8 @@ export const CYBERNETICS: Map<string, GenericItem> = new Map([
       name: 'Bionic Heart',
       weightInKilos: 0,
       availability: Availability.VERY_RARE,
-      notes: '+1 AP to Body, grants Sprint talent.'
-    }
+      notes: '+1 AP to Body, grants Sprint talent.',
+    },
   ],
   [
     'Bionic Senses',
@@ -71,8 +72,9 @@ export const CYBERNETICS: Map<string, GenericItem> = new Map([
       name: 'Bionic Senses',
       weightInKilos: 0,
       availability: Availability.RARE,
-      notes: 'Mechanical eyes, ears, and noses. Craftsmanship determines bonuses.'
-    }
+      notes:
+        'Mechanical eyes, ears, and noses. Craftsmanship determines bonuses.',
+    },
   ],
   [
     'Calculus Logi Upgrade',
@@ -80,8 +82,8 @@ export const CYBERNETICS: Map<string, GenericItem> = new Map([
       name: 'Calculus Logi Upgrade',
       weightInKilos: 0,
       availability: Availability.VERY_RARE,
-      notes: '+10 to Literacy, Logic, and Scholastic Lore tests.'
-    }
+      notes: '+10 to Literacy, Logic, and Scholastic Lore tests.',
+    },
   ],
   [
     'Cerebral Implants',
@@ -89,8 +91,9 @@ export const CYBERNETICS: Map<string, GenericItem> = new Map([
       name: 'Cerebral Implants',
       weightInKilos: 0,
       availability: Availability.VERY_RARE,
-      notes: 'Restore mental faculties but reduce multiple characteristics permanently.'
-    }
+      notes:
+        'Restore mental faculties but reduce multiple characteristics permanently.',
+    },
   ],
   [
     'Cranial Armour',
@@ -98,8 +101,8 @@ export const CYBERNETICS: Map<string, GenericItem> = new Map([
       name: 'Cranial Armour',
       weightInKilos: 0,
       availability: Availability.SCARCE,
-      notes: '+1 AP to Head.'
-    }
+      notes: '+1 AP to Head.',
+    },
   ],
   [
     'Ferric Lure Implants',
@@ -107,8 +110,8 @@ export const CYBERNETICS: Map<string, GenericItem> = new Map([
       name: 'Ferric Lure Implants',
       weightInKilos: 0,
       availability: Availability.VERY_RARE,
-      notes: 'Pull unsecured metal objects (max 1 kg/WP bonus) from 20m.'
-    }
+      notes: 'Pull unsecured metal objects (max 1 kg/WP bonus) from 20m.',
+    },
   ],
   [
     'Interface Port',
@@ -116,8 +119,8 @@ export const CYBERNETICS: Map<string, GenericItem> = new Map([
       name: 'Interface Port',
       weightInKilos: 0,
       availability: Availability.RARE,
-      notes: '+10 to Lore, Inquiry, or Tech-Use when connected to machine.'
-    }
+      notes: '+10 to Lore, Inquiry, or Tech-Use when connected to machine.',
+    },
   ],
   [
     'Internal Reservoir',
@@ -125,8 +128,8 @@ export const CYBERNETICS: Map<string, GenericItem> = new Map([
       name: 'Internal Reservoir',
       weightInKilos: 0,
       availability: Availability.RARE,
-      notes: 'Battery for Luminen Capacitors. Recharges after one day rest.'
-    }
+      notes: 'Battery for Luminen Capacitors. Recharges after one day rest.',
+    },
   ],
   [
     'Locator Matrix',
@@ -134,8 +137,8 @@ export const CYBERNETICS: Map<string, GenericItem> = new Map([
       name: 'Locator Matrix',
       weightInKilos: 0,
       availability: Availability.RARE,
-      notes: 'Provides precise location if planetary detail known.'
-    }
+      notes: 'Provides precise location if planetary detail known.',
+    },
   ],
   [
     'Luminen Capacitor',
@@ -143,8 +146,8 @@ export const CYBERNETICS: Map<string, GenericItem> = new Map([
       name: 'Luminen Capacitor',
       weightInKilos: 0,
       availability: Availability.VERY_RARE,
-      notes: 'Recharge or power machines with a Toughness test.'
-    }
+      notes: 'Recharge or power machines with a Toughness test.',
+    },
   ],
   [
     'Maglev Coils',
@@ -152,8 +155,8 @@ export const CYBERNETICS: Map<string, GenericItem> = new Map([
       name: 'Maglev Coils',
       weightInKilos: 0,
       availability: Availability.VERY_RARE,
-      notes: 'Hover 20–30 cm off ground for minutes equal to 1d10 + TB.'
-    }
+      notes: 'Hover 20–30 cm off ground for minutes equal to 1d10 + TB.',
+    },
   ],
   [
     'Mechadendrite',
@@ -161,8 +164,8 @@ export const CYBERNETICS: Map<string, GenericItem> = new Map([
       name: 'Mechadendrite',
       weightInKilos: 0,
       availability: Availability.VERY_RARE,
-      notes: 'Acts as extra limb, bonuses based on type.'
-    }
+      notes: 'Acts as extra limb, bonuses based on type.',
+    },
   ],
   [
     'Memorance Implant',
@@ -170,8 +173,8 @@ export const CYBERNETICS: Map<string, GenericItem> = new Map([
       name: 'Memorance Implant',
       weightInKilos: 0,
       availability: Availability.RARE,
-      notes: '+10 to Trade (Loremancer) or related social tests.'
-    }
+      notes: '+10 to Trade (Loremancer) or related social tests.',
+    },
   ],
   [
     'Mind Impulse Unit',
@@ -179,8 +182,8 @@ export const CYBERNETICS: Map<string, GenericItem> = new Map([
       name: 'Mind Impulse Unit',
       weightInKilos: 0,
       availability: Availability.RARE,
-      notes: '+10 to Tech-Use or Operate when MIU linking is possible.'
-    }
+      notes: '+10 to Tech-Use or Operate when MIU linking is possible.',
+    },
   ],
   [
     'MIU Weapon Interface',
@@ -188,8 +191,8 @@ export const CYBERNETICS: Map<string, GenericItem> = new Map([
       name: 'MIU Weapon Interface',
       weightInKilos: 0,
       availability: Availability.RARE,
-      notes: 'Fire linked ranged weapon as Free Action.'
-    }
+      notes: 'Fire linked ranged weapon as Free Action.',
+    },
   ],
   [
     'Respiratory Filter Implant',
@@ -197,8 +200,8 @@ export const CYBERNETICS: Map<string, GenericItem> = new Map([
       name: 'Respiratory Filter Implant',
       weightInKilos: 0,
       availability: Availability.RARE,
-      notes: '+20 to resist inhaled poisons, gas, toxins.'
-    }
+      notes: '+20 to resist inhaled poisons, gas, toxins.',
+    },
   ],
   [
     'Scribe-tines',
@@ -206,8 +209,8 @@ export const CYBERNETICS: Map<string, GenericItem> = new Map([
       name: 'Scribe-tines',
       weightInKilos: 0,
       availability: Availability.RARE,
-      notes: '+10 to all Lore tests.'
-    }
+      notes: '+10 to all Lore tests.',
+    },
   ],
   [
     'Subskin Armour',
@@ -215,8 +218,8 @@ export const CYBERNETICS: Map<string, GenericItem> = new Map([
       name: 'Subskin Armour',
       weightInKilos: 0,
       availability: Availability.VERY_RARE,
-      notes: '+2 AP to Arms, Body, Legs. Stacks with worn armour.'
-    }
+      notes: '+2 AP to Arms, Body, Legs. Stacks with worn armour.',
+    },
   ],
   [
     'Synth Muscle',
@@ -224,8 +227,8 @@ export const CYBERNETICS: Map<string, GenericItem> = new Map([
       name: 'Synth Muscle',
       weightInKilos: 0,
       availability: Availability.RARE,
-      notes: 'Grants Unnatural Strength (1).'
-    }
+      notes: 'Grants Unnatural Strength (1).',
+    },
   ],
   [
     'Vocal Implant',
@@ -233,8 +236,8 @@ export const CYBERNETICS: Map<string, GenericItem> = new Map([
       name: 'Vocal Implant',
       weightInKilos: 0,
       availability: Availability.SCARCE,
-      notes: 'Amplifies voice to inhuman range.'
-    }
+      notes: 'Amplifies voice to inhuman range.',
+    },
   ],
   [
     'Volitor Implant',
@@ -242,7 +245,7 @@ export const CYBERNETICS: Map<string, GenericItem> = new Map([
       name: 'Volitor Implant',
       weightInKilos: 0,
       availability: Availability.RARE,
-      notes: 'Enforces compulsion. Breaking causes unconsciousness or death.'
-    }
-  ]
+      notes: 'Enforces compulsion. Breaking causes unconsciousness or death.',
+    },
+  ],
 ]);

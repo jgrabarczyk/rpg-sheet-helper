@@ -1,4 +1,7 @@
-<mat-card name="attributeGroup"  appearance="outlined">
+<mat-card
+  name="attributeGroup"
+  appearance="outlined"
+>
   <mat-card-header>
     <mat-card-title>{{ title }}</mat-card-title>
     <mat-card-subtitle>{{ subtitle }}</mat-card-subtitle>
@@ -6,14 +9,14 @@
 
   <mat-card-content>
     <mat-list role="list">
-      @for(a of attributes; track a[0]; let i = $index){
-        @let attributeKey = a[0]; 
+      @for (a of attributes; track a[0]; let i = $index) {
+        @let attributeKey = a[0];
         @let attribute = a[1];
         @let isInfluence = attribute.name === 'Influence';
         <mat-list-item
           [ngClass]="{
-            bonus: attributeKey | isBonusAttribute : bonus,
-            penality: attributeKey === penality
+            bonus: attributeKey | isBonusAttribute: bonus,
+            penality: attributeKey === penality,
           }"
         >
           <app-attribute

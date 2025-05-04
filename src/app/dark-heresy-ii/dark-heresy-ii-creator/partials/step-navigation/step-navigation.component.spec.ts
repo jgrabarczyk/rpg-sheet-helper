@@ -10,9 +10,8 @@ describe('StepFooterComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [StepNavigationComponent],
-      providers: [{ provide: CdkStepper, useValue: {} }]
-    })
-    .compileComponents();
+      providers: [{ provide: CdkStepper, useValue: {} }],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(StepNavigationComponent);
     component = fixture.componentInstance;

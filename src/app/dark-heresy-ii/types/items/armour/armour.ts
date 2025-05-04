@@ -27,24 +27,36 @@ export const ARMOURS: Map<string, Armour> = new Map<string, Armour>([
     {
       name: 'Armoured Bodyglove',
       class: 'Basic',
-      protectedLocations: ['Left Arm', 'Right Arm', 'Body', 'Left Leg', 'Right Leg'],
+      protectedLocations: [
+        'Left Arm',
+        'Right Arm',
+        'Body',
+        'Left Leg',
+        'Right Leg',
+      ],
       armorPoints: 2,
       agilityCap: 999,
       weightInKilos: 5,
-      availability: Availability.RARE
-    }
+      availability: Availability.RARE,
+    },
   ],
   [
     'Chainmail Suit',
     {
       name: 'Chainmail Suit',
       class: 'Basic',
-      protectedLocations: ['Left Arm', 'Right Arm', 'Body', 'Left Leg', 'Right Leg'],
+      protectedLocations: [
+        'Left Arm',
+        'Right Arm',
+        'Body',
+        'Left Leg',
+        'Right Leg',
+      ],
       armorPoints: 3,
       agilityCap: 35,
       weightInKilos: 15,
-      availability: Availability.COMMON
-    }
+      availability: Availability.COMMON,
+    },
   ],
   [
     'Feudal World Plate',
@@ -55,8 +67,8 @@ export const ARMOURS: Map<string, Armour> = new Map<string, Armour>([
       armorPoints: 5,
       agilityCap: 25,
       weightInKilos: 30,
-      availability: Availability.SCARCE
-    }
+      availability: Availability.SCARCE,
+    },
   ],
   [
     'Heavy Leathers',
@@ -67,20 +79,26 @@ export const ARMOURS: Map<string, Armour> = new Map<string, Armour>([
       armorPoints: 1,
       agilityCap: 999,
       weightInKilos: 5,
-      availability: Availability.COMMON
-    }
+      availability: Availability.COMMON,
+    },
   ],
   [
     'Imperial Robes',
     {
       name: 'Imperial Robes',
       class: 'Basic',
-      protectedLocations: ['Left Arm', 'Right Arm', 'Body', 'Left Leg', 'Right Leg'],
+      protectedLocations: [
+        'Left Arm',
+        'Right Arm',
+        'Body',
+        'Left Leg',
+        'Right Leg',
+      ],
       armorPoints: 1,
       agilityCap: 999,
       weightInKilos: 4,
-      availability: Availability.AVERAGE
-    }
+      availability: Availability.AVERAGE,
+    },
   ],
   [
     'Mould Suit',
@@ -93,8 +111,8 @@ export const ARMOURS: Map<string, Armour> = new Map<string, Armour>([
       weightInKilos: 10,
       availability: Availability.RARE,
       notes:
-        'Grants a +40 bonus to any Toughness test made to resist the effects of gasses, as well as a +10 bonus for resisting extreme temperatures and being set on fire. Contains rebreather for 5 hours. If takes more than 5 points of damage in a single round, the suit becomes damaged and require repair.'
-    }
+        'Grants a +40 bonus to any Toughness test made to resist the effects of gasses, as well as a +10 bonus for resisting extreme temperatures and being set on fire. Contains rebreather for 5 hours. If takes more than 5 points of damage in a single round, the suit becomes damaged and require repair.',
+    },
   ],
   [
     'Carapace Chestplate',
@@ -105,8 +123,8 @@ export const ARMOURS: Map<string, Armour> = new Map<string, Armour>([
       armorPoints: 6,
       agilityCap: 55,
       weightInKilos: 7,
-      availability: Availability.RARE
-    }
+      availability: Availability.RARE,
+    },
   ],
   [
     'Carapace Gauntlets',
@@ -117,8 +135,8 @@ export const ARMOURS: Map<string, Armour> = new Map<string, Armour>([
       armorPoints: 5,
       agilityCap: 999,
       weightInKilos: 2,
-      availability: Availability.RARE
-    }
+      availability: Availability.RARE,
+    },
   ],
   [
     'Carapace Greaves',
@@ -129,8 +147,8 @@ export const ARMOURS: Map<string, Armour> = new Map<string, Armour>([
       armorPoints: 5,
       agilityCap: 999,
       weightInKilos: 3,
-      availability: Availability.RARE
-    }
+      availability: Availability.RARE,
+    },
   ],
   [
     'Carapace Helm',
@@ -141,8 +159,8 @@ export const ARMOURS: Map<string, Armour> = new Map<string, Armour>([
       armorPoints: 4,
       agilityCap: 999,
       weightInKilos: 2,
-      availability: Availability.RARE
-    }
+      availability: Availability.RARE,
+    },
   ],
   [
     'Enforcer Light Carapace',
@@ -153,8 +171,8 @@ export const ARMOURS: Map<string, Armour> = new Map<string, Armour>([
       armorPoints: 5,
       agilityCap: 45,
       weightInKilos: 15,
-      availability: Availability.RARE
-    }
+      availability: Availability.RARE,
+    },
   ],
   [
     'Militarum Tempestus Carapace',
@@ -165,21 +183,27 @@ export const ARMOURS: Map<string, Armour> = new Map<string, Armour>([
       armorPoints: 6,
       agilityCap: 45,
       weightInKilos: 15,
-      availability: Availability.VERY_RARE
-    }
+      availability: Availability.VERY_RARE,
+    },
   ],
   [
     'Flak Cloak',
     {
       name: 'Flak Cloak',
       class: 'Flak',
-      protectedLocations: ['Left Arm', 'Right Arm', 'Body', 'Left Leg', 'Right Leg'],
+      protectedLocations: [
+        'Left Arm',
+        'Right Arm',
+        'Body',
+        'Left Leg',
+        'Right Leg',
+      ],
       armorPoints: 3,
       agilityCap: 55,
       weightInKilos: 8,
       availability: Availability.SCARCE,
-      notes: 'Counts 1 AP higher against Blast.'
-    }
+      notes: 'Counts 1 AP higher against Blast.',
+    },
   ],
   [
     'Flak Coat',
@@ -191,8 +215,8 @@ export const ARMOURS: Map<string, Armour> = new Map<string, Armour>([
       agilityCap: 60,
       weightInKilos: 5,
       availability: Availability.SCARCE,
-      notes: 'Counts 1 AP higher against Blast.'
-    }
+      notes: 'Counts 1 AP higher against Blast.',
+    },
   ],
   [
     'Flak Gauntlets',
@@ -204,8 +228,8 @@ export const ARMOURS: Map<string, Armour> = new Map<string, Armour>([
       agilityCap: 999,
       weightInKilos: 1,
       availability: Availability.AVERAGE,
-      notes: 'Counts 1 AP higher against Blast.'
-    }
+      notes: 'Counts 1 AP higher against Blast.',
+    },
   ],
   [
     'Flak Helmet',
@@ -217,8 +241,8 @@ export const ARMOURS: Map<string, Armour> = new Map<string, Armour>([
       agilityCap: 999,
       weightInKilos: 2,
       availability: Availability.AVERAGE,
-      notes: 'Counts 1 AP higher against Blast.'
-    }
+      notes: 'Counts 1 AP higher against Blast.',
+    },
   ],
   [
     'Flak Vest',
@@ -230,8 +254,8 @@ export const ARMOURS: Map<string, Armour> = new Map<string, Armour>([
       agilityCap: 60,
       weightInKilos: 5,
       availability: Availability.AVERAGE,
-      notes: 'Counts 1 AP higher against Blast.'
-    }
+      notes: 'Counts 1 AP higher against Blast.',
+    },
   ],
   [
     'Imperial Guard Flak Armour',
@@ -243,33 +267,45 @@ export const ARMOURS: Map<string, Armour> = new Map<string, Armour>([
       agilityCap: 50,
       weightInKilos: 11,
       availability: Availability.SCARCE,
-      notes: 'Counts 1 AP higher against Blast.'
-    }
+      notes: 'Counts 1 AP higher against Blast.',
+    },
   ],
   [
     'Light Flak Cloak',
     {
       name: 'Light Flak Cloak',
       class: 'Flak',
-      protectedLocations: ['Left Arm', 'Right Arm', 'Body', 'Left Leg', 'Right Leg'],
+      protectedLocations: [
+        'Left Arm',
+        'Right Arm',
+        'Body',
+        'Left Leg',
+        'Right Leg',
+      ],
       armorPoints: 2,
       agilityCap: 55,
       weightInKilos: 4,
       availability: Availability.SCARCE,
-      notes: 'Counts 1 AP higher against Blast.'
-    }
+      notes: 'Counts 1 AP higher against Blast.',
+    },
   ],
   [
     'Mesh Cloak',
     {
       name: 'Mesh Cloak',
       class: 'Mesh',
-      protectedLocations: ['Left Arm', 'Right Arm', 'Body', 'Left Leg', 'Right Leg'],
+      protectedLocations: [
+        'Left Arm',
+        'Right Arm',
+        'Body',
+        'Left Leg',
+        'Right Leg',
+      ],
       armorPoints: 4,
       agilityCap: 60,
       weightInKilos: 3,
-      availability: Availability.VERY_RARE
-    }
+      availability: Availability.VERY_RARE,
+    },
   ],
   [
     'Mesh Vest',
@@ -280,8 +316,8 @@ export const ARMOURS: Map<string, Armour> = new Map<string, Armour>([
       armorPoints: 4,
       agilityCap: 999,
       weightInKilos: 2,
-      availability: Availability.RARE
-    }
+      availability: Availability.RARE,
+    },
   ],
   [
     'Light Power Armour',
@@ -294,8 +330,8 @@ export const ARMOURS: Map<string, Armour> = new Map<string, Armour>([
       agilityCap: 40,
       weightInKilos: 40,
       notes:
-        'Add Unnatural Strenght (1), incrases wearer size by 1. Power source run 1d5 hours if not stated differently.'
-    }
+        'Add Unnatural Strenght (1), incrases wearer size by 1. Power source run 1d5 hours if not stated differently.',
+    },
   ],
   [
     'Field Wall Generator',
@@ -306,8 +342,8 @@ export const ARMOURS: Map<string, Armour> = new Map<string, Armour>([
       weightInKilos: 18,
       availability: Availability.VERY_RARE,
       notes:
-        'Consists of two or more generators. Turning on or off a generator requires a Full Action, which also activates all other linked generators. A linear force field then forms between each generator, 1.5 metres high and up to 8 metres in length. The barrier acts as cover, so only parts of the body protected by the field wall gain force field protection. If a wall section overloads, then only that portion between the two generators shuts down'
-    }
+        'Consists of two or more generators. Turning on or off a generator requires a Full Action, which also activates all other linked generators. A linear force field then forms between each generator, 1.5 metres high and up to 8 metres in length. The barrier acts as cover, so only parts of the body protected by the field wall gain force field protection. If a wall section overloads, then only that portion between the two generators shuts down',
+    },
   ],
   [
     'Flare Shield',
@@ -318,8 +354,8 @@ export const ARMOURS: Map<string, Armour> = new Map<string, Armour>([
       weightInKilos: 3,
       availability: Availability.EXTREMELY_RARE,
       notes:
-        'Protection rating doubled against weapons with the Blast or Spray qualities. If the shield overloads, it inflicts 1d10 Energy damage to the wearer that ignores Toughness bonus and Armour.'
-    }
+        'Protection rating doubled against weapons with the Blast or Spray qualities. If the shield overloads, it inflicts 1d10 Energy damage to the wearer that ignores Toughness bonus and Armour.',
+    },
   ],
   [
     'Power Field (Personnel)',
@@ -330,8 +366,8 @@ export const ARMOURS: Map<string, Armour> = new Map<string, Armour>([
       weightInKilos: 50,
       availability: Availability.NEAR_UNIQUE,
       notes:
-        'Bulky. Imposes -20 to stealth tests and dose not defend against ranged attacks made within 1 metre or melee.'
-    }
+        'Bulky. Imposes -20 to stealth tests and dose not defend against ranged attacks made within 1 metre or melee.',
+    },
   ],
   [
     'Power Field (Vehicle/Emplacement)',
@@ -342,8 +378,8 @@ export const ARMOURS: Map<string, Armour> = new Map<string, Armour>([
       weightInKilos: 500,
       availability: Availability.NEAR_UNIQUE,
       notes:
-        'Bulky. Imposes -20 to stealth tests and dose not defend against ranged attacks made within 1 metre or melee.'
-    }
+        'Bulky. Imposes -20 to stealth tests and dose not defend against ranged attacks made within 1 metre or melee.',
+    },
   ],
   [
     'Refractor Field',
@@ -353,8 +389,8 @@ export const ARMOURS: Map<string, Armour> = new Map<string, Armour>([
       protectionRating: 30,
       weightInKilos: 2,
       availability: Availability.VERY_RARE,
-      notes: 'Imposes a -20 to Stealth tests when active.'
-    }
+      notes: 'Imposes a -20 to Stealth tests when active.',
+    },
   ],
   [
     'Rosarius',
@@ -365,7 +401,7 @@ export const ARMOURS: Map<string, Armour> = new Map<string, Armour>([
       weightInKilos: 0.6,
       availability: Availability.EXTREMELY_RARE,
       notes:
-        'Allies who can draw a line of sight to a character with a rosarius gain a +10 bonus to Fear and Pinning tests; this is lost if the wearer dies or suffers any Critical damage.'
-    }
-  ]
+        'Allies who can draw a line of sight to a character with a rosarius gain a +10 bonus to Fear and Pinning tests; this is lost if the wearer dies or suffers any Critical damage.',
+    },
+  ],
 ]);

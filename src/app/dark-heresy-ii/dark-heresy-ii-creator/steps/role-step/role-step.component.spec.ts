@@ -10,9 +10,8 @@ describe('RoleStepComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [RoleStepComponent],
-      providers: [{ provide: CdkStepper, useValue: {} }]
-    })
-    .compileComponents();
+      providers: [{ provide: CdkStepper, useValue: {} }],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(RoleStepComponent);
     component = fixture.componentInstance;

@@ -9,10 +9,10 @@ import { OrPipe } from '@pipes/or-pipe/or.pipe';
 import { SpreadPipe } from '@pipes/spread-pipe/spread.pipe';
 
 @Component({
-    selector: 'app-homeworld-card',
-    imports: [CommonModule, MatCardModule, OrPipe, MatDividerModule, SpreadPipe],
-    templateUrl: './homeworld-card.component.html',
-    styleUrl: './homeworld-card.component.scss'
+  selector: 'app-homeworld-card',
+  imports: [CommonModule, MatCardModule, OrPipe, MatDividerModule, SpreadPipe],
+  templateUrl: './homeworld-card.component.html',
+  styleUrl: './homeworld-card.component.scss',
 })
 export class HomeworldCardComponent {
   @Input() homeworld!: DHII_Homeworld;

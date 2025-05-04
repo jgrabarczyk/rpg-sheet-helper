@@ -6,12 +6,13 @@ describe('AppComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [AppComponent],
-      providers: [provideRouter([])]
+      providers: [provideRouter([])],
     }).compileComponents();
   });
 
   it('should create the app', () => {
-    const fixture: ComponentFixture<AppComponent> = TestBed.createComponent(AppComponent);
+    const fixture: ComponentFixture<AppComponent> =
+      TestBed.createComponent(AppComponent);
     const app: AppComponent = fixture.componentInstance;
     expect(app).toBeTruthy();
   });

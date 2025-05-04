@@ -1,6 +1,5 @@
 @let character = creatorService.character$ | async;
 
-
 <div class="grid">
   <mat-stepper
     class="content creator-wrapper mat-body"
@@ -38,10 +37,10 @@
     <mat-step>
       <ng-template matStepLabel> Determin Attribiutes </ng-template>
 
-      @let attributes = creatorService.attributes$| async; 
-      @let homeworldAttributes = character?.homeworld?.value?.attributes; 
+      @let attributes = creatorService.attributes$ | async;
+      @let homeworldAttributes = character?.homeworld?.value?.attributes;
 
-      @if(homeworldAttributes && attributes) {
+      @if (homeworldAttributes && attributes) {
         <app-attribute-step
           [bonus]="homeworldAttributes.bonus"
           [penality]="homeworldAttributes.penality"
@@ -65,7 +64,7 @@
     <mat-step>
       <ng-template matStepLabel> Pick Talents </ng-template>
 
-      @let talents = (creatorService.talents$ | async) ?? []; 
+      @let talents = (creatorService.talents$ | async) ?? [];
       @let talentsToPick = (creatorService.talentsToPick$ | async) ?? [];
 
       <app-talent-step
@@ -77,8 +76,8 @@
 
     <mat-step>
       <ng-template matStepLabel> Pick Skills </ng-template>
-      
-      @let skills = (creatorService.skills$ | async) ?? []; 
+
+      @let skills = (creatorService.skills$ | async) ?? [];
       @let skillsToPick = (creatorService.skillsToPick$ | async) ?? [];
 
       <app-skill-step
@@ -90,17 +89,21 @@
 
     <mat-step>
       <ng-template matStepLabel> Pick Equipment </ng-template>
-      
-      @let equipment = (creatorService.equipment$ | async) ?? []; 
+
+      @let equipment = (creatorService.equipment$ | async) ?? [];
       @let equipmentToPick = (creatorService.equipmentToPick$ | async) ?? [];
 
-      <app-equipment-step [equipment]="equipment" [equipmentToPick]="equipmentToPick" (updateEquipment)="setEquipment($event)" />
+      <app-equipment-step
+        [equipment]="equipment"
+        [equipmentToPick]="equipmentToPick"
+        (updateEquipment)="setEquipment($event)"
+      />
     </mat-step>
 
     <mat-step>
       <ng-template matStepLabel>Determin Wounds And Fate</ng-template>
 
-      @if(character?.homeworld) {
+      @if (character?.homeworld) {
         <app-wounds-and-fate-step
           [homeworld]="character!.homeworld!"
           [fate]="character?.fate"
@@ -113,14 +116,17 @@
 
     <mat-step>
       <ng-template matStepLabel>Determin Divination</ng-template>
-      <app-divination-step [divination]="character?.divination" (setDivination)="setDivination()" />
+      <app-divination-step
+        [divination]="character?.divination"
+        (setDivination)="setDivination()"
+      />
     </mat-step>
 
     <mat-step>
       <ng-template matStepLabel>Final Details</ng-template>
-      
+
       @let details = character?.details;
-      
+
       <app-final-details-step
         [details]="details"
         (resetAll)="resetStepperAndCreationService()"

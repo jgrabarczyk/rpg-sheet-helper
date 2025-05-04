@@ -5,7 +5,7 @@ import {
   EventEmitter,
   inject,
   Input,
-  Output
+  Output,
 } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
@@ -18,7 +18,7 @@ import {
   WeapnRangeReadOnly,
   WeaponBase,
   WeaponMelee,
-  WeaponThrown
+  WeaponThrown,
 } from '@dhii/types/items/weapon/weapon';
 import { EquipmentDialogComponent } from '@shared/dialogs/equipment-dialog/equipment-dialog.component';
 import { assertUnreachable } from '@util/assert-unreachable';
@@ -28,7 +28,7 @@ import { BackpackComponent, TableData } from './backpack/backpack.component';
 const GENERIC_ITEM_HEADERS: KeyValue<keyof GenericItem, string>[] = [
   { key: 'name', value: 'Name' },
   { key: 'quantity', value: 'Qty.' },
-  { key: 'notes', value: 'Description' }
+  { key: 'notes', value: 'Description' },
   // { key: 'weightInKilos', value: 'Weight' }
 ];
 const WEAPON_HEADERS: KeyValue<keyof WeaponBase, string>[] = [
@@ -37,14 +37,14 @@ const WEAPON_HEADERS: KeyValue<keyof WeaponBase, string>[] = [
   { key: 'damageType', value: 'Dmg. Type' },
   { key: 'class', value: 'Class' },
   { key: 'family', value: 'Specialisation' },
-  { key: 'traits', value: 'Triats' }
+  { key: 'traits', value: 'Triats' },
 ];
 @Component({
-    selector: 'app-equipment',
-    imports: [MatCardModule, MatButtonModule, CommonModule, BackpackComponent],
-    templateUrl: './equipment.component.html',
-    styleUrl: './equipment.component.scss',
-    changeDetection: ChangeDetectionStrategy.OnPush
+  selector: 'app-equipment',
+  imports: [MatCardModule, MatButtonModule, CommonModule, BackpackComponent],
+  templateUrl: './equipment.component.html',
+  styleUrl: './equipment.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class EquipmentComponent {
   private dialog: MatDialog = inject(MatDialog);
@@ -66,11 +66,11 @@ export class EquipmentComponent {
   } = {
     melee: {
       headers: [...GENERIC_ITEM_HEADERS, ...WEAPON_HEADERS],
-      data: []
+      data: [],
     },
     missles: {
       headers: [...GENERIC_ITEM_HEADERS, ...WEAPON_HEADERS],
-      data: []
+      data: [],
     },
     ranged: {
       headers: [
@@ -79,18 +79,18 @@ export class EquipmentComponent {
         { key: 'rangeInMeters', value: 'Range' },
         { key: 'rateOfFire', value: 'ROF' },
         { key: 'clipSize', value: 'Clip Size' },
-        { key: 'reloadInActions', value: 'Reload Time' }
+        { key: 'reloadInActions', value: 'Reload Time' },
       ],
-      data: []
+      data: [],
     },
     thrown: {
       headers: [
         ...GENERIC_ITEM_HEADERS,
         ...WEAPON_HEADERS,
-        { key: 'rangeInMeters', value: 'Range' }
+        { key: 'rangeInMeters', value: 'Range' },
       ],
-      data: []
-    }
+      data: [],
+    },
   };
 
   protected protection: {
@@ -102,19 +102,22 @@ export class EquipmentComponent {
         ...GENERIC_ITEM_HEADERS,
         { key: 'agilityCap', value: 'Agility Cap' },
         { key: 'armorPoints', value: 'Armour' },
-        { key: 'protectedLocations', value: 'Locations' }
+        { key: 'protectedLocations', value: 'Locations' },
       ],
-      data: []
+      data: [],
     },
     forceFields: {
-      headers: [...GENERIC_ITEM_HEADERS, { key: 'protectionRating', value: 'Prot Rating' }],
-      data: []
-    }
+      headers: [
+        ...GENERIC_ITEM_HEADERS,
+        { key: 'protectionRating', value: 'Prot Rating' },
+      ],
+      data: [],
+    },
   };
 
   protected backpackTable: TableData<GenericItem> = {
     headers: [...GENERIC_ITEM_HEADERS],
-    data: []
+    data: [],
   };
 
   private rateOfFirePipe: RateOfFirePipe = new RateOfFirePipe();
@@ -122,12 +125,15 @@ export class EquipmentComponent {
 
   protected addItems(): void {
     this.dialog
-      .open<EquipmentDialogComponent, unknown, DHII_Equipment | null>(EquipmentDialogComponent, {
-        maxHeight: '100%',
-        maxWidth: '100%',
-        width: '75%',
-        height: '75%'
-      })
+      .open<EquipmentDialogComponent, unknown, DHII_Equipment | null>(
+        EquipmentDialogComponent,
+        {
+          maxHeight: '100%',
+          maxWidth: '100%',
+          width: '75%',
+          height: '75%',
+        }
+      )
       .afterClosed()
       .pipe(filter(Boolean))
       .subscribe(dialogResult => this.addEquipment.emit(dialogResult));
@@ -153,7 +159,7 @@ export class EquipmentComponent {
       ) {
         this.weapons.thrown.data.push({
           ...weapon,
-          rangeInMeters: Math.floor((this.strength ?? 10) / 10) * 3
+          rangeInMeters: Math.floor((this.strength ?? 10) / 10) * 3,
         });
         return;
       } else if (
@@ -164,7 +170,7 @@ export class EquipmentComponent {
         this.weapons.ranged.data.push({
           ...weapon,
           rateOfFire: this.rateOfFirePipe.transform(weapon.rateOfFire),
-          reloadInActions: this.reloadTime.transform(weapon.reloadInActions)
+          reloadInActions: this.reloadTime.transform(weapon.reloadInActions),
         });
         return;
       } else {

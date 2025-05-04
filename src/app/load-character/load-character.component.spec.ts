@@ -19,8 +19,12 @@ describe('LoadCharacterComponent', () => {
   const names: string[] = ['first value', 'second value', 'third valu'];
   const sheetService: SheetServiceMock = {
     dhiiLocalStorageSaveNames$: of(names),
-    loadCharacterFromLocalStorage: jasmine.createSpy('loadCharacterFromLocalStorage'),
-    deleteCharacterFromLocalStorage: jasmine.createSpy('deleteCharacterFromLocalStorage')
+    loadCharacterFromLocalStorage: jasmine.createSpy(
+      'loadCharacterFromLocalStorage'
+    ),
+    deleteCharacterFromLocalStorage: jasmine.createSpy(
+      'deleteCharacterFromLocalStorage'
+    ),
   };
 
   let fixture: ComponentFixture<LoadCharacterComponent>;
@@ -30,7 +34,7 @@ describe('LoadCharacterComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [LoadCharacterComponent],
-      providers: [{ provide: DHII_SheetService, useValue: sheetService }]
+      providers: [{ provide: DHII_SheetService, useValue: sheetService }],
     }).compileComponents();
 
     fixture = TestBed.createComponent(LoadCharacterComponent);
@@ -41,7 +45,8 @@ describe('LoadCharacterComponent', () => {
   });
 
   it('should create correct number of items in load list', async () => {
-    const listItemsHarnesses: HarnessLoader[] = await loader.getAllChildLoaders('mat-list-item');
+    const listItemsHarnesses: HarnessLoader[] =
+      await loader.getAllChildLoaders('mat-list-item');
     expect(listItemsHarnesses.length).toEqual(names.length);
   });
 
@@ -52,16 +57,18 @@ describe('LoadCharacterComponent', () => {
     );
 
     await loadItemButton.click();
-    expect(sheetService.loadCharacterFromLocalStorage).toHaveBeenCalledWith(names[0]);
+    expect(sheetService.loadCharacterFromLocalStorage).toHaveBeenCalledWith(
+      names[0]
+    );
   });
 
   it('should delete first  character', async () => {
-    const deleteItemButton: MatButtonHarness = await getButtonHarnessWithSelector(
-      listHarness,
-      'deleteCharacter'
-    );
+    const deleteItemButton: MatButtonHarness =
+      await getButtonHarnessWithSelector(listHarness, 'deleteCharacter');
 
     await deleteItemButton.click();
-    expect(sheetService.deleteCharacterFromLocalStorage).toHaveBeenCalledWith(names[0]);
+    expect(sheetService.deleteCharacterFromLocalStorage).toHaveBeenCalledWith(
+      names[0]
+    );
   });
 });

@@ -10,9 +10,8 @@ describe('HomeworldStepComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [HomeworldStepComponent],
-      providers: [{ provide: CdkStepper, useValue: {} }]
-    })
-    .compileComponents();
+      providers: [{ provide: CdkStepper, useValue: {} }],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(HomeworldStepComponent);
     component = fixture.componentInstance;

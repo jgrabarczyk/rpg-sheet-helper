@@ -8,9 +8,8 @@ describe('RollboxComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [RollboxComponent]
-    })
-    .compileComponents();
+      imports: [RollboxComponent],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(RollboxComponent);
     component = fixture.componentInstance;

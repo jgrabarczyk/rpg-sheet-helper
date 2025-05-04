@@ -1,21 +1,51 @@
-@let showLvl = maxLevel !== 0; @if (label) {
-<label class="label" [for]="label">{{ label }}</label>
+@let showLvl = maxLevel !== 0;
+@if (label) {
+  <label
+    class="label"
+    [for]="label"
+    >{{ label }}</label
+  >
 }
-<mat-form-field [appearance]="'outline'" class="input">
-  <input matInput type="number" [formControl]="field" [min]="0" [max]="max" />
+<mat-form-field
+  [appearance]="'outline'"
+  class="input"
+>
+  <input
+    matInput
+    type="number"
+    [formControl]="field"
+    [min]="0"
+    [max]="max"
+  />
 </mat-form-field>
 
-@if(showLvl){
-<div class="lvl-wrapper">
-  @for (item of maxLevel | fill; track item;) {
-  <fa-icon [icon]="currentLevel >= item ? faCircleFilled : faCircle"> </fa-icon>
-  }
-</div>
+@if (showLvl) {
+  <div class="lvl-wrapper">
+    @for (item of maxLevel | fill; track item) {
+      <fa-icon [icon]="currentLevel >= item ? faCircleFilled : faCircle">
+      </fa-icon>
+    }
+  </div>
 
-<div class="lvl-buttons">
-  <button name="increaseSkillLevel" mat-icon-button (click)="increase.emit()"><mat-icon>add</mat-icon></button>
-  <button name="decreaseSkillLevel" mat-icon-button (click)="decrease.emit()"><mat-icon>remove</mat-icon></button>
-</div>
+  <div class="lvl-buttons">
+    <button
+      name="increaseSkillLevel"
+      mat-icon-button
+      (click)="increase.emit()"
+    >
+      <mat-icon>add</mat-icon>
+    </button>
+    <button
+      name="decreaseSkillLevel"
+      mat-icon-button
+      (click)="decrease.emit()"
+    >
+      <mat-icon>remove</mat-icon>
+    </button>
+  </div>
 }
 
-<app-rollbox class="roll" (roll)="roll.emit($event)"/>
+<app-rollbox
+  class="roll"
+  (roll)="roll.emit($event)"
+/>

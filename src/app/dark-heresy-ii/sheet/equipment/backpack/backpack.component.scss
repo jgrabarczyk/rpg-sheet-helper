@@ -4,18 +4,17 @@
 }
 
 .backpack-item {
-    &:nth-child(2n) {
-      background-color: var(--rs-list-odd-item-background-color);
-    }
-  
-    span {
-      display: block;
-      padding: 0.5rem;
-    }
-  
-  
-    .padding-h {
-      padding-left: 1rem;
-      padding-right: 1rem;
-    }
+  &:nth-child(2n) {
+    background-color: var(--rs-list-odd-item-background-color);
   }
+
+  span {
+    display: block;
+    padding: 0.5rem;
+  }
+
+  .padding-h {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+}

@@ -22,7 +22,7 @@ $_palettes: (
     95: #ffefd5,
     98: #fff8f2,
     99: #fffbff,
-    100: #ffffff
+    100: #ffffff,
   ),
   secondary: (
     0: #000000,
@@ -40,7 +40,7 @@ $_palettes: (
     95: #ffedea,
     98: #fff8f7,
     99: #fffbff,
-    100: #ffffff
+    100: #ffffff,
   ),
   tertiary: (
     0: #000000,
@@ -58,7 +58,7 @@ $_palettes: (
     95: #ffefd4,
     98: #fff8f2,
     99: #fffbff,
-    100: #ffffff
+    100: #ffffff,
   ),
   neutral: (
     0: #000000,
@@ -86,7 +86,7 @@ $_palettes: (
     96: #f7f3f0,
     98: #fdf8f6,
     99: #fffbff,
-    100: #ffffff
+    100: #ffffff,
   ),
   neutral-variant: (
     0: #000000,
@@ -104,7 +104,7 @@ $_palettes: (
     95: #f9efe3,
     98: #fff8f2,
     99: #fffbff,
-    100: #ffffff
+    100: #ffffff,
   ),
   error: (
     0: #000000,
@@ -122,15 +122,15 @@ $_palettes: (
     95: #ffedea,
     98: #fff8f7,
     99: #fffbff,
-    100: #ffffff
-  )
+    100: #ffffff,
+  ),
 );
 
 $_rest: (
   secondary: map.get($_palettes, secondary),
   neutral: map.get($_palettes, neutral),
   neutral-variant: map.get($_palettes, neutral-variant),
-  error: map.get($_palettes, error)
+  error: map.get($_palettes, error),
 );
 $_primary: map.merge(map.get($_palettes, primary), $_rest);
 $_tertiary: map.merge(map.get($_palettes, tertiary), $_rest);
@@ -140,15 +140,15 @@ $light-theme: mat.define-theme(
     color: (
       theme-type: light,
       primary: $_primary,
-      tertiary: $_tertiary
+      tertiary: $_tertiary,
     ),
     typography: (
       plain-family: 'Abel',
       brand-family: 'Abel',
       bold-weight: 600,
       medium-weight: 300,
-      regular-weight: 400
-    )
+      regular-weight: 400,
+    ),
   )
 );
 $dark-theme: mat.define-theme(
@@ -156,15 +156,15 @@ $dark-theme: mat.define-theme(
     color: (
       theme-type: dark,
       primary: $_primary,
-      tertiary: $_tertiary
+      tertiary: $_tertiary,
     ),
     typography: (
       plain-family: 'Abel',
       brand-family: 'Abel',
       bold-weight: 600,
       medium-weight: 300,
-      regular-weight: 400
-    )
+      regular-weight: 400,
+    ),
   )
 );
 
@@ -172,26 +172,24 @@ $dark-theme: mat.define-theme(
  * main theme space for m3
  */
 @mixin theme($theme) {
-    
-    mat-card-header.full-width .mat-mdc-card-header-text{
-      width: 100%;
-      display: block;
-    }
-    
-    // sheet header title 
-    mat-card-header.sheet-header .mat-mdc-card-header-text .mat-mdc-card-title{
-      display: flex;
-      justify-content: space-between;
-    }
+  mat-card-header.full-width .mat-mdc-card-header-text {
+    width: 100%;
+    display: block;
+  }
 
-    mat-toolbar {
-      background: mat.get-theme-color($theme, primary-container);
-    }
+  // sheet header title
+  mat-card-header.sheet-header .mat-mdc-card-header-text .mat-mdc-card-title {
+    display: flex;
+    justify-content: space-between;
+  }
 
-    .rs-list-item--hover{
-      .rs-list-item:hover {
-        background-color: mat.get-theme-color($theme, primary, 95);
-        
-      }
+  mat-toolbar {
+    background: mat.get-theme-color($theme, primary-container);
+  }
+
+  .rs-list-item--hover {
+    .rs-list-item:hover {
+      background-color: mat.get-theme-color($theme, primary, 95);
     }
+  }
 }

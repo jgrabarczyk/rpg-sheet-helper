@@ -1,7 +1,7 @@
 import { Availability } from '../accessibility-modifiers';
 import { Weapon, WeaponJam } from './weapon';
 
-const NO_CLIP_SIZE_LIMIT:number = 999999;
+const NO_CLIP_SIZE_LIMIT: number = 999999;
 const NO_RELOAD_NEEDED: number = 0;
 
 export const WEAPONS: Map<string, Weapon> = new Map([
@@ -14,7 +14,7 @@ export const WEAPONS: Map<string, Weapon> = new Map([
       rangeInMeters: 100,
       rateOfFire: {
         single: true,
-        semi: 3
+        semi: 3,
       },
       damage: '1d10+3',
       damageType: 'Energy',
@@ -26,8 +26,8 @@ export const WEAPONS: Map<string, Weapon> = new Map([
       weightInKilos: 4,
       availability: Availability.COMMON,
       notes:
-        'Las Weapon Variable Setting: Overcharge: +1 Dam, 2 ammo. Overload: +2 Dam and Pen but uses 4 ammo, loses Reliable, and gains Unreliable'
-    }
+        'Las Weapon Variable Setting: Overcharge: +1 Dam, 2 ammo. Overload: +2 Dam and Pen but uses 4 ammo, loses Reliable, and gains Unreliable',
+    },
   ],
   [
     'Laslock',
@@ -39,7 +39,7 @@ export const WEAPONS: Map<string, Weapon> = new Map([
       isRanged: true,
       weaponJamOn: WeaponJam.UNRELIABLE,
       rateOfFire: {
-        single: true
+        single: true,
       },
       damage: '1d10+4',
       damageType: 'Energy',
@@ -48,8 +48,8 @@ export const WEAPONS: Map<string, Weapon> = new Map([
       reloadInActions: 1,
       weightInKilos: 4,
       availability: Availability.PLENTIFUL,
-      notes: 'Do not benefit from the Las Weapon Variable Setting rules.'
-    }
+      notes: 'Do not benefit from the Las Weapon Variable Setting rules.',
+    },
   ],
   [
     'Laspistol',
@@ -62,7 +62,7 @@ export const WEAPONS: Map<string, Weapon> = new Map([
       weaponJamOn: WeaponJam.RELIABLE,
       rateOfFire: {
         single: true,
-        semi: 2
+        semi: 2,
       },
       damage: '1d10+2',
       damageType: 'Energy',
@@ -72,8 +72,8 @@ export const WEAPONS: Map<string, Weapon> = new Map([
       weightInKilos: 1.5,
       availability: Availability.COMMON,
       notes:
-        'Las Weapon Variable Setting: Overcharge: +1 Dam, 2 ammo. Overload: +2 Dam and Pen but uses 4 ammo, loses Reliable, and gains Unreliable'
-    }
+        'Las Weapon Variable Setting: Overcharge: +1 Dam, 2 ammo. Overload: +2 Dam and Pen but uses 4 ammo, loses Reliable, and gains Unreliable',
+    },
   ],
   [
     'Hot-shot Lasgun',
@@ -86,7 +86,7 @@ export const WEAPONS: Map<string, Weapon> = new Map([
       weaponJamOn: WeaponJam.STANDARD,
       rateOfFire: {
         single: true,
-        semi: 3
+        semi: 3,
       },
       damage: '1d10+4',
       damageType: 'Energy',
@@ -95,8 +95,8 @@ export const WEAPONS: Map<string, Weapon> = new Map([
       reloadInActions: 4,
       weightInKilos: 6,
       availability: Availability.RARE,
-      notes: 'Do not benefit from the Las Weapon Variable Setting rules.'
-    }
+      notes: 'Do not benefit from the Las Weapon Variable Setting rules.',
+    },
   ],
   [
     'Hot-shot Laspistol',
@@ -109,7 +109,7 @@ export const WEAPONS: Map<string, Weapon> = new Map([
       weaponJamOn: WeaponJam.STANDARD,
       rateOfFire: {
         single: true,
-        semi: 2
+        semi: 2,
       },
       damage: '1d10+4',
       damageType: 'Energy',
@@ -118,8 +118,8 @@ export const WEAPONS: Map<string, Weapon> = new Map([
       reloadInActions: 4,
       weightInKilos: 4,
       availability: Availability.RARE,
-      notes: 'Do not benefit from the Las Weapon Variable Setting rules.'
-    }
+      notes: 'Do not benefit from the Las Weapon Variable Setting rules.',
+    },
   ],
   [
     'Long-Las',
@@ -131,7 +131,7 @@ export const WEAPONS: Map<string, Weapon> = new Map([
       isRanged: true,
       weaponJamOn: WeaponJam.RELIABLE,
       rateOfFire: {
-        single: true
+        single: true,
       },
       damage: '1d10+3',
       damageType: 'Energy',
@@ -142,8 +142,8 @@ export const WEAPONS: Map<string, Weapon> = new Map([
       weightInKilos: 4.5,
       availability: Availability.SCARCE,
       notes:
-        'Las Weapon Variable Setting: Overcharge: +1 Dam, 2 ammo. Overload: +2 Dam and Pen but uses 4 ammo, loses Reliable, and gains Unreliable'
-    }
+        'Las Weapon Variable Setting: Overcharge: +1 Dam, 2 ammo. Overload: +2 Dam and Pen but uses 4 ammo, loses Reliable, and gains Unreliable',
+    },
   ],
   [
     'Grenade Launcher',
@@ -155,7 +155,7 @@ export const WEAPONS: Map<string, Weapon> = new Map([
       isRanged: true,
       weaponJamOn: WeaponJam.STANDARD,
       rateOfFire: {
-        single: true
+        single: true,
       },
       damage: '0d0',
       damageType: 'Special',
@@ -164,8 +164,9 @@ export const WEAPONS: Map<string, Weapon> = new Map([
       reloadInActions: 4,
       weightInKilos: 12,
       availability: Availability.AVERAGE,
-      notes: 'Consumes grenades as ammunition - damage and effects depend on the grenade used'
-    }
+      notes:
+        'Consumes grenades as ammunition - damage and effects depend on the grenade used',
+    },
   ],
   [
     'Missile Launcher',
@@ -177,7 +178,7 @@ export const WEAPONS: Map<string, Weapon> = new Map([
       weaponJamOn: WeaponJam.STANDARD,
       rangeInMeters: 300,
       rateOfFire: {
-        single: true
+        single: true,
       },
       damage: '0d0',
       damageType: 'Special',
@@ -186,8 +187,9 @@ export const WEAPONS: Map<string, Weapon> = new Map([
       reloadInActions: 2,
       weightInKilos: 35,
       availability: Availability.RARE,
-      notes: 'Consumes missiles as ammunition - damage and effects depend on the missile used'
-    }
+      notes:
+        'Consumes missiles as ammunition - damage and effects depend on the missile used',
+    },
   ],
   [
     'Bolas',
@@ -202,8 +204,8 @@ export const WEAPONS: Map<string, Weapon> = new Map([
       armourPenetration: 0,
       traits: ['Inaccurate', 'Snare (1)'],
       weightInKilos: 1.5,
-      availability: Availability.AVERAGE
-    }
+      availability: Availability.AVERAGE,
+    },
   ],
   [
     'Bow',
@@ -215,7 +217,7 @@ export const WEAPONS: Map<string, Weapon> = new Map([
       isRanged: true,
       weaponJamOn: WeaponJam.RELIABLE,
       rateOfFire: {
-        single: true
+        single: true,
       },
       damage: '1d10',
       damageType: 'Rending',
@@ -225,8 +227,8 @@ export const WEAPONS: Map<string, Weapon> = new Map([
       traits: ['Primitive (6)'],
       weightInKilos: 2,
       availability: Availability.COMMON,
-      notes: 'Two-handed weapon.'
-    }
+      notes: 'Two-handed weapon.',
+    },
   ],
   [
     'Crossbow',
@@ -238,7 +240,7 @@ export const WEAPONS: Map<string, Weapon> = new Map([
       isRanged: true,
       weaponJamOn: WeaponJam.STANDARD,
       rateOfFire: {
-        single: true
+        single: true,
       },
       damage: '1d10',
       damageType: 'Rending',
@@ -247,8 +249,8 @@ export const WEAPONS: Map<string, Weapon> = new Map([
       reloadInActions: 4,
       traits: ['Primitive (7)'],
       weightInKilos: 3,
-      availability: Availability.COMMON
-    }
+      availability: Availability.COMMON,
+    },
   ],
   [
     'Inferno Pistol',
@@ -260,7 +262,7 @@ export const WEAPONS: Map<string, Weapon> = new Map([
       isRanged: true,
       weaponJamOn: WeaponJam.STANDARD,
       rateOfFire: {
-        single: true
+        single: true,
       },
       damage: '2d10+10',
       damageType: 'Energy',
@@ -269,8 +271,8 @@ export const WEAPONS: Map<string, Weapon> = new Map([
       reloadInActions: 2,
       traits: ['Melta'],
       weightInKilos: 3,
-      availability: Availability.NEAR_UNIQUE
-    }
+      availability: Availability.NEAR_UNIQUE,
+    },
   ],
   [
     'Meltagun',
@@ -282,7 +284,7 @@ export const WEAPONS: Map<string, Weapon> = new Map([
       isRanged: true,
       weaponJamOn: WeaponJam.STANDARD,
       rateOfFire: {
-        single: true
+        single: true,
       },
       damage: '2d10+10',
       damageType: 'Energy',
@@ -291,8 +293,8 @@ export const WEAPONS: Map<string, Weapon> = new Map([
       reloadInActions: 2,
       traits: ['Melta'],
       weightInKilos: 15,
-      availability: Availability.VERY_RARE
-    }
+      availability: Availability.VERY_RARE,
+    },
   ],
   [
     'Plasma Gun',
@@ -305,7 +307,7 @@ export const WEAPONS: Map<string, Weapon> = new Map([
       weaponJamOn: WeaponJam.STANDARD,
       rateOfFire: {
         single: true,
-        semi: 2
+        semi: 2,
       },
       damage: '1d10+7',
       damageType: 'Energy',
@@ -314,8 +316,8 @@ export const WEAPONS: Map<string, Weapon> = new Map([
       reloadInActions: 10,
       traits: ['Maximal', 'Overheats'],
       weightInKilos: 18,
-      availability: Availability.VERY_RARE
-    }
+      availability: Availability.VERY_RARE,
+    },
   ],
   [
     'Plasma Pistol',
@@ -328,7 +330,7 @@ export const WEAPONS: Map<string, Weapon> = new Map([
       weaponJamOn: WeaponJam.STANDARD,
       rateOfFire: {
         single: true,
-        semi: 2
+        semi: 2,
       },
       damage: '1d10+6',
       damageType: 'Energy',
@@ -337,8 +339,8 @@ export const WEAPONS: Map<string, Weapon> = new Map([
       reloadInActions: 6,
       traits: ['Maximal', 'Overheats'],
       weightInKilos: 4,
-      availability: Availability.VERY_RARE
-    }
+      availability: Availability.VERY_RARE,
+    },
   ],
   [
     'Autocannon',
@@ -351,7 +353,7 @@ export const WEAPONS: Map<string, Weapon> = new Map([
       weaponJamOn: WeaponJam.RELIABLE,
       rateOfFire: {
         single: true,
-        semi: 3
+        semi: 3,
       },
       damage: '3d10+8',
       damageType: 'Impact',
@@ -359,8 +361,8 @@ export const WEAPONS: Map<string, Weapon> = new Map([
       clipSize: 24,
       reloadInActions: 4,
       weightInKilos: 40,
-      availability: Availability.VERY_RARE
-    }
+      availability: Availability.VERY_RARE,
+    },
   ],
   [
     'Autogun',
@@ -374,7 +376,7 @@ export const WEAPONS: Map<string, Weapon> = new Map([
       rateOfFire: {
         single: true,
         semi: 3,
-        full: 10
+        full: 10,
       },
       damage: '1d10+3',
       damageType: 'Impact',
@@ -382,8 +384,8 @@ export const WEAPONS: Map<string, Weapon> = new Map([
       clipSize: 30,
       reloadInActions: 2,
       weightInKilos: 5,
-      availability: Availability.AVERAGE
-    }
+      availability: Availability.AVERAGE,
+    },
   ],
   [
     'Autopistol',
@@ -396,7 +398,7 @@ export const WEAPONS: Map<string, Weapon> = new Map([
       weaponJamOn: WeaponJam.STANDARD,
       rateOfFire: {
         single: true,
-        full: 6
+        full: 6,
       },
       damage: '1d10+2',
       damageType: 'Impact',
@@ -404,8 +406,8 @@ export const WEAPONS: Map<string, Weapon> = new Map([
       clipSize: 18,
       reloadInActions: 2,
       weightInKilos: 1.5,
-      availability: Availability.AVERAGE
-    }
+      availability: Availability.AVERAGE,
+    },
   ],
   [
     'Hand Cannon',
@@ -417,7 +419,7 @@ export const WEAPONS: Map<string, Weapon> = new Map([
       isRanged: true,
       weaponJamOn: WeaponJam.STANDARD,
       rateOfFire: {
-        single: true
+        single: true,
       },
       damage: '1d10+4',
       damageType: 'Impact',
@@ -426,8 +428,8 @@ export const WEAPONS: Map<string, Weapon> = new Map([
       reloadInActions: 4,
       weightInKilos: 3,
       availability: Availability.SCARCE,
-      notes: 'Two Handed to fire.'
-    }
+      notes: 'Two Handed to fire.',
+    },
   ],
   [
     'Grav Pistol',
@@ -439,7 +441,7 @@ export const WEAPONS: Map<string, Weapon> = new Map([
       isRanged: true,
       weaponJamOn: WeaponJam.STANDARD,
       rateOfFire: {
-        single: true
+        single: true,
       },
       damage: '1d10+3',
       damageType: 'Impact',
@@ -448,8 +450,8 @@ export const WEAPONS: Map<string, Weapon> = new Map([
       reloadInActions: 2,
       traits: ['Concussive (1)', 'Graviton'],
       weightInKilos: 3,
-      availability: Availability.NEAR_UNIQUE
-    }
+      availability: Availability.NEAR_UNIQUE,
+    },
   ],
   [
     'Graviton Gun',
@@ -462,7 +464,7 @@ export const WEAPONS: Map<string, Weapon> = new Map([
       weaponJamOn: WeaponJam.STANDARD,
       rateOfFire: {
         single: true,
-        semi: 3
+        semi: 3,
       },
       damage: '1d10+6',
       damageType: 'Impact',
@@ -471,8 +473,8 @@ export const WEAPONS: Map<string, Weapon> = new Map([
       reloadInActions: 4,
       traits: ['Concussive (2)', 'Graviton'],
       weightInKilos: 6,
-      availability: Availability.EXTREMELY_RARE
-    }
+      availability: Availability.EXTREMELY_RARE,
+    },
   ],
   [
     'Needle Pistol',
@@ -484,7 +486,7 @@ export const WEAPONS: Map<string, Weapon> = new Map([
       isRanged: true,
       weaponJamOn: WeaponJam.STANDARD,
       rateOfFire: {
-        single: true
+        single: true,
       },
       damage: '1d10',
       damageType: 'Rending',
@@ -494,8 +496,8 @@ export const WEAPONS: Map<string, Weapon> = new Map([
       traits: ['Accurate', 'Felling (1)', 'Toxic (5)'],
       weightInKilos: 1.5,
       availability: Availability.VERY_RARE,
-      notes: 'Built-in silencer'
-    }
+      notes: 'Built-in silencer',
+    },
   ],
   [
     'Needle Rifle',
@@ -507,7 +509,7 @@ export const WEAPONS: Map<string, Weapon> = new Map([
       isRanged: true,
       weaponJamOn: WeaponJam.STANDARD,
       rateOfFire: {
-        single: true
+        single: true,
       },
       damage: '1d10',
       damageType: 'Rending',
@@ -517,8 +519,8 @@ export const WEAPONS: Map<string, Weapon> = new Map([
       traits: ['Accurate', 'Felling (1)', 'Toxic (5)'],
       weightInKilos: 2,
       availability: Availability.VERY_RARE,
-      notes: 'Built-in silencer'
-    }
+      notes: 'Built-in silencer',
+    },
   ],
   [
     'Web Pistol',
@@ -530,7 +532,7 @@ export const WEAPONS: Map<string, Weapon> = new Map([
       isRanged: true,
       weaponJamOn: WeaponJam.STANDARD,
       rateOfFire: {
-        single: true
+        single: true,
       },
       damage: '0d0',
       damageType: 'Special',
@@ -540,8 +542,8 @@ export const WEAPONS: Map<string, Weapon> = new Map([
       traits: ['Snare (0)'],
       weightInKilos: 3.5,
       availability: Availability.VERY_RARE,
-      notes: 'Web dissolve away after 1d5 hours.'
-    }
+      notes: 'Web dissolve away after 1d5 hours.',
+    },
   ],
   [
     'Webber',
@@ -552,7 +554,7 @@ export const WEAPONS: Map<string, Weapon> = new Map([
       rangeInMeters: 50,
       isRanged: true,
       rateOfFire: {
-        single: true
+        single: true,
       },
       weaponJamOn: WeaponJam.STANDARD,
       damage: '0d0',
@@ -563,8 +565,8 @@ export const WEAPONS: Map<string, Weapon> = new Map([
       traits: ['Blast (5)', 'Snare (1)'],
       weightInKilos: 8,
       availability: Availability.RARE,
-      notes: 'Web dissolve away after 1d5 hours.'
-    }
+      notes: 'Web dissolve away after 1d5 hours.',
+    },
   ],
   [
     'Heavy Stubber',
@@ -577,7 +579,7 @@ export const WEAPONS: Map<string, Weapon> = new Map([
       weaponJamOn: WeaponJam.STANDARD,
       rateOfFire: {
         single: false,
-        full: 8
+        full: 8,
       },
       damage: '1d10+4',
       damageType: 'Impact',
@@ -585,8 +587,8 @@ export const WEAPONS: Map<string, Weapon> = new Map([
       clipSize: 80,
       reloadInActions: 4,
       weightInKilos: 30,
-      availability: Availability.RARE
-    }
+      availability: Availability.RARE,
+    },
   ],
   [
     'Shotgun',
@@ -598,7 +600,7 @@ export const WEAPONS: Map<string, Weapon> = new Map([
       isRanged: true,
       weaponJamOn: WeaponJam.STANDARD,
       rateOfFire: {
-        single: true
+        single: true,
       },
       damage: '1d10+4',
       damageType: 'Impact',
@@ -607,8 +609,8 @@ export const WEAPONS: Map<string, Weapon> = new Map([
       reloadInActions: 4,
       traits: ['Scatter'],
       weightInKilos: 5,
-      availability: Availability.AVERAGE
-    }
+      availability: Availability.AVERAGE,
+    },
   ],
   [
     'Shotgun (Combat)',
@@ -621,7 +623,7 @@ export const WEAPONS: Map<string, Weapon> = new Map([
       weaponJamOn: WeaponJam.STANDARD,
       rateOfFire: {
         single: true,
-        semi: 3
+        semi: 3,
       },
       damage: '1d10+4',
       damageType: 'Impact',
@@ -630,8 +632,8 @@ export const WEAPONS: Map<string, Weapon> = new Map([
       reloadInActions: 2,
       traits: ['Scatter'],
       weightInKilos: 6.5,
-      availability: Availability.SCARCE
-    }
+      availability: Availability.SCARCE,
+    },
   ],
   [
     'Sniper Rifle',
@@ -643,7 +645,7 @@ export const WEAPONS: Map<string, Weapon> = new Map([
       isRanged: true,
       weaponJamOn: WeaponJam.RELIABLE,
       rateOfFire: {
-        single: true
+        single: true,
       },
       damage: '1d10+4',
       damageType: 'Impact',
@@ -652,8 +654,8 @@ export const WEAPONS: Map<string, Weapon> = new Map([
       reloadInActions: 2,
       traits: ['Accurate'],
       weightInKilos: 5,
-      availability: Availability.SCARCE
-    }
+      availability: Availability.SCARCE,
+    },
   ],
   [
     'Stub Automatic',
@@ -666,7 +668,7 @@ export const WEAPONS: Map<string, Weapon> = new Map([
       weaponJamOn: WeaponJam.STANDARD,
       rateOfFire: {
         single: true,
-        semi: 3
+        semi: 3,
       },
       damage: '1d10+3',
       damageType: 'Impact',
@@ -674,8 +676,8 @@ export const WEAPONS: Map<string, Weapon> = new Map([
       clipSize: 9,
       reloadInActions: 2,
       weightInKilos: 1.5,
-      availability: Availability.AVERAGE
-    }
+      availability: Availability.AVERAGE,
+    },
   ],
   [
     'Stub Revolver',
@@ -687,7 +689,7 @@ export const WEAPONS: Map<string, Weapon> = new Map([
       isRanged: true,
       weaponJamOn: WeaponJam.RELIABLE,
       rateOfFire: {
-        single: true
+        single: true,
       },
       damage: '1d10+3',
       damageType: 'Impact',
@@ -695,8 +697,8 @@ export const WEAPONS: Map<string, Weapon> = new Map([
       clipSize: 6,
       reloadInActions: 4,
       weightInKilos: 1.5,
-      availability: Availability.PLENTIFUL
-    }
+      availability: Availability.PLENTIFUL,
+    },
   ],
   [
     'Fire Bomb',
@@ -713,8 +715,8 @@ export const WEAPONS: Map<string, Weapon> = new Map([
       weightInKilos: 0.5,
       availability: Availability.PLENTIFUL,
       notes:
-        'Cannot be used with launcher weapons and cannot be thrown. Require Half Action to ready.'
-    }
+        'Cannot be used with launcher weapons and cannot be thrown. Require Half Action to ready.',
+    },
     /** @todo figure out how to handle charges bombs and missles*/
   ],
   [
@@ -730,8 +732,8 @@ export const WEAPONS: Map<string, Weapon> = new Map([
       traits: ['Blast (2)', 'Flame', 'Melta'],
       weightInKilos: 12,
       availability: Availability.VERY_RARE,
-      notes: 'Cannot be used with launcher weapons and cannot be thrown.'
-    }
+      notes: 'Cannot be used with launcher weapons and cannot be thrown.',
+    },
   ],
   [
     'Blind Grenade',
@@ -746,8 +748,8 @@ export const WEAPONS: Map<string, Weapon> = new Map([
       armourPenetration: 0,
       traits: ['Smoke (2)'],
       weightInKilos: 0.5,
-      availability: Availability.SCARCE
-    }
+      availability: Availability.SCARCE,
+    },
   ],
   [
     'Choke Grenade',
@@ -764,8 +766,8 @@ export const WEAPONS: Map<string, Weapon> = new Map([
       weightInKilos: 0.5,
       availability: Availability.SCARCE,
       notes:
-        'Characters in radius make a Toughness test each turn, taking 1 fatigue upon failure. 4+ DoF suffers a 1d10 Toughness damage. Lasts for up 2d5 rounds depending on weather.'
-    }
+        'Characters in radius make a Toughness test each turn, taking 1 fatigue upon failure. 4+ DoF suffers a 1d10 Toughness damage. Lasts for up 2d5 rounds depending on weather.',
+    },
   ],
   [
     'Frag Grenade',
@@ -780,18 +782,19 @@ export const WEAPONS: Map<string, Weapon> = new Map([
       armourPenetration: 0,
       traits: ['Blast (3)'],
       weightInKilos: 0.5,
-      availability: Availability.COMMON
-    }
+      availability: Availability.COMMON,
+    },
   ],
 
-  ['Frag Missile',
+  [
+    'Frag Missile',
     {
       name: 'Frag Missile',
       family: 'Missile',
       class: 'Charge',
       isRanged: false,
       rateOfFire: {
-        single: true
+        single: true,
       },
       damage: '2d10+2',
       damageType: 'Explosive',
@@ -799,7 +802,7 @@ export const WEAPONS: Map<string, Weapon> = new Map([
 
       traits: ['Blast (5)'],
       weightInKilos: 1,
-      availability: Availability.AVERAGE
+      availability: Availability.AVERAGE,
     },
   ],
   [
@@ -815,8 +818,8 @@ export const WEAPONS: Map<string, Weapon> = new Map([
       armourPenetration: 0,
       traits: ['Blast (6)', 'Hallucinogenic (1)'],
       weightInKilos: 0.5,
-      availability: Availability.SCARCE
-    }
+      availability: Availability.SCARCE,
+    },
   ],
   [
     'Haywire Grenade',
@@ -831,8 +834,8 @@ export const WEAPONS: Map<string, Weapon> = new Map([
       armourPenetration: 0,
       traits: ['Haywire (2)'],
       weightInKilos: 0.5,
-      availability: Availability.VERY_RARE
-    }
+      availability: Availability.VERY_RARE,
+    },
   ],
   [
     'Krak Grenade',
@@ -848,18 +851,19 @@ export const WEAPONS: Map<string, Weapon> = new Map([
       traits: ['Concussive (0)'],
       weightInKilos: 0.5,
       availability: Availability.RARE,
-      notes: 'Gain Vengeful (9) against vehicles.'
-    }
+      notes: 'Gain Vengeful (9) against vehicles.',
+    },
   ],
 
-  ['Krak Missile',
+  [
+    'Krak Missile',
     {
       name: 'Krak Missile',
       family: 'Missile',
       class: 'Charge',
       isRanged: false,
       rateOfFire: {
-        single: true
+        single: true,
       },
       damage: '3d10+8',
       damageType: 'Explosive',
@@ -867,7 +871,7 @@ export const WEAPONS: Map<string, Weapon> = new Map([
       traits: ['Concussive (3)', 'Proven (2)'],
       weightInKilos: 1,
       availability: Availability.SCARCE,
-      notes: 'Gain Vengeful (9) against vehicles.'
+      notes: 'Gain Vengeful (9) against vehicles.',
     },
   ],
   [
@@ -885,8 +889,8 @@ export const WEAPONS: Map<string, Weapon> = new Map([
       traits: ['Tearing', 'Two-Handed'],
       weightInKilos: 13,
       availability: Availability.SCARCE,
-      notes: 'Two-handed weapon.'
-    }
+      notes: 'Two-handed weapon.',
+    },
   ],
   [
     'Chainblade',
@@ -902,8 +906,8 @@ export const WEAPONS: Map<string, Weapon> = new Map([
 
       traits: ['Tearing'],
       weightInKilos: 2,
-      availability: Availability.SCARCE
-    }
+      availability: Availability.SCARCE,
+    },
   ],
   [
     'Chainsword',
@@ -919,8 +923,8 @@ export const WEAPONS: Map<string, Weapon> = new Map([
 
       traits: ['Balanced', 'Tearing'],
       weightInKilos: 6,
-      availability: Availability.AVERAGE
-    }
+      availability: Availability.AVERAGE,
+    },
   ],
   [
     'Photon Flash Grenade',
@@ -937,8 +941,8 @@ export const WEAPONS: Map<string, Weapon> = new Map([
       weightInKilos: 0.5,
       availability: Availability.RARE,
       notes:
-        'Must pass an Ordinary (+10) Agility test or be blinded for a number of rounds equal to his DoF.'
-    }
+        'Must pass an Ordinary (+10) Agility test or be blinded for a number of rounds equal to his DoF.',
+    },
   ],
   [
     'Smoke Grenade',
@@ -953,8 +957,8 @@ export const WEAPONS: Map<string, Weapon> = new Map([
       armourPenetration: 0,
       traits: ['Smoke (4)'],
       weightInKilos: 0.5,
-      availability: Availability.COMMON
-    }
+      availability: Availability.COMMON,
+    },
   ],
   [
     'Stun Grenade',
@@ -970,8 +974,8 @@ export const WEAPONS: Map<string, Weapon> = new Map([
 
       traits: ['Blast (3)', 'Concussive (2)'],
       weightInKilos: 0.5,
-      availability: Availability.COMMON
-    }
+      availability: Availability.COMMON,
+    },
   ],
   [
     'Web Grenade',
@@ -987,8 +991,8 @@ export const WEAPONS: Map<string, Weapon> = new Map([
       traits: ['Blast (3)', 'Snare (2)'],
       weightInKilos: 0.5,
       availability: Availability.RARE,
-      notes: 'Web dissolve away after 1d5 hours.'
-    }
+      notes: 'Web dissolve away after 1d5 hours.',
+    },
   ],
   [
     'Eviscerator',
@@ -1002,8 +1006,8 @@ export const WEAPONS: Map<string, Weapon> = new Map([
       armourPenetration: 9,
       traits: ['Razor Sharp', 'Tearing', 'Two-Handed', 'Unwieldy'],
       weightInKilos: 15,
-      availability: Availability.VERY_RARE
-    }
+      availability: Availability.VERY_RARE,
+    },
   ],
   [
     'Force Staff',
@@ -1017,8 +1021,8 @@ export const WEAPONS: Map<string, Weapon> = new Map([
       armourPenetration: 2,
       traits: ['Force', 'Two-Handed'],
       weightInKilos: 2,
-      availability: Availability.EXTREMELY_RARE
-    }
+      availability: Availability.EXTREMELY_RARE,
+    },
   ],
   [
     'Force Sword',
@@ -1032,8 +1036,8 @@ export const WEAPONS: Map<string, Weapon> = new Map([
       armourPenetration: 2,
       traits: ['Balanced', 'Force'],
       weightInKilos: 5,
-      availability: Availability.NEAR_UNIQUE
-    }
+      availability: Availability.NEAR_UNIQUE,
+    },
   ],
   [
     'Great Weapon',
@@ -1048,8 +1052,8 @@ export const WEAPONS: Map<string, Weapon> = new Map([
       traits: ['Unbalanced', 'Two-Handed'],
       weightInKilos: 7,
       availability: Availability.SCARCE,
-      notes: 'Two-handed weapon.'
-    }
+      notes: 'Two-handed weapon.',
+    },
   ],
   [
     'Hunting Lance',
@@ -1065,8 +1069,8 @@ export const WEAPONS: Map<string, Weapon> = new Map([
       weightInKilos: 4,
       availability: Availability.SCARCE,
       notes:
-        'After a successful attack is made with this weapon, its tip is destroyed and it is treated as a staff.'
-    }
+        'After a successful attack is made with this weapon, its tip is destroyed and it is treated as a staff.',
+    },
   ],
   [
     'Improvised',
@@ -1080,8 +1084,8 @@ export const WEAPONS: Map<string, Weapon> = new Map([
       armourPenetration: 0,
       traits: ['Primitive (7)', 'Unbalanced'],
       weightInKilos: 0,
-      availability: Availability.UBIQUITOUS
-    }
+      availability: Availability.UBIQUITOUS,
+    },
   ],
   [
     'Knife',
@@ -1094,8 +1098,8 @@ export const WEAPONS: Map<string, Weapon> = new Map([
       damageType: 'Rending',
       armourPenetration: 0,
       weightInKilos: 1,
-      availability: Availability.PLENTIFUL
-    }
+      availability: Availability.PLENTIFUL,
+    },
   ],
   [
     'Knife',
@@ -1109,8 +1113,8 @@ export const WEAPONS: Map<string, Weapon> = new Map([
       damageType: 'Rending',
       armourPenetration: 0,
       weightInKilos: 1,
-      availability: Availability.PLENTIFUL
-    }
+      availability: Availability.PLENTIFUL,
+    },
   ],
   [
     'Shield',
@@ -1126,8 +1130,8 @@ export const WEAPONS: Map<string, Weapon> = new Map([
       weightInKilos: 3,
       availability: Availability.COMMON,
       notes:
-        'Attacks suffer a -20 penalty instead of the normal penalty from the Defensive quality.'
-    }
+        'Attacks suffer a -20 penalty instead of the normal penalty from the Defensive quality.',
+    },
   ],
   [
     'Spear',
@@ -1142,8 +1146,8 @@ export const WEAPONS: Map<string, Weapon> = new Map([
       traits: ['Primitive (8)', 'Two-Handed'],
       weightInKilos: 3,
       availability: Availability.COMMON,
-      notes: 'Two-handed weapon.'
-    }
+      notes: 'Two-handed weapon.',
+    },
   ],
   [
     'Staff',
@@ -1158,8 +1162,8 @@ export const WEAPONS: Map<string, Weapon> = new Map([
       traits: ['Balanced', 'Primitive (7)', 'Two-Handed'],
       weightInKilos: 3,
       availability: Availability.PLENTIFUL,
-      notes: 'Two-handed weapon.'
-    }
+      notes: 'Two-handed weapon.',
+    },
   ],
   [
     'Sword',
@@ -1173,8 +1177,8 @@ export const WEAPONS: Map<string, Weapon> = new Map([
       armourPenetration: 0,
       traits: ['Balanced'],
       weightInKilos: 3,
-      availability: Availability.COMMON
-    }
+      availability: Availability.COMMON,
+    },
   ],
   [
     'Truncheon',
@@ -1188,8 +1192,8 @@ export const WEAPONS: Map<string, Weapon> = new Map([
       armourPenetration: 0,
       traits: ['Primitive (7)'],
       weightInKilos: 2,
-      availability: Availability.PLENTIFUL
-    }
+      availability: Availability.PLENTIFUL,
+    },
   ],
   [
     'Warhammer',
@@ -1204,8 +1208,8 @@ export const WEAPONS: Map<string, Weapon> = new Map([
       traits: ['Concussive (1)', 'Primitive (8)', 'Two-Handed'],
       weightInKilos: 4.5,
       availability: Availability.SCARCE,
-      notes: 'Two-handed weapon.'
-    }
+      notes: 'Two-handed weapon.',
+    },
   ],
   // * @todo figure out how to handle melee weapons with range
   [
@@ -1221,8 +1225,8 @@ export const WEAPONS: Map<string, Weapon> = new Map([
       armourPenetration: 0,
       traits: ['Flexible', 'Primitive (6)'],
       weightInKilos: 2,
-      availability: Availability.AVERAGE
-    }
+      availability: Availability.AVERAGE,
+    },
   ],
   [
     'Omnissian Axe',
@@ -1237,8 +1241,8 @@ export const WEAPONS: Map<string, Weapon> = new Map([
       traits: ['Power Field', 'Two-Handed', 'Unbalanced'],
       weightInKilos: 8,
       availability: Availability.EXTREMELY_RARE,
-      notes: 'Two-handed weapon and functions as a Combi-tool.'
-    }
+      notes: 'Two-handed weapon and functions as a Combi-tool.',
+    },
   ],
   [
     'Power Axe',
@@ -1253,8 +1257,8 @@ export const WEAPONS: Map<string, Weapon> = new Map([
       traits: ['Power Field', 'Two-Handed', 'Unbalanced'],
       weightInKilos: 6,
       availability: Availability.VERY_RARE,
-      notes: 'Two-handed weapon.'
-    }
+      notes: 'Two-handed weapon.',
+    },
   ],
   [
     'Power Fist',
@@ -1268,8 +1272,8 @@ export const WEAPONS: Map<string, Weapon> = new Map([
       armourPenetration: 9,
       traits: ['Power Field', 'Unwieldy'],
       weightInKilos: 13,
-      availability: Availability.VERY_RARE
-    }
+      availability: Availability.VERY_RARE,
+    },
   ],
   [
     'Power Maul (High)',
@@ -1284,8 +1288,8 @@ export const WEAPONS: Map<string, Weapon> = new Map([
       traits: ['Power Field', 'Shocking'],
       weightInKilos: 3.5,
       availability: Availability.VERY_RARE,
-      notes: 'When used with two hands it gains the Concussive (0) quality.'
-    }
+      notes: 'When used with two hands it gains the Concussive (0) quality.',
+    },
   ],
   [
     'Power Maul (Low)',
@@ -1300,8 +1304,8 @@ export const WEAPONS: Map<string, Weapon> = new Map([
       traits: ['Shocking'],
       weightInKilos: 3.5,
       availability: Availability.VERY_RARE,
-      notes: 'When used with two hands it gains the Concussive (0) quality.'
-    }
+      notes: 'When used with two hands it gains the Concussive (0) quality.',
+    },
   ],
   [
     'Power Sword',
@@ -1315,8 +1319,8 @@ export const WEAPONS: Map<string, Weapon> = new Map([
       armourPenetration: 5,
       traits: ['Balanced', 'Power Field'],
       weightInKilos: 3,
-      availability: Availability.VERY_RARE
-    }
+      availability: Availability.VERY_RARE,
+    },
   ],
   [
     'Shock Maul',
@@ -1330,8 +1334,8 @@ export const WEAPONS: Map<string, Weapon> = new Map([
       armourPenetration: 0,
       traits: ['Shocking'],
       weightInKilos: 2.5,
-      availability: Availability.SCARCE
-    }
+      availability: Availability.SCARCE,
+    },
     /**
      * @todo figure out how to handle melee weapons with range
      */
@@ -1349,8 +1353,8 @@ export const WEAPONS: Map<string, Weapon> = new Map([
       armourPenetration: 0,
       traits: ['Flexible', 'Shocking'],
       weightInKilos: 3,
-      availability: Availability.EXTREMELY_RARE
-    }
+      availability: Availability.EXTREMELY_RARE,
+    },
   ],
   [
     'Unarmed',
@@ -1363,8 +1367,8 @@ export const WEAPONS: Map<string, Weapon> = new Map([
       damageType: 'Impact',
       armourPenetration: 0,
       weightInKilos: 0,
-      availability: Availability.UBIQUITOUS
-    }
+      availability: Availability.UBIQUITOUS,
+    },
   ],
   [
     'Psycannon',
@@ -1378,7 +1382,7 @@ export const WEAPONS: Map<string, Weapon> = new Map([
       rateOfFire: {
         single: false,
         semi: 2,
-        full: 5
+        full: 5,
       },
       damage: '2d10+5',
       damageType: 'Explosive',
@@ -1389,8 +1393,8 @@ export const WEAPONS: Map<string, Weapon> = new Map([
       weightInKilos: 20,
       availability: Availability.NEAR_UNIQUE,
       notes:
-        "Grants the Auto-Stabilised Trait when fired. Ignores all protective benefits from Psy Powers, and deals an additional +2 damage per target's Psy Rating"
-    }
+        "Grants the Auto-Stabilised Trait when fired. Ignores all protective benefits from Psy Powers, and deals an additional +2 damage per target's Psy Rating",
+    },
     // @todo no clipSize data
   ],
   [
@@ -1403,7 +1407,7 @@ export const WEAPONS: Map<string, Weapon> = new Map([
       isRanged: true,
       weaponJamOn: WeaponJam.STANDARD,
       rateOfFire: {
-        single: true
+        single: true,
       },
       damage: '1d10+4',
       damageType: 'Rending',
@@ -1412,8 +1416,8 @@ export const WEAPONS: Map<string, Weapon> = new Map([
       reloadInActions: NO_RELOAD_NEEDED,
       traits: ['Felling (2)'],
       weightInKilos: 10,
-      availability: Availability.VERY_RARE
-    }
+      availability: Availability.VERY_RARE,
+    },
   ],
   [
     'Silverseine Launcher',
@@ -1425,7 +1429,7 @@ export const WEAPONS: Map<string, Weapon> = new Map([
       isRanged: true,
       weaponJamOn: WeaponJam.RELIABLE,
       rateOfFire: {
-        single: true
+        single: true,
       },
       damage: '1d10',
       damageType: 'Impact',
@@ -1436,8 +1440,8 @@ export const WEAPONS: Map<string, Weapon> = new Map([
       weightInKilos: 25,
       availability: Availability.VERY_RARE,
       notes:
-        'The Snare quality is doubled against Daemonic targets. Daemonic targets trapped by the Snare must also test for Warp Instability at the start of each turn'
-    }
+        'The Snare quality is doubled against Daemonic targets. Daemonic targets trapped by the Snare must also test for Warp Instability at the start of each turn',
+    },
   ],
   [
     'Incinerator',
@@ -1449,7 +1453,7 @@ export const WEAPONS: Map<string, Weapon> = new Map([
       isRanged: true,
       weaponJamOn: WeaponJam.STANDARD,
       rateOfFire: {
-        single: true
+        single: true,
       },
       damage: '1d10+6',
       damageType: 'Energy',
@@ -1460,8 +1464,8 @@ export const WEAPONS: Map<string, Weapon> = new Map([
       weightInKilos: 3,
       availability: Availability.NEAR_UNIQUE,
       notes:
-        "Ignores any protective benefits from Psy Powers, and targets in the area of effect suffer -10 to the Agility test to avoid being set aflame for each point in the wielder's Psy Rating"
-    }
+        "Ignores any protective benefits from Psy Powers, and targets in the area of effect suffer -10 to the Agility test to avoid being set aflame for each point in the wielder's Psy Rating",
+    },
   ],
   [
     'Abyssal Charge',
@@ -1476,8 +1480,8 @@ export const WEAPONS: Map<string, Weapon> = new Map([
       armourPenetration: 4,
       traits: ['Blast (3)', 'Crippling (2)', 'Tainted'],
       weightInKilos: 0.5,
-      availability: Availability.EXTREMELY_RARE
-    }
+      availability: Availability.EXTREMELY_RARE,
+    },
   ],
   [
     'Argent Globe',
@@ -1493,8 +1497,8 @@ export const WEAPONS: Map<string, Weapon> = new Map([
       traits: ['Blast (3)', 'Sanctified'],
       weightInKilos: 0.5,
       availability: Availability.EXTREMELY_RARE,
-      notes: 'Gains the Crippling (3) quality when the target is Daemonic'
-    }
+      notes: 'Gains the Crippling (3) quality when the target is Daemonic',
+    },
   ],
   [
     'Ironfaith Incense Grenade',
@@ -1511,8 +1515,8 @@ export const WEAPONS: Map<string, Weapon> = new Map([
       weightInKilos: 0.5,
       availability: Availability.EXTREMELY_RARE,
       notes:
-        'Whenever a character suffers a hit from this grenade, enters its smoke, or begins his turn within the smoke, he suffers Energy damage equal to his Corruption bonus or his Daemonic (X) trait, whichever is higher. This ignores armour and Toughness Bonus'
-    }
+        'Whenever a character suffers a hit from this grenade, enters its smoke, or begins his turn within the smoke, he suffers Energy damage equal to his Corruption bonus or his Daemonic (X) trait, whichever is higher. This ignores armour and Toughness Bonus',
+    },
   ],
   [
     'Animus Hammer',
@@ -1530,8 +1534,8 @@ export const WEAPONS: Map<string, Weapon> = new Map([
       weightInKilos: 8,
       availability: Availability.NEAR_UNIQUE,
       notes:
-        'SB added to damage is doubled. Acts as a Psy Focus. If the wielder is a Psyker, add +1 to his Psy Rating.'
-    }
+        'SB added to damage is doubled. Acts as a Psy Focus. If the wielder is a Psyker, add +1 to his Psy Rating.',
+    },
   ],
   [
     'Force Hammer',
@@ -1548,8 +1552,8 @@ export const WEAPONS: Map<string, Weapon> = new Map([
       traits: ['Force', 'Unbalanced'],
       weightInKilos: 10,
       availability: Availability.EXTREMELY_RARE,
-      notes: 'Two-handed unless wielder has SB of 5 or higher.'
-    }
+      notes: 'Two-handed unless wielder has SB of 5 or higher.',
+    },
   ],
   [
     'Nemesis Daemon Hammer',
@@ -1567,8 +1571,8 @@ export const WEAPONS: Map<string, Weapon> = new Map([
       weightInKilos: 10,
       availability: Availability.NEAR_UNIQUE,
       notes:
-        "SB added to damage is doubled. One-handed, but if used with two hands it gains Concussive (X), with X being the wielder's Psy Rating."
-    }
+        "SB added to damage is doubled. One-handed, but if used with two hands it gains Concussive (X), with X being the wielder's Psy Rating.",
+    },
   ],
   [
     'Sanctus Hammer',
@@ -1582,12 +1586,18 @@ export const WEAPONS: Map<string, Weapon> = new Map([
       damageType: 'Energy',
       armourPenetration: 4,
 
-      traits: ['Balanced', 'Concussive (4)', 'Daemonbane', 'Force', 'Power Field'],
+      traits: [
+        'Balanced',
+        'Concussive (4)',
+        'Daemonbane',
+        'Force',
+        'Power Field',
+      ],
       weightInKilos: 6,
       availability: Availability.NEAR_UNIQUE,
       notes:
-        'SB added to damage is doubled. Two-handed weapon. Contains an exterminator cartridge loaded with Incinerator ammunition (pp 163 CB)'
-    }
+        'SB added to damage is doubled. Two-handed weapon. Contains an exterminator cartridge loaded with Incinerator ammunition (pp 163 CB)',
+    },
   ],
   [
     'Tempus Hammer',
@@ -1605,8 +1615,8 @@ export const WEAPONS: Map<string, Weapon> = new Map([
       weightInKilos: 14,
       availability: Availability.NEAR_UNIQUE,
       notes:
-        'SB added to damage is doubled. Two-handed weapon. Once per game session, as a Full Action, the wielder may strike the ground causing a blast with radius 2d10 metres. Every other character in the area must make a (-20) Agility test or lose a Half Action on their next turn; if they fail with 2+ DoF, they lose a Full Action'
-    }
+        'SB added to damage is doubled. Two-handed weapon. Once per game session, as a Full Action, the wielder may strike the ground causing a blast with radius 2d10 metres. Every other character in the area must make a (-20) Agility test or lose a Half Action on their next turn; if they fail with 2+ DoF, they lose a Full Action',
+    },
   ],
   [
     'Rune Weapon (Sword)',
@@ -1624,8 +1634,8 @@ export const WEAPONS: Map<string, Weapon> = new Map([
       weightInKilos: 3,
       availability: Availability.NEAR_UNIQUE,
       notes:
-        'Can take the profile of any Low-Tech weapon and use those stats, losing the Primitive quality (if it was present). Cannot be destroyed by a Power Field weapon. Whenever the wielder triggers Righteous Fury, he gains 1d5 Corruption'
-    }
+        'Can take the profile of any Low-Tech weapon and use those stats, losing the Primitive quality (if it was present). Cannot be destroyed by a Power Field weapon. Whenever the wielder triggers Righteous Fury, he gains 1d5 Corruption',
+    },
   ],
   [
     'Stealth Claw',
@@ -1643,8 +1653,8 @@ export const WEAPONS: Map<string, Weapon> = new Map([
       weightInKilos: 1.5,
       availability: Availability.VERY_RARE,
       notes:
-        'Comes with the Compact modification. If the wielder successfully executes an All Out Attack, add damage equal to his Psy Rating'
-    }
+        'Comes with the Compact modification. If the wielder successfully executes an All Out Attack, add damage equal to his Psy Rating',
+    },
   ],
   [
     'Wailing Trident',
@@ -1662,8 +1672,8 @@ export const WEAPONS: Map<string, Weapon> = new Map([
       weightInKilos: 9,
       availability: Availability.VERY_RARE,
       notes:
-        'Two handed weapon. Can be thrown with a range of 6m. When used against a Daemonic target, gains Crippling (3)'
-    }
+        'Two handed weapon. Can be thrown with a range of 6m. When used against a Daemonic target, gains Crippling (3)',
+    },
   ],
   [
     'Ebenus Hammer',
@@ -1681,8 +1691,8 @@ export const WEAPONS: Map<string, Weapon> = new Map([
       weightInKilos: 16,
       availability: Availability.NEAR_UNIQUE,
       notes:
-        'SB added to damage is doubled. Two-handed weapon. Acts as a Null Rod and grants the wielder the Deny the Witch talent.'
-    }
+        'SB added to damage is doubled. Two-handed weapon. Acts as a Null Rod and grants the wielder the Deny the Witch talent.',
+    },
   ],
   [
     'Ordo Malleus Power Glaive',
@@ -1700,8 +1710,9 @@ export const WEAPONS: Map<string, Weapon> = new Map([
       traits: ['Balanced', 'Power Field', 'Proven (4)', 'Sanctified'],
       weightInKilos: 9,
       availability: Availability.VERY_RARE,
-      notes: 'Grants the wielder an additional (+10) to Parry. Two-handed weapon.'
-    }
+      notes:
+        'Grants the wielder an additional (+10) to Parry. Two-handed weapon.',
+    },
   ],
   [
     'Power Shield',
@@ -1718,8 +1729,9 @@ export const WEAPONS: Map<string, Weapon> = new Map([
       traits: ['Defensive', 'Power Field'],
       weightInKilos: 6,
       availability: Availability.VERY_RARE,
-      notes: 'Adds 4 AP to the Body and Arm using the shield. This stacks with existing armour.'
-    }
+      notes:
+        'Adds 4 AP to the Body and Arm using the shield. This stacks with existing armour.',
+    },
   ],
   [
     'Thunder Hammer',
@@ -1737,8 +1749,8 @@ export const WEAPONS: Map<string, Weapon> = new Map([
       weightInKilos: 16,
       availability: Availability.VERY_RARE,
       notes:
-        'SB added to damage is doubled. One-handed, but if used with two hands it deals an additional +2 damage'
-    }
+        'SB added to damage is doubled. One-handed, but if used with two hands it deals an additional +2 damage',
+    },
   ],
   [
     "Godwyn-De'az Bolt Pistol",
@@ -1751,7 +1763,7 @@ export const WEAPONS: Map<string, Weapon> = new Map([
       rangeInMeters: 40,
       rateOfFire: {
         single: true,
-        semi: 2
+        semi: 2,
       },
       damage: '1d10+5',
       damageType: 'Explosive',
@@ -1761,8 +1773,8 @@ export const WEAPONS: Map<string, Weapon> = new Map([
       traits: ['Tearing'],
       weightInKilos: 3,
       availability: Availability.EXTREMELY_RARE,
-      notes: 'Only available to the Adeptus Sororitas'
-    }
+      notes: 'Only available to the Adeptus Sororitas',
+    },
   ],
   [
     "Godwyn-De'az Bolter",
@@ -1775,7 +1787,7 @@ export const WEAPONS: Map<string, Weapon> = new Map([
       weaponJamOn: WeaponJam.RELIABLE,
       rateOfFire: {
         single: true,
-        semi: 2
+        semi: 2,
       },
       damage: '1d10+5',
       damageType: 'Explosive',
@@ -1785,8 +1797,8 @@ export const WEAPONS: Map<string, Weapon> = new Map([
       traits: ['Tearing'],
       weightInKilos: 6,
       availability: Availability.VERY_RARE,
-      notes: 'Only available to the Adeptus Sororitas'
-    }
+      notes: 'Only available to the Adeptus Sororitas',
+    },
   ],
   [
     "Godwyn-De'az Heavy Bolter",
@@ -1799,7 +1811,7 @@ export const WEAPONS: Map<string, Weapon> = new Map([
       rangeInMeters: 140,
       rateOfFire: {
         single: false,
-        full: 6
+        full: 6,
       },
       damage: '1d10+8',
       damageType: 'Explosive',
@@ -1809,8 +1821,8 @@ export const WEAPONS: Map<string, Weapon> = new Map([
       traits: ['Tearing'],
       weightInKilos: 35,
       availability: Availability.EXTREMELY_RARE,
-      notes: 'Only available to the Adeptus Sororitas'
-    }
+      notes: 'Only available to the Adeptus Sororitas',
+    },
   ],
   [
     "Godwyn-De'az Storm Bolter",
@@ -1824,7 +1836,7 @@ export const WEAPONS: Map<string, Weapon> = new Map([
       rateOfFire: {
         single: true,
         semi: 2,
-        full: 4
+        full: 4,
       },
       damage: '1d10+5',
       damageType: 'Explosive',
@@ -1834,8 +1846,8 @@ export const WEAPONS: Map<string, Weapon> = new Map([
       traits: ['Storm', 'Tearing'],
       weightInKilos: 8,
       availability: Availability.NEAR_UNIQUE,
-      notes: 'Only available to the Adeptus Sororitas'
-    }
+      notes: 'Only available to the Adeptus Sororitas',
+    },
   ],
   [
     'Purgatus Crossbow',
@@ -1847,7 +1859,7 @@ export const WEAPONS: Map<string, Weapon> = new Map([
       weaponJamOn: WeaponJam.RELIABLE,
       rangeInMeters: 50,
       rateOfFire: {
-        single: true
+        single: true,
       },
       damage: '1d10+5',
       damageType: 'Impact',
@@ -1858,8 +1870,8 @@ export const WEAPONS: Map<string, Weapon> = new Map([
       weightInKilos: 16,
       availability: Availability.RARE,
       notes:
-        'Mix of a crossbow and shotgun. May use any crossbow bolts or shotgun shells, in addition to the usual Purgatus Stakes. Damage, penetration, and special qualities are dependant upon ammunition used'
-    }
+        'Mix of a crossbow and shotgun. May use any crossbow bolts or shotgun shells, in addition to the usual Purgatus Stakes. Damage, penetration, and special qualities are dependant upon ammunition used',
+    },
   ],
   [
     'Condemnor',
@@ -1871,7 +1883,7 @@ export const WEAPONS: Map<string, Weapon> = new Map([
       isRanged: true,
       weaponJamOn: WeaponJam.RELIABLE,
       rateOfFire: {
-        single: true
+        single: true,
       },
       damage: '1d10+4',
       damageType: 'Rending',
@@ -1881,8 +1893,9 @@ export const WEAPONS: Map<string, Weapon> = new Map([
       traits: ['Accurate'],
       weightInKilos: 8,
       availability: Availability.RARE,
-      notes: 'Damage, penetration, and special qualities are dependant upon ammunition used'
-    }
+      notes:
+        'Damage, penetration, and special qualities are dependant upon ammunition used',
+    },
   ],
   [
     'Cerberus Heavy Flamer',
@@ -1895,7 +1908,7 @@ export const WEAPONS: Map<string, Weapon> = new Map([
       weaponJamOn: WeaponJam.RELIABLE,
       rateOfFire: {
         single: true,
-        semi: 2
+        semi: 2,
       },
       damage: '1d10+5',
       damageType: 'Energy',
@@ -1904,8 +1917,8 @@ export const WEAPONS: Map<string, Weapon> = new Map([
       reloadInActions: 4,
       traits: ['Flame', 'Spray'],
       weightInKilos: 40,
-      availability: Availability.VERY_RARE
-    }
+      availability: Availability.VERY_RARE,
+    },
   ],
   [
     'Gorgon Chemical Flamer',
@@ -1917,7 +1930,7 @@ export const WEAPONS: Map<string, Weapon> = new Map([
       isRanged: true,
       weaponJamOn: WeaponJam.STANDARD,
       rateOfFire: {
-        single: true
+        single: true,
       },
       damage: '1d10+4',
       damageType: 'Energy',
@@ -1927,8 +1940,9 @@ export const WEAPONS: Map<string, Weapon> = new Map([
       traits: ['Corrosive', 'Felling (1)', 'Flame', 'Spray', 'Toxic (2)'],
       weightInKilos: 8,
       availability: Availability.VERY_RARE,
-      notes: 'Cannot use regular flame ammunition; the fuel is exclusive to the Gorgon'
-    }
+      notes:
+        'Cannot use regular flame ammunition; the fuel is exclusive to the Gorgon',
+    },
   ],
   [
     'Hydra Flamer Array',
@@ -1940,7 +1954,7 @@ export const WEAPONS: Map<string, Weapon> = new Map([
       isRanged: true,
       weaponJamOn: WeaponJam.STANDARD,
       rateOfFire: {
-        single: true
+        single: true,
       },
       damage: '1d10+4',
       damageType: 'Energy',
@@ -1951,8 +1965,8 @@ export const WEAPONS: Map<string, Weapon> = new Map([
       weightInKilos: 10,
       availability: Availability.VERY_RARE,
       notes:
-        'Characters gain the Fear (1) trait until the end of combat when they use this weapon. Fires in a 90 degree cone, rather than the normal 30 degree arc for Spray weapons'
-    }
+        'Characters gain the Fear (1) trait until the end of combat when they use this weapon. Fires in a 90 degree cone, rather than the normal 30 degree arc for Spray weapons',
+    },
   ],
   [
     'Arquebus',
@@ -1964,7 +1978,7 @@ export const WEAPONS: Map<string, Weapon> = new Map([
       isRanged: true,
       weaponJamOn: WeaponJam.UNRELIABLE,
       rateOfFire: {
-        single: true
+        single: true,
       },
       damage: '2d10',
       damageType: 'Impact',
@@ -1975,8 +1989,8 @@ export const WEAPONS: Map<string, Weapon> = new Map([
       weightInKilos: 8,
       availability: Availability.COMMON,
       notes:
-        'Counts as a Heavy weapon when fired with a SB of 3 or lower. Creates Smoke (1) around the firer that lasts for 1d5-1 rounds'
-    }
+        'Counts as a Heavy weapon when fired with a SB of 3 or lower. Creates Smoke (1) around the firer that lasts for 1d5-1 rounds',
+    },
   ],
   [
     'Castigator Heavy Crossbow',
@@ -1988,7 +2002,7 @@ export const WEAPONS: Map<string, Weapon> = new Map([
       isRanged: true,
       weaponJamOn: WeaponJam.RELIABLE,
       rateOfFire: {
-        single: true
+        single: true,
       },
       damage: '1d10+6',
       damageType: 'Impact',
@@ -1999,8 +2013,8 @@ export const WEAPONS: Map<string, Weapon> = new Map([
       weightInKilos: 12,
       availability: Availability.SCARCE,
       notes:
-        'Whenever this weapon deals damage to a target of Size (5) or smaller, that target is knocked prone. Damage, penetration, and special qualities are dependant upon ammunition used'
-    }
+        'Whenever this weapon deals damage to a target of Size (5) or smaller, that target is knocked prone. Damage, penetration, and special qualities are dependant upon ammunition used',
+    },
   ],
   [
     'Deliverance Light Crossbow',
@@ -2012,7 +2026,7 @@ export const WEAPONS: Map<string, Weapon> = new Map([
       isRanged: true,
       weaponJamOn: WeaponJam.STANDARD,
       rateOfFire: {
-        single: true
+        single: true,
       },
       damage: '1d10',
       damageType: 'Rending',
@@ -2023,8 +2037,8 @@ export const WEAPONS: Map<string, Weapon> = new Map([
       weightInKilos: 1,
       availability: Availability.RARE,
       notes:
-        'If used with a Forearm Mounting, range is not reduced. Tests to find when concealed suffer -20, and counts as having a built-in Silencer. Damage, penetration, and special qualities are dependant upon ammunition used.'
-    }
+        'If used with a Forearm Mounting, range is not reduced. Tests to find when concealed suffer -20, and counts as having a built-in Silencer. Damage, penetration, and special qualities are dependant upon ammunition used.',
+    },
   ],
   [
     "Drake's Claw",
@@ -2036,18 +2050,24 @@ export const WEAPONS: Map<string, Weapon> = new Map([
       isRanged: true,
       weaponJamOn: WeaponJam.STANDARD,
       rateOfFire: {
-        single: true
+        single: true,
       },
       damage: '1d10+2',
       damageType: 'Explosive',
       armourPenetration: 2,
       clipSize: 1,
       reloadInActions: NO_RELOAD_NEEDED,
-      traits: ['Blast (3)', 'Crippling (1)', 'Inaccurate', 'Primitive (7)', 'Tearing'],
+      traits: [
+        'Blast (3)',
+        'Crippling (1)',
+        'Inaccurate',
+        'Primitive (7)',
+        'Tearing',
+      ],
       weightInKilos: 6,
       availability: Availability.RARE,
-      notes: 'Single-use rocket launcher'
-    }
+      notes: 'Single-use rocket launcher',
+    },
   ],
   [
     'Flintlock Pistol',
@@ -2059,7 +2079,7 @@ export const WEAPONS: Map<string, Weapon> = new Map([
       isRanged: true,
       weaponJamOn: WeaponJam.UNRELIABLE,
       rateOfFire: {
-        single: true
+        single: true,
       },
       damage: '1d10+2',
       damageType: 'Impact',
@@ -2069,8 +2089,8 @@ export const WEAPONS: Map<string, Weapon> = new Map([
       traits: ['Inaccurate', 'Primitive (8)'],
       weightInKilos: 3,
       availability: Availability.COMMON,
-      notes: 'Counts as a Truncheon when used in melee combat'
-    }
+      notes: 'Counts as a Truncheon when used in melee combat',
+    },
   ],
   [
     'Longflame',
@@ -2082,7 +2102,7 @@ export const WEAPONS: Map<string, Weapon> = new Map([
       isRanged: true,
       weaponJamOn: WeaponJam.STANDARD,
       rateOfFire: {
-        single: true
+        single: true,
       },
       damage: '1d10',
       damageType: 'Rending',
@@ -2092,8 +2112,8 @@ export const WEAPONS: Map<string, Weapon> = new Map([
       traits: ['Blast (4)', 'Flame', 'Inaccurate', 'Primitive (8)'],
       weightInKilos: 6,
       availability: Availability.RARE,
-      notes: 'Single-use rocket launcher'
-    }
+      notes: 'Single-use rocket launcher',
+    },
   ],
   [
     'Musket',
@@ -2105,7 +2125,7 @@ export const WEAPONS: Map<string, Weapon> = new Map([
       isRanged: true,
       weaponJamOn: WeaponJam.UNRELIABLE,
       rateOfFire: {
-        single: true
+        single: true,
       },
       damage: '1d10+3',
       damageType: 'Impact',
@@ -2115,8 +2135,8 @@ export const WEAPONS: Map<string, Weapon> = new Map([
       traits: ['Inaccurate', 'Primitive (8)'],
       weightInKilos: 7,
       availability: Availability.COMMON,
-      notes: 'Counts as a Staff when used in melee combat'
-    }
+      notes: 'Counts as a Staff when used in melee combat',
+    },
   ],
   [
     'Snapper Repeating Rifle',
@@ -2129,7 +2149,7 @@ export const WEAPONS: Map<string, Weapon> = new Map([
       weaponJamOn: WeaponJam.UNRELIABLE,
       rateOfFire: {
         single: true,
-        semi: 2
+        semi: 2,
       },
       damage: '1d10+3',
       damageType: 'Impact',
@@ -2140,8 +2160,8 @@ export const WEAPONS: Map<string, Weapon> = new Map([
       weightInKilos: 45,
       availability: Availability.VERY_RARE,
       notes:
-        'If used as an improvised melee weapon, and the wielder suffers 2+ DoF, its mechanisms snap and it is damaged until repaired'
-    }
+        'If used as an improvised melee weapon, and the wielder suffers 2+ DoF, its mechanisms snap and it is damaged until repaired',
+    },
   ],
   [
     'Sentinel Plasma Rifle',
@@ -2155,7 +2175,7 @@ export const WEAPONS: Map<string, Weapon> = new Map([
       rateOfFire: {
         single: true,
         semi: 5,
-        full: 10
+        full: 10,
       },
       damage: '1d10+5',
       damageType: 'Energy',
@@ -2163,8 +2183,8 @@ export const WEAPONS: Map<string, Weapon> = new Map([
       clipSize: 40,
       reloadInActions: 2,
       weightInKilos: 20,
-      availability: Availability.EXTREMELY_RARE
-    }
+      availability: Availability.EXTREMELY_RARE,
+    },
   ],
   [
     'Pyschotroke Grenade',
@@ -2181,8 +2201,8 @@ export const WEAPONS: Map<string, Weapon> = new Map([
       weightInKilos: 1,
       availability: Availability.RARE,
       notes:
-        'Respirators and sealed armour provide no protection. For every DoF on Toughness test to resist, and +1 to roll on hallucinogenic effect'
-    }
+        'Respirators and sealed armour provide no protection. For every DoF on Toughness test to resist, and +1 to roll on hallucinogenic effect',
+    },
   ],
   [
     'Psyk-Out Grenade',
@@ -2199,8 +2219,8 @@ export const WEAPONS: Map<string, Weapon> = new Map([
       weightInKilos: 1,
       availability: Availability.EXTREMELY_RARE,
       notes:
-        'Psykers caught in the blast radius must make a (-30) WP Test or have his PR reduced by 1 per DoF (recover 1 PR per 6 hours) 2 or more DoF results in Psychic Phenomena. Any psy powers used in the field automatically fail.'
-    }
+        'Psykers caught in the blast radius must make a (-30) WP Test or have his PR reduced by 1 per DoF (recover 1 PR per 6 hours) 2 or more DoF results in Psychic Phenomena. Any psy powers used in the field automatically fail.',
+    },
   ],
   [
     'Rad Grenade',
@@ -2217,8 +2237,8 @@ export const WEAPONS: Map<string, Weapon> = new Map([
       weightInKilos: 1,
       availability: Availability.VERY_RARE,
       notes:
-        'Characters in the blast radius must make a (-20) Toughness test or suffer 2d10 Toughness Damage'
-    }
+        'Characters in the blast radius must make a (-20) Toughness test or suffer 2d10 Toughness Damage',
+    },
   ],
   [
     'Spore Bomb',
@@ -2234,8 +2254,9 @@ export const WEAPONS: Map<string, Weapon> = new Map([
       traits: ['Blast (5)'],
       weightInKilos: 2,
       availability: Availability.VERY_RARE,
-      notes: 'Characters in the blast radius suffer from Mind-Mould (PP 403 CB)'
-    }
+      notes:
+        'Characters in the blast radius suffer from Mind-Mould (PP 403 CB)',
+    },
   ],
   [
     'Tears of the Emperor',
@@ -2252,8 +2273,8 @@ export const WEAPONS: Map<string, Weapon> = new Map([
       weightInKilos: 0,
       availability: Availability.NEAR_UNIQUE,
       notes:
-        'Psykers caught in the blast radius must immediately roll for Perils of the Warp. Daemonic entities gain the Warp Instability trait; if they already had it, they suffer -20 to all tests made until the end of combat'
-    }
+        'Psykers caught in the blast radius must immediately roll for Perils of the Warp. Daemonic entities gain the Warp Instability trait; if they already had it, they suffer -20 to all tests made until the end of combat',
+    },
   ],
   [
     'Whitefire Grenade',
@@ -2270,8 +2291,8 @@ export const WEAPONS: Map<string, Weapon> = new Map([
       weightInKilos: 1,
       availability: Availability.EXTREMELY_RARE,
       notes:
-        'Characters who begin their turn in the smoke cloud suffer 1d10 Impact dammage (Corrosive, Toxic (2)) and must test for suffocation'
-    }
+        'Characters who begin their turn in the smoke cloud suffer 1d10 Impact dammage (Corrosive, Toxic (2)) and must test for suffocation',
+    },
   ],
   [
     'Firesprite Needler',
@@ -2285,7 +2306,7 @@ export const WEAPONS: Map<string, Weapon> = new Map([
       rateOfFire: {
         single: false,
         semi: 4,
-        full: 8
+        full: 8,
       },
       damage: '1d10+2',
       damageType: 'Rending',
@@ -2295,8 +2316,9 @@ export const WEAPONS: Map<string, Weapon> = new Map([
       traits: ['Inaccurate', 'Toxic (2)'],
       weightInKilos: 1.5,
       availability: Availability.EXTREMELY_RARE,
-      notes: 'Comes with the Compact, Forearm Weapon Mounting, and Silencer modifications'
-    }
+      notes:
+        'Comes with the Compact, Forearm Weapon Mounting, and Silencer modifications',
+    },
   ],
   [
     'Ghostblade',
@@ -2314,8 +2336,8 @@ export const WEAPONS: Map<string, Weapon> = new Map([
       weightInKilos: 6,
       availability: Availability.EXTREMELY_RARE,
       notes:
-        'When this weapon overheats, it is damaged and counts as a regular sword until repaired. Weight includes backpack power supply'
-    }
+        'When this weapon overheats, it is damaged and counts as a regular sword until repaired. Weight includes backpack power supply',
+    },
   ],
   [
     'Integration Cannon',
@@ -2327,7 +2349,7 @@ export const WEAPONS: Map<string, Weapon> = new Map([
       isRanged: true,
       weaponJamOn: WeaponJam.STANDARD,
       rateOfFire: {
-        single: true
+        single: true,
       },
       damage: '4d10+4',
       damageType: 'Impact',
@@ -2338,8 +2360,8 @@ export const WEAPONS: Map<string, Weapon> = new Map([
       weightInKilos: 65,
       availability: Availability.NEAR_UNIQUE,
       notes:
-        'Creates a gravitic anomaly within its blast radius for 1d5 rounds. When a character begins his round in this radius, he must make a (-20) Dodge (Strength) tests. On failure, he is Immobilized and suffers 4d10+4 I damage (pen 8) to a random location'
-    }
+        'Creates a gravitic anomaly within its blast radius for 1d5 rounds. When a character begins his round in this radius, he must make a (-20) Dodge (Strength) tests. On failure, he is Immobilized and suffers 4d10+4 I damage (pen 8) to a random location',
+    },
   ],
   [
     'Graviton Grenade',
@@ -2354,8 +2376,8 @@ export const WEAPONS: Map<string, Weapon> = new Map([
       armourPenetration: 7,
       traits: ['Blast (3)', 'Concussive (3)', 'Graviton'],
       weightInKilos: 1,
-      availability: Availability.NEAR_UNIQUE
-    }
+      availability: Availability.NEAR_UNIQUE,
+    },
   ],
   [
     'Graviton Hammer',
@@ -2370,8 +2392,8 @@ export const WEAPONS: Map<string, Weapon> = new Map([
       traits: ['Concussive (3)', 'Graviton'],
       weightInKilos: 8,
       availability: Availability.NEAR_UNIQUE,
-      notes: 'Two-handed weapon'
-    }
+      notes: 'Two-handed weapon',
+    },
   ],
   [
     'Silver Shield',
@@ -2387,8 +2409,8 @@ export const WEAPONS: Map<string, Weapon> = new Map([
       weightInKilos: 5,
       availability: Availability.EXTREMELY_RARE,
       notes:
-        'Provides 4 AP to the body and to the arm wielding the shield. This is doubled to 8 AP against Energy damage. Stacks with existing armour'
-    }
+        'Provides 4 AP to the body and to the arm wielding the shield. This is doubled to 8 AP against Energy damage. Stacks with existing armour',
+    },
   ],
   [
     'Desoleum Power Blade',
@@ -2403,8 +2425,8 @@ export const WEAPONS: Map<string, Weapon> = new Map([
       traits: ['Power Field'],
       weightInKilos: 2,
       availability: Availability.VERY_RARE,
-      notes: 'Comes with the Compact modification'
-    }
+      notes: 'Comes with the Compact modification',
+    },
   ],
   [
     'Quillgun',
@@ -2416,7 +2438,7 @@ export const WEAPONS: Map<string, Weapon> = new Map([
       isRanged: true,
       weaponJamOn: WeaponJam.STANDARD,
       rateOfFire: {
-        single: true
+        single: true,
       },
       damage: '0d0',
       damageType: 'Special',
@@ -2426,8 +2448,8 @@ export const WEAPONS: Map<string, Weapon> = new Map([
       weightInKilos: 6,
       availability: Availability.VERY_RARE,
       notes:
-        'When acquired, comes with 1 clip each of Ataractic and Venerum rounds. Has the Silencer modification'
-    }
+        'When acquired, comes with 1 clip each of Ataractic and Venerum rounds. Has the Silencer modification',
+    },
   ],
   [
     'Digi-Weapon',
@@ -2440,7 +2462,7 @@ export const WEAPONS: Map<string, Weapon> = new Map([
       reloadInActions: 720,
       rangeInMeters: 3,
       rateOfFire: {
-        single: true
+        single: true,
       },
       damage: '1d10+2',
       damageType: 'Energy',
@@ -2449,8 +2471,8 @@ export const WEAPONS: Map<string, Weapon> = new Map([
       weightInKilos: 0.5,
       availability: Availability.NEAR_UNIQUE,
       notes:
-        'Can have the profile of any pistol, taking on that damage, penetration, and weapon qualities. Worn as a ring, and does not prevent the hand from performing other tasks. Does not consume ammo, but does take 1 hour to recharge between shots. Cannot be modified.'
-    }
+        'Can have the profile of any pistol, taking on that damage, penetration, and weapon qualities. Worn as a ring, and does not prevent the hand from performing other tasks. Does not consume ammo, but does take 1 hour to recharge between shots. Cannot be modified.',
+    },
   ],
   [
     'Brazier of Holy Fire',
@@ -2466,8 +2488,8 @@ export const WEAPONS: Map<string, Weapon> = new Map([
       weightInKilos: 6,
       availability: Availability.VERY_RARE,
       notes:
-        'Allies in sight gain +10 to WP tests. Can be used as a Heavy Flamer with Clip of 1. When fired, it loses its Flame quality until reloaded, which takes 20 min'
-    }
+        'Allies in sight gain +10 to WP tests. Can be used as a Heavy Flamer with Clip of 1. When fired, it loses its Flame quality until reloaded, which takes 20 min',
+    },
   ],
   [
     'Fire Gauntlets',
@@ -2483,8 +2505,8 @@ export const WEAPONS: Map<string, Weapon> = new Map([
       weightInKilos: 1,
       availability: Availability.VERY_RARE,
       notes:
-        'As a free action, the user can ignite the gauntlets to gain +20 to Intimidate. This lasts until the end of the encounter, or 2d10 minutes'
-    }
+        'As a free action, the user can ignite the gauntlets to gain +20 to Intimidate. This lasts until the end of the encounter, or 2d10 minutes',
+    },
   ],
   [
     'Axe of Retribution',
@@ -2499,8 +2521,8 @@ export const WEAPONS: Map<string, Weapon> = new Map([
       traits: ['Felling (2)', 'Sanctified'],
       weightInKilos: 8,
       availability: Availability.NEAR_UNIQUE,
-      notes: 'Two-handed weapon'
-    }
+      notes: 'Two-handed weapon',
+    },
   ],
   [
     'Flail of Chastisement',
@@ -2515,8 +2537,9 @@ export const WEAPONS: Map<string, Weapon> = new Map([
       traits: ['Crippling (2)', 'Flexible', 'Primitive (8)', 'Snare (2)'],
       weightInKilos: 3,
       availability: Availability.RARE,
-      notes: 'A victim who escapes the Snare is no longer affected by Crippling'
-    }
+      notes:
+        'A victim who escapes the Snare is no longer affected by Crippling',
+    },
     //@todo check - add reach
   ],
   [
@@ -2535,8 +2558,8 @@ export const WEAPONS: Map<string, Weapon> = new Map([
       weightInKilos: 8,
       availability: Availability.SCARCE,
       notes:
-        'Two-handed weapon. Restraining the victim requires a Half Action each round. Best Quality gains the Shocking quality'
-    }
+        'Two-handed weapon. Restraining the victim requires a Half Action each round. Best Quality gains the Shocking quality',
+    },
   ],
   [
     'Praesidium Protectiva',
@@ -2554,8 +2577,8 @@ export const WEAPONS: Map<string, Weapon> = new Map([
       weightInKilos: 14,
       availability: Availability.VERY_RARE,
       notes:
-        'Only available to the Adeptus Sororitas. Provides 4 AP to the body and the arm wielding the shield, which stacks with existing armour. Acts as a Force Field with protection rating of 35.'
-    }
+        'Only available to the Adeptus Sororitas. Provides 4 AP to the body and the arm wielding the shield, which stacks with existing armour. Acts as a Force Field with protection rating of 35.',
+    },
   ],
   [
     'Power Stake',
@@ -2573,8 +2596,8 @@ export const WEAPONS: Map<string, Weapon> = new Map([
       weightInKilos: 1,
       availability: Availability.VERY_RARE,
       notes:
-        'Inflicts an additional 1d10 E damage for every Psy Rating the target possesses. In addition, provides +10 to interaction with the Ordo Hereticus'
-    }
+        'Inflicts an additional 1d10 E damage for every Psy Rating the target possesses. In addition, provides +10 to interaction with the Ordo Hereticus',
+    },
   ],
   [
     'Electro-Flail',
@@ -2590,8 +2613,8 @@ export const WEAPONS: Map<string, Weapon> = new Map([
 
       traits: ['Flexible', 'Shocking'],
       weightInKilos: 4.5,
-      availability: Availability.RARE
-    }
+      availability: Availability.RARE,
+    },
   ],
   [
     'Agoniser',
@@ -2609,8 +2632,8 @@ export const WEAPONS: Map<string, Weapon> = new Map([
       weightInKilos: 2,
       availability: Availability.EXTREMELY_RARE,
       notes:
-        'Critical damage inflicted by a Best Quality agoniser reduces his Perception permanently by 1d5'
-    }
+        'Critical damage inflicted by a Best Quality agoniser reduces his Perception permanently by 1d5',
+    },
   ],
   [
     'Eldar Plasma Grenade',
@@ -2625,8 +2648,8 @@ export const WEAPONS: Map<string, Weapon> = new Map([
       armourPenetration: 8,
       traits: ['Blast (4)', 'Shocking'],
       weightInKilos: 0.5,
-      availability: Availability.VERY_RARE
-    }
+      availability: Availability.VERY_RARE,
+    },
   ],
   [
     'Eldar Power Sword',
@@ -2640,8 +2663,8 @@ export const WEAPONS: Map<string, Weapon> = new Map([
       armourPenetration: 4,
       traits: ['Balanced', 'Power Field'],
       weightInKilos: 1,
-      availability: Availability.EXTREMELY_RARE
-    }
+      availability: Availability.EXTREMELY_RARE,
+    },
   ],
   [
     "Harlequin's Kiss",
@@ -2656,8 +2679,8 @@ export const WEAPONS: Map<string, Weapon> = new Map([
       traits: ['Felling (4)', 'Tearing'],
       weightInKilos: 1,
       availability: Availability.EXTREMELY_RARE,
-      notes: "The user's SB is not added to the damage"
-    }
+      notes: "The user's SB is not added to the damage",
+    },
   ],
   [
     'Shardcarbine',
@@ -2671,7 +2694,7 @@ export const WEAPONS: Map<string, Weapon> = new Map([
       rateOfFire: {
         single: true,
         semi: 3,
-        full: 5
+        full: 5,
       },
       damage: '1d10+2',
       damageType: 'Rending',
@@ -2680,8 +2703,8 @@ export const WEAPONS: Map<string, Weapon> = new Map([
       reloadInActions: 4,
       traits: ['Storm', 'Toxic (1)'],
       weightInKilos: 3,
-      availability: Availability.EXTREMELY_RARE
-    }
+      availability: Availability.EXTREMELY_RARE,
+    },
   ],
   [
     'Shuriken Cannon',
@@ -2694,7 +2717,7 @@ export const WEAPONS: Map<string, Weapon> = new Map([
       weaponJamOn: WeaponJam.RELIABLE,
       rateOfFire: {
         single: false,
-        full: 10
+        full: 10,
       },
       damage: '1d10+6',
       damageType: 'Rending',
@@ -2704,8 +2727,8 @@ export const WEAPONS: Map<string, Weapon> = new Map([
       traits: ['Razor Sharp'],
       weightInKilos: 18,
       availability: Availability.EXTREMELY_RARE,
-      notes: 'Grants the Auto-Stabilised Trait when fired'
-    }
+      notes: 'Grants the Auto-Stabilised Trait when fired',
+    },
   ],
   [
     'Shuriken Catapult',
@@ -2719,7 +2742,7 @@ export const WEAPONS: Map<string, Weapon> = new Map([
       rateOfFire: {
         single: true,
         semi: 3,
-        full: 10
+        full: 10,
       },
       damage: '1d10+4',
       damageType: 'Rending',
@@ -2728,8 +2751,8 @@ export const WEAPONS: Map<string, Weapon> = new Map([
       reloadInActions: 2,
       traits: ['Razor Sharp'],
       weightInKilos: 2.5,
-      availability: Availability.EXTREMELY_RARE
-    }
+      availability: Availability.EXTREMELY_RARE,
+    },
   ],
   [
     'Shuriken Pistol',
@@ -2742,7 +2765,7 @@ export const WEAPONS: Map<string, Weapon> = new Map([
       weaponJamOn: WeaponJam.RELIABLE,
       rateOfFire: {
         single: true,
-        semi: 3
+        semi: 3,
       },
       damage: '1d10+4',
       damageType: 'Rending',
@@ -2751,8 +2774,8 @@ export const WEAPONS: Map<string, Weapon> = new Map([
       reloadInActions: 2,
       traits: ['Razor Sharp'],
       weightInKilos: 1.2,
-      availability: Availability.VERY_RARE
-    }
+      availability: Availability.VERY_RARE,
+    },
   ],
   [
     'Splinter Cannon',
@@ -2766,7 +2789,7 @@ export const WEAPONS: Map<string, Weapon> = new Map([
       rateOfFire: {
         single: false,
 
-        full: 10
+        full: 10,
       },
       damage: '1d10+5',
       damageType: 'Rending',
@@ -2776,8 +2799,8 @@ export const WEAPONS: Map<string, Weapon> = new Map([
       traits: ['Tearing', 'Toxic (4)'],
       weightInKilos: 5,
       availability: Availability.EXTREMELY_RARE,
-      notes: 'Grants the Auto-Stabilised Trait when fired'
-    }
+      notes: 'Grants the Auto-Stabilised Trait when fired',
+    },
   ],
   [
     'Splinter Pistol',
@@ -2790,7 +2813,7 @@ export const WEAPONS: Map<string, Weapon> = new Map([
       weaponJamOn: WeaponJam.STANDARD,
       rateOfFire: {
         single: true,
-        semi: 3
+        semi: 3,
       },
       damage: '1d10+2',
       damageType: 'Rending',
@@ -2800,8 +2823,9 @@ export const WEAPONS: Map<string, Weapon> = new Map([
       traits: ['Toxic (1)'],
       weightInKilos: 1.5,
       availability: Availability.VERY_RARE,
-      notes: 'Counts as a Knife with the Mono weapon modification when used in melee'
-    }
+      notes:
+        'Counts as a Knife with the Mono weapon modification when used in melee',
+    },
   ],
   [
     'Splinter Rifle',
@@ -2815,7 +2839,7 @@ export const WEAPONS: Map<string, Weapon> = new Map([
       rateOfFire: {
         single: true,
         semi: 3,
-        full: 5
+        full: 5,
       },
       damage: '1d10+3',
       damageType: 'Rending',
@@ -2825,8 +2849,9 @@ export const WEAPONS: Map<string, Weapon> = new Map([
       traits: ['Toxic (2)'],
       weightInKilos: 2,
       availability: Availability.EXTREMELY_RARE,
-      notes: 'Counts as a Spear with the Mono weapon modification when used in melee'
-    }
+      notes:
+        'Counts as a Spear with the Mono weapon modification when used in melee',
+    },
   ],
   [
     'Big Choppa',
@@ -2844,8 +2869,8 @@ export const WEAPONS: Map<string, Weapon> = new Map([
       weightInKilos: 10,
       availability: Availability.EXTREMELY_RARE,
       notes:
-        'Two handed weapon. May be a power weapon; if so, it gains the Power Field and Overheats qualities'
-    }
+        'Two handed weapon. May be a power weapon; if so, it gains the Power Field and Overheats qualities',
+    },
   ],
   [
     'Big Shoota',
@@ -2858,7 +2883,7 @@ export const WEAPONS: Map<string, Weapon> = new Map([
       weaponJamOn: WeaponJam.UNRELIABLE,
       rateOfFire: {
         single: false,
-        full: 10
+        full: 10,
       },
       damage: '1d10+6',
       damageType: 'Impact',
@@ -2867,8 +2892,8 @@ export const WEAPONS: Map<string, Weapon> = new Map([
       reloadInActions: 4,
       traits: ['Inaccurate'],
       weightInKilos: 6,
-      availability: Availability.VERY_RARE
-    }
+      availability: Availability.VERY_RARE,
+    },
   ],
   [
     'Burna (Melee Profile)',
@@ -2885,8 +2910,9 @@ export const WEAPONS: Map<string, Weapon> = new Map([
       traits: ['Power Field', 'Unwieldy'],
       weightInKilos: 8,
       availability: Availability.VERY_RARE,
-      notes: 'Can be switched to Ranged Profile as a Free Action. Two-handed weapon'
-    }
+      notes:
+        'Can be switched to Ranged Profile as a Free Action. Two-handed weapon',
+    },
   ],
   [
     'Burna (Ranged Profile)',
@@ -2898,7 +2924,7 @@ export const WEAPONS: Map<string, Weapon> = new Map([
       isRanged: true,
       weaponJamOn: WeaponJam.UNRELIABLE,
       rateOfFire: {
-        single: true
+        single: true,
       },
       damage: '1d10+4',
       damageType: 'Energy',
@@ -2908,8 +2934,9 @@ export const WEAPONS: Map<string, Weapon> = new Map([
       traits: ['Flame', 'Spray'],
       weightInKilos: 8,
       availability: Availability.VERY_RARE,
-      notes: 'Can be switched to Melee Profile as a Free Action. Two-handed weapon'
-    }
+      notes:
+        'Can be switched to Melee Profile as a Free Action. Two-handed weapon',
+    },
   ],
   [
     'Choppa',
@@ -2926,8 +2953,8 @@ export const WEAPONS: Map<string, Weapon> = new Map([
       traits: ['Unbalanced'],
       weightInKilos: 1,
       availability: Availability.RARE,
-      notes: 'Two handed for a non-ork with SB of 3 or less'
-    }
+      notes: 'Two handed for a non-ork with SB of 3 or less',
+    },
   ],
   [
     'Rokkit Launcha',
@@ -2939,7 +2966,7 @@ export const WEAPONS: Map<string, Weapon> = new Map([
       isRanged: true,
       weaponJamOn: WeaponJam.UNRELIABLE,
       rateOfFire: {
-        single: true
+        single: true,
       },
       damage: '2d10+5',
       damageType: 'Explosive',
@@ -2948,8 +2975,8 @@ export const WEAPONS: Map<string, Weapon> = new Map([
       reloadInActions: 1,
       traits: ['Blast (2)', 'Inaccurate'],
       weightInKilos: 6,
-      availability: Availability.VERY_RARE
-    }
+      availability: Availability.VERY_RARE,
+    },
   ],
   [
     'Shoota',
@@ -2962,7 +2989,7 @@ export const WEAPONS: Map<string, Weapon> = new Map([
       weaponJamOn: WeaponJam.UNRELIABLE,
       rateOfFire: {
         single: true,
-        semi: 3
+        semi: 3,
       },
       damage: '1d10+4',
       damageType: 'Impact',
@@ -2971,8 +2998,8 @@ export const WEAPONS: Map<string, Weapon> = new Map([
       reloadInActions: 2,
       traits: ['Inaccurate'],
       weightInKilos: 4,
-      availability: Availability.RARE
-    }
+      availability: Availability.RARE,
+    },
   ],
   [
     'Slugga',
@@ -2985,7 +3012,7 @@ export const WEAPONS: Map<string, Weapon> = new Map([
       weaponJamOn: WeaponJam.UNRELIABLE,
       rateOfFire: {
         single: true,
-        semi: 3
+        semi: 3,
       },
       damage: '1d10+4',
       damageType: 'Impact',
@@ -2994,8 +3021,8 @@ export const WEAPONS: Map<string, Weapon> = new Map([
       reloadInActions: 2,
       traits: ['Inaccurate'],
       weightInKilos: 2,
-      availability: Availability.RARE
-    }
+      availability: Availability.RARE,
+    },
   ],
   [
     'Stikkbomb',
@@ -3013,8 +3040,8 @@ export const WEAPONS: Map<string, Weapon> = new Map([
       weightInKilos: 1,
       availability: Availability.RARE,
       notes:
-        'Counts as a truncheon when used in melee combat. If a character does so, and fails their WS test with 3+ DoF, the Stikkbomb immediately detonates'
-    }
+        'Counts as a truncheon when used in melee combat. If a character does so, and fails their WS test with 3+ DoF, the Stikkbomb immediately detonates',
+    },
   ],
   [
     'Kroot Rifle Pulse Rounds',
@@ -3030,15 +3057,15 @@ export const WEAPONS: Map<string, Weapon> = new Map([
       armourPenetration: 1,
       rateOfFire: {
         single: true,
-        semi: 2
+        semi: 2,
       },
       clipSize: 6,
       reloadInActions: 4,
       weightInKilos: 6,
       availability: Availability.VERY_RARE,
       notes:
-        'Counts as a Staff with the Mono quality in melee combat. Can use either Pulse Rounds (RoF: S/2/-, 1d10+5E, Pen 1, Clip 6, Reload 2 Full) or Sniper Rounds (RoF: S/-/-, 1d10+7R, Pen 5, Clip 1, Reload Half, Accurate).'
-    }
+        'Counts as a Staff with the Mono quality in melee combat. Can use either Pulse Rounds (RoF: S/2/-, 1d10+5E, Pen 1, Clip 6, Reload 2 Full) or Sniper Rounds (RoF: S/-/-, 1d10+7R, Pen 5, Clip 1, Reload Half, Accurate).',
+    },
   ],
   [
     'Kroot Rifle Sniper Rounds',
@@ -3053,15 +3080,15 @@ export const WEAPONS: Map<string, Weapon> = new Map([
       damageType: 'Rending',
       armourPenetration: 5,
       rateOfFire: {
-        single: true
+        single: true,
       },
       clipSize: 1,
       reloadInActions: 1,
       weightInKilos: 6,
       availability: Availability.VERY_RARE,
       notes:
-        'Counts as a Staff with the Mono quality in melee combat. Can use either Pulse Rounds (RoF: S/2/-, 1d10+5E, Pen 1, Clip 6, Reload 2 Full) or Sniper Rounds (RoF: S/-/-, 1d10+7R, Pen 5, Clip 1, Reload Half, Accurate).'
-    }
+        'Counts as a Staff with the Mono quality in melee combat. Can use either Pulse Rounds (RoF: S/2/-, 1d10+5E, Pen 1, Clip 6, Reload 2 Full) or Sniper Rounds (RoF: S/-/-, 1d10+7R, Pen 5, Clip 1, Reload Half, Accurate).',
+    },
   ],
   [
     'Photon Grenade',
@@ -3078,8 +3105,8 @@ export const WEAPONS: Map<string, Weapon> = new Map([
       weightInKilos: 0.5,
       availability: Availability.VERY_RARE,
       notes:
-        'A character in the blast radius without eye protection makes a (+0) Agility test or is blinded for rounds equal to DoF'
-    }
+        'A character in the blast radius without eye protection makes a (+0) Agility test or is blinded for rounds equal to DoF',
+    },
   ],
   [
     'Pulse Carbine',
@@ -3092,7 +3119,7 @@ export const WEAPONS: Map<string, Weapon> = new Map([
       weaponJamOn: WeaponJam.STANDARD,
       rateOfFire: {
         single: true,
-        full: 3
+        full: 3,
       },
       damage: '2d10+2',
       damageType: 'Energy',
@@ -3102,8 +3129,8 @@ export const WEAPONS: Map<string, Weapon> = new Map([
       weightInKilos: 6,
       availability: Availability.EXTREMELY_RARE,
       notes:
-        'Comes with an integrated grenade launcher, capable of firing Photon Grenades with a range of 60m, clip of 1, reload of Half'
-    }
+        'Comes with an integrated grenade launcher, capable of firing Photon Grenades with a range of 60m, clip of 1, reload of Half',
+    },
   ],
   [
     'Pulse Pistol',
@@ -3116,7 +3143,7 @@ export const WEAPONS: Map<string, Weapon> = new Map([
       weaponJamOn: WeaponJam.STANDARD,
       rateOfFire: {
         single: true,
-        semi: 2
+        semi: 2,
       },
       damage: '2d10+2',
       damageType: 'Energy',
@@ -3124,8 +3151,8 @@ export const WEAPONS: Map<string, Weapon> = new Map([
       clipSize: 16,
       reloadInActions: 1,
       weightInKilos: 3,
-      availability: Availability.EXTREMELY_RARE
-    }
+      availability: Availability.EXTREMELY_RARE,
+    },
   ],
   [
     'Pulse Rifle',
@@ -3139,7 +3166,7 @@ export const WEAPONS: Map<string, Weapon> = new Map([
       rateOfFire: {
         single: true,
         semi: 2,
-        full: 4
+        full: 4,
       },
       damage: '2d10+3',
       damageType: 'Energy',
@@ -3147,8 +3174,8 @@ export const WEAPONS: Map<string, Weapon> = new Map([
       clipSize: 36,
       reloadInActions: 1,
       weightInKilos: 8,
-      availability: Availability.EXTREMELY_RARE
-    }
+      availability: Availability.EXTREMELY_RARE,
+    },
   ],
   [
     'Ablative Projector',
@@ -3163,7 +3190,7 @@ export const WEAPONS: Map<string, Weapon> = new Map([
       rangeInMeters: 100,
       rateOfFire: {
         single: true,
-        semi: 2
+        semi: 2,
       },
       damage: '1d10+8',
       damageType: 'Energy',
@@ -3171,8 +3198,8 @@ export const WEAPONS: Map<string, Weapon> = new Map([
 
       traits: ['Vengeful (9)'],
       weightInKilos: 10,
-      availability: Availability.EXTREMELY_RARE
-    }
+      availability: Availability.EXTREMELY_RARE,
+    },
   ],
   [
     'Cascade Lance (Melee)',
@@ -3189,8 +3216,9 @@ export const WEAPONS: Map<string, Weapon> = new Map([
       traits: ['Concussive (1)', 'Power Field'],
       weightInKilos: 6,
       availability: Availability.NEAR_UNIQUE,
-      notes: 'Can be switched to Ranged Profile as a Free Action. Two-handed weapon'
-    }
+      notes:
+        'Can be switched to Ranged Profile as a Free Action. Two-handed weapon',
+    },
   ],
   [
     'Cascade Lance (Ranged)',
@@ -3202,7 +3230,7 @@ export const WEAPONS: Map<string, Weapon> = new Map([
       isRanged: true,
       weaponJamOn: WeaponJam.RELIABLE,
       rateOfFire: {
-        single: true
+        single: true,
       },
       damage: '1d10+12',
       damageType: 'Energy',
@@ -3212,8 +3240,8 @@ export const WEAPONS: Map<string, Weapon> = new Map([
       traits: ['Proven (5)'],
       weightInKilos: 6,
       availability: Availability.NEAR_UNIQUE,
-      notes: 'Can be switched to melee Profile as a Free Action.'
-    }
+      notes: 'Can be switched to melee Profile as a Free Action.',
+    },
   ],
   [
     'Concussion Beamer',
@@ -3223,12 +3251,12 @@ export const WEAPONS: Map<string, Weapon> = new Map([
       class: 'Pistol',
       rangeInMeters: 30,
       isRanged: true,
-      clipSize: NO_CLIP_SIZE_LIMIT, 
+      clipSize: NO_CLIP_SIZE_LIMIT,
       reloadInActions: NO_RELOAD_NEEDED,
       weaponJamOn: WeaponJam.RELIABLE,
       rateOfFire: {
         single: true,
-        semi: 3
+        semi: 3,
       },
       damage: '2d10+5',
       damageType: 'Explosive',
@@ -3236,8 +3264,8 @@ export const WEAPONS: Map<string, Weapon> = new Map([
 
       traits: ['Concussive (1)'],
       weightInKilos: 6,
-      availability: Availability.NEAR_UNIQUE
-    }
+      availability: Availability.NEAR_UNIQUE,
+    },
   ],
   [
     'Molecular Blade',
@@ -3253,8 +3281,8 @@ export const WEAPONS: Map<string, Weapon> = new Map([
 
       traits: ['Corrosive', 'Razor Sharp', 'Tearing'],
       weightInKilos: 15,
-      availability: Availability.NEAR_UNIQUE
-    }
+      availability: Availability.NEAR_UNIQUE,
+    },
   ],
   [
     'Resonance Arc',
@@ -3268,7 +3296,7 @@ export const WEAPONS: Map<string, Weapon> = new Map([
       clipSize: NO_CLIP_SIZE_LIMIT,
       reloadInActions: NO_RELOAD_NEEDED,
       rateOfFire: {
-        single: true
+        single: true,
       },
       damage: '2d10+3',
       damageType: 'Energy',
@@ -3277,8 +3305,8 @@ export const WEAPONS: Map<string, Weapon> = new Map([
       weightInKilos: 20,
       availability: Availability.EXTREMELY_RARE,
       notes:
-        "When the user rolls a 9 or 10 for damage, or kills a target, a bolt of electricity arcs from the original target to a randomly-selected target within 5 metres, inflicting an additional automatic hit with the weapon's profile on the Body. This can continue to leap if the additional hits roll a 9 or 10 for damage, or if the target dies"
-    }
+        "When the user rolls a 9 or 10 for damage, or kills a target, a bolt of electricity arcs from the original target to a randomly-selected target within 5 metres, inflicting an additional automatic hit with the weapon's profile on the Body. This can continue to leap if the additional hits roll a 9 or 10 for damage, or if the target dies",
+    },
   ],
   [
     'Akvran Cutter',
@@ -3293,8 +3321,8 @@ export const WEAPONS: Map<string, Weapon> = new Map([
       armourPenetration: 6,
       traits: ['Blast (3)', 'Concussive (3)', 'Proven (4)'],
       weightInKilos: 1,
-      availability: Availability.EXTREMELY_RARE
-    }
+      availability: Availability.EXTREMELY_RARE,
+    },
   ],
   [
     'Guldaniri Bile Projector',
@@ -3306,7 +3334,7 @@ export const WEAPONS: Map<string, Weapon> = new Map([
       isRanged: true,
       weaponJamOn: WeaponJam.RELIABLE,
       rateOfFire: {
-        single: true
+        single: true,
       },
       damage: '3d10',
       damageType: 'Energy',
@@ -3315,8 +3343,8 @@ export const WEAPONS: Map<string, Weapon> = new Map([
       reloadInActions: 6,
       traits: ['Blast (2)', 'Corrosive', 'Toxic (2)'],
       weightInKilos: 11,
-      availability: Availability.VERY_RARE
-    }
+      availability: Availability.VERY_RARE,
+    },
   ],
   [
     'Havatian Ringblade (Melee)',
@@ -3332,8 +3360,8 @@ export const WEAPONS: Map<string, Weapon> = new Map([
       weightInKilos: 1,
       availability: Availability.EXTREMELY_RARE,
       notes:
-        'Can be used as a grenade, which explodes and is destroyed on impact. Dam: 1d10+6 X, Pen: 6, Blast (2), Corrosive'
-    }
+        'Can be used as a grenade, which explodes and is destroyed on impact. Dam: 1d10+6 X, Pen: 6, Blast (2), Corrosive',
+    },
   ],
   [
     'Kyaire Riveblade Grenade',
@@ -3348,8 +3376,8 @@ export const WEAPONS: Map<string, Weapon> = new Map([
       armourPenetration: 10,
       traits: ['Razor Sharp'],
       weightInKilos: 1,
-      availability: Availability.VERY_RARE
-    }
+      availability: Availability.VERY_RARE,
+    },
   ],
   [
     'Neural Catalyser',
@@ -3361,7 +3389,7 @@ export const WEAPONS: Map<string, Weapon> = new Map([
       weaponJamOn: WeaponJam.STANDARD,
       rangeInMeters: 35,
       rateOfFire: {
-        single: true
+        single: true,
       },
       clipSize: NO_CLIP_SIZE_LIMIT,
       reloadInActions: NO_RELOAD_NEEDED,
@@ -3372,8 +3400,8 @@ export const WEAPONS: Map<string, Weapon> = new Map([
       weightInKilos: 3,
       availability: Availability.EXTREMELY_RARE,
       notes:
-        'Ignores armour and is reduced by WPB rather than TB. If a hit inflicts damage, the target also suffers 1d5 WP Damage'
-    }
+        'Ignores armour and is reduced by WPB rather than TB. If a hit inflicts damage, the target also suffers 1d5 WP Damage',
+    },
   ],
   [
     'Talonblade',
@@ -3389,8 +3417,8 @@ export const WEAPONS: Map<string, Weapon> = new Map([
 
       traits: ['Razor Sharp', 'Tearing'],
       weightInKilos: 1,
-      availability: Availability.VERY_RARE
-    }
+      availability: Availability.VERY_RARE,
+    },
   ],
   [
     'Xenarch Death-Arc',
@@ -3404,7 +3432,7 @@ export const WEAPONS: Map<string, Weapon> = new Map([
       rateOfFire: {
         single: true,
         semi: 3,
-        full: 6
+        full: 6,
       },
       damage: '1d10+3',
       damageType: 'Energy',
@@ -3415,7 +3443,7 @@ export const WEAPONS: Map<string, Weapon> = new Map([
       weightInKilos: 10,
       availability: Availability.VERY_RARE,
       notes:
-        'Rather than acting like a normal semi-/full-auto weapon, additional hits are resolved against the original body part hit'
-    }
-  ]
+        'Rather than acting like a normal semi-/full-auto weapon, additional hits are resolved against the original body part hit',
+    },
+  ],
 ]);

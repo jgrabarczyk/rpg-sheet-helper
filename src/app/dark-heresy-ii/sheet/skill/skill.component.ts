@@ -8,32 +8,32 @@ import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
-import {MatMenuModule} from '@angular/material/menu';
+import { MatMenuModule } from '@angular/material/menu';
 
 import { FillPipe } from '@pipes/fill-pipe/fill.pipe';
 
-import { RollboxComponent } from "../rollbox/rollbox.component"; 
+import { RollboxComponent } from '../rollbox/rollbox.component';
 
 @Component({
-    selector: 'app-skill',
-    imports: [
-        FontAwesomeModule,
-        FillPipe,
-        ReactiveFormsModule,
-        MatInputModule,
-        MatButtonModule,
-        MatIconModule,
-        MatMenuModule,
-        RollboxComponent
-    ],
-    providers: [
-        {
-            provide: MAT_FORM_FIELD_DEFAULT_OPTIONS,
-            useValue: { subscriptSizing: 'dynamic' }
-        }
-    ],
-    templateUrl: './skill.component.html',
-    styleUrl: './skill.component.scss'
+  selector: 'app-skill',
+  imports: [
+    FontAwesomeModule,
+    FillPipe,
+    ReactiveFormsModule,
+    MatInputModule,
+    MatButtonModule,
+    MatIconModule,
+    MatMenuModule,
+    RollboxComponent,
+  ],
+  providers: [
+    {
+      provide: MAT_FORM_FIELD_DEFAULT_OPTIONS,
+      useValue: { subscriptSizing: 'dynamic' },
+    },
+  ],
+  templateUrl: './skill.component.html',
+  styleUrl: './skill.component.scss',
 })
 export class SkillComponent {
   @Input() label?: string;

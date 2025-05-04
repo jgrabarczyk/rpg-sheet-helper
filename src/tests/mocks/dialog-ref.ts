@@ -10,15 +10,15 @@ export type DialogCloseSpy = {
 
 export function dialogClose(): DialogCloseSpy {
   return {
-    close: jasmine.createSpy('close')
+    close: jasmine.createSpy('close'),
   };
 }
 
 export function dialogOpen(afterCloseData: unknown): DialogOpenSpy {
   return {
     open: jasmine.createSpy().and.returnValue({
-      afterClosed: () => of(afterCloseData)
-    })
+      afterClosed: () => of(afterCloseData),
+    }),
   };
 }
 
@@ -26,7 +26,11 @@ type AfterClosedSpy = {
   afterClosed: () => Observable<unknown>;
 };
 
-export function dialogOpenReturnMultipleValues(afterCloseData: unknown[]): DialogOpenSpy {
-  const values: AfterClosedSpy[] = afterCloseData.map(data => ({ afterClosed: () => of(data) }));
+export function dialogOpenReturnMultipleValues(
+  afterCloseData: unknown[]
+): DialogOpenSpy {
+  const values: AfterClosedSpy[] = afterCloseData.map(data => ({
+    afterClosed: () => of(data),
+  }));
   return { open: jasmine.createSpy().and.returnValues(...values) };
 }

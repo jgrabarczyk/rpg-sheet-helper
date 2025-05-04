@@ -1,13 +1,58 @@
 <div class="roll">
-  <button mat-flat-button (click)="roll.emit(20)">Quick Roll (+20)</button>
-  <button mat-button [matMenuTriggerFor]="menu">Roll</button>
+  <button
+    mat-flat-button
+    (click)="roll.emit(20)"
+  >
+    Quick Roll (+20)
+  </button>
+  <button
+    mat-button
+    [matMenuTriggerFor]="menu"
+  >
+    Roll
+  </button>
   <mat-menu #menu="matMenu">
-    <button mat-menu-item (click)="roll.emit(-30)">-30</button>
-    <button mat-menu-item (click)="roll.emit(-20)">-20</button>
-    <button mat-menu-item (click)="roll.emit(-10)">-10</button>
-    <button mat-menu-item (click)="roll.emit(0)">0</button>
-    <button mat-menu-item (click)="roll.emit(10)">+10</button>
-    <button mat-menu-item (click)="roll.emit(20)">+20</button>
-    <button mat-menu-item (click)="roll.emit(30)">+30</button>
+    <button
+      mat-menu-item
+      (click)="roll.emit(-30)"
+    >
+      -30
+    </button>
+    <button
+      mat-menu-item
+      (click)="roll.emit(-20)"
+    >
+      -20
+    </button>
+    <button
+      mat-menu-item
+      (click)="roll.emit(-10)"
+    >
+      -10
+    </button>
+    <button
+      mat-menu-item
+      (click)="roll.emit(0)"
+    >
+      0
+    </button>
+    <button
+      mat-menu-item
+      (click)="roll.emit(10)"
+    >
+      +10
+    </button>
+    <button
+      mat-menu-item
+      (click)="roll.emit(20)"
+    >
+      +20
+    </button>
+    <button
+      mat-menu-item
+      (click)="roll.emit(30)"
+    >
+      +30
+    </button>
   </mat-menu>
 </div>

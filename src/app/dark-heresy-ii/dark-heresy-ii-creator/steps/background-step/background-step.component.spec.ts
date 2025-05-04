@@ -10,7 +10,7 @@ describe('BackgroundStepComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [BackgroundStepComponent],
-      providers: [{ provide: CdkStepper, useValue: {} }]
+      providers: [{ provide: CdkStepper, useValue: {} }],
     }).compileComponents();
 
     fixture = TestBed.createComponent(BackgroundStepComponent);

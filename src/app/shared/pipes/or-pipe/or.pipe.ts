@@ -3,7 +3,7 @@ import { DHII_BackgroundEquipment } from '@dhii/types/dhii-background';
 
 @Pipe({
   name: 'or',
-  standalone: true
+  standalone: true,
 })
 export class OrPipe implements PipeTransform {
   /**
@@ -11,11 +11,15 @@ export class OrPipe implements PipeTransform {
    * @param value (string | DHII_BackgroundEquipment)[][]
    * @returns string[]
    */
-  public transform(value: (string | DHII_BackgroundEquipment)[][] | undefined): string[] {
+  public transform(
+    value: (string | DHII_BackgroundEquipment)[][] | undefined
+  ): string[] {
     if (!value || value.length === 0) {
       return [''];
     }
 
-    return value.map(el => el.map(e => (typeof e === 'object' ? e.value : e)).join(' or '));
+    return value.map(el =>
+      el.map(e => (typeof e === 'object' ? e.value : e)).join(' or ')
+    );
   }
 }

@@ -8,10 +8,9 @@ describe('AttributesGroupComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [AttributesGroupComponent]
-    })
-    .compileComponents();
-    
+      imports: [AttributesGroupComponent],
+    }).compileComponents();
+
     fixture = TestBed.createComponent(AttributesGroupComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

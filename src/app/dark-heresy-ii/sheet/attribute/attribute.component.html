@@ -1,10 +1,17 @@
 @if (label) {
-  <label class="label" [for]="label">{{ label }}</label>
+  <label
+    class="label"
+    [for]="label"
+    >{{ label }}</label
+  >
 }
 
-<mat-form-field [appearance]="'outline'" class="input">
+<mat-form-field
+  [appearance]="'outline'"
+  class="input"
+>
   <input
-    [name]="label+ ' attribute'"
+    [name]="label + ' attribute'"
     matInput
     type="number"
     [min]="min"
@@ -15,27 +22,43 @@
   />
 </mat-form-field>
 
-@if(mode === 'play'){ 
-  @let showLvl = maxLevel !== 0; 
-  @if(showLvl){
-      <div class="lvl-wrapper">
-        @for (item of maxLevel | fill; track item;) {
-        <fa-icon [icon]="currentLevel >= item ? faCircleFilled : faCircle"/>
-        }
-      </div>
+@if (mode === 'play') {
+  @let showLvl = maxLevel !== 0;
+  @if (showLvl) {
+    <div class="lvl-wrapper">
+      @for (item of maxLevel | fill; track item) {
+        <fa-icon [icon]="currentLevel >= item ? faCircleFilled : faCircle" />
+      }
+    </div>
 
     <div class="lvl-buttons">
-      <button name="increaseAttributeLevel" mat-icon-button (click)="increase.emit()">
+      <button
+        name="increaseAttributeLevel"
+        mat-icon-button
+        (click)="increase.emit()"
+      >
         <mat-icon>add</mat-icon>
       </button>
-      <button name="decreaseAttributeLevel" mat-icon-button (click)="decrease.emit()">
+      <button
+        name="decreaseAttributeLevel"
+        mat-icon-button
+        (click)="decrease.emit()"
+      >
         <mat-icon>remove</mat-icon>
       </button>
     </div>
   }
-  <app-rollbox class="roll" (roll)="roll.emit($event)" />
-} 
+  <app-rollbox
+    class="roll"
+    (roll)="roll.emit($event)"
+  />
+}
 
-@if(mode === 'create' && showReroll) {
-  <button mat-button (click)="roll.emit(0)">Reroll attribute</button>
+@if (mode === 'create' && showReroll) {
+  <button
+    mat-button
+    (click)="roll.emit(0)"
+  >
+    Reroll attribute
+  </button>
 }

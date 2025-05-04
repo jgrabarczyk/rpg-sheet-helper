@@ -9,10 +9,9 @@ describe('AttributeComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [AttributeComponent, NoopAnimationsModule]
-    })
-    .compileComponents();
-    
+      imports: [AttributeComponent, NoopAnimationsModule],
+    }).compileComponents();
+
     fixture = TestBed.createComponent(AttributeComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

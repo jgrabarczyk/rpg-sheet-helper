@@ -6,11 +6,17 @@ import { MatDialogRef } from '@angular/material/dialog';
 import { MatTabHarness } from '@angular/material/tabs/testing';
 import { MatInputHarness } from '@angular/material/input/testing';
 import { MatCheckboxHarness } from '@angular/material/checkbox/testing';
-import { MatChipHarness, MatChipSetHarness } from '@angular/material/chips/testing';
+import {
+  MatChipHarness,
+  MatChipSetHarness,
+} from '@angular/material/chips/testing';
 
 import { EquipmentDialogComponent } from './equipment-dialog.component';
 import { MatButtonHarness } from '@angular/material/button/testing';
-import { dialogClose, DialogCloseSpy } from '../../../../tests/mocks/dialog-ref';
+import {
+  dialogClose,
+  DialogCloseSpy,
+} from '../../../../tests/mocks/dialog-ref';
 import { getButtonHarnessWithSelector } from '../../../../tests/harness-selector-helpers';
 import { EQ_DIALOG_CLOSE_DATA } from '../../../../tests/eqiupment-dialog';
 
@@ -21,7 +27,7 @@ describe('EquipmentDialogComponent', () => {
   beforeAll(async () => {
     await TestBed.configureTestingModule({
       imports: [EquipmentDialogComponent, NoopAnimationsModule],
-      providers: [{ provide: MatDialogRef, useValue: dialogRefMock }]
+      providers: [{ provide: MatDialogRef, useValue: dialogRefMock }],
     }).compileComponents();
 
     fixture = TestBed.createComponent(EquipmentDialogComponent);
@@ -31,7 +37,9 @@ describe('EquipmentDialogComponent', () => {
   it('select all weaopns with "Laspistol" in name and save', async () => {
     //select weapon tab
     const tabLabel: string = 'Weapons';
-    const tab: MatTabHarness = await loader.getHarness(MatTabHarness.with({ label: tabLabel }));
+    const tab: MatTabHarness = await loader.getHarness(
+      MatTabHarness.with({ label: tabLabel })
+    );
     await tab.select();
     expect(await tab.isSelected()).toBe(true);
     expect(await tab.getLabel()).toBe(tabLabel);

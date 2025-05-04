@@ -15,26 +15,26 @@ import { FillPipe } from '@pipes/fill-pipe/fill.pipe';
 import { RollboxComponent } from '../rollbox/rollbox.component';
 
 @Component({
-    selector: 'app-attribute',
-    imports: [
-        FormsModule,
-        ReactiveFormsModule,
-        FillPipe,
-        FontAwesomeModule,
-        MatInputModule,
-        MatIconModule,
-        MatButtonModule,
-        MatMenuModule,
-        RollboxComponent
-    ],
-    providers: [
-        {
-            provide: MAT_FORM_FIELD_DEFAULT_OPTIONS,
-            useValue: { subscriptSizing: 'dynamic' }
-        }
-    ],
-    templateUrl: './attribute.component.html',
-    styleUrl: './attribute.component.scss'
+  selector: 'app-attribute',
+  imports: [
+    FormsModule,
+    ReactiveFormsModule,
+    FillPipe,
+    FontAwesomeModule,
+    MatInputModule,
+    MatIconModule,
+    MatButtonModule,
+    MatMenuModule,
+    RollboxComponent,
+  ],
+  providers: [
+    {
+      provide: MAT_FORM_FIELD_DEFAULT_OPTIONS,
+      useValue: { subscriptSizing: 'dynamic' },
+    },
+  ],
+  templateUrl: './attribute.component.html',
+  styleUrl: './attribute.component.scss',
 })
 export class AttributeComponent {
   @Input({ required: true }) label!: string;

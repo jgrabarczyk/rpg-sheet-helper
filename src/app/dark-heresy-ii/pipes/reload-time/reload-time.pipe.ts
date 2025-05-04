@@ -2,7 +2,7 @@ import { Pipe, PipeTransform } from '@angular/core';
 
 @Pipe({
   name: 'reloadTime',
-  standalone: true
+  standalone: true,
 })
 export class ReloadTimePipe implements PipeTransform {
   public transform(reloadTimeInActions: number): string {

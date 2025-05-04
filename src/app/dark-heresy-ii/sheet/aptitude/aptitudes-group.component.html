@@ -5,7 +5,10 @@
   </mat-card-header>
 
   @if (aptitudes.length) {
-    <mat-list role="list" class="aptitude-list">
+    <mat-list
+      role="list"
+      class="aptitude-list"
+    >
       @for (aptitude of aptitudes; track aptitude) {
         <mat-list-item role="listitem"> {{ aptitude }} </mat-list-item>
       }

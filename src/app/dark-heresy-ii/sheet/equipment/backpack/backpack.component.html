@@ -15,9 +15,16 @@
         }
       </div>
       @for (tableItem of table.data; track tableItem) {
-        <div name="backpackRow" class="backpack-item" [appGridTemplateAreas]="table.headers">
+        <div
+          name="backpackRow"
+          class="backpack-item"
+          [appGridTemplateAreas]="table.headers"
+        >
           @for (columnName of table.headers; track columnName.key) {
-            <span [class]="columnName.key" [appGridArea]="columnName.key">
+            <span
+              [class]="columnName.key"
+              [appGridArea]="columnName.key"
+            >
               {{ tableItem[columnName.key] }}
             </span>
           }

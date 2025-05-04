@@ -11,7 +11,7 @@ describe('SkillStepComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [SkillStepComponent, NoopAnimationsModule],
-      providers: [{ provide: CdkStepper, useValue: {} }]
+      providers: [{ provide: CdkStepper, useValue: {} }],
     }).compileComponents();
 
     fixture = TestBed.createComponent(SkillStepComponent);

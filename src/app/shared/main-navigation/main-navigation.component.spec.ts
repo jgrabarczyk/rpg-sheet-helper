@@ -11,7 +11,7 @@ describe('MainNavigationComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [MainNavigationComponent, NoopAnimationsModule],
-      providers: [provideRouter(routes)]
+      providers: [provideRouter(routes)],
     }).compileComponents();
     fixture = TestBed.createComponent(MainNavigationComponent);
     component = fixture.componentInstance;

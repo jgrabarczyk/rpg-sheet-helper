@@ -1,7 +1,16 @@
-<app-two-column-step title="Determine Divination" [valid]="valid">
-  <p card-content>Determine you divinations. It can provide additional perk for your character</p>
+<app-two-column-step
+  title="Determine Divination"
+  [valid]="valid"
+>
+  <p card-content>
+    Determine you divinations. It can provide additional perk for your character
+  </p>
 
-  <mat-card appearance="outlined" right-column class="creator-step-content">
+  <mat-card
+    appearance="outlined"
+    right-column
+    class="creator-step-content"
+  >
     @if (divination) {
       <div class="creator-card">
         <div class="row">
@@ -14,6 +23,11 @@
         </div>
       </div>
     }
-    <button mat-flat-button (click)="set()">roll 1d100</button>
+    <button
+      mat-flat-button
+      (click)="set()"
+    >
+      roll 1d100
+    </button>
   </mat-card>
 </app-two-column-step>

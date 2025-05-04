@@ -1,7 +1,12 @@
-<mat-card class="creator-card" appearance="outlined">
+<mat-card
+  class="creator-card"
+  appearance="outlined"
+>
   <mat-card-header>
     <mat-card-title class="title"> {{ homeworld.name }} </mat-card-title>
-    <mat-card-subtitle class="subtitle"> {{ homeworld.bonus }}</mat-card-subtitle>
+    <mat-card-subtitle class="subtitle">
+      {{ homeworld.bonus }}</mat-card-subtitle
+    >
   </mat-card-header>
 
   <mat-card-content>
@@ -32,14 +37,18 @@
     @if (homeworld.skills || homeworld.pick?.skills) {
       <div class="row rs-list-item">
         <div class="name">Skills:</div>
-        <div class="value">{{ homeworld.skills }} {{ homeworld.pick?.talents | or }}</div>
+        <div class="value">
+          {{ homeworld.skills }} {{ homeworld.pick?.talents | or }}
+        </div>
       </div>
     }
 
     @if (homeworld.talents || homeworld.pick?.talents) {
       <div class="row rs-list-item">
         <div class="name">Talents:</div>
-        <div class="value">{{ homeworld.talents }} {{ homeworld.pick?.talents | or }}</div>
+        <div class="value">
+          {{ homeworld.talents }} {{ homeworld.pick?.talents | or }}
+        </div>
       </div>
     }
   </mat-card-content>

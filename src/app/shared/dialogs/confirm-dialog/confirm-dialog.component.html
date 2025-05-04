@@ -3,6 +3,18 @@
   {{ data.text }}
 </mat-dialog-content>
 <mat-dialog-actions>
-  <button name="cancel" mat-button mat-dialog-close>Cancel</button>
-  <button name="confirm" mat-button (click)="confirm()">Confirm</button>
+  <button
+    name="cancel"
+    mat-button
+    mat-dialog-close
+  >
+    Cancel
+  </button>
+  <button
+    name="confirm"
+    mat-button
+    (click)="confirm()"
+  >
+    Confirm
+  </button>
 </mat-dialog-actions>

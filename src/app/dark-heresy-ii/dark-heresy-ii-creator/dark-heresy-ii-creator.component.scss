@@ -2,11 +2,11 @@
   display: grid;
   grid-template: 'content logger' / 85% 15%;
 
-  .content{
+  .content {
     grid-area: content;
   }
 
-  .logger{
+  .logger {
     grid-area: logger;
   }
 }

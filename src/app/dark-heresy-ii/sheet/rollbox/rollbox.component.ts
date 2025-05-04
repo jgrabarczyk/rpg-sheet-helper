@@ -3,13 +3,10 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatMenuModule } from '@angular/material/menu';
 
 @Component({
-    selector: 'app-rollbox',
-    imports: [
-        MatButtonModule,
-        MatMenuModule
-    ],
-    templateUrl: './rollbox.component.html',
-    styleUrl: './rollbox.component.scss'
+  selector: 'app-rollbox',
+  imports: [MatButtonModule, MatMenuModule],
+  templateUrl: './rollbox.component.html',
+  styleUrl: './rollbox.component.scss',
 })
 export class RollboxComponent {
   @Output() roll: EventEmitter<number> = new EventEmitter<number>();

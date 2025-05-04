@@ -11,7 +11,7 @@ describe('FinalDetailsStepComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [FinalDetailsStepComponent, NoopAnimationsModule],
-      providers: [{ provide: CdkStepper, useValue: {} }]
+      providers: [{ provide: CdkStepper, useValue: {} }],
     }).compileComponents();
 
     fixture = TestBed.createComponent(FinalDetailsStepComponent);

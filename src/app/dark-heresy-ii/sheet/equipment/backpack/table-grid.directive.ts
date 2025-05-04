@@ -3,7 +3,7 @@ import { Directive, ElementRef, inject, Input } from '@angular/core';
 
 @Directive({
   standalone: true,
-  selector: '[appGridTemplateAreas]'
+  selector: '[appGridTemplateAreas]',
 })
 export class GridTemplateAreasDirective<T> {
   @Input() public set appGridTemplateAreas(gridData: KeyValue<T, string>[]) {
@@ -12,6 +12,6 @@ export class GridTemplateAreasDirective<T> {
     this.el.nativeElement.style.gridTemplateAreas = `'${keyGrid}'`;
     this.el.nativeElement.style.gridTemplateColumns = `repeat(${gridData.length}, minmax(55px, 1fr))`;
   }
-  
+
   private el: ElementRef<HTMLElement> = inject(ElementRef<HTMLElement>);
 }
