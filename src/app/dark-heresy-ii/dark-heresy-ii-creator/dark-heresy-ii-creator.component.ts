@@ -10,7 +10,7 @@ import {
   DHII_CharacterBackground,
   DHII_CharacterDetails,
   DHII_CharacterHomeworld,
-  DHII_CharacterRole
+  DHII_CharacterRole,
 } from '../types/dark-heresy-ii';
 import { DHII_AttributeName } from '../types/dhii-attribute';
 import { DHII_SkillName } from '../types/dhii-skill';
@@ -45,10 +45,10 @@ import { DHII_CreatorService } from './dhii-creator.service';
     TalentStepComponent,
     WoundsAndFateStepComponent,
     RollLogerComponent,
-    FinalDetailsStepComponent
+    FinalDetailsStepComponent,
   ],
   templateUrl: './dark-heresy-ii-creator.component.html',
-  styleUrl: './dark-heresy-ii-creator.component.scss'
+  styleUrl: './dark-heresy-ii-creator.component.scss',
 })
 export class DarkHeresyIICreatorComponent implements AfterViewInit {
   readonly stepper = viewChild.required<MatStepper>('stepper');
@@ -57,6 +57,7 @@ export class DarkHeresyIICreatorComponent implements AfterViewInit {
 
   public ngAfterViewInit() {
     this.resetStepperAndCreationService();
+    console.log('test');
   }
 
   protected setHomeworld(homeworld: DHII_CharacterHomeworld): void {
