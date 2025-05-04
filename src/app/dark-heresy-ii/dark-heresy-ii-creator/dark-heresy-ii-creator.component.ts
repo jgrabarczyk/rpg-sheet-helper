@@ -57,7 +57,6 @@ export class DarkHeresyIICreatorComponent implements AfterViewInit {
 
   public ngAfterViewInit() {
     this.resetStepperAndCreationService();
-    console.log('test');
   }
 
   protected setHomeworld(homeworld: DHII_CharacterHomeworld): void {
