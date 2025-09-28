@@ -1,6 +1,6 @@
 .logger-wrapper {
   background-color: var(
-    --mdc-outlined-card-container-color,
+    --mat-card-outlined-container-color,
     var(--mat-app-surface)
   );
 
@@ -9,16 +9,16 @@
     display: block;
     border: 1px solid black;
     border-radius: var(
-      --mdc-outlined-card-container-shape,
+      --mat-card-outlined-container-shape,
       var(--mat-app-corner-medium)
     );
-    border-width: var(--mdc-outlined-card-outline-width);
+    border-width: var(--mat-card-outlined-outline-width);
     border-color: var(
-      --mdc-outlined-card-outline-color,
+      --mat-card-outlined-outline-color,
       var(--mat-app-outline-variant)
     );
     box-shadow: var(
-      --mdc-outlined-card-container-elevation,
+      --mat-card-outlined-container-elevation,
       var(--mat-app-level0)
     );
     margin-top: 0.5rem;
