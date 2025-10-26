@@ -14,7 +14,7 @@
     "sourceMap": true,
     "declaration": false,
     "experimentalDecorators": true,
-    "moduleResolution": "node",
+    "moduleResolution": "bundler",
     "importHelpers": true,
     "target": "ES2022",
     "module": "ES2022",
@@ -23,7 +23,6 @@
     "noUnusedLocals": true,
     "baseUrl": "./src/app",
     "paths": {
-      //dark heresy paths
       "@dhii/partials/*": ["dark-heresy-ii/partials/*"],
       "@dhii/pipes/*": ["dark-heresy-ii/pipes/*"],
       "@dhii/types/*": ["dark-heresy-ii/types/*"],
@@ -32,8 +31,6 @@
       "@dhii/stepper-partials/*": [
         "dark-heresy-ii/dark-heresy-ii-creator/partials/*"
       ],
-
-      // global paths
       "@appTypes/*": ["types/*"],
       "@pipes/*": ["shared/pipes/*"],
       "@shared/*": ["shared/*"],
